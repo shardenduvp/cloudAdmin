@@ -441,3 +441,68 @@ REQUEST_URI=/venturepact/index.php?r=admin/users/admin
 in C:\xampp\htdocs\venturepact\protected\modules\admin\views\users\admin.php (51)
 in C:\xampp\htdocs\venturepact\protected\modules\admin\controllers\UsersController.php (135)
 in C:\xampp\htdocs\venturepact\index.php (13)
+2015/02/18 08:54:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "javascript:;".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(270): CController->missingAction('javascript:;')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('javascript:;')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/users/jav...')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\venturepact\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/venturepact/index.php?r=admin/users/javascript:;
+HTTP_REFERER=http://localhost/venturepact/index.php?r=admin/users/admin
+---
+2015/02/18 18:19:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientProjects/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('clientProjects/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\venturepact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/venturepact/index.php?r=clientProjects/admin
+HTTP_REFERER=http://localhost/venturepact/
+---
+2015/02/18 18:19:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientProjects/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('clientProjects/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\venturepact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/venturepact/index.php?r=clientProjects/admin
+HTTP_REFERER=http://localhost/venturepact/
+---
+2015/02/18 18:19:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientPortfolio/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('clientPortfolio...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\venturepact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/venturepact/index.php?r=clientPortfolio/admin
+HTTP_REFERER=http://localhost/venturepact/index.php?r=clientProjects/admin
+---
+2015/02/18 18:19:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientProjects/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('clientProjects/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\venturepact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/venturepact/index.php?r=clientProjects/admin
+HTTP_REFERER=http://localhost/venturepact/index.php?r=clientPortfolio/admin
+---
+2015/02/18 18:19:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "suppliers/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('suppliers/admin')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\venturepact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/venturepact/index.php?r=suppliers/admin
+HTTP_REFERER=http://localhost/venturepact/index.php?r=clientProjects/admin
+---
+2015/02/18 18:22:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientProjects/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('clientProjects/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\venturepact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/venturepact/index.php?r=clientProjects/admin
+HTTP_REFERER=http://localhost/venturepact/
+---

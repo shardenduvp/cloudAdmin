@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
+
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>Cloud Admin | Dashboard</title>
@@ -54,7 +57,107 @@
                     <!-- /SIDEBAR COLLAPSE -->
                 </div>
 
+                <!-- NAVBAR LEFT -->
+                <ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<span class="name">New Leads</span>', '#', array(
+                                'class'=>'dropdown-toggle',/*
+                                'data-toggle'=>'dropdown',*/
+                            ));
+                        ?>
+                    </li>
+
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<span class="name">Active Projects</span>', array('/admin/clientProjects/admin'), array(
+                                'class'=>'dropdown-toggle',
+                            ));
+                        ?>
+                        
+                        <!--
+                        <ul class="dropdown-menu">
+                            <li><a href="#" >Manage Projects</a></li>
+                            <li><a href="#" >Create Project</a></li>
+                            <li><a href="#" >View Projects</a></li>
+                         </ul>
+                        -->
+                    </li>
+
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<span class="name">Clients</span>', array('/admin/clientPortfolio/admin'), array(
+                                'class'=>'dropdown-toggle',
+                            ));
+                        ?>
+                    </li>
+
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<span class="name">Suppliers</span>', array('/admin/suppliers/admin'), array(
+                                'class'=>'dropdown-toggle',
+                            ));
+                        ?>
+                    </li>
+
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<span class="name">Milestones</span>', array('/admin/clientMilestones/admin'), array(
+                                'class'=>'dropdown-toggle',
+                            ));
+                        ?>
+                    </li>
+
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<span class="name">Broadcast Messages</span>', '#', array(
+                                'class'=>'dropdown-toggle',
+                            ));
+                        ?>
+                    </li>
+
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<span class="name">More</span>&nbsp;<i class="fa fa-angle-down"></i>', '#', array(
+                                'class'=>'dropdown-toggle',
+                                'data-toggle'=>'dropdown',
+                            ));
+                        ?>
+                        <ul class="dropdown-menu">
+                            <!--
+                            <li class="dropdown-title">
+                                <span><i class="fa fa-leaf"></i> Theme Skins</span>
+                            </li>
+                            -->
+                            <li>
+                                <?php
+                                    echo CHtml::link('Link 1', '#', array(
+                                            'class'=>'',
+                                        )
+                                    );
+                                ?>
+                            </li>
+                            <li>
+                                <?php
+                                    echo CHtml::link('Link 2', '#', array(
+                                            'class'=>'',
+                                        )
+                                    );
+                                ?>
+                            </li>
+                            <li>
+                                <?php
+                                    echo CHtml::link('Link 3', '#', array(
+                                            'class'=>'',
+                                        )
+                                    );
+                                ?>
+                            </li>
+                         </ul>
+                    </li>
+                </ul>
                 <!-- /NAVBAR LEFT -->
+
                 <!-- BEGIN TOP NAVIGATION MENU -->                  
                 <ul class="nav navbar-nav pull-right">
                     

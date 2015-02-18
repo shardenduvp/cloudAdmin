@@ -75,6 +75,14 @@ return array(
 			),
 		),
 
+		'clientScript' => array(
+
+	        // disable default yii jquery script
+	        'scriptMap' => array(
+	            'jquery.js' => 'js/jquery.js',
+	        ),
+	    ),
+
 	),
 
 	// application-level parameters that can be accessed
