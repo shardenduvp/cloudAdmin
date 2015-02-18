@@ -61,18 +61,22 @@
                 <ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<span class="name">New Leads</span>', '#', array(
-                                'class'=>'dropdown-toggle',/*
-                                'data-toggle'=>'dropdown',*/
-                            ));
+                            echo CHtml::link('<!--<i class="fa fa-list"></i>-->
+                                <span class="name">New Leads</span>', '#', array(
+                                    'class'=>'dropdown-toggle',/*
+                                    'data-toggle'=>'dropdown',*/
+                                )
+                            );
                         ?>
                     </li>
 
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<span class="name">Active Projects</span>', array('/admin/clientProjects/admin'), array(
-                                'class'=>'dropdown-toggle',
-                            ));
+                            echo CHtml::link('<!--<i class="fa fa-folder-open"></i>-->
+                                <span class="name">Active Projects</span>', array('/admin/clientProjects/admin'), array(
+                                    'class'=>'dropdown-toggle',
+                                )
+                            );
                         ?>
                         
                         <!--
@@ -86,42 +90,52 @@
 
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<span class="name">Clients</span>', array('/admin/clientPortfolio/admin'), array(
-                                'class'=>'dropdown-toggle',
-                            ));
+                            echo CHtml::link('<!--<i class="fa fa-users"></i>-->
+                                <span class="name">Clients</span>', array('/admin/clientPortfolio/admin'), array(
+                                    'class'=>'dropdown-toggle',
+                                )
+                            );
                         ?>
                     </li>
 
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<span class="name">Suppliers</span>', array('/admin/suppliers/admin'), array(
-                                'class'=>'dropdown-toggle',
-                            ));
+                            echo CHtml::link('<!--<i class="fa fa-suitcase"></i>-->
+                                <span class="name">Suppliers</span>', array('/admin/suppliers/admin'), array(
+                                    'class'=>'dropdown-toggle',
+                                )
+                            );
                         ?>
                     </li>
 
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<span class="name">Milestones</span>', array('/admin/clientMilestones/admin'), array(
-                                'class'=>'dropdown-toggle',
-                            ));
+                            echo CHtml::link('<!--<i class="fa fa-bullseye"></i>-->
+                                <span class="name">Milestones</span>', array('/admin/clientMilestones/admin'), array(
+                                    'class'=>'dropdown-toggle',
+                                )
+                            );
                         ?>
                     </li>
 
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<span class="name">Broadcast Messages</span>', '#', array(
-                                'class'=>'dropdown-toggle',
-                            ));
+                            echo CHtml::link('<!--<i class="fa fa-envelope"></i>-->
+                                <span class="name">Broadcast Messages</span>', '#', array(
+                                    'class'=>'dropdown-toggle',
+                                )
+                            );
                         ?>
                     </li>
 
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<span class="name">More</span>&nbsp;<i class="fa fa-angle-down"></i>', '#', array(
-                                'class'=>'dropdown-toggle',
-                                'data-toggle'=>'dropdown',
-                            ));
+                            echo CHtml::link('<!--<i class="fa fa-plus"></i>-->
+                                <span class="name">More</span>&nbsp;<i class="fa fa-angle-down"></i>', '#', array(
+                                    'class'=>'dropdown-toggle',
+                                    'data-toggle'=>'dropdown',
+                                )
+                            );
                         ?>
                         <ul class="dropdown-menu">
                             <!--

@@ -17,7 +17,8 @@
         <ul>
             <li class="active">
                 <?php
-                    echo CHtml::link('<span class="menu-text">New Leads</span>
+                    echo CHtml::link('<i class="fa fa-list fa-fw"></i>
+                        <span class="menu-text">New Leads</span>
                         <span class="selected"></span>', '#', array(
                             'class'=>'',
                             'type'=>'raw',
@@ -29,7 +30,8 @@
             <li class="has-sub">
                 <!-- <span class="arrow"></span> -->
                 <?php
-                    echo CHtml::link('<span class="menu-text">Active Projects</span>', array('/admin/clientProjects/admin'), array(
+                    echo CHtml::link('<i class="fa fa-folder-open fa-fw"></i>
+                            <span class="menu-text">Active Projects</span>', array('/admin/clientProjects/admin'), array(
                             'class'=>'',
                         )
                     );
@@ -52,9 +54,9 @@
             </li>
 
             <li>
-                <!-- <i class="fa fa-desktop fa-fw"></i> -->
                 <?php
-                    echo CHtml::link('<span class="menu-text">Clients</span>', array('/admin/clientPortfolio/admin'), array(
+                    echo CHtml::link('<i class="fa fa-users fa-fw"></i>
+                        <span class="menu-text">Clients</span>', array('/admin/clientPortfolio/admin'), array(
                             'class'=>'',
                             'type'=>'raw',
                         )
@@ -63,7 +65,8 @@
             </li>
             <li>
                 <?php
-                    echo CHtml::link('<span class="menu-text">Suppliers</span>', array('/admin/suppliers/admin'), array(
+                    echo CHtml::link('<i class="fa fa-suitcase fa-fw"></i>
+                        <span class="menu-text">Suppliers</span>', array('/admin/suppliers/admin'), array(
                             'class'=>'',
                             'type'=>'raw',
                         )
@@ -72,7 +75,8 @@
             </li>
             <li>
                 <?php
-                    echo CHtml::link('<span class="menu-text">Milestones</span>', array('/admin/clientMilestones/admin'), array(
+                    echo CHtml::link('<i class="fa fa-bullseye fa-fw"></i>
+                        <span class="menu-text">Milestones</span>', array('/admin/clientMilestones/admin'), array(
                             'class'=>'',
                             'type'=>'raw',
                         )
@@ -81,7 +85,8 @@
             </li>
             <li>
                 <?php
-                    echo CHtml::link('<span class="menu-text">Broadcast Messages</span>', '#', array(
+                    echo CHtml::link('<i class="fa fa-envelope fa-fw"></i>
+                            <span class="menu-text">Broadcast Messages</span>', '#', array(
                             'class'=>'',
                             'type'=>'raw',
                         )
@@ -91,7 +96,8 @@
 
             <li class="has-sub">
                 <?php
-                    echo CHtml::link('<span class="menu-text">More</span>
+                    echo CHtml::link('<i class="fa fa-plus fa-fw"></i>
+                        <span class="menu-text">More</span>
                         <span class="arrow"></span>', 'javascript:;', array(
                             'class'=>'',
                             'type'=>'raw',
