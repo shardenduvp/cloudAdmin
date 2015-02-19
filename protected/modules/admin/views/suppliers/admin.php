@@ -39,9 +39,21 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BOX -->
+		<div class="box border blue">
 
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of all Suppliers</h4>
+			</div>
+									
+
+			<div class="box-body">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'suppliers-grid',
+	//'id'=>'suppliers-grid',
+	'id'=>'datatables1',
+	'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
@@ -51,7 +63,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'cover',
 		'name',
 		'image',
-		/*
 		'email',
 		'skype_id',
 		'website',
@@ -100,9 +111,26 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'payoneer_token',
 		'link_status',
 		'offers',
-		*/
+		
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>'Operations',
+							'buttons'=>array(
+                                        'update'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                                        'view'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                                        'delete'=>array(
+                                                        'visible'=>'false',
+                                                ),
+                       						 )
 		),
 	),
 )); ?>
+</div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>
