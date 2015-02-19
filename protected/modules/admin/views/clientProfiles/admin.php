@@ -40,32 +40,76 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'client-profiles-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'users_id',
-		'first_name',
-		'last_name',
-		'company_name',
-		'company_link',
-		/*
-		'skype_id',
-		'email',
-		'phone_number',
-		'address1',
-		'team_size',
-		'category',
-		'foundation_year',
-		'image',
-		'description',
-		'add_date',
-		'status',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>
+<div class="row">
+	<div class="col-md-12">
+		<!-- BOX -->
+		<div class="box border blue">
+
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of all users</h4>
+			</div>
+									
+
+			<div class="box-body">
+				<?php
+					
+					$this->widget('zii.widgets.grid.CGridView', array(
+						'id'=>'datatables1',
+						'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
+						'dataProvider'=>$model->search(),
+						'filter'=>$model,
+						'columns'=>array(
+							array('name'=>'id','htmlOptions'=>array('class'=>'center')),
+							'last_name',
+							'first_name',
+							'company_name',
+							'email',
+							'phone_number',
+							'address1',
+							'category',
+							'add_date',
+							'company_link',
+							'skype_id',
+							array(
+	            				'name'=>'status',
+	            				'header'=>'Status', 
+	            				'filter'=>CHtml::activeDropDownList($model, 'status',
+	                     		 array('1'=>"Verified",'0'=>'Not Verified'),
+	                      		array('empty'=>'Select Status',"")), 
+	            				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+	        				),
+							/*
+							'username',
+							'phone_number',
+							'password',
+							'linkedin',
+							'role',
+							'add_date',
+							'last_login',
+							'status',
+							'role_id',
+							*/
+							array(
+								'class'=>'CButtonColumn',
+								'header'=>'Operations',
+								'buttons'=>array(
+	                                        'update'=>array(
+	                                                        'visible'=>'true',
+	                                                ),
+	                                        'view'=>array(
+	                                                        'visible'=>'true',
+	                                                ),
+	                                        'delete'=>array(
+	                                                        'visible'=>'false',
+	                                                ),
+	                       					)
+								)	
+							)
+						)
+					);  
+				?>
+			</div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>

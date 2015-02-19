@@ -506,3 +506,66 @@ Stack trace:
 REQUEST_URI=/venturepact/index.php?r=clientProjects/admin
 HTTP_REFERER=http://localhost/venturepact/
 ---
+2015/02/19 05:34:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/clients/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clients/a...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clients/admin
+---
+2015/02/19 06:03:37 [error] [exception.CException] exception 'CException' with message 'Property "ClientProfiles.role_id" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('role_id')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\helpers\CHtml.php(2728): CActiveRecord->__get('role_id')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\helpers\CHtml.php(1981): CHtml::resolveValue(Object(ClientProfiles), 'role_id')
+#3 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\clientProfiles\admin.php(58): CHtml::activeDropDownList(Object(ClientProfiles), 'role_id', Array, Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#8 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php(135): CController->render('admin', Array)
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): ClientProfilesController->actionAdmin()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('admin')
+#19 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#20 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/admin
+HTTP_REFERER=http://localhost/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 06:31:50 [error] [exception.CException] exception 'CException' with message 'Property "ClientProfiles.display_name" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('display_name')
+#1 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\clientProfiles\view.php(50): CActiveRecord->__get('display_name')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#6 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php(48): CController->render('view', Array)
+#7 [internal function]: ClientProfilesController->actionView('1')
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProfilesController), Array)
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProfilesController), Object(ReflectionMethod), Array)
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#19 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#20 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/view&id=1
+---
