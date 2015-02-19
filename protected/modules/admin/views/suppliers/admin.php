@@ -97,7 +97,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'response_time',
 		'is_faq_completed',
 		'is_application_submit',
-		'status',
+		array(
+            				'name'=>'status',
+            				'header'=>'Status', 
+            				'filter'=>CHtml::activeDropDownList($model, 'status',
+                     		 array('1'=>"Verified",'0'=>'Un-Verified'),
+                      		array('empty'=>'Select Status',"")), 
+            				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+        				),
 		'users_id',
 		'logo',
 		'default_q3_ans',
@@ -127,6 +134,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                                                 ),
                        						 )
 		),
+		
 	),
 )); ?>
 </div>
