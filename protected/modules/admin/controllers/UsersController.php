@@ -162,4 +162,20 @@ class UsersController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+
+		protected function assignRoleNames($data,$row){
+
+		if($data->role_id==1){
+			return 'Client';
+		}
+		else if($data->role_id==2){
+			return 'Supplier';	
+		}
+		else{
+			return 'Admin';
+		}
+		
+	}
 }

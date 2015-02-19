@@ -1,6 +1,10 @@
+assets/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+
+*.log
 
 # Folder config file
 Desktop.ini

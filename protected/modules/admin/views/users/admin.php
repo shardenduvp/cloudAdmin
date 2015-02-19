@@ -101,18 +101,33 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 				</table>
 				-->
 
-				<?php $this->widget('zii.widgets.grid.CGridView', array(
+				<?php
+				
+				$this->widget('zii.widgets.grid.CGridView', array(
 					'id'=>'datatables1',
 					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 					'dataProvider'=>$model->search(),
 					'filter'=>$model,
 					'columns'=>array(
-						'id',
+						array('name'=>'id','htmlOptions'=>array('class'=>'center')),
 						'last_name',
 						'first_name',
-						'image',
+						array('name'=>'role_id',
+							'header'=>'Role', 
+            				'filter'=>CHtml::activeDropDownList($model, 'role_id',
+                     		 array('1'=>'Client','2'=>'Supplier','3'=>'Admin'),
+                      		array('empty'=>'Select Roles',"")), 
+            				'value'=>array($this,'assignRoleNames')
+            			),
 						'company_name',
-						'display_name',
+						array(
+            				'name'=>'status',
+            				'header'=>'Status', 
+            				'filter'=>CHtml::activeDropDownList($model, 'status',
+                     		 array('1'=>"Verified",'0'=>'Un-Verified'),
+                      		array('empty'=>'Select Status',"")), 
+            				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+        				),
 						/*
 						'username',
 						'phone_number',
@@ -125,12 +140,24 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'role_id',
 						*/
 						array(
-							'class'=>'CButtonColumn'
-						),
-						
-					),
-				)); 
-				?>
+							'class'=>'CButtonColumn',
+							'header'=>'Operations',
+							'buttons'=>array(
+                                        'update'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                                        'view'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                                        'delete'=>array(
+                                                        'visible'=>'false',
+                                                ),
+                       						 )
+						)
+					)
+				)
+			);  
+?>
 			</div>
 		</div>
 	<!-- /BOX -->
