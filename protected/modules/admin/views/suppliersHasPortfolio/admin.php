@@ -39,50 +39,75 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BOX -->
+		<div class="box border blue">
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'suppliers-has-portfolio-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'suppliers_id',
-		'project_name',
-		'project_link',
-		'description',
-		'industry_id',
-		/*
-		'service_id',
-		'client_name',
-		'year_done',
-		'estimate_price',
-		'start_date',
-		'estimate_timeline',
-		'language_used',
-		'cover',
-		'add_date',
-		'status',
-		'portfolio_type',
-		'one_line_pitch',
-		'who_can',
-		'markets',
-		'portfolio_status',
-		'no_of_customers',
-		'launched_in',
-		'no_of_users',
-		'deployment',
-		'is_free_trial',
-		'project_size',
-		'per_hour_rate',
-		'platform',
-		'company_name',
-		'is_discreet',
-		'discreet_desc',
-		'location',
-		'image',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of all Suppliers Has Portfolio</h4>
+			</div>
+			<div class="box-body">
+					<?php $this->widget('zii.widgets.grid.CGridView', array(
+					//	'id'=>'suppliers-has-portfolio-grid',
+						'id'=>'datatables1',
+						'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
+						'dataProvider'=>$model->search(),
+						'filter'=>$model,
+						'columns'=>array(
+							'id',
+							'suppliers_id',
+							'project_name',
+							'project_link',
+							'description',
+							'industry_id',
+							'service_id',
+							'client_name',
+							'year_done',
+							'estimate_price',
+							'start_date',
+							'estimate_timeline',
+							'language_used',
+							'cover',
+							'add_date',
+							'status',
+							'portfolio_type',
+							'one_line_pitch',
+							'who_can',
+							'markets',
+							'portfolio_status',
+							'no_of_customers',
+							'launched_in',
+							'no_of_users',
+							'deployment',
+							'is_free_trial',
+							'project_size',
+							'per_hour_rate',
+							'platform',
+							'company_name',
+							'is_discreet',
+							'discreet_desc',
+							'location',
+							'image',
+							array(
+								'class'=>'CButtonColumn',
+								'header'=>'Operations',
+												'buttons'=>array(
+					                                        'update'=>array(
+					                                                        'visible'=>'true',
+					                                                ),
+					                                        'view'=>array(
+					                                                        'visible'=>'true',
+					                                                ),
+					                                        'delete'=>array(
+					                                                        'visible'=>'false',
+					                                                ),
+					                       						 )
+							),
+						),
+					)); ?>
+             </div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>
