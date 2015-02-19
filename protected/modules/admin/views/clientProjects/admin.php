@@ -60,10 +60,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'custom_budget_range',
 		'start_date',
 		'project_start_preference',
-		'preferences',
+		'preferences',*/
 		'regions',
 		'tier',
-		'absolute_necessary_language',
+		/*'absolute_necessary_language',
 		'good_know_language',
 		'which_one_is_inportant',
 		'questions_for_supplier',
