@@ -67,7 +67,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 							'phone_number',
 							'address1',
 							'category',
-							'add_date',
+							array(
+								'header'=>'No of Projects',
+								'value'=>array($this,'clientProjects')),
+							array(
+								'name'=>'add_date',
+								'header'=>'Created On'),
 							'company_link',
 							'skype_id',
 							array(
