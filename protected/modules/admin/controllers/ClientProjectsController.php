@@ -162,4 +162,32 @@ class ClientProjectsController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	/**
+	 * Custom methods for cell value in CGridView 
+	 * @param $data and $row for which the method is called 
+	 */
+	public function getRegion($data, $row)
+	{
+		if(empty($data->regions)) return "Not Provided";
+		$reg['id'] = explode(',', $data->regions);
+		$regions = Regions::model()->findAllByAttributes($reg);
+		$value = "";
+		foreach ($regions as $region) {
+			$value .= $region->name . ", ";
+		}
+		return rtrim(trim($value), ",");
+	}
+
+	public function getTier($data, $row)
+	{
+		if(empty($data->tier)) return "Not Provided";
+		$tr['id'] = explode(',', $data->tier);
+		$tiers = PriceTier::model()->findAllByAttributes($tr);
+		$value = "";
+		foreach ($tiers as $tier) {
+			$value .= ucwords(trim($tier->title)) . ", ";
+		}
+		return rtrim(trim($value), ",");
+	}
 }

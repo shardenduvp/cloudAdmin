@@ -179,7 +179,7 @@
                     <li class="dropdown user pull-right" id="header-user">
                         <?php if(!Yii::app()->user->isGuest) { ?>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img alt="" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/avatars/avatar3.jpg" />
+                            <img alt="" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/user.png" />
                             <span class="username">John Doe</span>
                             <i class="fa fa-angle-down"></i>
                         </a>
