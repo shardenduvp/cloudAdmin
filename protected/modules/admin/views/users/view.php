@@ -93,23 +93,24 @@ $this->menu=array(
       </div>
     </div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'last_name',
-		'first_name',
-		'image',
-		'company_name',
-		'display_name',
-		'username',
-		'phone_number',
-		'password',
-		'linkedin',
-		'role',
-		'add_date',
-		'last_login',
-		'status',
-		'role_id',
-	),
-)); ?>
+<?php //$this->widget('zii.widgets.CDetailView', array(
+// 	'data'=>$model,
+// 	'attributes'=>array(
+// 		'id',
+// 		'last_name',
+// 		'first_name',
+// 		'image',
+// 		'company_name',
+// 		'display_name',
+// 		'username',
+// 		'phone_number',
+// 		'password',
+// 		'linkedin',
+// 		'role',
+// 		'add_date',
+// 		'last_login',
+// 		'status',
+// 		'role_id',
+// 	),
+// ));
+ ?>
