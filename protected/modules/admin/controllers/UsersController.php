@@ -182,18 +182,19 @@ class UsersController extends Controller
 	protected function assignLinks($data,$row){
 
 		if($data->role_id==1){
-			$url='admin/admin/view&id='.$data->id;
-			return Yii::app()->createUrl($url);	
+			$url='admin/users/view&id='.$data->id;
 		}
 		else if($data->role_id==2){
-			$url='admin/clientProfiles/view&id='.$data->id;
-			return Yii::app()->createUrl($url);	
+			$clientProfiles= new ClientProfiles;
+			$result=$clientProfiles->findByAttributes(array('users_id'=>$data->id));
+			$url='admin/clientProfiles/view&id='.$result['id'];
 		}
 		else{
-			$url='admin/supplier/view&id='.$data->id;
-			return Yii::app()->createUrl($url);	
+			$suppliers= new Suppliers;
+			$result=$suppliers->findByAttributes(array('users_id'=>$data->id));
+			$url='admin/suppliers/view&id='.$result['id'];
 		}
-		
+		return '<a href="'.Yii::app()->createUrl($url).'">'.$data->username.'</a>';
 	}
 
 }

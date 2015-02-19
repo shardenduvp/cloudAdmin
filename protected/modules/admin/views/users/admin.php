@@ -114,10 +114,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'last_name',
 						'first_name',
 						array(
-            				'class'=>'CLinkColumn',
-            				'header'=>'Username', 
-            				'urlExpression'=>array($this,'assignLinks'),
-            				'labelExpression'=>'$data->username'       
+            				'name'=>'username',
+            				'header'=>'Username',
+            				'type'=>'raw',
+            				'value'=>array($this,'assignLinks')
         				),
 						array('name'=>'role_id',
 							'header'=>'Role', 
