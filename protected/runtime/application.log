@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2015/02/12 11:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/login".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/login')
@@ -523,3 +524,5 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/view
 ---
+=======
+>>>>>>> 48dbba898540a639fa4467efdf5736b4012e0bde

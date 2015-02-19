@@ -162,4 +162,38 @@ class UsersController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+
+	protected function assignRoleNames($data,$row){
+
+		if($data->role_id==1){
+			return 'Admin';
+		}
+		else if($data->role_id==2){
+			return 'Client';	
+		}
+		else{
+			return 'Supplier';
+		}
+		
+	}
+
+	protected function assignLinks($data,$row){
+
+		if($data->role_id==1){
+			$url='admin/admin/view&id='.$data->id;
+			return Yii::app()->createUrl($url);	
+		}
+		else if($data->role_id==2){
+			$url='admin/clientProfiles/view&id='.$data->id;
+			return Yii::app()->createUrl($url);	
+		}
+		else{
+			$url='admin/supplier/view&id='.$data->id;
+			return Yii::app()->createUrl($url);	
+		}
+		
+	}
+
 }

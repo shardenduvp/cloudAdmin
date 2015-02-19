@@ -26,7 +26,14 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Client Projects</h1>
+<!-- PAGE HEADER-->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+         	<h1>Manage Client Projects</h1>
+       	</div>
+    </div>
+</div>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,47 +47,96 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'client-projects-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'name',
-		'description',
-		'tag_line',
-		'business_problem',
-		'about_company',
-		/*
-		'team_size',
-		'summary',
-		'unique_features',
-		'min_budget',
-		'max_budget',
-		'custom_budget_range',
-		'start_date',
-		'project_start_preference',
-		'preferences',*/
-		'regions',
-		'tier',
-		/*'absolute_necessary_language',
-		'good_know_language',
-		'which_one_is_inportant',
-		'questions_for_supplier',
-		'requirement_change_scale',
-		'add_date',
-		'modify_date',
-		'is_call_scheduled',
-		'other_status',
-		'current_status',
-		'status',
-		'client_profiles_id',
-		'current_status_id',
-		'other_current_status',
-		'state',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>
+<div class="row">
+	<div class="col-md-12">
+		<!-- BOX -->
+		<div class="box border blue">
+
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of all Client Projects</h4>
+			</div>
+									
+
+			<div class="box-body">
+			<?php $this->widget('zii.widgets.grid.CGridView', array(
+				'id'=>'datatables1',
+				'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
+				'dataProvider'=>$model->search(),
+				'filter'=>$model,
+				'columns'=>array(
+					'name',
+					array(
+					    'name'=>'description',
+						'value'=>'(empty($data->description))?"Not Provided":trim(substr($data->description, 0, 30))."..."',
+					),
+					array(
+					    'name'=>'user_search',
+					    'type'=>'html',
+						'value'=>'CHtml::link($data->clientProfiles->users->username, array("/admin/clientProfiles/view&id=".$data->clientProfiles->id))',
+					),
+					array(
+					    'name'=>'min_budget',
+						'value'=>'(empty($data->min_budget))?"Not Provided":$data->min_budget',
+					),
+					array(
+					    'name'=>'max_budget',
+						'value'=>'(empty($data->max_budget))?"Not Provided":$data->max_budget',
+					),
+					array(
+					    'name'=>'custom_budget_range',
+						'value'=>'(empty($data->custom_budget_range))?"Not Provided":$data->custom_budget_range',
+					),
+					array(
+					    'name'=>'start_date',
+						'value'=>'(empty($data->start_date))?"Not Provided":$data->start_date',
+					),
+					array(
+					    'name'=>'project_start_preference',
+						'value'=>'(empty($data->project_start_preference))?"Not Provided":$data->project_start_preference',
+					),
+					array(
+					    'name'=>'regions',
+						'value'=>array($this, 'getRegion'),
+					),
+					array(
+					    'name'=>'tier',
+						'value'=>array($this, 'getTier'),
+					),
+					array(
+					    'name'=>'add_date',
+						'value'=>'(empty($data->add_date)) ? "Not Provided" : $data->add_date',
+					),
+					array(
+					    'name'=>'modify_date',
+						'value'=>'(empty($data->modify_date)) ? "Not Provided" : $data->modify_date',
+					),
+					array(
+            			'name'=>'status',
+            			'header'=>'Status', 
+            			'filter'=>CHtml::activeDropDownList($model, 'status',
+                     		array('1'=>"Verified",'0'=>'Not Verified'),
+                      		array('empty'=>'Select Status',"")), 
+            			'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+        			),
+					array(
+						'class'=>'CButtonColumn',
+						'header'=>'Operations',
+						'buttons'=>array(
+                            'update'=>array(
+                                'visible'=>'true',
+                            ),
+                            'view'=>array(
+                                'visible'=>'true',
+                            ),
+                            'delete'=>array(
+                                'visible'=>'false',
+                            ),
+                       	)
+					),
+				),
+			)); ?>
+			</div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>

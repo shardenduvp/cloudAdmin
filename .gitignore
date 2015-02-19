@@ -1,4 +1,6 @@
 assets/
+protected/runtime/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -14,6 +16,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.log
 
 # Windows shortcuts
 *.lnk
@@ -42,3 +45,4 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+protected/runtime/application.log
