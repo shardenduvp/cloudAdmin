@@ -45,7 +45,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		<div class="box border blue">
 
 			<div class="box-title">
-				<h4><i class="fa fa-table"></i>List of Suppliers Faq Answers/h4>
+				<h4><i class="fa fa-table"></i>List of Suppliers Faq Answers</h4>
 			</div>
 									
 
