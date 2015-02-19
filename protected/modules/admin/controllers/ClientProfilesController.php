@@ -108,7 +108,14 @@ class ClientProfilesController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
+	protected function clientProjects($data,$row){
+		$model = new ClientProjects;
+		$notifyModels = $model->findAllByAttributes(array(
+            'client_profiles_id'=> $data->id
+        ));
 
+		return count($notifyModels); 
+	}
 	/**
 	 * Lists all models.
 	 */
