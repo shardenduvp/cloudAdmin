@@ -110,11 +110,28 @@ class ClientProfilesController extends Controller
 	}
 	protected function clientProjects($data,$row){
 		$model = new ClientProjects;
-		$notifyModels = $model->findAllByAttributes(array(
+		$resource = $model->findAllByAttributes(array(
             'client_profiles_id'=> $data->id
         ));
 
-		return count($notifyModels); 
+		return count($resource); 
+	}
+
+	protected function clientMilestones($data, $row){
+		$sum=0;
+		$model = new clientMilestones;
+		$result=$model->findAllByAttributes(array("client_profiles_id"=>$data->id));
+		foreach($result as $individualResult){
+				$sum=$sum+$individualResult['payment'];
+		}
+		return $sum;
+		// $resource = $model->findAll(array(
+  //     		'select'=>'client_profiles_id, SUM(payment) as sum',
+  //     		'condition'=>'client_profiles_id=$data->id',
+  //     		'params'=>array(':client_profiles_id'=>$_POST['client_milestones']['client_profiles_id']))
+  //   	);
+
+    	//echo $resource->sum;
 	}
 	/**
 	 * Lists all models.

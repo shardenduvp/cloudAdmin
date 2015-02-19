@@ -69,20 +69,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 							'category',
 							array(
 								'header'=>'No of Projects',
-								'value'=>array($this,'clientProjects')),
+								'value'=>array($this,'clientProjects')
+							),
+							array(
+								'header'=>'Total Amount Paid',
+								'value'=>array($this,'clientMilestones')
+							),
 							array(
 								'name'=>'add_date',
-								'header'=>'Created On'),
+								'header'=>'Created On'
+							),
 							'company_link',
 							'skype_id',
-							array(
-	            				'name'=>'status',
-	            				'header'=>'Status', 
-	            				'filter'=>CHtml::activeDropDownList($model, 'status',
-	                     		 array('1'=>"Verified",'0'=>'Not Verified'),
-	                      		array('empty'=>'Select Status',"")), 
-	            				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
-	        				),
 							/*
 							'username',
 							'phone_number',
