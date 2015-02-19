@@ -60,13 +60,13 @@ $this->menu=array(
                     					switch ($attr)
                     					{
                     						case 1:
-                    							$value='Client';
+                    							$value='Admin';
                     							break;
                     						case 2:
-                    							$value='Supplier';
+                    							$value='Client';
                     							break;
                     						default:
-                    							$value='Admin';
+                    							$value='Supplier';
 
                     					}
                     					$attr='Role';
