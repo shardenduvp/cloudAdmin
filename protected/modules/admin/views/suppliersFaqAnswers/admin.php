@@ -39,23 +39,49 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BOX -->
+		<div class="box border blue">
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'suppliers-faq-answers-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'suppliers_id',
-		'faq_id',
-		'status',
-		'add_date',
-		'answer',
-		/*
-		'publish',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of Suppliers Faq Answers/h4>
+			</div>
+									
+
+			<div class="box-body">
+				<?php $this->widget('zii.widgets.grid.CGridView', array(
+					//'id'=>'suppliers-faq-answers-grid',
+					'dataProvider'=>$model->search(),
+					'filter'=>$model,
+					'columns'=>array(
+						'id',
+						'suppliers_id',
+						'faq_id',
+						'status',
+						'add_date',
+						'answer',
+						'publish',
+						
+						array(
+							'class'=>'CButtonColumn',
+							'header'=>'Operations',
+							'buttons'=>array(
+                                        'update'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                                        'view'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                                        'delete'=>array(
+                                                        'visible'=>'false',
+                                                ),
+                       						 )
+						),
+					),
+				)); ?>
+				</div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>
