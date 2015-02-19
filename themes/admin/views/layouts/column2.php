@@ -56,7 +56,7 @@
             <li>
                 <?php
                     echo CHtml::link('<i class="fa fa-users fa-fw"></i>
-                        <span class="menu-text">Clients</span>', array('/admin/clientPortfolio/admin'), array(
+                        <span class="menu-text">Clients</span>', array('/admin/clientProfiles/admin'), array(
                             'class'=>'',
                             'type'=>'raw',
                         )
