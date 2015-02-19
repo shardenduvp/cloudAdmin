@@ -506,3 +506,288 @@ Stack trace:
 REQUEST_URI=/venturepact/index.php?r=clientProjects/admin
 HTTP_REFERER=http://localhost/venturepact/
 ---
+2015/02/19 07:56:24 [error] [exception.CException] exception 'CException' with message 'Property "CDataColumn.url" is not defined.' in C:\wamp\www\Yii\Yii1.1\test\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\YiiBase.php(220): CComponent->__set('url', Array)
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 C:\wamp\www\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#3 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(147): CGridView->init()
+#4 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php(165): CBaseController->widget('zii.widgets.gri...', Array)
+#6 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\clo...')
+#7 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\clo...', Array, true)
+#8 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\clo...', Array, true)
+#9 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#10 C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php(135): CController->render('admin', Array)
+#11 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#12 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('admin')
+#21 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/users/adm...')
+#22 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 07:57:30 [error] [exception.CException] exception 'CException' with message 'Property "CDataColumn.urlExpression" is not defined.' in C:\wamp\www\Yii\Yii1.1\test\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\YiiBase.php(220): CComponent->__set('urlExpression', Array)
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 C:\wamp\www\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#3 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(147): CGridView->init()
+#4 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php(165): CBaseController->widget('zii.widgets.gri...', Array)
+#6 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\clo...')
+#7 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\clo...', Array, true)
+#8 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\clo...', Array, true)
+#9 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#10 C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php(135): CController->render('admin', Array)
+#11 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#12 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('admin')
+#21 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/users/adm...')
+#22 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:01:11 [error] [exception.CException] exception 'CException' with message 'Property "CLinkColumn.value" is not defined.' in C:\wamp\www\Yii\Yii1.1\test\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\YiiBase.php(220): CComponent->__set('value', '$data->username')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 C:\wamp\www\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#3 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(147): CGridView->init()
+#4 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php(166): CBaseController->widget('zii.widgets.gri...', Array)
+#6 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\clo...')
+#7 C:\wamp\www\Yii\Yii1.1\test\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\clo...', Array, true)
+#8 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\clo...', Array, true)
+#9 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#10 C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php(135): CController->render('admin', Array)
+#11 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#12 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('admin')
+#21 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/users/adm...')
+#22 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:02:32 [error] [php] Undefined variable: data (C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php:120)
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(869): UsersController->renderFile()
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(782): UsersController->renderPartial()
+#2 C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php(135): UsersController->render()
+#3 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#4 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): UsersController->runAction()
+#6 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): UsersController->filterAccessControl()
+#9 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(265): UsersController->runActionWithFilters()
+#12 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): UsersController->run()
+#13 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\wamp\www\cloudAdmin\index.php(13): CWebApplication->run()
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/admin
+in C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php (120)
+in C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php (135)
+in C:\wamp\www\cloudAdmin\index.php (13)
+2015/02/19 08:03:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/user/admin".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/user/admi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/user/admin
+---
+2015/02/19 08:17:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/user/admin".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/user/admi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/user/admin
+---
+2015/02/19 08:17:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/user/admin".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/user/admi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/user/admin
+---
+2015/02/19 08:17:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/user/admin".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/user/admi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/user/admin
+---
+2015/02/19 08:17:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/user/admin".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/user/admi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/user/admin
+---
+2015/02/19 08:17:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/user/admin".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/user/admi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/user/admin
+---
+2015/02/19 08:18:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/client/view".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/client/vi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/client/view&id=9
+HTTP_REFERER=http://localhost:8080/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:18:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/client/view".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/client/vi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/client/view&id=7
+HTTP_REFERER=http://localhost:8080/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:19:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/client/view".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/client/vi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/client/view&id=6
+HTTP_REFERER=http://localhost:8080/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:19:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/client/view".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/client/vi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/client/view&id=6
+HTTP_REFERER=http://localhost:8080/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:19:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/client/view".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/client/vi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/client/view&id=1
+---
+2015/02/19 08:20:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/client/view".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/client/vi...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/client/view&id=6
+HTTP_REFERER=http://localhost:8080/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:20:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php:149
+Stack trace:
+#0 C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php(47): ClientProfilesController->loadModel('9')
+#1 [internal function]: ClientProfilesController->actionView('9')
+#2 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProfilesController), Array)
+#3 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProfilesController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#14 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/view&id=9
+HTTP_REFERER=http://localhost:8080/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:20:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/supplier/view".' in C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/supplier/...')
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\wamp\www\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/supplier/view&id=13
+HTTP_REFERER=http://localhost:8080/cloudAdmin/index.php?r=admin/users/admin
+---
+2015/02/19 08:22:04 [error] [php] Undefined variable: data (C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php:120)
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(869): UsersController->renderFile()
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(782): UsersController->renderPartial()
+#2 C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php(135): UsersController->render()
+#3 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#4 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): UsersController->runAction()
+#6 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): UsersController->filterAccessControl()
+#9 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(265): UsersController->runActionWithFilters()
+#12 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): UsersController->run()
+#13 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\wamp\www\cloudAdmin\index.php(13): CWebApplication->run()
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/admin
+in C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php (120)
+in C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php (135)
+in C:\wamp\www\cloudAdmin\index.php (13)
+2015/02/19 08:22:40 [error] [php] Undefined variable: data (C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php:120)
+Stack trace:
+#0 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(869): UsersController->renderFile()
+#1 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(782): UsersController->renderPartial()
+#2 C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php(135): UsersController->render()
+#3 C:\wamp\www\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#4 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): UsersController->runAction()
+#6 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): UsersController->filterAccessControl()
+#9 C:\wamp\www\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp\www\Yii\Yii1.1\test\framework\web\CController.php(265): UsersController->runActionWithFilters()
+#12 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): UsersController->run()
+#13 C:\wamp\www\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp\www\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\wamp\www\cloudAdmin\index.php(13): CWebApplication->run()
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/admin
+in C:\wamp\www\cloudAdmin\protected\modules\admin\views\users\admin.php (120)
+in C:\wamp\www\cloudAdmin\protected\modules\admin\controllers\UsersController.php (135)
+in C:\wamp\www\cloudAdmin\index.php (13)

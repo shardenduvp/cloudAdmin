@@ -21,20 +21,21 @@ $this->menu=array(
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    			<div class="panel panel-info">
             	<div class="panel-heading ">
-              		<h3 class="panel-title">Users ID #<?php echo $model->id; ?></h3>
+              		<h3 class="panel-title"><b>User ID #<?php echo $model->id; ?></b></h3>
               	</div>
         <div class="panel-body">
             <div class="row">
               	<div class="col-md-3 col-lg-3 " align="center"> 
-              		<img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> 
+              		<img alt="User Pic" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/user.png" class="img-circle"> 
               	</div>
                 <div class=" col-md-9 col-lg-9 "> 
                   	<table class="table table-user-information">
                     	<tbody>
+							
 							<?php
                     			$attributes=array(
-												  'last_name',
-												  'first_name',
+												 	'last_name',
+												  	'first_name',
 													'image',
 													'company_name',
 													'display_name',
@@ -53,23 +54,25 @@ $this->menu=array(
                     				if($attr=='password'){
                     					$value=str_repeat("*",strlen($model->$attr));
                     				}
+                    				//according to role_id display role_name
                     				else if($attr=='role_id'){
-                    					switch ($attr)
+                    					switch ($model->$attr)
                     					{
                     						case 1:
-                    							$value='Client';
+                    							$value='Admin';
                     							break;
                     						case 2:
-                    							$value='Supplier';
+                    							$value='Client';
                     							break;
                     						default:
-                    							$value='Admin';
+                    							$value='Supplier';
 
                     					}
                     					$attr='Role';
                     				}
+                    				//according to status value display status code
                     				else if($attr=='status'){
-                    					if($attr=1)
+                    					if($model->$attr==1)
                     							$value='Verified';
                     					else
                     							$value='Not-Verified';
@@ -77,12 +80,16 @@ $this->menu=array(
                     					$attr='Verification-Status';
                     				}
          					?>    
+       
          					<tr>
-         						<td><?php echo ucfirst($attr); ?></td>
+         						<td><b><?php echo ucfirst($attr); ?></b></td>
          						<td><?php echo $value; ?></td>
-         					</tr>     
-         					<?php }?>    		
-                        		  </tbody>
+         						
+         					</tr> 
+
+         					<?php }?>
+
+                        </tbody>
                   	</table>
                 </div>
             </div>
@@ -93,7 +100,8 @@ $this->menu=array(
       </div>
     </div>
 
-<?php //$this->widget('zii.widgets.CDetailView', array(
+<?php 
+//$this->widget('zii.widgets.CDetailView', array(
 // 	'data'=>$model,
 // 	'attributes'=>array(
 // 		'id',
