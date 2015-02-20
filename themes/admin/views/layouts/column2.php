@@ -19,7 +19,7 @@
                 <?php
                     echo CHtml::link('<i class="fa fa-list fa-fw"></i>
                         <span class="menu-text">New Leads</span>
-                        <span class="selected"></span>', '#', array(
+                        <span class="selected"></span>', array("/admin/"), array(
                             'class'=>'',
                             'type'=>'raw',
                         )

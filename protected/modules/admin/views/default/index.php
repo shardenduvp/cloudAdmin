@@ -28,6 +28,21 @@ $('.search-form form').submit(function(){
 
 ?>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="approve_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- AJAX Loader -->
+            <input type="hidden" id="approve-url" value="<?php echo Yii::app()->createUrl('/admin/default/getApproveView'); ?>">
+            <div class="ajax-loader"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loaders/12.gif"></div>
+            
+            <div id="approve-data"></div>
+        </div>
+    </div>
+</div>
+
 <!-- PAGE HEADER-->
 <div class="row">
     <div class="col-sm-12">
@@ -123,8 +138,27 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'buttons'=>array(
                             'approve'=>array(
                                 'label'=>'APPROVE PROJECT',
-                                'url'=>'Yii::app()->createUrl("site/index")',
-                                'class'=>'',
+                                'url'=>'Yii::app()->createUrl("#")',
+                                'options'=>array(
+                                    'data-toggle'=>'modal',
+                                    'data-target'=>'#approve_modal',
+                                ),
+                                'click'=>"function(e) {
+                                    e.preventDefault();
+                                    $('#approve-data').html('');
+                                    $('.ajax-loader').show();
+                                    $.ajax({
+                                        type:'POST',
+                                        url:$('#approve-url').val(),
+                                        success:function(data) {
+                                            $('.ajax-loader').hide();
+                                            $('#approve-data').html(data);
+                                        },
+                                        error:function() {
+                                            $('#approve-data').html('Error in connection.');
+                                        }
+                                    });
+                                }",
                             ),
                         ),
                     ),
@@ -136,7 +170,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                             'search'=>array(
                                 'label'=>'SEARCH SUPPLIERS',
                                 'url'=>'Yii::app()->createUrl("site/index")',
-                                'class'=>'',
                             ),
                         ),
                     ),

@@ -9,8 +9,8 @@ class DefaultController extends Controller
      */
     public $layout='//layouts/column2';
 
-	public function actionIndex()
-	{
+  	public function actionIndex()
+  	{
         $model=new ClientProjects('search');
         $model->unsetAttributes();
 
@@ -20,7 +20,13 @@ class DefaultController extends Controller
         $this->render('index', array(
             'model'=>$model,
         ));
-	}
+  	}
+
+    public function actionGetApproveView() {
+        if(Yii::app()->request->isAjaxRequest)
+            $this->renderPartial('_approve');
+        else $this->redirect(array('/admin/'));
+    }
 
     /**
      * Custom methods for cell value in CGridView 
