@@ -56,8 +56,22 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					'filter'=>$model,
 					'columns'=>array(
 						'id',
-						'suppliers_id',
-						'title',
+						array(
+					           'name'=>'suppliers_id',
+					           'header'=>'suppliers Id',
+					           'filter'=>CHtml::activeDropDownList($model, 'suppliers_id',
+					                     Chtml::listData(SuppliersHasAwards::model()->findAll(), 'suppliers_id', 'suppliers_id'),
+					                       array('empty'=>'Select Supplier',"")),
+					           'value'=>'$data->suppliers_id',            
+			                ),
+						array(
+					           'name'=>'title',
+					           'header'=>'title',
+					           'filter'=>CHtml::activeDropDownList($model, 'title',
+					                     Chtml::listData(SuppliersHasAwards::model()->findAll(), 'title', 'title'),
+					                       array('empty'=>'Select title',"")),
+					           'value'=>'$data->title',            
+      						 ),
 						'description',
 						'image',
 						array(

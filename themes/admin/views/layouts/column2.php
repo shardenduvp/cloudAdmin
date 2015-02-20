@@ -63,16 +63,29 @@
                     );
                 ?>
             </li>
-            <li>
-                <?php
-                    echo CHtml::link('<i class="fa fa-suitcase fa-fw"></i>
-                        <span class="menu-text">Suppliers</span>', array('/admin/suppliers/admin'), array(
-                            'class'=>'',
-                            'type'=>'raw',
-                        )
-                    );
-                ?>
-            </li>
+            <li class="has-sub">
+                                <?php
+                                echo CHtml::link('<i class="fa fa-suitcase fa-fw"></i>
+                                                <span class="menu-text">Suppliers</span>
+                                                <span class="arrow"></span>', 'javascript:;', array(
+                                                                                            'class'=>'',
+                                                                                            'type'=>'raw',
+                                                                                            )
+                                                );
+                                 ?>
+
+                                <ul class="sub">
+                                    <li>
+                                        <?php
+                                            echo CHtml::link('<span class="sub-menu-text">View Suppliers</span>', Yii::app()->createUrl('admin/suppliers/admin'), array(
+                                                    'class'=>'',
+                                                    'type'=>'raw',
+                                                )
+                                            );
+                                        ?>
+                                    </li>
+                                </ul>
+                            </li>
             <li>
                 <?php
                     echo CHtml::link('<i class="fa fa-bullseye fa-fw"></i>
@@ -95,6 +108,39 @@
             </li>
 
             <li class="has-sub">
+                                <?php
+                                echo CHtml::link('<i class="fa fa-pencil-square-o fa-fw"></i>
+                                                <span class="menu-text">User Management</span>
+                                                <span class="arrow"></span>', 'javascript:;', array(
+                                                                                            'class'=>'',
+                                                                                            'type'=>'raw',
+                                                                                            )
+                                                );
+                                 ?>
+
+                                <ul class="sub">
+                                    <li>
+                                        <?php
+                                            echo CHtml::link('<span class="sub-menu-text">View Users</span>', Yii::app()->createUrl('admin/users/admin'), array(
+                                                    'class'=>'',
+                                                    'type'=>'raw',
+                                                )
+                                            );
+                                        ?>
+                                    </li>
+                                    <li>
+                                        <?php
+                                            echo CHtml::link('<span class="sub-menu-text">Create New User</span>',  Yii::app()->createUrl('admin/users/create'), array(
+                                                    'class'=>'',
+                                                    'type'=>'raw',
+                                                )
+                                            );
+                                        ?>
+                                    </li>
+                                </ul>
+                            </li>
+            <li class="has-sub">
+
                 <?php
                     echo CHtml::link('<i class="fa fa-plus fa-fw"></i>
                         <span class="menu-text">More</span>

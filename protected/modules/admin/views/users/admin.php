@@ -54,7 +54,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <div class="row">
 	<div class="col-md-12">
 		<!-- BOX -->
-		<div class="box border blue">
+		<div class="box border inverse">
 
 			<div class="box-title">
 				<h4><i class="fa fa-table"></i>List of all users</h4>
@@ -114,17 +114,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'last_name',
 						'first_name',
 						array(
-            				'class'=>'CLinkColumn',
-            				'header'=>'Username', 
-            				'urlExpression'=>array($this,'assignLinks'),
-            				'labelExpression'=>'$data->username'       
+            				'name'=>'username',
+            				'header'=>'Username',
+            				'type'=>'raw',
+            				'value'=>array($this,'assignLinks')
         				),
 						array('name'=>'role_id',
 							'header'=>'Role', 
             				'filter'=>CHtml::activeDropDownList($model, 'role_id',
                      		 array('1'=>'Admin','2'=>'Client','3'=>'Supplier'),
                       		array('empty'=>'Select Roles',"")), 
-            				'value'=>array($this,'assignRoleNames')
+            				'value'=>'ucfirst($data->role0->name)'
             			),
 						'company_name',
 						array(

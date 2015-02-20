@@ -8,6 +8,9 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'users-form',
+	'htmlOptions'=>array(
+		'class'=>'form-horizontal'
+		),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -15,21 +18,43 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
+	
+<form class="form-horizontal" action="#">
 	<div class="row">
-		<?php echo $form->labelEx($model,'last_name'); ?>
-		<?php echo $form->textField($model,'last_name',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'last_name'); ?>
-	</div>
+	<div class="col-md-12">
+		<div class="box border inverse">
+			<div class="box-title">
+				<h4><i class="fa fa-bars"></i>General Information</h4>
+			</div>
+			<div class="box-body big">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="note">Fields with <span class="required">*</span> are required.</p>
+						<?php echo $form->errorSummary($model); ?>
+						<h4>Basic Information</h4>
+						<div class="form-group">
+							<?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
+							<div class="col-md-8">
+								<?php echo $form->textField($model,'last_name',array('size'=>45,'maxlength'=>45),array('class'=>'form-control')); ?>
+								<?php echo $form->error($model,'last_name'); ?>
+							</div>
+						</div>
 
-	<div class="row">
+						<div class="form-group">
+							<?php echo $form->labelEx($model,'first_name',array('class'=>'col-md-4 control-label')); ?>
+							<div class="col-md-8">
+								<?php echo $form->textField($model,'first_name',array('size'=>45,'maxlength'=>45),array('class'=>'form-control')); ?>
+								<?php echo $form->error($model,'first_name'); ?>
+							</div>
+						</div>
+
+						<div class="row">
 		<?php echo $form->labelEx($model,'first_name'); ?>
 		<?php echo $form->textField($model,'first_name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'first_name'); ?>
 	</div>
+
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'image'); ?>
@@ -108,5 +133,13 @@
 	</div>
 
 <?php $this->endWidget(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
 
 </div><!-- form -->
+

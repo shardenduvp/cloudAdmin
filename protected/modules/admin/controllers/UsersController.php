@@ -90,9 +90,27 @@ class UsersController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
-		$this->render('update',array(
+		if($model->role_id==2){
+			$modelClientProfiles=$model->clientProfiles;
+			$this->render('update',array(
 			'model'=>$model,
-		));
+			'modelClientProfiles'=>$modelClientProfiles
+			));
+		}
+		else if($model->role_id==3){
+			$modelSuppliers=$model->suppliers;
+			$this->render('update',array(
+			'model'=>$model,
+			'modelSuppliers'=>$modelSuppliers
+			));
+		}
+		else{
+			$this->render('update',array(
+			'model'=>$model
+			));
+		}
+		
+		
 	}
 
 	/**
@@ -163,37 +181,27 @@ class UsersController extends Controller
 		}
 	}
 
-
-
-	protected function assignRoleNames($data,$row){
-
-		if($data->role_id==1){
-			return 'Admin';
-		}
-		else if($data->role_id==2){
-			return 'Client';	
-		}
-		else{
-			return 'Supplier';
-		}
-		
-	}
-
 	protected function assignLinks($data,$row){
-
+		$url="";
 		if($data->role_id==1){
-			$url='admin/admin/view&id='.$data->id;
-			return Yii::app()->createUrl($url);	
+			$url='admin/users/view&id='.$data->id;
 		}
 		else if($data->role_id==2){
-			$url='admin/clientProfiles/view&id='.$data->id;
-			return Yii::app()->createUrl($url);	
+			$result=ClientProfiles::model()->findByAttributes(array('users_id'=>$data->id));
+			if(!empty($result)){
+				$url='admin/clientProfiles/view&id='.$result['id'];
+			}
 		}
 		else{
-			$url='admin/supplier/view&id='.$data->id;
-			return Yii::app()->createUrl($url);	
+			$result=Suppliers::model()->findByAttributes(array('users_id'=>$data->id));
+			if(!empty($result)){
+				$url='admin/suppliers/view&id='.$result['id'];
+			}
 		}
-		
+		if($url!="")
+			return CHtml::link($data->username,Yii::app()->createUrl($url));
+		else
+			return CHtml::link($data->username,'#');
 	}
 
 }

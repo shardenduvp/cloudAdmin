@@ -17,7 +17,7 @@ $this->menu=array(
 ?>
 
 <br/><br/>
-<div class="box inverse">
+<div class="box">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    			<div class="panel panel-info">
             	<div class="panel-heading ">
@@ -26,7 +26,14 @@ $this->menu=array(
         <div class="panel-body">
             <div class="row">
               	<div class="col-md-3 col-lg-3 " align="center"> 
-              		<img alt="User Pic" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/user.png" class="img-circle"> 
+              		<img alt="User Pic" class="img-circle" style="max-width:100px;" src="<?php 
+              									if($model->image==null){
+													echo Yii::app()->theme->baseUrl."/img/user.png";
+              									}
+              									else{
+              										echo $model->image;
+              									}
+					?>" > 
               	</div>
                 <div class=" col-md-9 col-lg-9 "> 
                   	<table class="table table-user-information">
@@ -36,7 +43,6 @@ $this->menu=array(
                     			$attributes=array(
 												 	'last_name',
 												  	'first_name',
-													'image',
 													'company_name',
 													'display_name',
 													'username',
@@ -52,7 +58,7 @@ $this->menu=array(
                     				$value=$model->$attr;
                     				//if password display same number of stars instead
                     				if($attr=='password'){
-                    					$value=str_repeat("*",strlen($model->$attr));
+                    					$value=base64_decode($model->$attr);
                     				}
                     				//according to role_id display role_name
                     				else if($attr=='role_id'){
@@ -66,7 +72,6 @@ $this->menu=array(
                     							break;
                     						default:
                     							$value='Supplier';
-
                     					}
                     					$attr='Role';
                     				}
