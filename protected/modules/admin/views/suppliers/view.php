@@ -25,7 +25,14 @@ $this->menu=array(
         <div class="panel-body">
             <div class="row">
               	<div class="col-md-3 col-lg-3 " align="center"> 
-              		<img alt="User Pic" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/user.png" class="img-circle"> 
+              		<img alt="User Pic" class="img-circle" src="<?php 
+              									if($model->image==null){
+													echo Yii::app()->theme->baseUrl."/img/user.png";
+              									}
+              									else{
+              										echo $model->image;
+              									}
+					?>" > 
               	</div>
                 <div class=" col-md-9 col-lg-9 "> 
                   	<table class="table table-user-information">
@@ -37,7 +44,6 @@ $this->menu=array(
 												'last_name',
 												'cover',
 												'name',
-												'image',
 												'email',
 												'skype_id',
 												'website',
