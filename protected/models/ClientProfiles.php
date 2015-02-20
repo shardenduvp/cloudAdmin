@@ -142,7 +142,7 @@ class ClientProfiles extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
-
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

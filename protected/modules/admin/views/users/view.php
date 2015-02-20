@@ -58,7 +58,7 @@ $this->menu=array(
                     				$value=$model->$attr;
                     				//if password display same number of stars instead
                     				if($attr=='password'){
-                    					$value=str_repeat("*",strlen($model->$attr));
+                    					$value=base64_decode($model->$attr);
                     				}
                     				//according to role_id display role_name
                     				else if($attr=='role_id'){
