@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/js/gritter/css/jquery.gritter.css" />
     <!-- FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
@@ -131,6 +132,42 @@
                     <li class="dropdown">
                         <?php
                             echo CHtml::link('<!--<i class="fa fa-plus"></i>-->
+                                <span class="name">Users</span>&nbsp;'/*i class="fa fa-angle-down"></i>*/, '#', array(
+                                    'class'=>'dropdown-toggle',
+                                    'data-toggle'=>'dropdown',
+                                )
+                            );
+                        ?>
+                        <ul class="dropdown-menu">
+                            <!--
+                            <li class="dropdown-title">
+                                <span><i class="fa fa-leaf"></i> Theme Skins</span>
+                            </li>
+                            -->
+                            <li>
+                                <?php
+                                    echo CHtml::link('<span class="sub-menu-text">View Users</span>',  Yii::app()->createUrl('admin/users/admin'), array(
+                                                    'class'=>'',
+                                                    'type'=>'raw',
+                                                )
+                                    );
+                                ?>
+                            </li>
+                            <li>
+                                <?php
+                                    echo CHtml::link('<span class="sub-menu-text">Create New User</span>',  Yii::app()->createUrl('admin/users/create'), array(
+                                                    'class'=>'',
+                                                    'type'=>'raw',
+                                                )
+                                    );
+                                ?>
+                            </li>
+                         </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <?php
+                            echo CHtml::link('<!--<i class="fa fa-plus"></i>-->
                                 <span class="name">More</span>&nbsp;<i class="fa fa-angle-down"></i>', '#', array(
                                     'class'=>'dropdown-toggle',
                                     'data-toggle'=>'dropdown',
@@ -167,6 +204,8 @@
                                     );
                                 ?>
                             </li>
+
+
                          </ul>
                     </li>
                 </ul>
@@ -191,7 +230,7 @@
                         </ul>
                         <?php } else { ?>
                         <a href="<?php echo Yii::app()->createUrl('site/login'); ?>" class="dropdown-toggle">
-                            <img alt="" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/avatars/avatar3.jpg" />
+                            <img alt="" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/user.png" />
                             
                             <span class="name">Login</span>
                         </a>
