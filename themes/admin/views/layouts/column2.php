@@ -31,7 +31,7 @@
                 <!-- <span class="arrow"></span> -->
                 <?php
                     echo CHtml::link('<i class="fa fa-folder-open fa-fw"></i>
-                            <span class="menu-text">Active Projects</span>', array('/admin/clientProjects/admin'), array(
+                            <span class="menu-text">Active Projects</span>', array('/admin/clientProjects/active'), array(
                             'class'=>'',
                         )
                     );

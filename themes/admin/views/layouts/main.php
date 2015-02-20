@@ -73,7 +73,7 @@
                     <li class="dropdown">
                         <?php
                             echo CHtml::link('<!--<i class="fa fa-folder-open"></i>-->
-                                <span class="name">Active Projects</span>', array('/admin/clientProjects/admin'), array(
+                                <span class="name">Active Projects</span>', array('/admin/clientProjects/active'), array(
                                     'class'=>'dropdown-toggle',
                                 )
                             );
@@ -91,7 +91,7 @@
                     <li class="dropdown">
                         <?php
                             echo CHtml::link('<!--<i class="fa fa-users"></i>-->
-                                <span class="name">Clients</span>', array('/admin/clientPortfolio/admin'), array(
+                                <span class="name">Clients</span>', array('/admin/clientProfiles/admin'), array(
                                     'class'=>'dropdown-toggle',
                                 )
                             );

@@ -65,13 +65,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 				'dataProvider'=>$model->search(),
 				'filter'=>$model,
 				'columns'=>array(
-					'name',
+					array(
+                        'name'=>'name',
+                        'type'=>'html',
+                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view&id=".$data->id))'
+                    ),
 					array(
 					    'name'=>'description',
 						'value'=>'(empty($data->description))?"Not Provided":trim(substr($data->description, 0, 30))."..."',
 					),
 					array(
-					    'name'=>'user_search',
+					    'name'=>'client_search',
 					    'type'=>'html',
 						'value'=>'CHtml::link($data->clientProfiles->users->username, array("/admin/clientProfiles/view&id=".$data->clientProfiles->id))',
 					),

@@ -32,7 +32,7 @@ $('.search-form form').submit(function(){
 <div class="row">
     <div class="col-sm-12">
         <div class="page-header">
-            <h1>New Leads</h1>
+            <h1>Active Projects</h1>
         </div>
     </div>
 </div>
@@ -56,7 +56,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
         <div class="box border blue">
 
             <div class="box-title">
-                <h4><i class="fa fa-table"></i>List of all New Leads</h4>
+                <h4><i class="fa fa-table"></i>List of all Active Projects</h4>
             </div>
                                     
 
@@ -86,59 +86,45 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view&id=".$data->id))'
                     ),
                     array(
-                        'name'=>'client_company_name',
+                        'name'=>'client_search',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->clientProfiles->users->company_name, array("/admin/clientProfiles/view&id=".$data->clientProfiles->users->id))',
-                    ),
-                    array(
-                        'name'=>'client_name',
-                        'type'=>'html',
-                        'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/clientProfiles/view&id=".$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link($data->clientProfiles->users->username, array("/admin/clientProfiles/view&id=".$data->clientProfiles->id))',
                     ),
                     array(
                         'name'=>'start_date',
                         'value'=>'(empty($data->start_date))?"Not Provided":date("jS M Y", strtotime($data->start_date))',
-                    ),
+                    ),/*
                     array(
-                        'name'=>'status',
-                        'header'=>'Status', 
-                        'filter'=>CHtml::activeDropDownList($model, 'status',
-                            array('0'=>'Awaiting Approval','1'=>'Introductions Sent'),
-                            array('empty'=>'Select Status',"")), 
-                        'value'=>'($data->status==0)?"Awaiting Approval":"Introductions Sent"',            
-                    ),
-                    array(
-                        'name'=>'suppliers_name',
+                        'name'=>'supplier_search',
                         'type'=>'html',
-                        'value'=>array($this, 'getSuppliers'),
-                    ),
+                        'value'=>'CHtml::link($data->suppliers->name, array("/admin/suppliers/view&id=".$data->suppliers->id))',
+                    ),*/
                     array(
                         'name'=>'modify_date',
                         'value'=>'(empty($data->modify_date)) ? "Not Provided" : $data->modify_date',
                     ),
                     array(
-                        'class'=>'CButtonColumn',
-                        'header'=>'Approve',
-                        'template'=>'{approve}',
-                        'buttons'=>array(
-                            'approve'=>array(
-                                'label'=>'APPROVE PROJECT',
-                                'url'=>'Yii::app()->createUrl("site/index")',
-                                'class'=>'',
-                            ),
-                        ),
+                        'name'=>'status',
+                        'header'=>'Status', 
+                        'filter'=>CHtml::activeDropDownList($model, 'status',
+                            array('1'=>"Verified",'0'=>'Not Verified'),
+                            array('empty'=>'Select Status',"")), 
+                        'value'=>'($data->status==1)?"Verified":"Not Verified"',            
                     ),
                     array(
                         'class'=>'CButtonColumn',
-                        'header'=>'Search',
-                        'template'=>'{search}',
+                        'header'=>'Operations',
                         'buttons'=>array(
-                            'search'=>array(
-                                'label'=>'SEARCH SUPPLIERS',
-                                'url'=>'Yii::app()->createUrl("site/index")',
-                                'class'=>'',
+                            'update'=>array(
+                                'visible'=>'true',
                             ),
-                        ),
+                            'view'=>array(
+                                'visible'=>'true',
+                            ),
+                            'delete'=>array(
+                                'visible'=>'false',
+                            ),
+                        )
                     ),
                 ),
             )); ?>
