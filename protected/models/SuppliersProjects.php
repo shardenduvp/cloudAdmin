@@ -40,6 +40,8 @@
  */
 class SuppliersProjects extends CActiveRecord
 {
+	public $supplier_search;
+	public $client_search;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -62,7 +64,7 @@ class SuppliersProjects extends CActiveRecord
 			array('pitch, about_project, why_you, comments, start_date, note, add_date, default_q1_ans, default_q2_ans, default_q3_ans, default_q4_ans, default_q5_ans, default_q6_ans', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, pitch, about_project, why_you, estimated_cost, estimated_time, trial_period, chat_room_id, comments, min_price, max_price, time_material, billing_schedule, start_date, note, is_escrow, others, add_date, status, client_projects_id, suppliers_id, default_q1_ans, default_q2_ans, default_q3_ans, default_q4_ans, default_q5_ans, default_q6_ans', 'safe', 'on'=>'search'),
+			array('id, pitch, about_project, why_you, estimated_cost, estimated_time, trial_period, chat_room_id, comments, min_price, max_price, time_material, billing_schedule, start_date, note, is_escrow, others, add_date, status, client_projects_id, suppliers_id, default_q1_ans, default_q2_ans, default_q3_ans, default_q4_ans, default_q5_ans, default_q6_ans, supplier_search, client_search', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -114,6 +116,8 @@ class SuppliersProjects extends CActiveRecord
 			'default_q4_ans' => 'Default Q4 Ans',
 			'default_q5_ans' => 'Default Q5 Ans',
 			'default_q6_ans' => 'Default Q6 Ans',
+			'supplier_search' => 'Suppliers',
+			'client_search' => 'clientProjects',
 		);
 	}
 
@@ -134,6 +138,8 @@ class SuppliersProjects extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+		$criteria->with = array('suppliers');
+		$criteria->with = array('clientProjects');
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('pitch',$this->pitch,true);
@@ -154,8 +160,8 @@ class SuppliersProjects extends CActiveRecord
 		$criteria->compare('others',$this->others,true);
 		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('client_projects_id',$this->client_projects_id);
-		$criteria->compare('suppliers_id',$this->suppliers_id);
+		$criteria->compare('clientProjects.name',$this->client_search,true);
+		$criteria->compare('suppliers.name',$this->supplier_search,true);
 		$criteria->compare('default_q1_ans',$this->default_q1_ans,true);
 		$criteria->compare('default_q2_ans',$this->default_q2_ans,true);
 		$criteria->compare('default_q3_ans',$this->default_q3_ans,true);
@@ -165,9 +171,29 @@ class SuppliersProjects extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+		        'attributes'=>array(
+		            'supplier_search'=>array(
+		                'asc'=>'suppliers.name',
+		                'desc'=>'suppliers.name DESC',
+		            ),
+		            '*',
+		        ),
+		    ),
+		));
+		return new CActiveDataProvider($this, array(
+		'criteria'=>$criteria,
+		'sort'=>array(
+		        'attributes'=>array(
+		            'client_search'=>array(
+		                'asc'=>'clientProjects.name',
+		                'desc'=>'clientProjects.name DESC',
+		            ),
+		            '*',
+		        ),
+		    ),
 		));
 	}
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

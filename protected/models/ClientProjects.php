@@ -132,7 +132,7 @@ class ClientProjects extends CActiveRecord
 			'tier' => 'Tier',
 			'absolute_necessary_language' => 'Absolute Necessary Language',
 			'good_know_language' => 'Good Know Language',
-			'which_one_is_inportant' => 'Which One Is Inportant',
+			'which_one_is_important' => 'Which One Is Important',
 			'questions_for_supplier' => 'Questions For Supplier',
 			'requirement_change_scale' => 'Requirement Change Scale',
 			'add_date' => 'Add Date',

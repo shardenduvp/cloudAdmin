@@ -72,7 +72,6 @@ $this->menu=array(
                     							break;
                     						default:
                     							$value='Supplier';
-
                     					}
                     					$attr='Role';
                     				}
