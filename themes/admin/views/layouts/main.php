@@ -101,12 +101,25 @@
 
                     <li class="dropdown">
                         <?php
-                            echo CHtml::link('<!--<i class="fa fa-suitcase"></i>-->
-                                <span class="name">Suppliers</span>', array('/admin/suppliers/admin'), array(
+                            echo CHtml::link('<!--<i class="fa fa-plus"></i>-->
+                                <span class="name">Suppliers</span>&nbsp;'/*i class="fa fa-angle-down"></i>*/, '#', array(
                                     'class'=>'dropdown-toggle',
+                                    'data-toggle'=>'dropdown',
                                 )
                             );
                         ?>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <?php
+                                    echo CHtml::link('<span class="sub-menu-text">View Suppliers</span>',  Yii::app()->createUrl('admin/Suppliers/admin'), array(
+                                                    'class'=>'',
+                                                    'type'=>'raw',
+                                                )
+                                    );
+                                ?>
+                            </li>
+                            
+                         </ul>
                     </li>
 
                     <li class="dropdown">
