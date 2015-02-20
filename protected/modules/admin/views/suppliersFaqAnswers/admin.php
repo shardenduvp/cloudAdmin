@@ -45,7 +45,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		<div class="box border blue">
 
 			<div class="box-title">
-				<h4><i class="fa fa-table"></i>List of Suppliers Faq Answers/h4>
+				<h4><i class="fa fa-table"></i>List of Suppliers Faq Answers</h4>
 			</div>
 									
 
@@ -58,7 +58,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'id',
 						'suppliers_id',
 						'faq_id',
-						'status',
+						array(
+            				'name'=>'status',
+            				'header'=>'Status', 
+            				'filter'=>CHtml::activeDropDownList($model, 'status',
+                     		 array('1'=>"Verified",'0'=>'Un-Verified'),
+                      		array('empty'=>'Select Status',"")), 
+            				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+        				),
 						'add_date',
 						'answer',
 						'publish',

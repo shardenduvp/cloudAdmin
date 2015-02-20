@@ -53,6 +53,9 @@
  */
 class ClientProjects extends CActiveRecord
 {
+
+	public $user_search;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -77,7 +80,7 @@ class ClientProjects extends CActiveRecord
 			array('description, business_problem, about_company, summary, unique_features, start_date, questions_for_supplier, add_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state', 'safe', 'on'=>'search'),
+			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, user_search', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -142,6 +145,7 @@ class ClientProjects extends CActiveRecord
 			'current_status_id' => 'Current Status',
 			'other_current_status' => 'Other Current Status',
 			'state' => 'State',
+			'user_search' => 'Username',
 		);
 	}
 
@@ -162,6 +166,7 @@ class ClientProjects extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+		$criteria->with = array('clientProfiles.users');
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
@@ -191,13 +196,22 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('other_status',$this->other_status,true);
 		$criteria->compare('current_status',$this->current_status,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('client_profiles_id',$this->client_profiles_id);
+		$criteria->compare('users.username',$this->user_search, true);
 		$criteria->compare('current_status_id',$this->current_status_id);
 		$criteria->compare('other_current_status',$this->other_current_status,true);
 		$criteria->compare('state',$this->state);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+		        'attributes'=>array(
+		            'user_search'=>array(
+		                'asc'=>'users.username',
+		                'desc'=>'users.username DESC',
+		            ),
+		            '*',
+		        ),
+		    ),
 		));
 	}
 

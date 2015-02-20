@@ -108,14 +108,21 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 					'dataProvider'=>$model->search(),
 					'filter'=>$model,
+
 					'columns'=>array(
 						array('name'=>'id','htmlOptions'=>array('class'=>'center')),
 						'last_name',
 						'first_name',
+						array(
+            				'name'=>'username',
+            				'header'=>'Username',
+            				'type'=>'raw',
+            				'value'=>array($this,'assignLinks')
+        				),
 						array('name'=>'role_id',
 							'header'=>'Role', 
             				'filter'=>CHtml::activeDropDownList($model, 'role_id',
-                     		 array('1'=>'Client','2'=>'Supplier','3'=>'Admin'),
+                     		 array('1'=>'Admin','2'=>'Client','3'=>'Supplier'),
                       		array('empty'=>'Select Roles',"")), 
             				'value'=>array($this,'assignRoleNames')
             			),

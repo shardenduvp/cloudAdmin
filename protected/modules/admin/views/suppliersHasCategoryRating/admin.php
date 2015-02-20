@@ -67,7 +67,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 							'review_category_id',
 							'rating',
 							'add_date',
-							'status',
+							array(
+            				'name'=>'status',
+            				'header'=>'Status', 
+            				'filter'=>CHtml::activeDropDownList($model, 'status',
+                     		 array('1'=>"Verified",'0'=>'Un-Verified'),
+                      		array('empty'=>'Select Status',"")), 
+            				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+        				),
 							array(
 								'class'=>'CButtonColumn',
 								'header'=>'Operations',

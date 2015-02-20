@@ -165,17 +165,36 @@ class UsersController extends Controller
 
 
 
-		protected function assignRoleNames($data,$row){
+	protected function assignRoleNames($data,$row){
 
 		if($data->role_id==1){
-			return 'Client';
+			return 'Admin';
 		}
 		else if($data->role_id==2){
-			return 'Supplier';	
+			return 'Client';	
 		}
 		else{
-			return 'Admin';
+			return 'Supplier';
 		}
 		
 	}
+
+	protected function assignLinks($data,$row){
+
+		if($data->role_id==1){
+			$url='admin/users/view&id='.$data->id;
+		}
+		else if($data->role_id==2){
+			$clientProfiles= new ClientProfiles;
+			$result=$clientProfiles->findByAttributes(array('users_id'=>$data->id));
+			$url='admin/clientProfiles/view&id='.$result['id'];
+		}
+		else{
+			$suppliers= new Suppliers;
+			$result=$suppliers->findByAttributes(array('users_id'=>$data->id));
+			$url='admin/suppliers/view&id='.$result['id'];
+		}
+		return '<a href="'.Yii::app()->createUrl($url).'">'.$data->username.'</a>';
+	}
+
 }
