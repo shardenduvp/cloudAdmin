@@ -124,7 +124,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             				'filter'=>CHtml::activeDropDownList($model, 'role_id',
                      		 array('1'=>'Admin','2'=>'Client','3'=>'Supplier'),
                       		array('empty'=>'Select Roles',"")), 
-            				'value'=>array($this,'assignRoleNames')
+            				'value'=>'ucfirst($data->role0->name)'
             			),
 						'company_name',
 						array(

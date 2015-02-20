@@ -26,7 +26,7 @@ $this->menu=array(
         <div class="panel-body">
             <div class="row">
               	<div class="col-md-3 col-lg-3 " align="center"> 
-              		<img alt="User Pic" class="img-circle img-size" src="<?php 
+              		<img alt="User Pic" class="img-circle" style="max-width:100px;" src="<?php 
               									if($model->image==null){
 													echo Yii::app()->theme->baseUrl."/img/user.png";
               									}
@@ -58,7 +58,7 @@ $this->menu=array(
                     				$value=$model->$attr;
                     				//if password display same number of stars instead
                     				if($attr=='password'){
-                    					$value=str_repeat("*",strlen($model->$attr));
+                    					$value=base64_decode($model->$attr);
                     				}
                     				//according to role_id display role_name
                     				else if($attr=='role_id'){

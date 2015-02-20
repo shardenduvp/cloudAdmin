@@ -69,7 +69,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 							'category',
 							array(
 								'header'=>'No of Projects',
-								'value'=>array($this,'clientProjects')
+								'value'=>'count($data->clientProjects)'
 							),
 							array(
 								'header'=>'Total Amount Paid',
