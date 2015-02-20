@@ -32,23 +32,29 @@
 						<p class="note">Fields with <span class="required">*</span> are required.</p>
 						<?php echo $form->errorSummary($model); ?>
 						<h4>Basic Information</h4>
-							<div class="form-group">
-								<label class="col-md-4 control-label">Name</label> 
-									<div class="col-md-8"><input type="text" name="regular" class="form-control" value="Jennifer">
-									</div>
+						<div class="form-group">
+							<?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
+							<div class="col-md-8">
+								<?php echo $form->textField($model,'last_name',array('size'=>45,'maxlength'=>45),array('class'=>'form-control')); ?>
+								<?php echo $form->error($model,'last_name'); ?>
 							</div>
+						</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'last_name'); ?>
-		<?php echo $form->textField($model,'last_name',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'last_name'); ?>
-	</div>
+						<div class="form-group">
+							<?php echo $form->labelEx($model,'first_name',array('class'=>'col-md-4 control-label')); ?>
+							<div class="col-md-8">
+								<?php echo $form->textField($model,'first_name',array('size'=>45,'maxlength'=>45),array('class'=>'form-control')); ?>
+								<?php echo $form->error($model,'first_name'); ?>
+							</div>
+						</div>
 
-	<div class="row">
+						<div class="row">
 		<?php echo $form->labelEx($model,'first_name'); ?>
 		<?php echo $form->textField($model,'first_name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'first_name'); ?>
 	</div>
+
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'image'); ?>
