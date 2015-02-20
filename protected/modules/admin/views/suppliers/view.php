@@ -25,7 +25,7 @@ $this->menu=array(
         <div class="panel-body">
             <div class="row">
               	<div class="col-md-3 col-lg-3 " align="center"> 
-              		<img alt="User Pic" class="img-circle" src="<?php 
+              		<img alt="User Pic" class="img-circle" width="100px" src="<?php 
               									if($model->image==null){
 													echo Yii::app()->theme->baseUrl."/img/user.png";
               									}
