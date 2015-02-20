@@ -69,6 +69,11 @@ $this->menu=array(
 											   
 											   <!-- EDIT ACCOUNT -->
 											   <div class="tab-pane fade in  active" id="pro_edit_user">
+											   <?php
+													$this->renderPartial('_form', array('model'=>$model)); 
+												?>
+												 </div>
+											  <!-- <div class="tab-pane fade in  active" id="pro_edit_user">
 												  <form class="form-horizontal" action="#">
 													<div class="row">
 														 <div class="col-md-12">
@@ -135,6 +140,15 @@ $this->menu=array(
 
 											   <!-- EDIT ACCOUNT -->
 											   <div class="tab-pane fade in inverse" id="pro_edit_client">
+											   <?php
+												   foreach($modelClientProfiles as $mil){
+												   		$this->renderPartial('_formEditUserProfile', array('model'=>$mil)); 
+												   		break;
+											   		}
+												?>
+												</div>
+											   
+											   <!--<div class="tab-pane fade in inverse" id="pro_edit_client">
 												  <form class="form-horizontal" action="#">
 													<div class="row">
 														 

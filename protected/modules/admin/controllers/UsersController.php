@@ -90,9 +90,27 @@ class UsersController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
-		$this->render('update',array(
+		if($model->role_id==2){
+			$modelClientProfiles=$model->clientProfiles;
+			$this->render('update',array(
 			'model'=>$model,
-		));
+			'modelClientProfiles'=>$modelClientProfiles
+			));
+		}
+		else if($model->role_id==3){
+			$modelSuppliers=$model->suppliers;
+			$this->render('update',array(
+			'model'=>$model,
+			'modelSuppliers'=>$modelSuppliers
+			));
+		}
+		else{
+			$this->render('update',array(
+			'model'=>$model
+			));
+		}
+		
+		
 	}
 
 	/**
