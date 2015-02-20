@@ -65,7 +65,7 @@
             </li>
             <li class="has-sub">
                                 <?php
-                                echo CHtml::link('<i class="fa fa-pencil-square-o fa-fw"></i>
+                                echo CHtml::link('<i class="fa fa-suitcase fa-fw"></i>
                                                 <span class="menu-text">Suppliers</span>
                                                 <span class="arrow"></span>', 'javascript:;', array(
                                                                                             'class'=>'',
@@ -77,14 +77,13 @@
                                 <ul class="sub">
                                     <li>
                                         <?php
-                                            echo CHtml::link('<span class="sub-menu-text">View Suppliers</span>', Yii::app()->createUrl('admin/Suppliers/admin'), array(
+                                            echo CHtml::link('<span class="sub-menu-text">View Suppliers</span>', Yii::app()->createUrl('admin/suppliers/admin'), array(
                                                     'class'=>'',
                                                     'type'=>'raw',
                                                 )
                                             );
                                         ?>
                                     </li>
-                                   
                                 </ul>
                             </li>
             <li>
