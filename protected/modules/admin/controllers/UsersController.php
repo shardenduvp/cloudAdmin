@@ -86,36 +86,32 @@ class UsersController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		
+		$modelClientProfiles=$model->clientProfiles;
+		$modelSuppliers=$model->suppliers;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Users']))
 		{
 			$model->attributes=$_POST['Users'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->password=base64_encode($model->password);
+			if($model->save()){
+				 // echo CJSON::encode(array(
+     //                              'status'=>'success'
+     //                         ));
+				 // Yii::app()->end();
+				//$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
-		if($model->role_id==2){
-			$modelClientProfiles=$model->clientProfiles;
+			
 			$this->render('update',array(
 			'model'=>$model,
-			'modelClientProfiles'=>$modelClientProfiles
-			));
-		}
-		else if($model->role_id==3){
-			$modelSuppliers=$model->suppliers;
-			$this->render('update',array(
-			'model'=>$model,
+			'modelClientProfiles'=>$modelClientProfiles,
 			'modelSuppliers'=>$modelSuppliers
 			));
-		}
-		else{
-			$this->render('update',array(
-			'model'=>$model
-			));
-		}
 		
 		
 	}
