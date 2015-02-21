@@ -75,9 +75,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'value'=>'(empty($data->description))?"Not Provided":trim(substr($data->description, 0, 30))."..."',
 					),
 					array(
-					    'name'=>'client_search',
+					    'name'=>'client_name',
 					    'type'=>'html',
-						'value'=>'CHtml::link($data->clientProfiles->users->username, array("/admin/clientProfiles/view&id=".$data->clientProfiles->id))',
+						'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/clientProfiles/view&id=".$data->clientProfiles->id))',
 					),
 					array(
 					    'name'=>'min_budget',
