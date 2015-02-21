@@ -17,80 +17,14 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
-<<<<<<< HEAD
+
 <div class="box border inverse">
 	<div class="box-title">
 		<h4><i class="fa fa-bars"></i>Create Users</h4>
-=======
 
-	
-<form class="form-horizontal" action="#">
-	<div class="row">
-	<div class="col-md-12">
-		<div class="box border inverse">
-			<div class="box-title">
-				<h4><i class="fa fa-bars"></i>General Information</h4>
-			</div>
-			<div class="box-body big">
-				<div class="row">
-					<div class="col-md-12">
-						<p class="note">Fields with <span class="required">*</span> are required.</p>
-						<?php echo $form->errorSummary($model); ?>
-						<h4>Basic Information</h4>
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'last_name',array('size'=>45,'maxlength'=>45),array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'last_name'); ?>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'first_name',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'first_name',array('size'=>45,'maxlength'=>45),array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'first_name'); ?>
-							</div>
-						</div>
-
-						<div class="row">
-		<?php echo $form->labelEx($model,'first_name'); ?>
-		<?php echo $form->textField($model,'first_name',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'first_name'); ?>
-	</div>
-
+</div>
 	
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->textField($model,'image',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'image'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'company_name'); ?>
-		<?php echo $form->textField($model,'company_name',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'company_name'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'display_name'); ?>
-		<?php echo $form->textField($model,'display_name',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'display_name'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>30,'maxlength'=>30)); ?>
-		<?php echo $form->error($model,'username'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'phone_number'); ?>
-		<?php echo $form->textField($model,'phone_number',array('size'=>25,'maxlength'=>25)); ?>
-		<?php echo $form->error($model,'phone_number'); ?>
->>>>>>> 7791189e60c4562ac7665246c76817da7cc64834
-	</div>
 	<div class="box-body big">
 					<p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -235,13 +169,6 @@
 </div>
 
 <?php $this->endWidget(); ?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</form>
-
+					
 </div><!-- form -->
 
