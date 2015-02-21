@@ -26,7 +26,15 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Suppliers Projects</h1>
+
+<!-- PAGE HEADER-->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+         	<h1>Manage Suppliers Projects</h1>
+       	</div>
+    </div>
+</div>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,42 +48,90 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'suppliers-projects-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'pitch',
-		'about_project',
-		'why_you',
-		'estimated_cost',
-		'estimated_time',
-		/*
-		'trial_period',
-		'chat_room_id',
-		'comments',
-		'min_price',
-		'max_price',
-		'time_material',
-		'billing_schedule',
-		'start_date',
-		'note',
-		'is_escrow',
-		'others',
-		'add_date',
-		'status',
-		'client_projects_id',
-		'suppliers_id',
-		'default_q1_ans',
-		'default_q2_ans',
-		'default_q3_ans',
-		'default_q4_ans',
-		'default_q5_ans',
-		'default_q6_ans',
-		*/
-		array(
+
+<div class="row">
+	<div class="col-md-12">
+		<!-- BOX -->
+		<div class="box border blue">
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of all Suppliers Projects</h4>
+			</div>
+		<div class="box-body">
+			<?php $this->widget('zii.widgets.grid.CGridView', array(
+			'id'=>'suppliers-projects-grid',
+			'dataProvider'=>$model->search(),
+			'filter'=>$model,
+			'columns'=>array(
+			array(
+				'name'=>'about_project',
+				'value'=>'(empty($data->about_project))?"Not Provided":$data->about_project',
+				 ),
+			array(
+				'name'=>'supplier_search',
+				'type'=>'html',
+				'value'=>'CHtml::link($data->suppliers->name, array("/admin/suppliers/view&id=".$data->suppliers->id))',
+				 ),
+			array(
+				'name'=>'client_projects_id',
+				'type'=>'html',
+				'value'=>'CHtml::link($data->clientProjects->name, array("/admin/suppliers/view&id=".$data->clientProjects->id))',
+				 ),	
+			array(
+				'name'=>'pitch',
+				'value'=>'(empty($data->pitch))?"Not Provided":$data->pitch',
+				 ),
+			array(
+				'name'=>'estimated_cost',
+				'value'=>'(empty($data->estimated_cost))?"Not Provided":$data->estimated_cost',
+				 ),
+			array(
+				'name'=>'estimated_time',
+				'value'=>'(empty($data->estimated_time))?"Not Provided":$data->estimated_time',
+				 ),
+			array(
+				'name'=>'trial_period',
+				'value'=>'(empty($data->trial_period))?"Not Provided":$data->trial_period',
+				 ),
+			array(
+				'name'=>'chat_room_id',
+				'value'=>'(empty($data->chat_room_id))?"Not Provided":$data->chat_room_id',
+				 ),
+			array(
+				'name'=>'comments',
+				'value'=>'(empty($data->comments))?"Not Provided":$data->comments',
+				 ),
+			array(
+				'name'=>'min_price',
+				'value'=>'(empty($data->min_price))?"Not Provided":$data->min_price',
+				 ),
+			array(
+				'name'=>'max_price',
+				'value'=>'(empty($data->pitch))?"Not Provided":$data->pitch',
+				 ),
+			array(
+				'name'=>'billing_schedule',
+				'value'=>'(empty($data->billing_schedule))?"Not Provided":$data->billing_schedule',
+				 ),
+			array(
+				'name'=>'start_date',
+				'value'=>'(empty($data->start_date))?"Not Provided":$data->start_date',
+				 ),
+			array(
+            	'name'=>'status',
+            	'header'=>'Status', 
+            	'filter'=>CHtml::activeDropDownList($model, 'status',
+                array('1'=>"Verified",'0'=>'Not Verified'),
+                array('empty'=>'Select Status',"")), 
+            	'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+        		 ),
+			array(
 			'class'=>'CButtonColumn',
-		),
+				 ),
 	),
 )); ?>
+
+			</div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>
