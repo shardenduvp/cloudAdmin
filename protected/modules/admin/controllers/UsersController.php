@@ -55,20 +55,27 @@ class UsersController extends Controller
 	public function actionCreate()
 	{
 		$model=new Users;
-
+		$model_client=new ClientProfiles;
+		$model_supp=new Suppliers;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		if($_POST)
+			{
+				$model->attributes=$_POST['Users'];
+				$model->password		=	base64_encode($model->password);
+				// $model1->password		=	base64_encode($model1->password);
+				// $model2->password		=	base64_encode($model2->password);
+				if($model->save()) {
+					$model_client->users_id=$model->id;
+					$model_supp->users_id=$model->id;
+					if(($model_client->save())&&($model_client->save()))
+					$this->redirect(array('view','id'=>$model->id));
+				}
 
-		if(isset($_POST['Users']))
-		{
-			$model->attributes=$_POST['Users'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+			}
+		
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		$this->render('create',array('model'=>$model,));
 	}
 
 	/**
