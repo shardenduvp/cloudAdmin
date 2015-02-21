@@ -46,7 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		<div class="box border blue">
 
 			<div class="box-title">
-				<h4><i class="fa fa-table"></i>List of all users</h4>
+				<h4><i class="fa fa-table"></i>List of all Clients</h4>
 			</div>
 									
 
@@ -69,7 +69,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 							'category',
 							array(
 								'header'=>'No of Projects',
-								'value'=>array($this,'clientProjects')
+								'value'=>'count($data->clientProjects)'
 							),
 							array(
 								'header'=>'Total Amount Paid',

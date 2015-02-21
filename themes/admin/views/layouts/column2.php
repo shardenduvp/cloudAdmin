@@ -19,7 +19,7 @@
                 <?php
                     echo CHtml::link('<i class="fa fa-list fa-fw"></i>
                         <span class="menu-text">New Leads</span>
-                        <span class="selected"></span>', '#', array(
+                        <span class="selected"></span>', array("/admin/"), array(
                             'class'=>'',
                             'type'=>'raw',
                         )
@@ -31,7 +31,7 @@
                 <!-- <span class="arrow"></span> -->
                 <?php
                     echo CHtml::link('<i class="fa fa-folder-open fa-fw"></i>
-                            <span class="menu-text">Active Projects</span>', array('/admin/clientProjects/admin'), array(
+                            <span class="menu-text">Active Projects</span>', array('/admin/clientProjects/active'), array(
                             'class'=>'',
                         )
                     );

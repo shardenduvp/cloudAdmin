@@ -33,6 +33,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/js/fullcalendar/fullcalendar.min.css" />
     <!-- GRITTER -->
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/js/gritter/css/jquery.gritter.css" />
+    <!-- Custom -->
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/custom.css" />
     <!-- FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
 
@@ -63,7 +65,7 @@
                     <li class="dropdown">
                         <?php
                             echo CHtml::link('<!--<i class="fa fa-list"></i>-->
-                                <span class="name">New Leads</span>', '#', array(
+                                <span class="name">New Leads</span>', array("/admin/"), array(
                                     'class'=>'dropdown-toggle',/*
                                     'data-toggle'=>'dropdown',*/
                                 )
@@ -74,7 +76,7 @@
                     <li class="dropdown">
                         <?php
                             echo CHtml::link('<!--<i class="fa fa-folder-open"></i>-->
-                                <span class="name">Active Projects</span>', array('/admin/clientProjects/admin'), array(
+                                <span class="name">Active Projects</span>', array('/admin/clientProjects/active'), array(
                                     'class'=>'dropdown-toggle',
                                 )
                             );

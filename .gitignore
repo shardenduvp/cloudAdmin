@@ -1,5 +1,22 @@
-assets/
-protected/runtime/
+protected/config/*
+protected/runtime/*
+protected/extensions/*
+protected/views/*
+assets/*
+/deploy.php
+/deploy.log
+web.conf
+push
+/node/node_modules/
+/node_chat/node_modules/
+
+/web.config
+/index.php
+/.brackets.json
+uploads/*
+/node/config/main.js
+/node_chat/config/main.js
+.DS_Store
 
 # Windows image file caches
 Thumbs.db

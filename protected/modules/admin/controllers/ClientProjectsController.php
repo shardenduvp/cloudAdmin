@@ -28,7 +28,7 @@ class ClientProjectsController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete','active'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -131,6 +131,22 @@ class ClientProjectsController extends Controller
 			$model->attributes=$_GET['ClientProjects'];
 
 		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
+
+	/**
+	 * Manages all models.
+	 */
+	public function actionActive()
+	{
+		$model=new ClientProjects('search');
+		$model->unsetAttributes();
+
+		if(isset($_GET['ClientProjects']))
+			$model->attributes=$_GET['ClientProjects'];
+
+		$this->render('active', array(
 			'model'=>$model,
 		));
 	}
