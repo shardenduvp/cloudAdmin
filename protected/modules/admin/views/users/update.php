@@ -74,7 +74,7 @@ $this->menu=array(
 												 </div>
 											 
 											   <!-- EDIT ACCOUNT -->
-											   <div class="tab-pane fade in inverse" id="pro_edit_client">
+											   <div class="tab-pane fade in" id="pro_edit_client">
 											   <?php
 												   foreach($modelClientProfiles as $mil){
 												   		$this->renderPartial('_formEditUserProfile', array('model'=>$mil)); 

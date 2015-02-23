@@ -113,7 +113,7 @@ class Users extends CActiveRecord
 			'add_date' => 'Add Date',
 			'last_login' => 'Last Login',
 			'status' => 'Status',
-			'role_id' => 'Role',
+			'role_id' => 'Select Role',
 		);
 	}
 

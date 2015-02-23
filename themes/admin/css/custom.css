@@ -4,3 +4,7 @@
   height: 32px;
   margin: 20px auto;
 }
+
+.hide-div{
+	display:none;
+}
