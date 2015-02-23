@@ -30,47 +30,7 @@
 
 							<?php echo $form->errorSummary($model); ?>
 							<div id="formResult"></div>
-							<h4>Basic Information</h4>
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'first_name',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'first_name',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'first_name'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'last_name',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'last_name'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'cover',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'cover',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'cover'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'name',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'name',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'name'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'image',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'image',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'image'); ?>
-								</div>
-							</div>
-							<h4>Account Information</h4>
+						    <h4>Account Information</h4>
 							<div class="form-group">
 								<?php echo $form->labelEx($model,'email',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
@@ -79,6 +39,14 @@
 								</div>
 							</div>
 							<h4>Contact Information</h4>
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'name',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+								<?php echo $form->textField($model,'name',array('class'=>'form-control')); ?>
+								<?php echo $form->error($model,'name'); ?>
+								</div>
+							</div>
+
 							<div class="form-group">
 								<?php echo $form->labelEx($model,'skype_id',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
@@ -94,21 +62,7 @@
 								<?php echo $form->error($model,'website'); ?>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'phone_number',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'phone_number',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'phone_number'); ?>
-								</div>
-							</div>
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'linkedin',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'linkedin',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'linkedin'); ?>
-								</div>
-							</div>
+							
 
 							<div class="form-group">
 								<?php echo $form->labelEx($model,'facebook',array('class'=>'col-md-4 control-label')); ?>
@@ -148,6 +102,13 @@
 								<div class="col-md-8">
 								<?php echo $form->textField($model,'tagline',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'tagline'); ?>
+								</div>
+							</div>
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'cover',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+								<?php echo $form->textField($model,'cover',array('class'=>'form-control')); ?>
+								<?php echo $form->error($model,'cover'); ?>
 								</div>
 							</div>
 
@@ -256,14 +217,6 @@
 							</div>
 
 							<div class="form-group">
-								<?php echo $form->labelEx($model,'add_date',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'add_date',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'add_date'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
 								<?php echo $form->labelEx($model,'modification_date',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
 								<?php echo $form->textField($model,'modification_date',array('class'=>'form-control')); ?>
@@ -342,16 +295,6 @@
 								<?php echo $form->textField($model,'is_application_submit',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'is_application_submit'); ?>
 								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'status',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-4">
-								<?php 
-								echo $form->dropDownList($model,'status',array('1'=>'Verified','0'=>'Not-Verified'),array('class'=>'form-control'));
-								?>
-								<?php echo $form->error($model,'password'); ?>
-							</div>
 							</div>
 
 							<div class="form-group">
