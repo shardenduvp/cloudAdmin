@@ -108,7 +108,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 					'dataProvider'=>$model->search(),
 					'filter'=>$model,
-
 					'columns'=>array(
 						array('name'=>'id','htmlOptions'=>array('class'=>'center')),
 						'last_name',

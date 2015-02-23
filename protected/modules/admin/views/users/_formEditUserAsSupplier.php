@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <?php
 /* @var $this SuppliersController */
 /* @var $model Suppliers */
@@ -413,3 +415,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+>>>>>>> 16cd4d5d2b5b7b841ecba58a0af8adedc5881e8d

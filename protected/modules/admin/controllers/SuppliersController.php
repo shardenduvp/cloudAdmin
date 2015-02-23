@@ -81,18 +81,20 @@ class SuppliersController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Suppliers']))
 		{
 			$model->attributes=$_POST['Suppliers'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if($model->save()){
+				echo CJSON::encode(array(
+                                  'status'=>'success'
+                             ));
+				 Yii::app()->end();
+			}
 		}
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+		$this->redirect(array('users/update','id'=>$model->users_id));
 	}
 
 	/**

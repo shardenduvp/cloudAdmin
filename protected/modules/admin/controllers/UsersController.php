@@ -98,10 +98,10 @@ class UsersController extends Controller
 			$model->attributes=$_POST['Users'];
 			$model->password=base64_encode($model->password);
 			if($model->save()){
-				 // echo CJSON::encode(array(
-     //                              'status'=>'success'
-     //                         ));
-				 // Yii::app()->end();
+				 echo CJSON::encode(array(
+                                  'status'=>'success'
+                             ));
+				 Yii::app()->end();
 				//$this->redirect(array('view','id'=>$model->id));
 			}
 		}

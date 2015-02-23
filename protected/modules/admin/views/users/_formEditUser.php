@@ -15,7 +15,7 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<div class="row">
@@ -29,7 +29,15 @@
 					<div class="col-md-12">
 						<p class="note">Fields with <span class="required">*</span> are required.</p>
 						<?php echo $form->errorSummary($model); ?>
-						<div id="formResult"></div>
+						
+						<div class="alert alert-dismissible hide-div" role="alert"
+						id="formResultDiv">
+  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  							<span aria-hidden="true">&times;</span>
+  						</button>
+  						<span id="formResult"></span>
+						</div>
+
 						<h4>Basic Information</h4>
 						<div class="form-group">
 							<?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
@@ -77,7 +85,7 @@
 						<div class="form-group">
 							<?php echo $form->labelEx($model,'username',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
-								<?php echo $form->textField($model,'username',array('class'=>'form-control')); ?>
+								<?php echo $form->emailField($model,'username',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'username'); ?>
 							</div>
 						</div>
@@ -159,23 +167,38 @@
 		</div>
 	</div>
 
-<div class="form-actions clearfix"> <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Update',array('class'=>'btn btn-primary pull-right'));
+<div class="form-actions clearfix"> 
+<?php 
 
- // echo CHtml::ajaxSubmitButton('Save',CHtml::normalizeUrl(array('admin/users/update&id='.$model->id,'render'=>true)),
- //                 array(
- //                     'dataType'=>'json',
- //                     'type'=>'post',
- //                     'success'=>'function(data) { 
- //                        if(data.status=="success"){
- //                         $("#formResult").html("form submitted successfully.");
+echo CHtml::ajaxSubmitButton('UpdateAjax',CHtml::normalizeUrl(array('users/update&id='.$model->id,'render'=>true)),
+                 array(
+                     'dataType'=>'json',
+                     'type'=>'post',
+                     'success'=>'function(data) { 
+                        if(data.status == "success" ){
+                        $("#formResultDiv").removeClass("hide-div");
+                        $("#formResultDiv").removeClass("alert-warning");
+                        $("#formResultDiv").addClass("alert-success");
+                        $("#formResult").html("Updated Successfully .");
 
- //                        }
- //                         else{
- //                        $("#formResult").html("form doent submitted successfully.");
- //                        }       
- //                    }'
- //                     ),array('id'=>'mybtn','class'=>'btn btn-primary pull-right')); 
-               ?>
+                        }
+                         else{
+                         $("#formResultDiv").removeClass("hide-div");
+                         $("#formResultDiv").removeClass("alert-success");
+                         $("#formResultDiv").addClass("alert-warning");
+						 $("#formResult").html("Something Went Wrong .");
+
+                        }       
+                    }',
+                    'error'=>'function(){
+                    	$("#formResultDiv").removeClass("hide-div");
+                    	$("#formResultDiv").removeClass("alert-success");
+                         $("#formResultDiv").addClass("alert-warning");
+						 $("#formResult").html("Something Went Wrong .");
+
+                    }'
+                     ),array('id'=>'mybtn1','class'=>'btn btn-primary pull-right')); 
+?>
 
 
   </div>
