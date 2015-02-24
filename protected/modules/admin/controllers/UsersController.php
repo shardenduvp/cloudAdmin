@@ -43,8 +43,16 @@ class UsersController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		$model=$this->loadModel($id);
+		
+		$modelClientProfile=$model->clientProfiles;
+		$modelSupplier=$model->suppliers;	
+
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
+			'modelClientProfile'=>$modelClientProfile,
+			'modelSupplier'=>$modelSupplier
 		));
 	}
 
