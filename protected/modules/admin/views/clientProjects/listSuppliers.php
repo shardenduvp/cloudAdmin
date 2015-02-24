@@ -28,11 +28,13 @@
 		                  	</div>
 		                  	<div class="col-xs-5">
 			                  	<i class="fa fa-calendar"></i>
-			                  	<?php  if($projSupp->start_date)
-			                  	{ ?>
+			                  	<?php  if($projSupp->suppliers->foundation_year)
+			                  	{ 
+			                  		?>
 									Founded in 
-			                  	<?php echo $projSupp->start_date; 
-			                  	} else {?>
+			                  	<?php echo $projSupp->suppliers->foundation_year; ?>
+			                 <?php
+			                  	} else { ?>
                                 Not Provided
                                 <?php } ?>
 			                 </div>
@@ -71,14 +73,12 @@
 		                </div>
 		                <div class="col-xs-2 verticalLine">
 				                <div class="row align">
-				                <?php if($projSupp->min_price) { ?>
-				                <h3><?php echo $projSupp->min_price; }
-				                 else { ?>
-				                NA <?php } ?>
-				                -
-				                <?php if($projSupp->max_price) {
-				                 echo $projSupp->max_price; }
-				                  else{ ?> NA <?php } ?></h3>
+					                <?php foreach ($projSupp->suppliers->suppliersHasPortfolios as $key => $value) {
+					                
+					                }{ ?>
+					                <h3>$<?php echo $value->per_hour_rate; }?>
+					                 
+					                </h3>
 				                </div>	
 				                <div class="row align">
 				               Average Per Hour <br> (in USD)
