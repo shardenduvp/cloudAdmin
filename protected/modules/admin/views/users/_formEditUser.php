@@ -22,7 +22,7 @@
 		<div class="col-md-12">
 		<div class="box border inverse">
 			<div class="box-title">
-				<h4><i class="fa fa-bars"></i>General Information</h4>
+				<h4><i class="fa fa-bars"></i>Users Profile Information</h4>
 			</div>
 			<div class="box-body big">
 				<div class="row">
@@ -104,7 +104,7 @@
 								<?php 
 								echo $form->dropDownList($model,'role_id',array('1'=>'Admin','2'=>'Client','3'=>'Supplier'),array('class'=>'form-control'));
 								?>
-								<?php echo $form->error($model,'password'); ?>
+								<?php echo $form->error($model,'role_id'); ?>
 							</div>
 						</div>
 						
@@ -124,13 +124,6 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'role',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'role',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'role'); ?>
-							</div>
-						</div>
 
 						<div class="form-group">
 							<?php echo $form->labelEx($model,'status',array('class'=>'col-md-4 control-label')); ?>
@@ -139,7 +132,7 @@
 								//$status = CHtml::listData($model->role0->findAll(),'name','name');
 								echo $form->dropDownList($model,'status',array('1'=>'Verified','0'=>'Not-Verified'),array('class'=>'form-control'));
 								?>
-								<?php echo $form->error($model,'password'); ?>
+								<?php echo $form->error($model,'status'); ?>
 							</div>
 						</div>
 
@@ -170,7 +163,7 @@
 <div class="form-actions clearfix"> 
 <?php 
 
-echo CHtml::ajaxSubmitButton('UpdateAjax',CHtml::normalizeUrl(array('users/update&id='.$model->id,'render'=>true)),
+echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id='.$model->id,'render'=>true)),
                  array(
                      'dataType'=>'json',
                      'type'=>'post',
@@ -197,7 +190,7 @@ echo CHtml::ajaxSubmitButton('UpdateAjax',CHtml::normalizeUrl(array('users/updat
 						 $("#formResult").html("Something Went Wrong .");
 
                     }'
-                     ),array('id'=>'mybtn1','class'=>'btn btn-primary pull-right')); 
+                     ),array('id'=>'btnUpdateClients','class'=>'btn btn-primary pull-right')); 
 ?>
 
 
