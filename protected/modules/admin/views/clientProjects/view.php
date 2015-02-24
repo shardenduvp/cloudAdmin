@@ -15,7 +15,6 @@ $this->menu=array(
 	array('label'=>'Manage ClientProjects', 'url'=>array('admin')),
 );
 ?>
-<center>
 
 <!--Company name-->
 <div class="page-header">
@@ -23,35 +22,50 @@ $this->menu=array(
 </div>
 
 <!--Details-->
+
+
 <div class="well well-lg">
-<img alt="User Pic" class="img-circle" style="max-width:100px;" src="
-  <?php 
-    if($model->clientProfiles->users->image==null)
-    { echo Yii::app()->theme->baseUrl."/img/2.jpg"; }
-    else
-    { echo $model->clientProfiles->users->image; }
-  ?>" 
->
-<?php echo $model->clientProfiles->company_name; ?><br>
-<?php echo $model->clientProfiles->company_link; ?><br>
-<?php echo $model->clientProfiles->address1; ?><br>
-<?php $teams = $model->clientProfiles->users->teams;
-	foreach ($teams as $team) 
-{
-	echo $team->linkedin;
-}
-?>
+	<div class="row">
+		<div class="col-xs-3">
+			<img alt="User Pic" class="img-circle" style="max-width:100px;" src="
+			  <?php 
+			    if($model->clientProfiles->users->image==null)
+			    { echo Yii::app()->theme->baseUrl."/img/2.jpg"; }
+			    else
+			    { echo $model->clientProfiles->users->image; }
+			  ?>" 
+			>
+		</div>
+		<div class="col-xs-3">
+			<?php echo $model->clientProfiles->company_name; ?><br>
+			<?php echo $model->clientProfiles->company_link; ?><br>
+			<?php echo $model->clientProfiles->address1; ?><br>
+			<?php $teams = $model->clientProfiles->users->teams;
+				foreach ($teams as $team) 
+				{
+					echo $team->linkedin;
+				}
+			?>
+		</div>
+	</div>
 </div>
 
 <!--skills -->
 <b>Requirements:</b>
 <div class="well well-lg">
-<button class="btn btn-primary" type="button">
-<?php  $hasSkills = $model->clientProjectsHasSkills;
-foreach ($hasSkills as $skill) {
-echo $skill->skills->name." ";
-}
-?></button>
+<div class="row">
+<div class="col-xs-3">
+	<?php  $hasSkills = $model->clientProjectsHasSkills;
+	foreach ($hasSkills as $skill) { ?>
+	<button class="btn btn-primary" type="button">
+	<?php echo $skill->skills->name." ";
+	}
+	?></button>
+</div>
+<div class="col-xs-3">
+ <span class="glyphicon glyphicon-pencil"></span>
+</div>
+</div>
 </div>
 
 <!--summary-->
@@ -75,7 +89,7 @@ echo $skill->skills->name." ";
 	}
 ?>
 </div>
-</center>
+
 
 <!--
 <?php
