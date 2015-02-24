@@ -63,12 +63,13 @@
 
 
 		                <div class="col-xs-1 verticalLine">
-		               			 
+
+		               			 <?php $count = count($projSupp->suppliers->suppliersHasPortfolios); ?>
 				                <div class="row align">
-				                <h3>3/5</h3>
+				                <h3><?php echo $count; ?></h3>
 				                </div>	
 				                <div class="row align">
-				                Relevant Client Stories
+				                Client Stories
 				                </div>	
 		                </div>
 		                <div class="col-xs-2 verticalLine">
@@ -88,11 +89,25 @@
 				                <div class="row align col-xs-offset-1">
 				                <h2></h2>
 				                	<div class="box1 boxcolor align">
-				                	3.8
+								<?php
+								$refCount	=	count($projSupp->suppliers->suppliersHasReferences);
+								$totalOfRating	=	0;
+								if($refCount>0)
+								{
+								foreach($projSupp->suppliers->suppliersHasReferences as $rating)
+								foreach($rating->suppliersHasCategoryRatings as $rate)
+								$totalOfRating	+=	$rate->rating;
+								$avgRating = number_format((float)((((int)$totalOfRating))/($refCount*4)),1);
+								}
+								else
+								$avgRating=0;
+							echo $avgRating;
+								?>
+
 				                	</div>
 				                </div>	
 				                <div class="row align">
-				                27 Reviews
+				                <?php echo  $refCount ?> Reviews
 				                </div>	
 		                </div>
 	                 </div>

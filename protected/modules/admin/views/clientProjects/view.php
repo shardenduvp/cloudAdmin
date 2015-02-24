@@ -16,14 +16,86 @@ $this->menu=array(
 );
 ?>
 
-<h1>View ClientProjects #<?php echo $model->id; ?></h1>
+<!--Company name-->
+<div class="page-header">
+<b>  <h1><?php echo $model->name;?></h1></b>
+</div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'name',
-		'description',
+<!--Details-->
+
+
+<div class="well well-lg">
+	<div class="row">
+		<div class="col-xs-3">
+			<img alt="User Pic" class="img-circle" style="max-width:100px;" src="
+			  <?php 
+			    if($model->clientProfiles->users->image==null)
+			    { echo Yii::app()->theme->baseUrl."/img/2.jpg"; }
+			    else
+			    { echo $model->clientProfiles->users->image; }
+			  ?>" 
+			>
+		</div>
+		<div class="col-xs-3">
+			<?php echo $model->clientProfiles->company_name; ?><br>
+			<?php echo $model->clientProfiles->company_link; ?><br>
+			<?php echo $model->clientProfiles->address1; ?><br>
+			<?php $teams = $model->clientProfiles->users->teams;
+				foreach ($teams as $team) 
+				{
+					echo $team->linkedin;
+				}
+			?>
+		</div>
+	</div>
+</div>
+
+<!--skills -->
+<b>Requirements:</b>
+<div class="well well-lg">
+<div class="row">
+<div class="col-xs-3">
+	<?php  $hasSkills = $model->clientProjectsHasSkills;
+	foreach ($hasSkills as $skill) { ?>
+	<button class="btn btn-primary" type="button">
+	<?php echo $skill->skills->name." ";
+	}
+	?></button>
+</div>
+<div class="col-xs-3">
+ <span class="glyphicon glyphicon-pencil"></span>
+</div>
+</div>
+</div>
+
+<!--summary-->
+<b>Project Summary:</b>
+<div class="well well-lg"><?php echo $model->summary; ?></div>
+
+<!--Reference files-->
+<b>Reference Files:</b>
+<div class="well well-lg"><?/*php echo */ ?></div>
+
+<!--Team-->
+<b>Team:</b>
+<div class="well well-lg">
+<?php $teams = $model->clientProfiles->users->teams;
+	foreach ($teams as $team) 
+	{
+	echo $team->first_name;
+	echo $team->last_name;
+	echo $team->experiance;
+	echo $team->image;
+	}
+?>
+</div>
+
+
+<!--
+<?php
+/*
+$attributes=array(
+	'description',
 		'tag_line',
 		'business_problem',
 		'about_company',
@@ -53,5 +125,6 @@ $this->menu=array(
 		'current_status_id',
 		'other_current_status',
 		'state',
-	),
-)); ?>
+); */
+?>
+-->
