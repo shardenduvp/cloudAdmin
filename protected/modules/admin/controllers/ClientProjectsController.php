@@ -125,7 +125,7 @@ class ClientProjectsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new ClientProjects('search');
+		$model=new ClientProjects('projectSearch');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['ClientProjects']))
 			$model->attributes=$_GET['ClientProjects'];
@@ -140,7 +140,7 @@ class ClientProjectsController extends Controller
 	 */
 	public function actionActive()
 	{
-		$model=new ClientProjects('search');
+		$model=new ClientProjects('projectSearch');
 		$model->unsetAttributes();
 
 		if(isset($_GET['ClientProjects']))
