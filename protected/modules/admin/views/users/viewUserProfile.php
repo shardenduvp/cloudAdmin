@@ -20,12 +20,11 @@
               <tbody><?php
                     		$attributes=array(
 												                    'last_name',
-											                      	'first_name',
+											                      'first_name',
 													                  'company_name',
 													                  'display_name',
 													                  'username',
 													                  'phone_number',
-													                  'password',
 													                  'linkedin',
 													                  'add_date',
 													                  'last_login',
