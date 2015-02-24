@@ -65,7 +65,8 @@
                       foreach($var->clientProjects as $project){?> 
                         <tr>
                           <td><b><?php echo "Project #".$count." Name"?></b></td>
-                          <td><?php echo $project->name; ?></td> 
+                          <td><?php echo CHtml::link($project->name, array('/admin/clientProjects/view&id='.$project->id), array('class'=>'',));?>
+                          </td> 
                         </tr> 
                         <?php $count++; 
                       }
@@ -101,7 +102,6 @@
       </div>
     </div>
 <?php 
-    }
   }
   else
   	echo "NOT A CLIENT YET";?>
