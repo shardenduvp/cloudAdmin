@@ -370,7 +370,7 @@
 								<?php echo $form->labelEx($model,'is_faq_completed',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
 								<?php 
-								echo $form->dropDownList($model,'is_application_submit',array('1'=>'Completed','2'=>'Not-Completed',''=>'No Value'),array('class'=>'form-control'));
+								echo $form->dropDownList($model,'is_faq_completed',array('1'=>'Completed','2'=>'Not-Completed',''=>'No Value'),array('class'=>'form-control'));
 								?>
 								<?php echo $form->error($model,'is_faq_completed'); ?>
 								</div>
@@ -411,6 +411,9 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliers/updat
                  array(
                      'dataType'=>'json',
                      'type'=>'post',
+                     'beforeSend'=>'function(){
+                     	$("#updateBtnSupplier").button("loading");
+                     }',
                      'success'=>'function(data) { 
                         if(data.status == "success" ){
                         $("#formResultDivSupplier").removeClass("hide-div");
@@ -418,7 +421,8 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliers/updat
                         $("#formResultDivSupplier").addClass("alert-success");
                         $("#formResultSupplier").html("Updated Successfully .");
                        
-                    
+                    	$("#updateBtnSupplier").button("reset");
+
 
                         }
                          else{
@@ -426,6 +430,9 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliers/updat
                          $("formResultDivSupplier").removeClass("alert-success");
                          $("formResultDivSupplier").addClass("alert-warning");
 						 $("#formResultSupplier").html("Something Went Wrong .");
+
+						 $("#updateBtnSupplier").button("reset");
+
 						
                         }    
 
@@ -435,10 +442,13 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliers/updat
                     	$("formResultDivSupplier").removeClass("alert-success");
                          $("formResultDivSupplier").addClass("alert-warning");
 						 $("#formResultSupplier").html("Something Went Wrong .");
+
+						 $("#updateBtnSupplier").button("reset");
+
 						
 
                     }'
-                     ),array('id'=>'updateBtnSupplier','class'=>'btn btn-primary pull-right')); 
+                     ),array('id'=>'updateBtnSupplier','class'=>'btn btn-primary pull-right','data-loading-text'=>'Updating ...','autocomplete'=>'off')); 
 ?>
 	</div>
 

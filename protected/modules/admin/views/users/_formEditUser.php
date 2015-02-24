@@ -167,6 +167,9 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id
                  array(
                      'dataType'=>'json',
                      'type'=>'post',
+                     'beforeSend'=>'function(){
+                     	$("#updateBtnUser").button("loading");
+                     }',
                      'success'=>'function(data) { 
                         if(data.status == "success" ){
                         $("#formResultDiv").removeClass("hide-div");
@@ -174,12 +177,16 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id
                         $("#formResultDiv").addClass("alert-success");
                         $("#formResult").html("Updated Successfully .");
 
+                         $("#updateBtnUser").button("reset");
+
                         }
                          else{
                          $("#formResultDiv").removeClass("hide-div");
                          $("#formResultDiv").removeClass("alert-success");
                          $("#formResultDiv").addClass("alert-warning");
 						 $("#formResult").html("Something Went Wrong .");
+
+						  $("#updateBtnUser").button("reset");
 
                         }       
                     }',
@@ -189,8 +196,12 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id
                          $("#formResultDiv").addClass("alert-warning");
 						 $("#formResult").html("Something Went Wrong .");
 
+						  $("#updateBtnUser").button("reset");
+
                     }'
-                     ),array('id'=>'btnUpdateClients','class'=>'btn btn-primary pull-right')); 
+                     ),array('id'=>'updateBtnUser','class'=>'btn btn-primary pull-right',
+                     'data-loading-text'=>'Updating ...','autocomplete'=>'off',
+                     )); 
 ?>
 
 
