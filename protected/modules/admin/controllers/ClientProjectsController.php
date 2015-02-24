@@ -28,7 +28,7 @@ class ClientProjectsController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete','active'),
+				'actions'=>array('index','view','create','update','admin','delete','active','listSuppliers'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -112,6 +112,16 @@ class ClientProjectsController extends Controller
 	/**
 	 * Lists all models.
 	 */
+	public function actionListSuppliers($id)
+	{
+			$model=SuppliersProjects::model()->findAllByAttributes(array('client_projects_id'=>$id));
+			$model_client=ClientProjects::model()->findByAttributes(array('id'=>$id));
+			$this->render('listSuppliers',array(
+			'model'=>$model,
+			'model_client'=>$model_client,
+		));
+	}
+
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('ClientProjects');
