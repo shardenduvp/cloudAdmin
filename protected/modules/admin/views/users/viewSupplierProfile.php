@@ -1,4 +1,4 @@
- <?php if(!empty($var)){
+ <?php if(!empty($var)){?>
     <div class="box">
       <div>
         <div class="panel panel-info">
@@ -33,11 +33,7 @@
                     <tr>
                       <td><b>Email</b></td>
                       <td><?php echo $var->email; ?></td> 
-                    </tr> 
-                    <tr>
-                      <td><b>Tagline</b></td>
-                      <td><?php echo $var->tagline; ?></td> 
-                    </tr> 
+                    </tr>  
                     <tr>
                       <td><b>About Company</b></td>
                       <td><?php echo $var->about_company; ?></td> 

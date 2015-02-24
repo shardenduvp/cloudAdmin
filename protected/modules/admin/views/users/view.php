@@ -88,9 +88,9 @@ $this->menu=array(
                         <!-- EDIT ACCOUNT -->
                         <div class="tab-pane fade in" id="pro_edit_supplier">
                          <?php
-                            // foreach($modelSuppliers as $mil){
-                            //   $this->renderPartial('viewSupplierProfile', array('var'=>$mil)); 
-                            // }
+                            foreach($modelSupplier as $mil){
+                              $this->renderPartial('viewSupplierProfile', array('var'=>$mil)); 
+                            }
                         ?>
                          </div>
                       

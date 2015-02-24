@@ -28,20 +28,34 @@
 		                  	</div>
 		                  	<div class="col-xs-5">
 			                  	<i class="fa fa-calendar"></i>
-			                  	Founded in 
-			                  	<?php echo $projSupp->start_date; ?>
-		                  	</div>
+			                  	<?php  if($projSupp->start_date)
+			                  	{ ?>
+									Founded in 
+			                  	<?php echo $projSupp->start_date; 
+			                  	} else {?>
+                                Not Provided
+                                <?php } ?>
+			                 </div>
 		                 </div>
 		                 <div class="row">
 		                  	<div class="col-xs-5 ">
 		                  		<i class="fa fa-users"></i>
-		                  		<?php echo $projSupp->suppliers->number_of_employee; ?> Employees
+		                  		<?php if($projSupp->suppliers->number_of_employee)
+		                  		{ 
+								 echo $projSupp->suppliers->number_of_employee; ?> Employees		
+		                  		<?php } else { ?> Not Provided 
+		                  		<?php } ?>
+		                  		
 		                  	</div>
 		                  	<div class="col-xs-5">
 			                  	<i class="fa fa-refresh"></i>
-			                  	Responds withing 
+			                  	<?php if($projSupp->suppliers->response_time) { ?>
+			                  		Responds withing 
 			                  	<?php echo $projSupp->suppliers->response_time; ?> hrs
-		                  	</div>
+			                  <?php	} else { ?> 
+			                  Not Provided
+			                  <?php } ?>
+			                 </div>
 		                 </div>
 		                </div>
 
@@ -57,7 +71,14 @@
 		                </div>
 		                <div class="col-xs-2 verticalLine">
 				                <div class="row align">
-				                <h3>$<?php echo $projSupp->min_price; ?>-<?php echo $projSupp->max_price; ?></h3>
+				                <?php if($projSupp->min_price) { ?>
+				                <h3><?php echo $projSupp->min_price; }
+				                 else { ?>
+				                NA <?php } ?>
+				                -
+				                <?php if($projSupp->max_price) {
+				                 echo $projSupp->max_price; }
+				                  else{ ?> NA <?php } ?></h3>
 				                </div>	
 				                <div class="row align">
 				               Average Per Hour <br> (in USD)
