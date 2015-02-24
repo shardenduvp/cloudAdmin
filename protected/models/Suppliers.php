@@ -138,7 +138,7 @@ class Suppliers extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Supplier ID *',
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
 			'cover' => 'Cover',

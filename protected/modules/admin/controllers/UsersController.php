@@ -86,7 +86,7 @@ class UsersController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		
+
 		$modelClientProfiles=$model->clientProfiles;
 		$modelSuppliers=$model->suppliers;
 
@@ -148,12 +148,20 @@ class UsersController extends Controller
 	{
 		$model=new Users('search');
 		$model->unsetAttributes();  // clear any default values
+
+		 if (isset($_GET['pageSize'])) {
+            Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+            unset($_GET['pageSize']);
+         }
+         
 		if(isset($_GET['Users']))
 			$model->attributes=$_GET['Users'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+
+
 	}
 
 	/**

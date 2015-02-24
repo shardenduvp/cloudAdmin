@@ -87,7 +87,7 @@ class ClientProfiles extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Client Profile ID *',
 			'users_id' => 'Users',
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
@@ -96,7 +96,7 @@ class ClientProfiles extends CActiveRecord
 			'skype_id' => 'Skype',
 			'email' => 'Email',
 			'phone_number' => 'Phone Number',
-			'address1' => 'Address1',
+			'address1' => 'Address',
 			'team_size' => 'Team Size',
 			'category' => 'Category',
 			'foundation_year' => 'Foundation Year',

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 <?php
 /* @var $this SuppliersController */
 /* @var $model Suppliers */
@@ -23,7 +22,7 @@
 		<div class="col-md-12">
 		<div class="box border inverse">
 			<div class="box-title">
-				<h4><i class="fa fa-bars"></i>General Information</h4>
+				<h4><i class="fa fa-bars"></i>Supplier Information</h4>
 			</div>
 			<div class="box-body big">
 				<div class="row">
@@ -31,15 +30,22 @@
 							<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 							<?php echo $form->errorSummary($model); ?>
-							<div id="formResult"></div>
-						    <h4>Account Information</h4>
+							<div class="alert alert-dismissible hide-div" role="alert"
+						id="formResultDivSupplier">
+  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  							<span aria-hidden="true">&times;</span>
+  						</button>
+  						<span id="formResultSupplier"></span>
+						</div>
+
 							<div class="form-group">
-								<?php echo $form->labelEx($model,'email',array('class'=>'col-md-4 control-label')); ?>
+								<?php echo $form->labelEx($model,'id',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
-								<?php echo $form->emailField($model,'email',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'email'); ?>
+								<?php echo $form->textField($model,'id',array('class'=>'form-control','disabled'=>'true')); ?>
+								<?php echo $form->error($model,'id'); ?>
 								</div>
 							</div>
+						    
 							<h4>Contact Information</h4>
 							<div class="form-group">
 								<?php echo $form->labelEx($model,'name',array('class'=>'col-md-4 control-label')); ?>
@@ -111,6 +117,14 @@
 								<div class="col-md-8">
 								<?php echo $form->textField($model,'cover',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'cover'); ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'logo',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+								<?php echo $form->textField($model,'logo',array('class'=>'form-control')); ?>
+								<?php echo $form->error($model,'logo'); ?>
 								</div>
 							</div>
 
@@ -210,21 +224,6 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'profile_status',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'profile_status',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'profile_status'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'modification_date',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'modification_date',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'modification_date'); ?>
-								</div>
-							</div>
 
 							<div class="form-group">
 								<?php echo $form->labelEx($model,'rough_estimate',array('class'=>'col-md-4 control-label')); ?>
@@ -283,38 +282,7 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'is_faq_completed',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'is_faq_completed',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'is_faq_completed'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'is_application_submit',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'is_application_submit',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'is_application_submit'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'users_id',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'users_id',array('class'=>'form-control','disabled'=>'true')); ?>
-								<?php echo $form->error($model,'users_id'); ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'logo',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'logo',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'logo'); ?>
-								</div>
-							</div>
-							<h4>Questions</h4>
+							<h4>FAQ</h4>
 							<div class="form-group">
 								<?php echo $form->labelEx($model,'default_q3_ans',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
@@ -347,22 +315,15 @@
 								</div>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<?php echo $form->labelEx($model,'accept_new_project_date',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
 								<?php echo $form->textField($model,'accept_new_project_date',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'accept_new_project_date'); ?>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'is_profile_complete',array('class'=>'col-md-4 control-label')); ?>
-								<div class="col-md-8">
-								<?php echo $form->textField($model,'is_profile_complete',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'is_profile_complete'); ?>
-								</div>
-							</div>
-
+ -->
+							
 							<div class="form-group">
 								<?php echo $form->labelEx($model,'price_tier_id',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
@@ -402,6 +363,41 @@
 								<?php echo $form->error($model,'offers'); ?>
 								</div>
 							</div>
+
+							<h4>Status Of Profile</h4>
+
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'is_faq_completed',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+								<?php 
+								echo $form->dropDownList($model,'is_application_submit',array('1'=>'Completed','2'=>'Not-Completed',''=>'No Value'),array('class'=>'form-control'));
+								?>
+								<?php echo $form->error($model,'is_faq_completed'); ?>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'is_application_submit',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+								<?php 
+								echo $form->dropDownList($model,'is_application_submit',array('1'=>'Submitted','2'=>'Not-Submitted',''=>'No Value'),array('class'=>'form-control'));
+								?>
+								<?php echo $form->error($model,'is_application_submit'); ?>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+							<?php echo $form->labelEx($model,'is_profile_complete',array('class'=>'col-md-4 control-label')); ?>
+							<div class="col-md-8">
+								<?php 
+								echo $form->dropDownList($model,'is_profile_complete',array('1'=>'Complete','2'=>'Not-Complete',''=>'No Value'),array('class'=>'form-control'));
+								?>
+								<?php echo $form->error($model,'is_profile_complete'); ?>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -409,10 +405,47 @@
 		</div>
 	</div>
 	<div class="form-actions clearfix">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'btn btn-primary pull-right')); ?>
+		<?php 
+
+echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliers/update&id='.$model->id,'render'=>true)),
+                 array(
+                     'dataType'=>'json',
+                     'type'=>'post',
+                     'success'=>'function(data) { 
+                        if(data.status == "success" ){
+                        $("#formResultDivSupplier").removeClass("hide-div");
+                        $("#formResultDivSupplier").removeClass("alert-warning");
+                        $("#formResultDivSupplier").addClass("alert-success");
+                        $("#formResultSupplier").html("Updated Successfully .");
+                       
+                    
+
+                        }
+                         else{
+                         $("#formResultDivSupplier").removeClass("hide-div");
+                         $("formResultDivSupplier").removeClass("alert-success");
+                         $("formResultDivSupplier").addClass("alert-warning");
+						 $("#formResultSupplier").html("Something Went Wrong .");
+						
+                        }    
+
+                    }',
+                    'error'=>'function(){
+                    	$("#formResultDivSupplier").removeClass("hide-div");
+                    	$("formResultDivSupplier").removeClass("alert-success");
+                         $("formResultDivSupplier").addClass("alert-warning");
+						 $("#formResultSupplier").html("Something Went Wrong .");
+						
+
+                    }'
+                     ),array('id'=>'updateBtnSupplier','class'=>'btn btn-primary pull-right')); 
+?>
 	</div>
+
+
+                     
+                     <!-- -->
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
->>>>>>> 16cd4d5d2b5b7b841ecba58a0af8adedc5881e8d
