@@ -9,6 +9,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'suppliers-form',
+	'action'=>Yii::app()->createUrl('admin/suppliers/update',array('id'=>$model->id)),
 	'htmlOptions'=>array(
 		'class'=>'form-horizontal'
 		),
@@ -16,7 +17,7 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 <div class="row">
 		<div class="col-md-12">
@@ -30,7 +31,7 @@
 							<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 							<?php echo $form->errorSummary($model); ?>
-							<div class="alert alert-dismissible hide-div" role="alert"
+							<div class=" hide-div alert alert-dismissible" role="alert"
 						id="formResultDivSupplier">
   						
   						<span id="formResultSupplier"></span>
@@ -405,7 +406,7 @@
 	<div class="form-actions clearfix">
 		<?php 
 
-echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliers/update&id='.$model->id,'render'=>true)),
+echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliers/update','id'=>$model->id)),
                  array(
                      'dataType'=>'json',
                      'type'=>'post',

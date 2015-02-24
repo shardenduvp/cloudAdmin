@@ -234,7 +234,7 @@
                         <?php if(!Yii::app()->user->isGuest) { ?>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img alt="" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/user.png" />
-                            <span class="username">John Doe</span>
+                            <span class="username"><?php echo Yii::app()->user->name;?></span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">

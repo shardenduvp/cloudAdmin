@@ -30,7 +30,7 @@ $this->menu=array(
 									<!-- STYLER -->
 									
 									<!-- /STYLER -->
-									<!-- BREADCRUMBS -->
+									<!-- BREADCRUMBS 
 						
 									<ul class="breadcrumb">
 										<li>
@@ -42,7 +42,7 @@ $this->menu=array(
 										</li>
 										<li>User Profile</li>
 									</ul>
-									<!-- /BREADCRUMBS -->
+									BREADCRUMBS -->
 									<div class="clearfix">
 										<h3 class="content-title pull-left">User Profile</h3>
 									</div>

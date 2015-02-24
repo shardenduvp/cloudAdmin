@@ -8,7 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'client-profiles-form',
-	'action'=>Yii::app()->createUrl('admin/clientProfiles/update&id='.$model->id),
+	'action'=>Yii::app()->createUrl('admin/clientProfiles/update',array('id'=>$model->id)),
 	'htmlOptions'=>array(
 		'class'=>'form-horizontal'
 		),
@@ -32,7 +32,7 @@
 						<p class="note">Fields with <span class="required">*</span> are required.</p>
 						<?php echo $form->errorSummary($model); ?>
 						
-						<div class="alert alert-dismissible hide-div" role="alert"
+						<div class=" hide-div alert alert-dismissible" role="alert"
 						id="formResultDivClientProfiles">
   					
   						<span id="formResultClientProfiles"></span>
@@ -134,7 +134,7 @@
 <div class="form-actions clearfix"> 
 <?php 
 
-echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('clientProfiles/update&id='.$model->id,'render'=>true)),
+echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('clientProfiles/update','id'=>$model->id)),
                  array(
                      'dataType'=>'json',
                      'type'=>'post',

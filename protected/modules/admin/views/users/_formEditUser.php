@@ -161,7 +161,7 @@
 <div class="form-actions clearfix"> 
 <?php 
 
-echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id='.$model->id,'render'=>true)),
+echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update','id'=>$model->id)),
                  array(
                      'dataType'=>'json',
                      'type'=>'post',
