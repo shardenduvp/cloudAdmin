@@ -15,15 +15,73 @@ $this->menu=array(
 	array('label'=>'Manage ClientProjects', 'url'=>array('admin')),
 );
 ?>
+<center>
 
-<h1>View ClientProjects #<?php echo $model->id; ?></h1>
+<!--Company name-->
+<div class="page-header">
+<b>  <h1><?php echo $model->name;?></h1></b>
+</div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'name',
-		'description',
+<!--Details-->
+<div class="well well-lg">
+<img alt="User Pic" class="img-circle" style="max-width:100px;" src="
+  <?php 
+    if($model->clientProfiles->users->image==null)
+    { echo Yii::app()->theme->baseUrl."/img/2.jpg"; }
+    else
+    { echo $model->clientProfiles->users->image; }
+  ?>" 
+>
+<?php echo $model->clientProfiles->company_name; ?><br>
+<?php echo $model->clientProfiles->company_link; ?><br>
+<?php echo $model->clientProfiles->address1; ?><br>
+<?php $teams = $model->clientProfiles->users->teams;
+	foreach ($teams as $team) 
+{
+	echo $team->linkedin;
+}
+?>
+</div>
+
+<!--skills -->
+<b>Requirements:</b>
+<div class="well well-lg">
+<button class="btn btn-primary" type="button">
+<?php  $hasSkills = $model->clientProjectsHasSkills;
+foreach ($hasSkills as $skill) {
+echo $skill->skills->name." ";
+}
+?></button>
+</div>
+
+<!--summary-->
+<b>Project Summary:</b>
+<div class="well well-lg"><?php echo $model->summary; ?></div>
+
+<!--Reference files-->
+<b>Reference Files:</b>
+<div class="well well-lg"><?/*php echo */ ?></div>
+
+<!--Team-->
+<b>Team:</b>
+<div class="well well-lg">
+<?php $teams = $model->clientProfiles->users->teams;
+	foreach ($teams as $team) 
+	{
+	echo $team->first_name;
+	echo $team->last_name;
+	echo $team->experiance;
+	echo $team->image;
+	}
+?>
+</div>
+</center>
+
+<!--
+<?php
+/*
+$attributes=array(
+	'description',
 		'tag_line',
 		'business_problem',
 		'about_company',
@@ -53,5 +111,6 @@ $this->menu=array(
 		'current_status_id',
 		'other_current_status',
 		'state',
-	),
-)); ?>
+); */
+?>
+-->
