@@ -148,7 +148,6 @@ class ClientProjects extends CActiveRecord
 			'other_current_status' => 'Other Current Status',
 			'state' => 'State',
 			'client_name' => 'Client Name',
-			'client_compnay_name' => 'Client Company',
 			'suppliers_name' => 'Suppliers Name',
 		);
 	}
@@ -170,7 +169,6 @@ class ClientProjects extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with = array('clientProfiles.users', 'suppliersProjects.suppliers');
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
@@ -200,12 +198,66 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('other_status',$this->other_status,true);
 		$criteria->compare('current_status',$this->current_status,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('users.company_name',$this->client_company_name, true);
-		$criteria->compare('users.first_name',$this->client_name, true);
-		$criteria->compare('suppliers.name',$this->suppliers_name, true);
 		$criteria->compare('current_status_id',$this->current_status_id);
 		$criteria->compare('other_current_status',$this->other_current_status,true);
 		$criteria->compare('state',$this->state);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+
+	/**
+	 * DataProvider for Clients Project
+	 * Models Used:
+	 * - ClientProjects (this)
+	 * - ClientProfiles
+	 * - Users
+	 * - SuppliersProjects
+	 * - Suppliers
+	 * 
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
+	 */
+	public function leadSearch()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+		$criteria->with = array('clientProfiles.users', 'suppliersProjects.suppliers');
+		$criteria->addCondition('t.status <= 3');
+		$criteria->together = true;
+
+		$criteria->compare('t.id',$this->id);
+		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('t.description',$this->description,true);
+		$criteria->compare('t.unique_features',$this->unique_features,true);
+		$criteria->compare('t.min_budget',$this->min_budget,true);
+		$criteria->compare('t.max_budget',$this->max_budget,true);
+		$criteria->compare('t.custom_budget_range',$this->custom_budget_range,true);
+		$criteria->compare('t.start_date',$this->start_date,true);
+		$criteria->compare('t.project_start_preference',$this->project_start_preference,true);
+		$criteria->compare('t.preferences',$this->preferences,true);
+		$criteria->compare('t.regions',$this->regions,true);
+		$criteria->compare('t.tier',$this->tier,true);
+		$criteria->compare('t.absolute_necessary_language',$this->absolute_necessary_language,true);
+		$criteria->compare('t.good_know_language',$this->good_know_language,true);
+		$criteria->compare('t.which_one_is_inportant',$this->which_one_is_inportant,true);
+		$criteria->compare('t.questions_for_supplier',$this->questions_for_supplier,true);
+		$criteria->compare('t.requirement_change_scale',$this->requirement_change_scale,true);
+		$criteria->compare('t.add_date',$this->add_date,true);
+		$criteria->compare('t.modify_date',$this->modify_date,true);
+		$criteria->compare('t.is_call_scheduled',$this->is_call_scheduled,true);
+		$criteria->compare('t.other_status',$this->other_status,true);
+		$criteria->compare('t.current_status',$this->current_status,true);
+		$criteria->compare('t.status',$this->status);
+		$criteria->compare('users.company_name',$this->client_company_name, true);
+		$criteria->compare('users.first_name',$this->client_name, true);
+		$criteria->compare('suppliers.name',$this->suppliers_name, true);
+		$criteria->compare('t.current_status_id',$this->current_status_id);
+		$criteria->compare('t.other_current_status',$this->other_current_status,true);
+		$criteria->compare('t.state',$this->state);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -228,6 +280,78 @@ class ClientProjects extends CActiveRecord
 		    ),
 		));
 	}
+
+	/**
+	 * DataProvider for New Leads
+	 * Models Used:
+	 * - ClientProjects (this)
+	 * - ClientProfiles
+	 * - Users
+	 * - SuppliersProjects
+	 * - Suppliers
+	 * 
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
+	 */
+	public function projectSearch()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+		$criteria->with = array('clientProfiles.users', 'suppliersProjects.suppliers');
+
+		$criteria->compare('t.id',$this->id);
+		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('t.description',$this->description,true);
+		$criteria->compare('t.unique_features',$this->unique_features,true);
+		$criteria->compare('t.min_budget',$this->min_budget,true);
+		$criteria->compare('t.max_budget',$this->max_budget,true);
+		$criteria->compare('t.custom_budget_range',$this->custom_budget_range,true);
+		$criteria->compare('t.start_date',$this->start_date,true);
+		$criteria->compare('t.project_start_preference',$this->project_start_preference,true);
+		$criteria->compare('t.preferences',$this->preferences,true);
+		$criteria->compare('t.regions',$this->regions,true);
+		$criteria->compare('t.tier',$this->tier,true);
+		$criteria->compare('t.absolute_necessary_language',$this->absolute_necessary_language,true);
+		$criteria->compare('t.good_know_language',$this->good_know_language,true);
+		$criteria->compare('t.which_one_is_inportant',$this->which_one_is_inportant,true);
+		$criteria->compare('t.questions_for_supplier',$this->questions_for_supplier,true);
+		$criteria->compare('t.requirement_change_scale',$this->requirement_change_scale,true);
+		$criteria->compare('t.add_date',$this->add_date,true);
+		$criteria->compare('t.modify_date',$this->modify_date,true);
+		$criteria->compare('t.is_call_scheduled',$this->is_call_scheduled,true);
+		$criteria->compare('t.other_status',$this->other_status,true);
+		$criteria->compare('t.current_status',$this->current_status,true);
+		$criteria->compare('t.status',$this->status);
+		$criteria->compare('users.company_name',$this->client_company_name, true);
+		$criteria->compare('users.first_name',$this->client_name, true);
+		$criteria->compare('suppliers.name',$this->suppliers_name, true);
+		$criteria->compare('t.current_status_id',$this->current_status_id);
+		$criteria->compare('t.other_current_status',$this->other_current_status,true);
+		$criteria->compare('t.state',$this->state);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+		        'attributes'=>array(
+		            'client_name'=>array(
+		                'asc'=>'users.first_name',
+		                'desc'=>'users.first_name DESC',
+		            ),
+		            'client_company_name'=>array(
+		                'asc'=>'users.company_name',
+		                'desc'=>'users.company_name DESC',
+		            ),
+		            'supplier_name'=>array(
+		                'asc'=>'suppliers.name',
+		                'desc'=>'suppliers.name DESC',
+		            ),
+		            '*',
+		        ),
+		    ),
+		));
+	}
+
 
 	/**
 	 * Returns the static model of the specified AR class.

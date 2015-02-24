@@ -34,9 +34,7 @@
 						
 						<div class="alert alert-dismissible hide-div" role="alert"
 						id="formResultDivClientProfiles">
-  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  							<span aria-hidden="true">&times;</span>
-  						</button>
+  					
   						<span id="formResultClientProfiles"></span>
 						</div>
 
@@ -140,6 +138,9 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('clientProfiles/
                  array(
                      'dataType'=>'json',
                      'type'=>'post',
+                     'beforeSend'=>'function(){
+                     	$("#updateBtnClient").button("loading");
+                     }',
                      'success'=>'function(data) { 
                         if(data.status == "success" ){
                         $("#formResultDivClientProfiles").removeClass("hide-div");
@@ -147,12 +148,16 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('clientProfiles/
                         $("#formResultDivClientProfiles").addClass("alert-success");
                         $("#formResultClientProfiles").html("Updated Successfully .");
 
+                        $("#updateBtnClient").button("reset");
+
                         }
                          else{
                          $("#formResultDivClientProfiles").removeClass("hide-div");
                          $("formResultDivClientProfiles").removeClass("alert-success");
                          $("formResultDivClientProfiles").addClass("alert-warning");
 						 $("#formResultClientProfiles").html("Something Went Wrong .");
+
+						 $("#updateBtnClient").button("reset");
 
                         }       
                     }',
@@ -162,8 +167,10 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('clientProfiles/
                          $("formResultDivClientProfiles").addClass("alert-warning");
 						 $("#formResultClientProfiles").html("Something Went Wrong .");
 
+						 $("#updateBtnClient").button("reset");
+
                     }'
-                     ),array('id'=>'mybtn','class'=>'btn btn-primary pull-right')); 
+                     ),array('id'=>'updateBtnClient','class'=>'btn btn-primary pull-right','data-loading-text'=>'Updating ...','autocomplete'=>'off')); 
 ?>
 
 </div>

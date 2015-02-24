@@ -2,6 +2,10 @@
 /* @var $this ClientProjectsController */
 /* @var $model ClientProjects */
 
+$status = array(
+    '1' => 'Awaiting Approval',
+    '2' => 'Introduction Sent'
+);
 
 $this->breadcrumbs=array(
     'Client Projects'=>array('index'),
@@ -25,6 +29,13 @@ $('.search-form form').submit(function(){
     return false;
 });
 ");
+
+
+$dataProvider = new CActiveDataProvider( $model, array(
+    'criteria'=>array(
+        'condition'=>'status=1',
+    ),
+));
 
 ?>
 
@@ -52,6 +63,20 @@ $('.search-form form').submit(function(){
     </div>
 </div>
 
+<?php if(Yii::app()->user->hasFlash('successFlash')) { ?>
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Success!</strong> <?php echo Yii::app()->user->getFlash('successFlash'); ?>
+</div>
+<?php } ?>
+
+<?php if(Yii::app()->user->hasFlash('failureFlash')) { ?>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Failed!</strong> <?php echo Yii::app()->user->getFlash('failureFlash'); ?>
+</div>
+<?php } ?>
+
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
@@ -66,9 +91,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 full-width">
         <!-- BOX -->
-        <div class="box border blue">
+        <div class="box border custom-table">
 
             <div class="box-title">
                 <h4><i class="fa fa-table"></i>List of all New Leads</h4>
@@ -79,9 +104,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'datatables1',
                 'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
-                'dataProvider'=>$model->search(),
+                'dataProvider'=>$model->leadSearch(),
                 'filter'=>$model,
                 'pagerCssClass'=>'box-body',
+                'template'=>'{items}{summary}{pager}',
                 'pager'=>array(
                     'header'=>'',
                     'firstPageLabel'=>'&laquo;',
@@ -98,7 +124,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/listSuppliers&id=".$data->id))'
+                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/listSuppliers&id=".$data->id))',
                     ),
                     array(
                         'name'=>'client_company_name',
@@ -118,9 +144,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'name'=>'status',
                         'header'=>'Status', 
                         'filter'=>CHtml::activeDropDownList($model, 'status',
-                            array('0'=>'Awaiting Approval','1'=>'Introductions Sent'),
+                            $status,
                             array('empty'=>'Select Status',"")), 
-                        'value'=>'($data->status==0)?"Awaiting Approval":"Introductions Sent"',            
+                        'value'=>'($data->status==1)?"Awaiting Approval":"Introductions Sent"',            
                     ),
                     array(
                         'name'=>'suppliers_name',
@@ -134,22 +160,24 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'class'=>'CButtonColumn',
                         'header'=>'Approve',
-                        'template'=>'{approve}',
+                        'template'=>'{approve}{done}',
                         'buttons'=>array(
                             'approve'=>array(
                                 'label'=>'APPROVE PROJECT',
-                                'url'=>'Yii::app()->createUrl("#")',
+                                'url'=>'"#" . $data->id',
                                 'options'=>array(
                                     'data-toggle'=>'modal',
                                     'data-target'=>'#approve_modal',
                                 ),
+                                'visible'=>'($data->status<=1)?true:false',
                                 'click'=>"function(e) {
                                     e.preventDefault();
                                     $('#approve-data').html('');
                                     $('.ajax-loader').show();
+                                    var project_id = $(this).attr('href').substring(1);
                                     $.ajax({
                                         type:'POST',
-                                        url:$('#approve-url').val(),
+                                        url:$('#approve-url').val() + '&id=' + project_id,
                                         success:function(data) {
                                             $('.ajax-loader').hide();
                                             $('#approve-data').html(data);
@@ -159,6 +187,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                                         }
                                     });
                                 }",
+                            ),
+                            'done'=>array(
+                                'label'=>'APPROVED',
+                                'url'=>'Yii::app()->createUrl("#")',
+                                'visible'=>'($data->status<=1)?false:true',
                             ),
                         ),
                     ),

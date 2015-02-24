@@ -30,11 +30,9 @@
 						<p class="note">Fields with <span class="required">*</span> are required.</p>
 						<?php echo $form->errorSummary($model); ?>
 						
-						<div class="alert alert-dismissible hide-div" role="alert"
+						<div class="hide-div alert alert-dismissible" role="alert"
 						id="formResultDiv">
-  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  							<span aria-hidden="true">&times;</span>
-  						</button>
+  						
   						<span id="formResult"></span>
 						</div>
 
@@ -167,6 +165,9 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id
                  array(
                      'dataType'=>'json',
                      'type'=>'post',
+                     'beforeSend'=>'function(){
+                     	$("#updateBtnUser").button("loading");
+                     }',
                      'success'=>'function(data) { 
                         if(data.status == "success" ){
                         $("#formResultDiv").removeClass("hide-div");
@@ -174,12 +175,16 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id
                         $("#formResultDiv").addClass("alert-success");
                         $("#formResult").html("Updated Successfully .");
 
+                         $("#updateBtnUser").button("reset");
+
                         }
                          else{
                          $("#formResultDiv").removeClass("hide-div");
                          $("#formResultDiv").removeClass("alert-success");
                          $("#formResultDiv").addClass("alert-warning");
 						 $("#formResult").html("Something Went Wrong .");
+
+						  $("#updateBtnUser").button("reset");
 
                         }       
                     }',
@@ -189,8 +194,12 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('users/update&id
                          $("#formResultDiv").addClass("alert-warning");
 						 $("#formResult").html("Something Went Wrong .");
 
+						  $("#updateBtnUser").button("reset");
+
                     }'
-                     ),array('id'=>'btnUpdateClients','class'=>'btn btn-primary pull-right')); 
+                     ),array('id'=>'updateBtnUser','class'=>'btn btn-primary pull-right',
+                     'data-loading-text'=>'Updating ...','autocomplete'=>'off',
+                     )); 
 ?>
 
 
