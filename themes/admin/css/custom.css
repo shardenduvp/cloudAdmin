@@ -5,6 +5,10 @@
   margin: 20px auto;
 }
 
+.hide-div{
+    display:none;
+}
+
 .full-width {
     width: 100%;
     margin: 0;

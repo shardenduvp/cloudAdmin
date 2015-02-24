@@ -34,9 +34,7 @@
 						
 						<div class="alert alert-dismissible hide-div" role="alert"
 						id="formResultDivClientProfiles">
-  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  							<span aria-hidden="true">&times;</span>
-  						</button>
+  					
   						<span id="formResultClientProfiles"></span>
 						</div>
 

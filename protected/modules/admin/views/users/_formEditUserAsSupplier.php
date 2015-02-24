@@ -32,9 +32,7 @@
 							<?php echo $form->errorSummary($model); ?>
 							<div class="alert alert-dismissible hide-div" role="alert"
 						id="formResultDivSupplier">
-  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  							<span aria-hidden="true">&times;</span>
-  						</button>
+  						
   						<span id="formResultSupplier"></span>
 						</div>
 

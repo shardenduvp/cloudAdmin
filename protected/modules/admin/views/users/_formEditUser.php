@@ -30,11 +30,9 @@
 						<p class="note">Fields with <span class="required">*</span> are required.</p>
 						<?php echo $form->errorSummary($model); ?>
 						
-						<div class="alert alert-dismissible hide-div" role="alert"
+						<div class="hide-div alert alert-dismissible" role="alert"
 						id="formResultDiv">
-  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  							<span aria-hidden="true">&times;</span>
-  						</button>
+  						
   						<span id="formResult"></span>
 						</div>
 
