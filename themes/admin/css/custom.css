@@ -162,3 +162,36 @@
 .slideThree input[type=checkbox]:checked + label {
     left: 43px;
 }
+
+.fntsize 
+{
+	font-size: 30px;
+}
+
+.panelColor{
+	color:#577492
+}
+.panelBackgrnd
+{
+	background:#4A637D
+}
+.paneltext{
+	color:white;
+}
+.verticalLine {
+    border-right:2px solid #577492;
+    margin-left: 10px;
+
+}
+.align{
+	text-align: center;
+}
+.box1{
+	padding:10px;
+	width: 40px;
+	height: 40px;
+}
+.boxcolor{
+	background:#99CF99;
+	color:white;
+}

@@ -1,3 +1,5 @@
+
+
 <?php
 /* @var $this UsersController */
 /* @var $model Users */
@@ -8,6 +10,7 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 */
+
 
 /*
 $this->menu=array(
@@ -108,11 +111,24 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 					'dataProvider'=>$model->search(),
 					'filter'=>$model,
-
+					'pagerCssClass'=>'box-body',
+                	'pager'=>array(
+                    'header'=>'',
+                    'firstPageLabel'=>'&laquo;',
+                    'lastPageLabel'=>'&raquo;',
+                    'prevPageLabel'=>'<',
+                    'nextPageLabel'=>'>',
+                    'hiddenPageCssClass'=>'disabled',
+                    'selectedPageCssClass'=>'active',
+                    'htmlOptions'=>array(
+                        'class'=>'pagination',
+                    )
+                ),
 					'columns'=>array(
 						array('name'=>'id','htmlOptions'=>array('class'=>'center')),
 						'last_name',
 						'first_name',
+						 
 						array(
             				'name'=>'username',
             				'header'=>'Username',
@@ -135,17 +151,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                       		array('empty'=>'Select Status',"")), 
             				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
         				),
-						/*
-						'username',
-						'phone_number',
-						'password',
-						'linkedin',
-						'role',
-						'add_date',
-						'last_login',
-						'status',
-						'role_id',
-						*/
 						array(
 							'class'=>'CButtonColumn',
 							'header'=>'Operations',
@@ -161,9 +166,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                                                 ),
                        						 )
 						)
-					)
 				)
-			);  
+			));  
 ?>
 			</div>
 		</div>

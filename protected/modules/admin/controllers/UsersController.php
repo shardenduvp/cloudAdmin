@@ -43,8 +43,16 @@ class UsersController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		$model=$this->loadModel($id);
+		
+		$modelClientProfile=$model->clientProfiles;
+		$modelSupplier=$model->suppliers;	
+
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
+			'modelClientProfile'=>$modelClientProfile,
+			'modelSupplier'=>$modelSupplier
 		));
 	}
 
@@ -55,20 +63,27 @@ class UsersController extends Controller
 	public function actionCreate()
 	{
 		$model=new Users;
-
+		$model_client=new ClientProfiles;
+		$model_supp=new Suppliers;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		if($_POST)
+			{
+				$model->attributes=$_POST['Users'];
+				$model->password		=	base64_encode($model->password);
+				// $model1->password		=	base64_encode($model1->password);
+				// $model2->password		=	base64_encode($model2->password);
+				if($model->save()) {
+					$model_client->users_id=$model->id;
+					$model_supp->users_id=$model->id;
+					if(($model_client->save())&&($model_client->save()))
+					$this->redirect(array('view','id'=>$model->id));
+				}
 
-		if(isset($_POST['Users']))
-		{
-			$model->attributes=$_POST['Users'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+			}
+		
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		$this->render('create',array('model'=>$model,));
 	}
 
 	/**
@@ -80,35 +95,31 @@ class UsersController extends Controller
 	{
 		$model=$this->loadModel($id);
 
+		$modelClientProfiles=$model->clientProfiles;
+		$modelSuppliers=$model->suppliers;
+
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Users']))
 		{
 			$model->attributes=$_POST['Users'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->password=base64_encode($model->password);
+			if($model->save()){
+				 echo CJSON::encode(array(
+                                  'status'=>'success'
+                             ));
+				 Yii::app()->end();
+				//$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
-		if($model->role_id==2){
-			$modelClientProfiles=$model->clientProfiles;
+			
 			$this->render('update',array(
 			'model'=>$model,
-			'modelClientProfiles'=>$modelClientProfiles
-			));
-		}
-		else if($model->role_id==3){
-			$modelSuppliers=$model->suppliers;
-			$this->render('update',array(
-			'model'=>$model,
+			'modelClientProfiles'=>$modelClientProfiles,
 			'modelSuppliers'=>$modelSuppliers
 			));
-		}
-		else{
-			$this->render('update',array(
-			'model'=>$model
-			));
-		}
 		
 		
 	}
@@ -145,12 +156,20 @@ class UsersController extends Controller
 	{
 		$model=new Users('search');
 		$model->unsetAttributes();  // clear any default values
+
+		 if (isset($_GET['pageSize'])) {
+            Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
+            unset($_GET['pageSize']);
+         }
+         
 		if(isset($_GET['Users']))
 			$model->attributes=$_GET['Users'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+
+
 	}
 
 	/**

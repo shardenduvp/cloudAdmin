@@ -124,7 +124,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view&id=".$data->id))',
+                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/listSuppliers&id=".$data->id))',
                     ),
                     array(
                         'name'=>'client_company_name',
