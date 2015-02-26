@@ -18,10 +18,6 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-    $('.search-form').toggle();
-    return false;
-});
 $('.search-form form').submit(function(){
     $('#datatables1').yiiGridView('update', {
         data: $(this).serialize()
@@ -29,13 +25,6 @@ $('.search-form form').submit(function(){
     return false;
 });
 ");
-
-
-$dataProvider = new CActiveDataProvider( $model, array(
-    'criteria'=>array(
-        'condition'=>'status=1',
-    ),
-));
 
 ?>
 
@@ -81,8 +70,7 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
+<div class="search-form">
 <?php $this->renderPartial('_search',array(
     'model'=>$model,
 )); ?>
@@ -145,7 +133,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'filter'=>CHtml::activeDropDownList($model, 'status',
                             $status,
                             array('empty'=>'Select Status',"")), 
-                        'value'=>'($data->status==1)?"Awaiting Approval":"Introductions Sent"',            
+                        'value'=>'($data->status<=1)?"Awaiting Approval":"Introductions Sent"',            
                     ),
                     array(
                         'name'=>'suppliers_name',

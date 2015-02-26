@@ -13,6 +13,10 @@
     display:none;
 }
 
+.tr-align {
+    text-align: right;
+}
+
 .full-width {
     width: 100%;
     margin: 0;
@@ -29,6 +33,10 @@
 
 .custom-table {
     margin-top: 20px;
+}
+
+.box.border.mb0 {
+    margin-bottom: 0;
 }
 
 .box.border.custom-table > .box-title {
@@ -212,6 +220,11 @@
 	color:white;
 }
 
+
 .box-scroll-horizontal{
     overflow-x:scroll;
+}
+.search-button input{
+    display: block;
+    width: 100%;
 }

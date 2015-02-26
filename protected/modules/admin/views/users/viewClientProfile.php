@@ -49,58 +49,72 @@
                     <tr>
                       <td><b>Foundation Year</b></td>
                       <td><?php echo $var->foundation_year; ?></td> 
-                    </tr> 
-                    <tr>
-                      <td><b>Description</b></td>
-                      <td><?php echo $var->description; ?></td> 
-                    </tr> 
+                    </tr>  
                     <tr>
                       <td><b>Add Date</b></td>
                       <td><?php echo $var->add_date; ?></td> 
                     </tr> 
-                    <?php 
-                    
-                    if(!empty($var->clientProjects)){
-                      $count = 1;
-                      foreach($var->clientProjects as $project){?> 
-                        <tr>
-                          <td><b><?php echo "Project #".$count." Name"?></b></td>
-                          <td><?php echo CHtml::link($project->name, array('/admin/clientProjects/view','id'=>$project->id), array('class'=>'',));?>
-                          </td> 
-                        </tr> 
-                        <?php $count++; 
-                      }
-                    }
-                    if(!empty($var->clientMilestones)){
-                      $count = 1;
-                      foreach($var->clientMilestones as $milestone){?> 
-                        <tr>
-                          <td><b><?php echo "Milestone #".$count." Name"?></b></td>
-                          <td><?php echo $milestone->name; ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b><?php echo "Milestone #".$count." Payment"?></b></td>
-                          <td><?php echo $milestone->payment; ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b><?php echo "Milestone #".$count." Payment Date"?></b></td>
-                          <td><?php echo $milestone->payment_date; ?></td> 
-                        </tr>   
-                        <tr>
-                          <td><b><?php echo "Milestone #".$count." Add Date"?></b></td>
-                          <td><?php echo $milestone->add_date; ?></td> 
-                        </tr> 
-                        <?php $count++; 
-                      }
-                    }?>
                   </tbody>
                 </table>
               </div>
             </div>
-          </div>    
+            <?php if(!empty($var->clientProjects)){
+                    $count = 1;
+                        foreach ($var->clientProjects as $project) {?>
+            <div class="panel panel-info"> 
+            <div class="panel-heading ">
+              <h3 class="panel-title"><b>Project #<?php echo $count;?></b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class=" col-md-9 col-lg-12 "> 
+                  <div class="box">
+                    <table class="table table-user-information">
+                      <tbody>   
+                        <tr>
+                          <td><b>Name</b></td>
+                          <td><?php echo CHtml::link($project->name,Yii::app()->createUrl('/admin/clientProjects/view',array('id'=>$project->id)));  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Tier</b></td>
+                          <td><?php echo $project->tier;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Maximum Budget</b></td>
+                          <td><?php echo $project->max_budget;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Minimum Budget</b></td>
+                          <td><?php echo $project->min_budget;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Add Date</b></td>
+                          <td><?php echo $project->add_date;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Last Update:</b></td>
+                          <td><?php echo $project->modify_date;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>State</b></td>
+                          <td><?php echo $project->state;  ?></td> 
+                        </tr>   
+                      </tbody>
+                    </table>
+                  </div>
+                  <?php
+                    $count++;
+                    }
+                  }
+                  ?>
+                </div>
+              </div>
+            </div> 
+          </div>
         </div>
       </div>
     </div>
+  </div>
 <?php 
   }
   else

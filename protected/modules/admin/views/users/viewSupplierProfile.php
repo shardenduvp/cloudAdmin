@@ -19,10 +19,6 @@
                       <td><?php echo $var->name; ?></td> 
                     </tr> 
                     <tr>
-                      <td><b>Cover</b></td>
-                      <td><?php echo $var->cover; ?></td> 
-                    </tr> 
-                    <tr>
                       <td><b>Website</b></td>
                       <td><?php echo $var->website; ?></td> 
                     </tr> 
@@ -33,11 +29,7 @@
                     <tr>
                       <td><b>Email</b></td>
                       <td><?php echo $var->email; ?></td> 
-                    </tr>  
-                    <tr>
-                      <td><b>About Company</b></td>
-                      <td><?php echo $var->about_company; ?></td> 
-                    </tr> 
+                    </tr>   
                     <tr>
                       <td><b>Short Desc</b></td>
                       <td><?php echo $var->short_description; ?></td> 
@@ -71,17 +63,9 @@
                       <td><?php echo $var->total_available_employee; ?></td> 
                     </tr>
                     <tr>
-                      <td><b>Consultation Description</b></td>
-                      <td><?php echo $var->consultation_description; ?></td> 
-                    </tr> 
-                    <tr>
                       <td><b>Standard Pitch</b></td>
                       <td><?php echo $var->standard_pitch; ?></td> 
                     </tr>     
-                    <tr>
-                      <td><b>Standard Service Agreement</b></td>
-                      <td><?php echo $var->standard_service_agreement; ?></td> 
-                    </tr> 
                     <tr>
                       <td><b>Profile Status</b></td>
                       <td><?php echo $var->profile_status; ?></td> 

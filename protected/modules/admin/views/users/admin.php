@@ -72,21 +72,20 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					'id'=>'datatables1',
 					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 					'dataProvider'=>$model->search(),
-					'filter'=>$model,
-					'template'=>'{items}{summary}{pager}',
+					'filter'=>$model,'template'=>'{items}{summary}{pager}',
 					'pagerCssClass'=>'box-body',
                 	'pager'=>array(
-                    'header'=>'',
-                    'firstPageLabel'=>'&laquo;',
-                    'lastPageLabel'=>'&raquo;',
-                    'prevPageLabel'=>'<',
-                    'nextPageLabel'=>'>',
-                    'hiddenPageCssClass'=>'disabled',
-                    'selectedPageCssClass'=>'active',
-                    'htmlOptions'=>array(
-                        'class'=>'pagination',
-                    )
-                ),
+                        'header'=>'',
+                        'firstPageLabel'=>'&laquo;',
+                        'lastPageLabel'=>'&raquo;',
+                        'prevPageLabel'=>'<',
+                        'nextPageLabel'=>'>',
+                        'hiddenPageCssClass'=>'disabled',
+                        'selectedPageCssClass'=>'active',
+                        'htmlOptions'=>array(
+                            'class'=>'pagination',
+                        )
+                    ),
 					'columns'=>array(
 						array('name'=>'id','htmlOptions'=>array('class'=>'center')),
 						'last_name',

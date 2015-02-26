@@ -40,8 +40,8 @@
  */
 class SuppliersProjects extends CActiveRecord
 {
-	public $supplier_search;
-	public $client_search;
+	public $supplier_name;
+	public $project_name;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -64,7 +64,8 @@ class SuppliersProjects extends CActiveRecord
 			array('pitch, about_project, why_you, comments, start_date, note, add_date, default_q1_ans, default_q2_ans, default_q3_ans, default_q4_ans, default_q5_ans, default_q6_ans', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, pitch, about_project, why_you, estimated_cost, estimated_time, trial_period, chat_room_id, comments, min_price, max_price, time_material, billing_schedule, start_date, note, is_escrow, others, add_date, status, client_projects_id, suppliers_id, default_q1_ans, default_q2_ans, default_q3_ans, default_q4_ans, default_q5_ans, default_q6_ans, supplier_search, client_search', 'safe', 'on'=>'search'),
+			array('id, pitch, about_project, why_you, estimated_cost, estimated_time, trial_period, chat_room_id, comments, min_price, max_price, time_material, billing_schedule, start_date, note, is_escrow, others, add_date, status, client_projects_id, suppliers_id, default_q1_ans, default_q2_ans, default_q3_ans, default_q4_ans, default_q5_ans, default_q6_ans', 'safe', 'on'=>'search'),
+			array('id, pitch, about_project, why_you, estimated_cost, estimated_time, trial_period, chat_room_id, comments, min_price, max_price, time_material, billing_schedule, start_date, note, is_escrow, others, add_date, status, client_projects_id, suppliers_id, default_q1_ans, default_q2_ans, default_q3_ans, default_q4_ans, default_q5_ans, default_q6_ans, supplier_name, project_name', 'safe', 'on'=>'adminSearch'),
 		);
 	}
 
@@ -116,8 +117,8 @@ class SuppliersProjects extends CActiveRecord
 			'default_q4_ans' => 'Default Q4 Ans',
 			'default_q5_ans' => 'Default Q5 Ans',
 			'default_q6_ans' => 'Default Q6 Ans',
-			'supplier_search' => 'Suppliers',
-			'client_search' => 'clientProjects',
+			'supplier_name' => 'Supplier Name',
+			'project_name' => 'Project Name',
 		);
 	}
 
@@ -138,8 +139,6 @@ class SuppliersProjects extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with = array('suppliers');
-		$criteria->with = array('clientProjects');
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('pitch',$this->pitch,true);
@@ -160,8 +159,6 @@ class SuppliersProjects extends CActiveRecord
 		$criteria->compare('others',$this->others,true);
 		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('clientProjects.name',$this->client_search,true);
-		$criteria->compare('suppliers.name',$this->supplier_search,true);
 		$criteria->compare('default_q1_ans',$this->default_q1_ans,true);
 		$criteria->compare('default_q2_ans',$this->default_q2_ans,true);
 		$criteria->compare('default_q3_ans',$this->default_q3_ans,true);
@@ -171,9 +168,57 @@ class SuppliersProjects extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+		));
+	}
+
+	public function adminSearch()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('t.id',$this->id);
+		$criteria->compare('t.pitch',$this->pitch,true);
+		$criteria->compare('t.about_project',$this->about_project,true);
+		$criteria->compare('t.why_you',$this->why_you,true);
+		$criteria->compare('t.estimated_cost',$this->estimated_cost,true);
+		$criteria->compare('t.estimated_time',$this->estimated_time,true);
+		$criteria->compare('t.trial_period',$this->trial_period,true);
+		$criteria->compare('t.chat_room_id',$this->chat_room_id);
+		$criteria->compare('t.comments',$this->comments,true);
+		$criteria->compare('t.min_price',$this->min_price);
+		$criteria->compare('t.max_price',$this->max_price);
+		$criteria->compare('t.time_material',$this->time_material,true);
+		$criteria->compare('t.billing_schedule',$this->billing_schedule,true);
+		$criteria->compare('t.start_date',$this->start_date,true);
+		$criteria->compare('t.note',$this->note,true);
+		$criteria->compare('t.is_escrow',$this->is_escrow);
+		$criteria->compare('t.others',$this->others,true);
+		$criteria->compare('t.add_date',$this->add_date,true);
+		$criteria->compare('t.status',$this->status);
+		$criteria->compare('t.default_q1_ans',$this->default_q1_ans,true);
+		$criteria->compare('t.default_q2_ans',$this->default_q2_ans,true);
+		$criteria->compare('t.default_q3_ans',$this->default_q3_ans,true);
+		$criteria->compare('t.default_q4_ans',$this->default_q4_ans,true);
+		$criteria->compare('t.default_q5_ans',$this->default_q5_ans,true);
+		$criteria->compare('t.default_q6_ans',$this->default_q6_ans,true);
+
+		$criteria->compare('clientProjects.name', $this->project_name, true);
+		$criteria->compare('suppliers.name', $this->supplier_name, true);
+		$criteria->with = array(
+		    'clientProjects'=>array('select'=>'clientProjects.name'),
+		    'suppliers'=>array('select'=>'suppliers.name'),
+		);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
 			'sort'=>array(
 		        'attributes'=>array(
-		            'supplier_search'=>array(
+		            'project_name'=>array(
+		                'asc'=>'clientProjects.name',
+		                'desc'=>'clientProjects.name DESC',
+		            ),
+		            'supplier_name'=>array(
 		                'asc'=>'suppliers.name',
 		                'desc'=>'suppliers.name DESC',
 		            ),
@@ -181,19 +226,8 @@ class SuppliersProjects extends CActiveRecord
 		        ),
 		    ),
 		));
-		return new CActiveDataProvider($this, array(
-		'criteria'=>$criteria,
-		'sort'=>array(
-		        'attributes'=>array(
-		            'client_search'=>array(
-		                'asc'=>'clientProjects.name',
-		                'desc'=>'clientProjects.name DESC',
-		            ),
-		            '*',
-		        ),
-		    ),
-		));
 	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
