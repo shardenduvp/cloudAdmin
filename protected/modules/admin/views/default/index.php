@@ -30,13 +30,6 @@ $('.search-form form').submit(function(){
 });
 ");
 
-
-$dataProvider = new CActiveDataProvider( $model, array(
-    'criteria'=>array(
-        'condition'=>'status=1',
-    ),
-));
-
 ?>
 
 
