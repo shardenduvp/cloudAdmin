@@ -72,8 +72,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					'id'=>'datatables1',
 					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 					'dataProvider'=>$model->search(),
-					'filter'=>$model,
-                    'template'=>'{items}{summary}{pager}',
+					'filter'=>$model,'template'=>'{items}{summary}{pager}',
 					'pagerCssClass'=>'box-body',
                 	'pager'=>array(
                         'header'=>'',

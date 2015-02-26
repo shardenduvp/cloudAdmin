@@ -220,6 +220,10 @@
 	color:white;
 }
 
+
+.box-scroll-horizontal{
+    overflow-x:scroll;
+}
 .search-button input{
     display: block;
     width: 100%;
