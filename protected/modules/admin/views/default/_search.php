@@ -15,7 +15,7 @@
 		<div class="col-md-12">
 			<div class="box border inverse mb0">
 				<div class="box-title">
-					<h4><i class="fa fa-bars"></i>Advanced Search</h4>
+					<h4><i class="fa fa-search"></i>Advanced Search</h4>
 					<div class="tools hidden-xs">
 						<a href="javascript:;" class="expand">
 							<i class="fa fa-chevron-down"></i>

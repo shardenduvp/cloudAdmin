@@ -13,6 +13,10 @@
     display:none;
 }
 
+.tr-align {
+    text-align: right;
+}
+
 .full-width {
     width: 100%;
     margin: 0;
@@ -214,4 +218,9 @@
 .boxcolor{
 	background:#99CF99;
 	color:white;
+}
+
+.search-button input{
+    display: block;
+    width: 100%;
 }
