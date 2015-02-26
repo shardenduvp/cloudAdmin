@@ -1,3 +1,12 @@
+<div class="modal-dialog">
+        <div class="modal-content">
+            <!-- AJAX Loader -->
+            <div class="ajax-loader loader-hidden"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loaders/12.gif"></div>
+            
+            <div id="approve-data-ajax">
+
+              <!-- Starts here -->
+
 <div id="approve-popup">
 
     <?php $form=$this->beginWidget('CActiveForm', array(
@@ -273,4 +282,11 @@
       ?>
     </div>
     <?php $this->endWidget(); ?>
+</div>
+
+
+<!-- Ends Here -->
+</div>
+        </div>
+    </div>
 </div>
