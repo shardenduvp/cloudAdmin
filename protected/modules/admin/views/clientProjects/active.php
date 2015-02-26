@@ -51,9 +51,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 full-width">
         <!-- BOX -->
-        <div class="box border blue">
+        <div class="box border custom-table">
 
             <div class="box-title">
                 <h4><i class="fa fa-table"></i>List of all Active Projects</h4>
@@ -66,6 +66,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                 'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
                 'dataProvider'=>$model->projectSearch(),
                 'filter'=>$model,
+                'template'=>'{items}{summary}{pager}',
                 'pagerCssClass'=>'box-body',
                 'pager'=>array(
                     'header'=>'',

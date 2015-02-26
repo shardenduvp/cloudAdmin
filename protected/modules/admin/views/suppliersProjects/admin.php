@@ -50,9 +50,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 full-width">
 		<!-- BOX -->
-		<div class="box border blue">
+		<div class="box border custom-table">
 			<div class="box-title">
 				<h4><i class="fa fa-table"></i>List of all Suppliers Projects</h4>
 			</div>
