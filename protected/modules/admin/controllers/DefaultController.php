@@ -29,7 +29,7 @@ class DefaultController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform actions
-                'actions'=>array('index','view','create','update','admin','delete'),
+                'actions'=>array('index','view','create','update','admin','delete', 'getApproveView', 'approveProject'),
                 'users'=>array('@'),
             ),
             array('deny',  // deny all users
@@ -64,7 +64,6 @@ class DefaultController extends Controller
         if(!is_null($id) && isset($_POST['Suppliers'])){
 
             $supplier_model = SuppliersProjects::model();
-
             // begin transaction
             $transaction=$supplier_model->dbConnection->beginTransaction();
 

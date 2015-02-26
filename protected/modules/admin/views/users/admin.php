@@ -55,9 +55,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 full-width">
 		<!-- BOX -->
-		<div class="box border inverse">
+		<div class="box border custom-table">
 
 			<div class="box-title">
 				<h4><i class="fa fa-table"></i>List of all users</h4>
@@ -73,19 +73,20 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 					'dataProvider'=>$model->search(),
 					'filter'=>$model,
+                    'template'=>'{items}{summary}{pager}',
 					'pagerCssClass'=>'box-body',
                 	'pager'=>array(
-                    'header'=>'',
-                    'firstPageLabel'=>'&laquo;',
-                    'lastPageLabel'=>'&raquo;',
-                    'prevPageLabel'=>'<',
-                    'nextPageLabel'=>'>',
-                    'hiddenPageCssClass'=>'disabled',
-                    'selectedPageCssClass'=>'active',
-                    'htmlOptions'=>array(
-                        'class'=>'pagination',
-                    )
-                ),
+                        'header'=>'',
+                        'firstPageLabel'=>'&laquo;',
+                        'lastPageLabel'=>'&raquo;',
+                        'prevPageLabel'=>'<',
+                        'nextPageLabel'=>'>',
+                        'hiddenPageCssClass'=>'disabled',
+                        'selectedPageCssClass'=>'active',
+                        'htmlOptions'=>array(
+                            'class'=>'pagination',
+                        )
+                    ),
 					'columns'=>array(
 						array('name'=>'id','htmlOptions'=>array('class'=>'center')),
 						'last_name',
