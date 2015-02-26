@@ -224,3 +224,16 @@
     display: block;
     width: 100%;
 }
+
+.border-custom {
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    background: #fff;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.border-custom .box-title{
+    padding: 10px;
+    padding-top:0;
+}

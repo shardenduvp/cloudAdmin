@@ -13,16 +13,11 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<div class="box border inverse mb0">
-				<div class="box-title">
-					<h4><i class="fa fa-search"></i>Advanced Search</h4>
-					<div class="tools hidden-xs">
-						<a href="javascript:;" class="expand">
-							<i class="fa fa-chevron-down"></i>
-						</a>
-					</div>
-				</div>
-				<div class="box-body big" style="display:none;">
+			<div class="box border-custom inverse mb0">
+				
+				<div class="box-title"><h3>Advance Search</h3></div>
+
+				<div class="box-body big">
 				<?php echo $form->errorSummary($model); ?>
 
 
@@ -203,5 +198,6 @@
 			<?php $this->endWidget(); ?>
 		</div>
 	</div>
+</div>
 </div>
 </div><!-- search-form -->
