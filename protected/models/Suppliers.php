@@ -77,7 +77,7 @@ class Suppliers extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-
+	
 	public function tableName()
 	{
 		return 'suppliers';
@@ -213,6 +213,7 @@ class Suppliers extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+		
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('first_name',$this->first_name,true);

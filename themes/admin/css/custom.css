@@ -211,3 +211,7 @@
 	background:#99CF99;
 	color:white;
 }
+
+.box-scroll-horizontal{
+    overflow-x:scroll;
+}

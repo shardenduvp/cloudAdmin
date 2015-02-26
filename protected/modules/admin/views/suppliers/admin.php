@@ -26,7 +26,14 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Suppliers</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+         	<h1>Manage Suppliers</h1>
+       	</div>
+    </div>
+</div>
+
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -40,22 +47,35 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 full-width">
 		<!-- BOX -->
-		<div class="box border blue">
+		<div class="box border custom-table">
 
 			<div class="box-title">
 				<h4><i class="fa fa-table"></i>List of all Suppliers</h4>
 			</div>
 									
 
-			<div class="box-body">
+			<div class="box-body box-scroll-horizontal" >
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	//'id'=>'suppliers-grid',
 	'id'=>'datatables1',
 	'itemsCssClass'=>'datatable table table-striped table-bordered table-hover ',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>'{items}{summary}{pager}',
+                	'pager'=>array(
+                    'header'=>'',
+                    'firstPageLabel'=>'&laquo;',
+                    'lastPageLabel'=>'&raquo;',
+                    'prevPageLabel'=>'<',
+                    'nextPageLabel'=>'>',
+                    'hiddenPageCssClass'=>'disabled',
+                    'selectedPageCssClass'=>'active',
+                    'htmlOptions'=>array(
+                        'class'=>'pagination',
+                    )
+                ),
 	'columns'=>array(
 		'id',
 		'name',
@@ -71,15 +91,13 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		array(
 			'header'=>'Skills',
 			'type'=>'raw',
-			'value'=>array($this,'fetchSkills')
-							
+			'value'=>array($this,'fetchSkills'),
 		),
 		'profile_status',
 		array('name'=>'modification_date',
 				'header'=>'Updated On'),
 		'per_hour_rate',
 		'project_size',
-		'users_id',
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>'Operations',
