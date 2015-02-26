@@ -69,12 +69,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			array(
 				'name'=>'supplier_search',
 				'type'=>'html',
-				'value'=>'CHtml::link($data->suppliers->name, array("/admin/suppliers/view&id=".$data->suppliers->id))',
+				'value'=>'CHtml::link($data->suppliers->name, array("/admin/suppliers/view", "id"=>$data->suppliers->id))',
 				 ),
 			array(
 				'name'=>'client_projects_id',
 				'type'=>'html',
-				'value'=>'CHtml::link($data->clientProjects->name, array("/admin/suppliers/view&id=".$data->clientProjects->id))',
+				'value'=>'CHtml::link($data->clientProjects->name, array("/admin/suppliers/view", "id"=>$data->clientProjects->id))',
 				 ),	
 			array(
 				'name'=>'pitch',

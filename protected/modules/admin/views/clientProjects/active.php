@@ -19,7 +19,7 @@ $('.search-button').click(function(){
     return false;
 });
 $('.search-form form').submit(function(){
-    $('#client-projects-grid').yiiGridView('update', {
+    $('#datatables1').yiiGridView('update', {
         data: $(this).serialize()
     });
     return false;
@@ -64,7 +64,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'datatables1',
                 'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
-                'dataProvider'=>$model->search(),
+                'dataProvider'=>$model->projectSearch(),
                 'filter'=>$model,
                 'pagerCssClass'=>'box-body',
                 'pager'=>array(
@@ -83,22 +83,22 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view&id=".$data->id))'
+                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view", "id"=>$data->id))'
                     ),
                     array(
                         'name'=>'client_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/clientProfiles/view&id=".$data->clientProfiles->id))',
+                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->users->id))',
                     ),
                     array(
                         'name'=>'start_date',
                         'value'=>'(empty($data->start_date))?"Not Provided":date("jS M Y", strtotime($data->start_date))',
-                    ),/*
+                    ),
                     array(
-                        'name'=>'supplier_search',
+                        'name'=>'suppliers_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->suppliers->name, array("/admin/suppliers/view&id=".$data->suppliers->id))',
-                    ),*/
+                        'value'=>'$data->getSuppliers($data)',
+                    ),
                     array(
                         'name'=>'modify_date',
                         'value'=>'(empty($data->modify_date)) ? "Not Provided" : $data->modify_date',
@@ -107,9 +107,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'name'=>'status',
                         'header'=>'Status', 
                         'filter'=>CHtml::activeDropDownList($model, 'status',
-                            array('1'=>"Verified",'0'=>'Not Verified'),
+                            array('1'=>"Awaiting Approval",'2'=>'Information Sent'),
                             array('empty'=>'Select Status',"")), 
-                        'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+                        'value'=>'($data->status==1)?"Awaiting Approval":"Information Sent"',            
                     ),
                     array(
                         'class'=>'CButtonColumn',

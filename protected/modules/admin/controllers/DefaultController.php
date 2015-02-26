@@ -9,6 +9,35 @@ class DefaultController extends Controller
      */
     public $layout='//layouts/column2';
 
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
+
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array(
+            array('allow', // allow authenticated user to perform actions
+                'actions'=>array('index','view','create','update','admin','delete'),
+                'users'=>array('@'),
+            ),
+            array('deny',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
+    }
+
   	public function actionIndex()
   	{
         $model=new ClientProjects('leadSearch');
@@ -67,27 +96,5 @@ class DefaultController extends Controller
             }
         }
         $this->redirect(array('/admin/'));
-    }
-
-    /**
-     * Custom methods for cell value in CGridView 
-     * @param $data and $row for which the method is called 
-     */
-    public function getSuppliers($data, $row)
-    {
-        $suppliers_projects = $data->suppliersProjects;
-        if(empty($suppliers_projects)) return "None";
-
-        $value = "";
-        $suppliers = array();
-        foreach ($suppliers_projects as $suppliers_project) {
-            array_push($suppliers, $suppliers_project->suppliers);
-        }
-        foreach($suppliers as $supplier) {
-            $value .= CHtml::link(ucwords($supplier->name), array("/admin/users/view&id=" . $supplier->users_id), array(
-                                  'class'=>'label label-primary',
-                            )) . "  ";
-        }
-        return rtrim($value, ", ");
     }
 }

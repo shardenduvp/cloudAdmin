@@ -296,6 +296,7 @@
     
     <!-- CUSTOM SCRIPT -->
     <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>
+    <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/custom.js"></script>
     <script>
         jQuery(document).ready(function() {
             App.setPage("widgets_box");  //Set current page

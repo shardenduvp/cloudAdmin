@@ -23,7 +23,7 @@ $('.search-button').click(function(){
     return false;
 });
 $('.search-form form').submit(function(){
-    $('#client-projects-grid').yiiGridView('update', {
+    $('#datatables1').yiiGridView('update', {
         data: $(this).serialize()
     });
     return false;
@@ -46,10 +46,9 @@ $dataProvider = new CActiveDataProvider( $model, array(
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- AJAX Loader -->
-            <input type="hidden" id="approve-url" value="<?php echo Yii::app()->createUrl('/admin/default/getApproveView'); ?>">
-            <div class="ajax-loader"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loaders/12.gif"></div>
+            <div class="ajax-loader loader-hidden"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loaders/12.gif"></div>
             
-            <div id="approve-data"></div>
+            <div id="approve-data-ajax"></div>
         </div>
     </div>
 </div>
@@ -124,17 +123,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/listSuppliers&id=".$data->id))',
+                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/listSuppliers", "id"=>$data->id))',
                     ),
                     array(
                         'name'=>'client_company_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->clientProfiles->users->company_name, array("/admin/clientProfiles/view&id=".$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link($data->clientProfiles->users->company_name, array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->users->id))',
                     ),
                     array(
                         'name'=>'client_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/clientProfiles/view&id=".$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->users->id))',
                     ),
                     array(
                         'name'=>'start_date',
@@ -151,7 +150,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'suppliers_name',
                         'type'=>'html',
-                        'value'=>array($this, 'getSuppliers'),
+                        'value'=>'$data->getSuppliers($data)',
                     ),
                     array(
                         'name'=>'modify_date',
@@ -164,29 +163,27 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'buttons'=>array(
                             'approve'=>array(
                                 'label'=>'APPROVE PROJECT',
-                                'url'=>'"#" . $data->id',
+                                'url'=>'Yii::app()->createUrl("/admin/default/getApproveView", array("id"=>$data->id))',
                                 'options'=>array(
                                     'data-toggle'=>'modal',
                                     'data-target'=>'#approve_modal',
                                 ),
                                 'visible'=>'($data->status<=1)?true:false',
-                                'click'=>"function(e) {
-                                    e.preventDefault();
-                                    $('#approve-data').html('');
-                                    $('.ajax-loader').show();
-                                    var project_id = $(this).attr('href').substring(1);
+                                'click'=>'function(e) {
+                                    $("#approve-data-ajax").empty();
+                                    $(".ajax-loader").show();
                                     $.ajax({
-                                        type:'POST',
-                                        url:$('#approve-url').val() + '&id=' + project_id,
+                                        type:"POST",
+                                        url:$(this).attr("href"),
                                         success:function(data) {
-                                            $('.ajax-loader').hide();
-                                            $('#approve-data').html(data);
+                                            $(".ajax-loader").hide();
+                                            $("#approve_modal").html(data);
                                         },
                                         error:function() {
-                                            $('#approve-data').html('Error in connection.');
+                                            $("#approve_modal").html("Error in connection.");
                                         }
                                     });
-                                }",
+                                }',
                             ),
                             'done'=>array(
                                 'label'=>'APPROVED',
