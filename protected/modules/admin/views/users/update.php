@@ -44,7 +44,7 @@ $this->menu=array(
 									</ul>
 									BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">User Profile</h3>
+										<h3 class="content-title pull-left">Update Profiles</h3>
 									</div>
 									<div class="description">User Profile, Skills, Activities and other Statistics</div>
 								</div>
@@ -64,8 +64,11 @@ $this->menu=array(
 											<ul class="nav nav-tabs">
 											   
 											   <li class="active"><a href="#pro_edit_user" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile">User Profile</span></a></li>
-											   <li ><a href="#pro_edit_client" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile">Client Profile</span></a></li>
-											    <li ><a href="#pro_edit_supplier" data-toggle="tab"><i class="fa fa-edit"></i> <span class="hidden-inline-mobile">Supplier Profile</span></a></li>
+											 <?php  if(!empty($modelClientProfiles)){ ?>  
+											 <li ><a href="#pro_edit_client" data-toggle="tab"><i class="fa fa-users"></i> <span class="hidden-inline-mobile">Client Profile</span></a></li>
+											 <?php }if(!empty($modelSuppliers)){  ?>
+											    <li ><a href="#pro_edit_supplier" data-toggle="tab"><i class="fa fa-suitcase"></i> <span class="hidden-inline-mobile">Supplier Profile</span></a></li>
+											  <?php }?> 
 											</ul>
 											<div class="tab-content">
 											   
@@ -79,7 +82,7 @@ $this->menu=array(
 											   <!-- EDIT ACCOUNT -->
 											   <div class="tab-pane fade in" id="pro_edit_client">
 											   <?php
-												   foreach($modelClientProfiles as $mil){
+											   foreach($modelClientProfiles as $mil){
 												   		$this->renderPartial('_formEditUserProfile', array('model'=>$mil)); 
 												   		break;
 											   		}
