@@ -30,13 +30,6 @@ $('.search-form form').submit(function(){
 });
 ");
 
-
-$dataProvider = new CActiveDataProvider( $model, array(
-    'criteria'=>array(
-        'condition'=>'status=1',
-    ),
-));
-
 ?>
 
 
@@ -145,7 +138,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'filter'=>CHtml::activeDropDownList($model, 'status',
                             $status,
                             array('empty'=>'Select Status',"")), 
-                        'value'=>'($data->status==1)?"Awaiting Approval":"Introductions Sent"',            
+                        'value'=>'($data->status<=1)?"Awaiting Approval":"Introductions Sent"',            
                     ),
                     array(
                         'name'=>'suppliers_name',
