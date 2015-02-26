@@ -31,6 +31,10 @@
     margin-top: 20px;
 }
 
+.box.border.mb0 {
+    margin-bottom: 0;
+}
+
 .box.border.custom-table > .box-title {
     background: #00B6AD;
     color: #fff;
