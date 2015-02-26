@@ -60,8 +60,22 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 			<div class="box-body">
 			<?php $this->widget('zii.widgets.grid.CGridView', array(
-				'id'=>'datatables1',
-				'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
+                'id'=>'datatables1',
+                'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
+                'pagerCssClass'=>'box-body',
+                'template'=>'{items}{summary}{pager}',
+                'pager'=>array(
+                    'header'=>'',
+                    'firstPageLabel'=>'&laquo;',
+                    'lastPageLabel'=>'&raquo;',
+                    'prevPageLabel'=>'<',
+                    'nextPageLabel'=>'>',
+                    'hiddenPageCssClass'=>'disabled',
+                    'selectedPageCssClass'=>'active',
+                    'htmlOptions'=>array(
+                        'class'=>'pagination',
+                    ),
+                ),
 				'dataProvider'=>$model->projectSearch(),
 				'filter'=>$model,
 				'columns'=>array(
@@ -69,11 +83,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'name'=>'name',
                         'type'=>'html',
                         'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view", "id"=>$data->id))'
-                    ),
+                    ), /*
 					array(
 					    'name'=>'description',
 						'value'=>'(empty($data->description))?"Not Provided":trim(substr($data->description, 0, 30))."..."',
-					),
+					), */
 					array(
 					    'name'=>'client_name',
 					    'type'=>'html',
@@ -136,7 +150,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                             'delete'=>array(
                                 'visible'=>'false',
                             ),
-                       	)
+                       	),
 					),
 				),
 			)); ?>

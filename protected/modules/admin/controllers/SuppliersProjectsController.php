@@ -125,7 +125,7 @@ class SuppliersProjectsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new SuppliersProjects('search');
+		$model=new SuppliersProjects('adminSearch');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['SuppliersProjects']))
 			$model->attributes=$_GET['SuppliersProjects'];
