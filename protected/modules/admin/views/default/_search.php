@@ -39,6 +39,39 @@
 
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
+						<?php echo $form->labelEx($model,'client_name', array(
+							'class'=>'control-label'
+						)); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
+					<?php echo $form->textField($model,'client_name',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+						<?php echo $form->labelEx($model,'client_company_name', array(
+							'class'=>'control-label'
+						)); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
+					<?php echo $form->textField($model,'client_company_name',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+						<?php echo $form->labelEx($model,'suppliers_name', array(
+							'class'=>'control-label'
+						)); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
+					<?php echo $form->textField($model,'suppliers_name',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
 						<?php echo $form->label($model,'team_size', array(
 							'class'=>'control-label'   
 						)); ?>
