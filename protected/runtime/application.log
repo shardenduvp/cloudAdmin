@@ -2404,3 +2404,36 @@ in C:\xampp\htdocs\venturepact\index.php (13)
 2015/02/24 10:27:18 [warning] [application] Failed to set unsafe attribute "suppliers_name" of "ClientProjects".
 in C:\xampp\htdocs\venturepact\protected\modules\admin\controllers\DefaultController.php (18)
 in C:\xampp\htdocs\venturepact\index.php (13)
+2015/02/26 05:13:51 [error] [php] Use of undefined constant php - assumed 'php' (C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\suppliers\view.php:176)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): SuppliersController->renderFile()
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(782): SuppliersController->renderPartial()
+#2 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\SuppliersController.php(48): SuppliersController->render()
+#3 unknown(0): SuppliersController->actionView()
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): SuppliersController->runAction()
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): SuppliersController->filterAccessControl()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): SuppliersController->runActionWithFilters()
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): SuppliersController->run()
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\cloudAdmin\index.php(13): CWebApplication->run()
+REQUEST_URI=/cloudAdmin/index.php?r=admin/suppliers/view&id=2
+in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\suppliers\view.php (176)
+in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\SuppliersController.php (48)
+in C:\xampp\htdocs\cloudAdmin\index.php (13)
+2015/02/26 08:14:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "clientProjects/view".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('clientProjects/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=clientProjects/view&id=15
+HTTP_REFERER=http://localhost/cloudAdmin/index.php?r=admin/users/view&id=11
+---
