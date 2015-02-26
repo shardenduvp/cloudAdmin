@@ -25,7 +25,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#users-grid').yiiGridView('update', {
+	$('#datatables1').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -65,44 +65,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 									
 
 			<div class="box-body">
-
-				<!--
-				<table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
-
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Last Name</th>
-							<th>First Name</th>
-							<th>Company Name</th>
-							<th>Display Name</th>
-						</tr>
-					</thead>
-
-					<tfoot>
-			            <tr>
-			                <th>Id</th>
-							<th>Last Name</th>
-							<th>First Name</th>
-							<th>Company Name</th>
-							<th>Display Name</th>
-			            </tr>
-			        </tfoot>
-
-					<tbody>
-						<?php // foreach ($model->findAll() as $row) { ?>
-							<tr>
-								<td><?php // echo $row->id; ?></td>
-								<td><?php // echo $row->last_name; ?></td>
-								<td><?php // echo $row->first_name; ?></td>
-								<td><?php // echo $row->company_name; ?></td>
-								<td><?php // echo $row->display_name; ?></td>
-							</tr>
-						<?php // } ?>
-					</tbody>
-
-				</table>
-				-->
 
 				<?php
 				

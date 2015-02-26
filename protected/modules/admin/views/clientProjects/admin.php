@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#client-projects-grid').yiiGridView('update', {
+	$('#datatables1').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -68,7 +68,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					array(
                         'name'=>'name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view&id=".$data->id))'
+                        'value'=>'CHtml::link($data->name, array("/admin/clientProjects/view", "id"=>$data->id))'
                     ),
 					array(
 					    'name'=>'description',
@@ -77,7 +77,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					array(
 					    'name'=>'client_name',
 					    'type'=>'html',
-						'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/clientProfiles/view&id=".$data->clientProfiles->id))',
+						'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->id))',
 					),
 					array(
 					    'name'=>'min_budget',

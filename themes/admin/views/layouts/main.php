@@ -238,7 +238,7 @@
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
+                            <li><a href="<?php echo Yii::app()->createUrl('admin/users/update',array('id'=>Yii::app()->user->id)); ?>"><i class="fa fa-user"></i> My Profile</a></li>
                             <li><a href="<?php echo Yii::app()->createUrl('site/logout'); ?>"><i class="fa fa-power-off"></i> Log Out</a></li>
                         </ul>
                         <?php } else { ?>
@@ -296,6 +296,7 @@
     
     <!-- CUSTOM SCRIPT -->
     <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>
+    <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/custom.js"></script>
     <script>
         jQuery(document).ready(function() {
             App.setPage("widgets_box");  //Set current page

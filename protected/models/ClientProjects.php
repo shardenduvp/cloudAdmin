@@ -82,7 +82,9 @@ class ClientProjects extends CActiveRecord
 			array('description, business_problem, about_company, summary, unique_features, start_date, questions_for_supplier, add_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, client_name, client_company_name, suppliers_name', 'safe', 'on'=>'search'),
+			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state', 'safe', 'on'=>'search'),
+			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, client_name, client_company_name, suppliers_name', 'safe', 'on'=>'leadSearch'),
+			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, client_name, client_company_name, suppliers_name', 'safe', 'on'=>'projectSearch'),
 		);
 	}
 
@@ -225,9 +227,8 @@ class ClientProjects extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with = array('clientProfiles.users', 'suppliersProjects.suppliers');
 		$criteria->addCondition('t.status <= 3');
-		$criteria->together = true;
+		// $criteria->with = array('clientProfiles.users', 'suppliersProjects.suppliers');
 
 		$criteria->compare('t.id',$this->id);
 		$criteria->compare('t.name',$this->name,true);
@@ -252,12 +253,19 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('t.other_status',$this->other_status,true);
 		$criteria->compare('t.current_status',$this->current_status,true);
 		$criteria->compare('t.status',$this->status);
-		$criteria->compare('users.company_name',$this->client_company_name, true);
-		$criteria->compare('users.first_name',$this->client_name, true);
-		$criteria->compare('suppliers.name',$this->suppliers_name, true);
 		$criteria->compare('t.current_status_id',$this->current_status_id);
 		$criteria->compare('t.other_current_status',$this->other_current_status,true);
 		$criteria->compare('t.state',$this->state);
+
+		$criteria->compare('users.company_name', $this->client_company_name, true);
+		$criteria->compare('CONCAT(users.first_name, \' \', users.last_name)', $this->client_name, true);
+
+		$criteria->compare('suppliers.name', $this->suppliers_name, true);
+		$criteria->with = array(
+		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
+		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name'),
+		);
+		$criteria->together = true;
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -271,7 +279,7 @@ class ClientProjects extends CActiveRecord
 		                'asc'=>'users.company_name',
 		                'desc'=>'users.company_name DESC',
 		            ),
-		            'supplier_name'=>array(
+		            'suppliers_name'=>array(
 		                'asc'=>'suppliers.name',
 		                'desc'=>'suppliers.name DESC',
 		            ),
@@ -298,7 +306,6 @@ class ClientProjects extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with = array('clientProfiles.users', 'suppliersProjects.suppliers');
 
 		$criteria->compare('t.id',$this->id);
 		$criteria->compare('t.name',$this->name,true);
@@ -323,12 +330,19 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('t.other_status',$this->other_status,true);
 		$criteria->compare('t.current_status',$this->current_status,true);
 		$criteria->compare('t.status',$this->status);
-		$criteria->compare('users.company_name',$this->client_company_name, true);
-		$criteria->compare('users.first_name',$this->client_name, true);
-		$criteria->compare('suppliers.name',$this->suppliers_name, true);
 		$criteria->compare('t.current_status_id',$this->current_status_id);
 		$criteria->compare('t.other_current_status',$this->other_current_status,true);
 		$criteria->compare('t.state',$this->state);
+
+		$criteria->compare('users.company_name', $this->client_company_name, true);
+		$criteria->compare('CONCAT(users.first_name, \' \', users.last_name)', $this->client_name, true);
+
+		$criteria->compare('suppliers.name', $this->suppliers_name, true);
+		$criteria->with = array(
+		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
+		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name'),
+		);
+		$criteria->together = true;
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -342,7 +356,7 @@ class ClientProjects extends CActiveRecord
 		                'asc'=>'users.company_name',
 		                'desc'=>'users.company_name DESC',
 		            ),
-		            'supplier_name'=>array(
+		            'suppliers_name'=>array(
 		                'asc'=>'suppliers.name',
 		                'desc'=>'suppliers.name DESC',
 		            ),
@@ -363,4 +377,27 @@ class ClientProjects extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+	/**
+     * Custom methods for cell value in CGridView 
+     * @param $data and $row for which the method is called 
+     */
+    public function getSuppliers($data)
+    {
+        $suppliers_projects = $data->suppliersProjects;
+        if(empty($suppliers_projects)) return "None";
+
+        $value = "";
+        $suppliers = array();
+        foreach ($suppliers_projects as $suppliers_project) {
+            array_push($suppliers, $suppliers_project->suppliers);
+        }
+        foreach($suppliers as $supplier) {
+            $value .= CHtml::link(ucwords($supplier->name), array("/admin/users/view&id=" . $supplier->users_id), array(
+                                  'class'=>'label label-primary',
+                            )) . "  ";
+        }
+        return rtrim($value, ", ");
+    }
 }

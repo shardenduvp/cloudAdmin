@@ -87,11 +87,12 @@ class SuppliersController extends Controller
 		{
 			$model->attributes=$_POST['Suppliers'];
 			if($model->save()){
-				echo CJSON::encode(array(
-                                  'status'=>'success'
-                             ));
-				 Yii::app()->end();
+				if(Yii::app()->request->isAjaxRequest){
+					 	echo CJSON::encode(array('status'=>'success'));
+					 	Yii::app()->end();
+					 }
 			}
+				 
 		}
 
 		$this->redirect(array('users/update','id'=>$model->users_id));
@@ -163,5 +164,16 @@ class SuppliersController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	protected function fetchSkills($data,$row){
+		$str="";
+		foreach ($data->suppliersHasSkills as $value) {
+			$str=$str.'<span class="label label-primary">'.$value->skills->name."</span> ";
+			
+
+		}
+		return $str;
+		
 	}
 }

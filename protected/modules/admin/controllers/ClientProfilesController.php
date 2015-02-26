@@ -86,12 +86,14 @@ class ClientProfilesController extends Controller
 		if(isset($_POST['ClientProfiles']))
 		{
 			$model->attributes=$_POST['ClientProfiles'];
+			
 			if($model->save()){
-				echo CJSON::encode(array(
-                                  'status'=>'success'
-                             ));
-				 Yii::app()->end();
+				if(Yii::app()->request->isAjaxRequest){
+				 	echo CJSON::encode(array('status'=>'success'));
+				 	Yii::app()->end();
+				 }
 			}
+			
 		}
 
 		$this->redirect(array('users/update','id'=>$model->users_id));

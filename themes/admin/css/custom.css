@@ -5,6 +5,10 @@
   margin: 20px auto;
 }
 
+.loader-hidden {
+    display:none;
+}
+
 .hide-div{
     display:none;
 }
@@ -16,8 +20,11 @@
 }
 
 .box.border.custom-table {
-    border: 0;
+    border-left: 0;
+    border-right: 0;
     border-radius: 0;
+    padding: 10px;
+    background: #fff;
 }
 
 .custom-table {
@@ -28,6 +35,7 @@
     background: #00B6AD;
     color: #fff;
     border-bottom: #00B2A9; 
+    border-radius: 4px 4px 0 0
 }
 
 .box.border.custom-table > .box-title h4, .box.border.custom-table > .box-title i {
@@ -40,6 +48,10 @@
 
 .custom-table .grid-view {
     padding: 0;
+}
+
+.custom-table .grid-view .box-body {
+    text-align: center;
 }
 
 #approve-popup .modal-header {

@@ -106,11 +106,13 @@ class UsersController extends Controller
 			$model->attributes=$_POST['Users'];
 			$model->password=base64_encode($model->password);
 			if($model->save()){
-				 echo CJSON::encode(array(
-                                  'status'=>'success'
-                             ));
-				 Yii::app()->end();
-				//$this->redirect(array('view','id'=>$model->id));
+				
+				if(Yii::app()->request->isAjaxRequest){
+				 	echo CJSON::encode(array('status'=>'success'));
+				 	Yii::app()->end();
+					//$this->redirect(array('view','id'=>$model->id));
+				 }
+				 
 			}
 		}
 
@@ -202,23 +204,27 @@ class UsersController extends Controller
 
 	protected function assignLinks($data,$row){
 		$url="";
+		$id="";
 		if($data->role_id==1){
-			$url='admin/users/view&id='.$data->id;
+			$url='admin/users/view';
+			$id=$data->id;
 		}
 		else if($data->role_id==2){
 			$result=ClientProfiles::model()->findByAttributes(array('users_id'=>$data->id));
 			if(!empty($result)){
-				$url='admin/clientProfiles/view&id='.$result['id'];
+				$url='admin/clientProfiles/view';
+				$id=$result['id'];
 			}
 		}
 		else{
 			$result=Suppliers::model()->findByAttributes(array('users_id'=>$data->id));
 			if(!empty($result)){
-				$url='admin/suppliers/view&id='.$result['id'];
+				$url='admin/suppliers/view';
+				$id=$result['id'];
 			}
 		}
 		if($url!="")
-			return CHtml::link($data->username,Yii::app()->createUrl($url));
+			return CHtml::link($data->username,Yii::app()->createUrl($url,array('id'=>$id)));
 		else
 			return CHtml::link($data->username,'#');
 	}

@@ -22,7 +22,7 @@
 		<div class="col-md-12">
 		<div class="box border inverse">
 			<div class="box-title">
-				<h4><i class="fa fa-bars"></i>Users Profile Information</h4>
+				<h4><i class="fa fa-user"></i>Users Profile Information</h4>
 			</div>
 			<div class="box-body big">
 				<div class="row">

@@ -77,6 +77,7 @@ class Suppliers extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+
 	public function tableName()
 	{
 		return 'suppliers';
@@ -179,7 +180,7 @@ class Suppliers extends CActiveRecord
 			'is_faq_completed' => 'Is Faq Completed',
 			'is_application_submit' => 'Is Application Submit',
 			'status' => 'Status',
-			'users_id' => 'Users',
+			'users_id' => 'Users ID',
 			'logo' => 'Logo',
 			'default_q3_ans' => 'Default Q3 Ans',
 			'default_q2_ans' => 'Default Q2 Ans',
@@ -269,7 +270,7 @@ class Suppliers extends CActiveRecord
 		$criteria->compare('offers',$this->offers,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria'=>$criteria
 		));
 	}
 
