@@ -23,6 +23,17 @@ $('.search-button').click(function(){
     return false;
 });
 $('.search-form form').submit(function(){
+    // start date operator
+    var start_date = $('#ClientProjects_start_date').val()
+    if(start_date.length > 10) start_date = start_date.substring(1);
+    var start_date_op = $('#start_date_op').val();
+    $('#ClientProjects_start_date').val(start_date_op + start_date);
+    // modify date operator
+    var modify_date = $('#ClientProjects_modify_date').val()
+    if(modify_date.length > 10) modify_date = modify_date.substring(1);
+    var modify_date_op = $('#modify_date_op').val();
+    $('#ClientProjects_modify_date').val(modify_date_op + modify_date);
+    // ajax update
     $('#datatables1').yiiGridView('update', {
         data: $(this).serialize()
     });
@@ -131,7 +142,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     ),
                     array(
                         'name'=>'start_date',
-                        'value'=>'(empty($data->start_date))?"Not Provided":date("jS M Y", strtotime($data->start_date))',
+                        'value'=>'(empty($data->start_date))?"Not Provided":$data->start_date',
                     ),
                     array(
                         'name'=>'status',
@@ -148,7 +159,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     ),
                     array(
                         'name'=>'modify_date',
-                        'value'=>'(empty($data->modify_date)) ? "Not Provided" : date("jS M Y", strtotime($data->modify_date))',
+                        'value'=>'(empty($data->modify_date)) ? "Not Provided" : $data->modify_date',
                     ),
                     array(
                         'class'=>'CButtonColumn',
