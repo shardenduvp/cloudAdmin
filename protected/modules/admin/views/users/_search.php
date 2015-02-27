@@ -129,7 +129,13 @@
 					</div>			
 				</div>
 
-				<div class="col-sm-6 col-offset-sm-2">
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+						<?php echo $form->label($model,'last_login', array(
+							'class'=>'control-label'   
+						)); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
 						<?php
 							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 								'model' => $model,
@@ -145,8 +151,6 @@
 						<?php echo $form->error($model,'last_login'); ?>
 					</div>			
 				</div>
-
-				
 
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
