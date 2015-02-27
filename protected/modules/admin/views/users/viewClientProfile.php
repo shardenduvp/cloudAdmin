@@ -69,37 +69,20 @@
               <div class="row">
                 <div class=" col-md-9 col-lg-12 "> 
                   <div class="box">
-                    <table class="table table-user-information">
+                  <table class="table" style="border-top:none;">
                       <tbody>   
-                        <tr>
-                          <td><b>Name</b></td>
-                          <td><?php echo CHtml::link($project->name,Yii::app()->createUrl('/admin/clientProjects/view',array('id'=>$project->id)));  ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b>Tier</b></td>
-                          <td><?php echo $project->tier;  ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b>Maximum Budget</b></td>
-                          <td><?php echo $project->max_budget;  ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b>Minimum Budget</b></td>
-                          <td><?php echo $project->min_budget;  ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b>Add Date</b></td>
-                          <td><?php echo $project->add_date;  ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b>Last Update:</b></td>
-                          <td><?php echo $project->modify_date;  ?></td> 
-                        </tr>
-                        <tr>
-                          <td><b>State</b></td>
-                          <td><?php echo $project->state;  ?></td> 
-                        </tr>   
-                      </tbody>
+                      <td>
+                    
+                      <p><b>Name&#09;&#09;&#09;:</b><?php echo CHtml::link($project->name,Yii::app()->createUrl('/admin/clientProjects/view',array('id'=>$project->id)));?></p>
+                      <p><b>Tier&#09;&#09;&#09;&#09;:</b><?php echo $project->tier;?></p>
+                      <p><b>Budget&#09;:</b><?php echo $project->min_budget."-".$project->max_budget;?></p>
+                  </td>
+                    <td>
+                      <p><b>Add Date&#09;:</b><?php echo $project->add_date; ?></p>
+                      <p><b>Last Update&#09;:</b><?php echo $project->modify_date; ?></p>
+                      <p><b>State&#09;:</b><?php echo $project->state;?></p>
+                    </td>
+                    </tbody>
                     </table>
                   </div>
                   <?php
@@ -119,3 +102,37 @@
   }
   else
   	echo "NOT A CLIENT YET";?>
+
+
+  <!--<table class="table table-user-information">
+                      <tbody>   
+                        <tr>
+                          <td><b>Name</b></td>
+                          <td><?php //echo CHtml::link($project->name,Yii::app()->createUrl('/admin/clientProjects/view',array('id'=>$project->id)));  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Tier</b></td>
+                          <td><?php //echo $project->tier;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Maximum Budget</b></td>
+                          <td><?php //echo $project->max_budget;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Minimum Budget</b></td>
+                          <td><?php //echo $project->min_budget;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Add Date</b></td>
+                          <td><?php //echo $project->add_date;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>Last Update:</b></td>
+                          <td><?php //echo $project->modify_date;  ?></td> 
+                        </tr>
+                        <tr>
+                          <td><b>State</b></td>
+                          <td><?php //echo $project->state;  ?></td> 
+                        </tr>   
+                      </tbody>
+                    </table>-->
