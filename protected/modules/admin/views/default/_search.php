@@ -64,41 +64,41 @@
 					<?php echo $form->textField($model,'suppliers_name',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
 					</div>
 				</div>
-
+				<!--
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
-						<?php echo $form->label($model,'team_size', array(
+						<?php /*echo $form->label($model,'team_size', array(
 							'class'=>'control-label'   
-						)); ?>
+						));*/ ?>
 					</div>
 					<div class="col-sm-6 col-offset-sm-2">
-						<?php echo $form->textField($model,'team_size',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
+						<?php //echo $form->textField($model,'team_size',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
 					</div>
 				</div>
   
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
-						<?php echo $form->label($model,'min_budget', array(
+						<?php /*echo $form->label($model,'min_budget', array(
 							'class'=>'control-label'   
-						)); ?>
+						));*/ ?>
 					</div>
 					<div class="col-sm-6 col-offset-sm-2">
-						<?php echo $form->textField($model,'min_budget',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
+						<?php //echo $form->textField($model,'min_budget',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
-						<?php echo $form->label($model,'max_budget', array(
+						<?php /*echo $form->label($model,'max_budget', array(
 							'class'=>'control-label'   
-						)); ?>
+						));*/ ?>
 					</div>
 						
 					<div class="col-sm-6 col-offset-sm-2">
-						<?php echo $form->textField($model,'max_budget',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
+						<?php //echo $form->textField($model,'max_budget',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
 					</div>
 				</div>
-
+				-->
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
 						<?php echo $form->label($model,'start_date', array(

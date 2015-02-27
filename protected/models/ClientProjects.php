@@ -230,6 +230,10 @@ class ClientProjects extends CActiveRecord
 		$criteria->addCondition('t.status <= 3');
 		// $criteria->with = array('clientProfiles.users', 'suppliersProjects.suppliers');
 
+		$this->start_date = !empty($this->start_date) ? date('Y-m-d',strtotime($this->start_date)) : null;
+		$this->add_date = !empty($this->add_date) ? date('Y-m-d',strtotime($this->add_date)) : null;
+		$this->modify_date = !empty($this->modify_date) ? date('Y-m-d',strtotime($this->modify_date)) : null;
+		
 		$criteria->compare('t.id',$this->id);
 		$criteria->compare('t.name',$this->name,true);
 		$criteria->compare('t.description',$this->description,true);
