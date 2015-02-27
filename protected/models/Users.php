@@ -135,6 +135,8 @@ class Users extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		
+		
 		$criteria->compare('id',$this->id);
 		$criteria->compare('last_name',$this->last_name,true);
 		$criteria->compare('first_name',$this->first_name,true);

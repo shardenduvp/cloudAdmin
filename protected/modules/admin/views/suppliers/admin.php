@@ -84,6 +84,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'location',
 		'number_of_employee',
 		array(
+			'name'=>'skills',
 			'header'=>'Skills',
 			'type'=>'raw',
 			'value'=>array($this,'fetchSkills'),

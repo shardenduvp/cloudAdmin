@@ -77,7 +77,7 @@ class Suppliers extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	
+	public $skills;
 	public function tableName()
 	{
 		return 'suppliers';
@@ -107,7 +107,7 @@ class Suppliers extends CActiveRecord
 			array('about_company, details, consultation_description, add_date, modification_date, rough_estimate, default_q3_ans, default_q2_ans, default_q1_ans, default_q4_ans, accept_new_project_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, cover, name, image, email, skype_id, website, phone_number, tagline, about_company, foundation_year, short_description, details, location, pricing_details, min_price, number_of_employee, total_available_employee, consultation_description, standard_pitch, standard_service_agreement, profile_status, add_date, modification_date, rough_estimate, linkedin, facebook, google, twitter, you_tube, per_hour_rate, project_size, web_references, development_location, sales_location, response_time, is_faq_completed, is_application_submit, status, users_id, logo, default_q3_ans, default_q2_ans, default_q1_ans, default_q4_ans, accept_new_project_date, is_profile_complete, price_tier_id, payoneer_payee, payoneer_token, link_status, offers', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, cover, name, image, email, skype_id, website, phone_number, tagline, about_company, foundation_year, short_description, details, location, pricing_details, min_price, number_of_employee, total_available_employee, consultation_description, standard_pitch, standard_service_agreement, profile_status, add_date, modification_date, rough_estimate, linkedin, facebook, google, twitter, you_tube, per_hour_rate, project_size, web_references, development_location, sales_location, response_time, is_faq_completed, is_application_submit, status, users_id, logo, default_q3_ans, default_q2_ans, default_q1_ans, default_q4_ans, accept_new_project_date, is_profile_complete, price_tier_id, payoneer_payee, payoneer_token, link_status, offers, skills', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -213,8 +213,12 @@ class Suppliers extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		
+		$criteria->with=array("suppliersHasSkills.skills");
+		$criteria->together = true;
 
+		$this->modification_date=!empty($this->modification_date)? date('Y-m-d',strtotime($this->modification_date)):null;
+
+		$criteria->compare('skills.name', $this->skills);
 		$criteria->compare('id',$this->id);
 		$criteria->compare('first_name',$this->first_name,true);
 		$criteria->compare('last_name',$this->last_name,true);
@@ -271,7 +275,16 @@ class Suppliers extends CActiveRecord
 		$criteria->compare('offers',$this->offers,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria
+			'criteria'=>$criteria,
+			'sort'=>array(
+		        'attributes'=>array(
+		            'skills'=>array(
+		                'asc'=>'skills.name',
+		                'desc'=>'skils.name DESC',
+		            ),
+		            '*',
+		        ),
+		    ),
 		));
 	}
 

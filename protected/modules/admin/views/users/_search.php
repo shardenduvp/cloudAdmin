@@ -25,15 +25,26 @@
 				<div class="box-body big" style="display:none;">
 				<?php echo $form->errorSummary($model); ?>
 
-
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
 						<?php echo $form->labelEx($model,'id', array(
 							'class'=>'control-label'
 						)); ?>
 					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-					<?php echo $form->textField($model,'id',array('size'=>45,'maxlength'=>45,'class'=>'form-control')); ?>
+					<div class="col-sm-2 col-offset-sm-2">
+					<?php //echo $form->textField($model,'role_id'); 
+							echo CHtml::activeDropDownList($model, 'id', array(
+								    '<'=>'<','>'=>'>','<>'=>'<>','<='=>'<=','>='=>'>='
+								), array(
+									'empty'=>'Operator',
+									"",
+									'class'=>'form-control operatorID'
+								)
+							);
+						?>
+					</div>
+					<div class="col-sm-4 col-offset-sm-2">
+					<?php echo $form->textField($model,'id',array('size'=>45,'maxlength'=>45,'class'=>'form-control IDUser')); ?>
 					</div>
 				</div>
 
@@ -72,17 +83,6 @@
 
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
-						<?php echo $form->label($model,'display_name', array(
-							'class'=>'control-label'   
-						)); ?>
-					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-						<?php echo $form->textField($model,'display_name',array('size'=>60,'maxlength'=>100,'class'=>'form-control')); ?>
-					</div>
-				</div>
-  
-				<div class="form-group">
-					<div class="col-sm-4 tr-align">
 						<?php echo $form->label($model,'username', array(
 							'class'=>'control-label'   
 						)); ?>
@@ -91,20 +91,6 @@
 						<?php echo $form->textField($model,'username',array('size'=>30,'maxlength'=>30,'class'=>'form-control')); ?>
 					</div>
 				</div>
-
-				<div class="form-group">
-					<div class="col-sm-4 tr-align">
-						<?php echo $form->label($model,'phone_number', array(
-							'class'=>'control-label'   
-						)); ?>
-					</div>
-						
-					<div class="col-sm-6 col-offset-sm-2">
-						<?php echo $form->textField($model,'phone_number',array('size'=>25,'maxlength'=>25,'class'=>'form-control')); ?>
-					</div>
-				</div>
-
-				
 
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
@@ -117,6 +103,10 @@
 							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 								'model' => $model,
 								'attribute' => 'add_date',
+								'options'=>array(
+									'dateFormat'=>'yy-mm-dd',
+									'showAnim' => 'fold'
+								),
 								'htmlOptions' => array(
 									'size' => '10',         // textField size
 									'maxlength' => '10', 
@@ -126,29 +116,6 @@
 						?>
 
 						<?php echo $form->error($model,'add_date'); ?>
-					</div>			
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-4 tr-align">
-						<?php echo $form->label($model,'last_login', array(
-							'class'=>'control-label'   
-						)); ?>
-					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-						<?php
-							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
-								'model' => $model,
-								'attribute' => 'last_login',
-								'htmlOptions' => array(
-									'size' => '10',         // textField size
-									'maxlength' => '10', 
-									'class'=>'form-control'   // textField maxlength
-								),
-							));
-						?>
-
-						<?php echo $form->error($model,'last_login'); ?>
 					</div>			
 				</div>
 
@@ -197,7 +164,7 @@
 	            <div class="row">
 	            	<div class="col-sm-4 tr-align"></div>
 	            	<div class="col-sm-6 col-offset-sm-2 search-button">
-						<?php echo CHtml::submitButton('Search',array('class'=>'btn btn-primary')); ?>
+						<?php echo CHtml::submitButton('Search',array('class'=>'btn btn-primary buttonh')); ?>
 					</div>
 				</div>
 			<?php $this->endWidget(); ?>

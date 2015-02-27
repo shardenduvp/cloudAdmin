@@ -57,13 +57,18 @@
 
 			<div class="form-group">
 					<div class="col-sm-4 tr-align">
-							<?php echo $form->labelEx($model,'add_date', array('class'=>'control-label')); ?>
+							<?php echo $form->labelEx($model,'modification_date', array('class'=>'control-label','label'=>'Updated On')); ?>
 					</div>
 					<div class="col-sm-6 col-offset-sm-2">
 					<?php
 							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 								'model' => $model,
-								'attribute' => 'add_date',
+								'attribute' => 'modification_date',
+
+								'options'=>array(
+									'dateFormat'=>'yy-mm-dd',
+									'showAnim' => 'fold'
+								),
 								'htmlOptions' => array(
 									'size' => '25',         // textField size
 									'maxlength' => '25', 
@@ -81,7 +86,7 @@
 					<div class="col-sm-6 col-offset-sm-2">
 					<?php echo $form->textField($model,'skype_id',array('size'=>60,'maxlength'=>100,'class'=>'form-control')); ?>
 					</div>
-			</div>
+					</div>
 			
 
 			<div class="form-group">
@@ -134,14 +139,6 @@
 					</div>
 			</div>
 
-			<div class="form-group">
-					<div class="col-sm-4 tr-align">
-							<?php echo $form->labelEx($model,'sales_location', array('class'=>'control-label')); ?>
-					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-					<?php echo $form->textField($model,'sales_location',array('size'=>60,'maxlength'=>490,'class'=>'form-control')); ?>
-					</div>
-			</div>
 
 	        <div class="row">
 	            	<div class="col-sm-4 tr-align"></div>
