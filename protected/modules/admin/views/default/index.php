@@ -25,12 +25,12 @@ $('.search-button').click(function(){
 $('.search-form form').submit(function(){
     // start date operator
     var start_date = $('#ClientProjects_start_date').val()
-    if(start_date.length > 10) start_date = start_date.substring(1);
+    if(start_date.length > 10) start_date = start_date.substring(start_date.length - 10);
     var start_date_op = $('#start_date_op').val();
     $('#ClientProjects_start_date').val(start_date_op + start_date);
     // modify date operator
     var modify_date = $('#ClientProjects_modify_date').val()
-    if(modify_date.length > 10) modify_date = modify_date.substring(1);
+    if(modify_date.length > 10) modify_date = modify_date.substring(modify_date.length - 10);
     var modify_date_op = $('#modify_date_op').val();
     $('#ClientProjects_modify_date').val(modify_date_op + modify_date);
     // ajax update

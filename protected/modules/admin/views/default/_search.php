@@ -111,6 +111,9 @@
 							    	'>'=>'>',
 							    	'<'=>'<',
 							    	'='=>'=',
+							    	'<='=>'<=',
+							    	'>='=>'>=',
+							    	'<>'=>'<>',
 							    ),
 								array('empty'=>'Operators', 'class'=>'form-control', 'id'=>'start_date_op')
 							);
@@ -174,6 +177,9 @@
 							    	'>'=>'>',
 							    	'<'=>'<',
 							    	'='=>'=',
+							    	'<='=>'<=',
+							    	'>='=>'>=',
+							    	'<>'=>'<>',
 							    ),
 								array('empty'=>'Operators', 'class'=>'form-control', 'id'=>'modify_date_op')
 							);
