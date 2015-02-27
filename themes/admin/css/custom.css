@@ -224,7 +224,7 @@
 .box-scroll-horizontal{
     overflow-x:scroll;
 }
-.search-button input{
+.btn-box input{
     display: block;
     width: 100%;
 }

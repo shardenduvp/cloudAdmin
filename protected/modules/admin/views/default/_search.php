@@ -191,7 +191,7 @@
 	
 	            <div class="row">
 	            	<div class="col-sm-4 tr-align"></div>
-	            	<div class="col-sm-6 col-offset-sm-2 search-button">
+	            	<div class="col-sm-6 col-offset-sm-2 btn-box">
 						<?php echo CHtml::submitButton('Search',array('class'=>'btn btn-primary')); ?>
 					</div>
 				</div>
