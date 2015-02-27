@@ -148,7 +148,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     ),
                     array(
                         'name'=>'modify_date',
-                        'value'=>'(empty($data->modify_date)) ? "Not Provided" : $data->modify_date',
+                        'value'=>'(empty($data->modify_date)) ? "Not Provided" : date("jS M Y", strtotime($data->modify_date))',
                     ),
                     array(
                         'class'=>'CButtonColumn',
