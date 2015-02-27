@@ -262,7 +262,7 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('suppliers.name', $this->suppliers_name, true);
 		$criteria->with = array(
 		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
-		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name'),
+		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name, suppliers.users_id'),
 		);
 		$criteria->together = true;
 
@@ -339,7 +339,7 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('suppliers.name', $this->suppliers_name, true);
 		$criteria->with = array(
 		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
-		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name'),
+		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name, suppliers.users_id'),
 		);
 		$criteria->together = true;
 
@@ -393,7 +393,7 @@ class ClientProjects extends CActiveRecord
             array_push($suppliers, $suppliers_project->suppliers);
         }
         foreach($suppliers as $supplier) {
-            $value .= CHtml::link(ucwords($supplier->name), array("/admin/users/view&id=" . $supplier->users_id), array(
+            $value .= CHtml::link(ucwords($supplier->name), array("/admin/users/view", "id"=>$supplier->users_id), array(
                                   'class'=>'label label-primary',
                             )) . "  ";
         }
