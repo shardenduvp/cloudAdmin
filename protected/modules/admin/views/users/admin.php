@@ -25,13 +25,28 @@ $('.search-form form').submit(function(){
 	
 	var operator=$('.operatorID').val();
 	var val=$('.IDUser').val();
-	if(val.indexOf('<')!=-1 || val.indexOf('>')!=-1){
+	if (val!='') {
+		if(val.indexOf('<')!=-1 || val.indexOf('>')!=-1){
 		val=$('.IDUser').val().substr(1);
+		}
+		if(val.indexOf('<')!=-1 || val.indexOf('=')!=-1 ||val.indexOf('>')!=-1){
+			val=val.substr(1);
+		}
+		$('.IDUser').val(operator+val);
 	}
-	if(val.indexOf('<')!=-1 || val.indexOf('=')!=-1 ||val.indexOf('>')!=-1){
-		val=val.substr(1);
+	
+
+	var operatorDate=$('.operatorIDforDate').val();
+	var val1=$('.add_dateUSER').val();
+
+	if(val1.indexOf('<')!=-1 || val1.indexOf('>')!=-1){
+		val1=$('.add_dateUSER').val().substr(1);
 	}
-	$('.IDUser').val(operator+val);
+	if(val1.indexOf('<')!=-1 || val1.indexOf('=')!=-1 ||val1.indexOf('>')!=-1){
+		val1=val1.substr(1);
+	}
+	
+	$('.add_dateUSER').val(operatorDate+val1);
 
 
 	$('#datatables1').yiiGridView('update', {

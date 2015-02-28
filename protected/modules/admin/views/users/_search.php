@@ -98,7 +98,19 @@
 							'class'=>'control-label'   
 						)); ?>
 					</div>
-					<div class="col-sm-6 col-offset-sm-2">
+					<div class="col-sm-2 col-offset-sm-2">
+					<?php //echo $form->textField($model,'role_id'); 
+							echo CHtml::DropDownList('','', array(
+								    '<'=>'<','>'=>'>','<>'=>'<>','<='=>'<=','>='=>'>='
+								), array(
+									'empty'=>'Operator',
+									"",
+									'class'=>'form-control operatorIDforDate'
+								)
+							);
+						?>
+					</div>
+					<div class="col-sm-4 col-offset-sm-2">
 						<?php
 							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 								'model' => $model,
@@ -110,7 +122,7 @@
 								'htmlOptions' => array(
 									'size' => '10',         // textField size
 									'maxlength' => '10', 
-									'class'=>'form-control'   // textField maxlength
+									'class'=>'form-control add_dateUSER'   // textField maxlength
 								),
 							));
 						?>
