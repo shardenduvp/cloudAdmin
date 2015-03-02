@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/cloud-admin.css" >
     <link rel="stylesheet" type="text/css"  href="<?php echo Yii::app()->theme->baseUrl; ?>/css/themes/night.css" id="skin-switcher" >
     <link rel="stylesheet" type="text/css"  href="<?php echo Yii::app()->theme->baseUrl; ?>/css/responsive.css" >
+    <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/../../node/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
     
     <!-- STYLESHEETS -->
     <!--[if lt IE 9]>
@@ -261,6 +262,7 @@
 
     <!-- PAGE -->
     <section id="page">
+    <input type="hidden" value="<?php echo Yii::app()->user->id; ?>" name="dhId" id="dhId" />
         <?php echo $content; ?>
     </section>
 
