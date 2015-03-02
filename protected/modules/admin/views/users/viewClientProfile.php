@@ -85,15 +85,15 @@
                     </tbody>
                     </table>
                   </div>
-                  <?php
-                    $count++;
-                    }
-                  }
-                  ?>
                 </div>
               </div>
             </div> 
           </div>
+          <?php
+                    $count++;
+                    }
+                  }
+                  ?>
         </div>
       </div>
     </div>
