@@ -13,7 +13,35 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('search', "
+
 $('.search-form form').submit(function(){
+	
+	var operator=$('.operatorID').val();
+	var val=$('.IDUser').val();
+	if (val!='') {
+		if(val.indexOf('<')!=-1 || val.indexOf('>')!=-1){
+		val=$('.IDUser').val().substr(1);
+		}
+		if(val.indexOf('<')!=-1 || val.indexOf('=')!=-1 ||val.indexOf('>')!=-1){
+			val=val.substr(1);
+		}
+		$('.IDUser').val(operator+val);
+	}
+	
+
+	var operatorDate=$('.operatorIDforDate').val();
+	var val1=$('.add_dateUSER').val();
+
+	if(val1.indexOf('<')!=-1 || val1.indexOf('>')!=-1){
+		val1=$('.add_dateUSER').val().substr(1);
+	}
+	if(val1.indexOf('<')!=-1 || val1.indexOf('=')!=-1 ||val1.indexOf('>')!=-1){
+		val1=val1.substr(1);
+	}
+	
+	$('.add_dateUSER').val(operatorDate+val1);
+
+
 	$('#datatables1').yiiGridView('update', {
 		data: $(this).serialize()
 	});

@@ -26,14 +26,30 @@
 				<div class="box-body big" style="display:none;">
 				<?php echo $form->errorSummary($model); ?>
 
-	        <div class="form-group">
+	        
+
+<div class="form-group">
 					<div class="col-sm-4 tr-align">
-							<?php echo $form->labelEx($model,'id', array('class'=>'control-label')); ?>
+						<?php echo $form->labelEx($model,'id', array(
+							'class'=>'control-label'
+						)); ?>
 					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-					<?php echo $form->textField($model,'id',array('size'=>45,'maxlength'=>45,'class'=>'form-control')); ?>
+					<div class="col-sm-2 col-offset-sm-2">
+					<?php //echo $form->textField($model,'role_id'); 
+							echo CHtml::activeDropDownList($model, 'id', array(
+								    '<'=>'<','>'=>'>','<>'=>'<>','<='=>'<=','>='=>'>='
+								), array(
+									'empty'=>'Operator',
+									"",
+									'class'=>'form-control operatorID'
+								)
+							);
+						?>
 					</div>
-			</div>
+					<div class="col-sm-4 col-offset-sm-2">
+					<?php echo $form->textField($model,'id',array('size'=>45,'maxlength'=>45,'class'=>'form-control IDUser')); ?>
+					</div>
+				</div>
 
 			<div class="form-group">
 					<div class="col-sm-4 tr-align">
@@ -102,22 +118,42 @@
 
 			<div class="form-group">
 					<div class="col-sm-4 tr-align">
-							<?php echo $form->labelEx($model,'add_date', array('class'=>'control-label')); ?>
+						<?php echo $form->label($model,'add_date', array(
+							'class'=>'control-label'   
+						)); ?>
 					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-					<?php
+					<div class="col-sm-2 col-offset-sm-2">
+					<?php //echo $form->textField($model,'role_id'); 
+							echo CHtml::DropDownList('','', array(
+								    '<'=>'<','>'=>'>','<>'=>'<>','<='=>'<=','>='=>'>='
+								), array(
+									'empty'=>'Operator',
+									"",
+									'class'=>'form-control operatorIDforDate'
+								)
+							);
+						?>
+					</div>
+					<div class="col-sm-4 col-offset-sm-2">
+						<?php
 							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 								'model' => $model,
 								'attribute' => 'add_date',
+								'options'=>array(
+									'dateFormat'=>'yy-mm-dd',
+									'showAnim' => 'fold'
+								),
 								'htmlOptions' => array(
-									'size' => '25',         // textField size
-									'maxlength' => '25', 
-									'class'=>'form-control'   // textField maxlength
+									'size' => '10',         // textField size
+									'maxlength' => '10', 
+									'class'=>'form-control add_dateUSER'   // textField maxlength
 								),
 							));
 						?>
-						</div>
-			</div>
+
+						<?php echo $form->error($model,'add_date'); ?>
+					</div>			
+				</div>
   			<div class="form-group">
 					<div class="col-sm-4 tr-align">
 							<?php echo $form->labelEx($model,'company_link', array('class'=>'control-label')); ?>
