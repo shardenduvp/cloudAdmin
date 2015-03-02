@@ -133,12 +133,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'client_company_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->clientProfiles->users->company_name, array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link($data->clientProfiles->users->company_name, array("/admin/users/view", "id"=>$data->clientProfiles->users->id))',
                     ),
                     array(
                         'name'=>'client_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/users/view", "id"=>$data->clientProfiles->users->id))',
                     ),
                     array(
                         'name'=>'start_date',

@@ -11,7 +11,7 @@
 
     <?php $form=$this->beginWidget('CActiveForm', array(
       'id'=>'approve-form',
-      'action'=>Yii::app()->createUrl("/admin/default/approveProject&id=" . $project->id),
+      'action'=>Yii::app()->createUrl("/admin/default/approveProject", array('id'=>$project->id)),
     )); ?>
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
