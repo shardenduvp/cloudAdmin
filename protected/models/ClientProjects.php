@@ -259,10 +259,10 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('users.company_name', $this->client_company_name, true);
 		$criteria->compare('CONCAT(users.first_name, \' \', users.last_name)', $this->client_name, true);
 
-		$criteria->compare('suppliers.name', $this->suppliers_name, true);
+		$criteria->compare('supplier.company_name', $this->suppliers_name, true);
 		$criteria->with = array(
 		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
-		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name, suppliers.users_id'),
+		    'suppliersProjects.suppliers.users'=>array('alias'=>'supplier', 'select'=>'supplier.company_name, supplier.id'),
 		);
 		$criteria->together = true;
 
@@ -279,8 +279,8 @@ class ClientProjects extends CActiveRecord
 		                'desc'=>'users.company_name DESC',
 		            ),
 		            'suppliers_name'=>array(
-		                'asc'=>'suppliers.name',
-		                'desc'=>'suppliers.name DESC',
+		                'asc'=>'supplier.company_name',
+		                'desc'=>'supplier.company_name DESC',
 		            ),
 		            '*',
 		        ),
@@ -336,10 +336,10 @@ class ClientProjects extends CActiveRecord
 		$criteria->compare('users.company_name', $this->client_company_name, true);
 		$criteria->compare('CONCAT(users.first_name, \' \', users.last_name)', $this->client_name, true);
 
-		$criteria->compare('suppliers.name', $this->suppliers_name, true);
+		$criteria->compare('supplier.company_name', $this->suppliers_name, true);
 		$criteria->with = array(
 		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
-		    'suppliersProjects.suppliers'=>array('select'=>'suppliers.name, suppliers.users_id'),
+		    'suppliersProjects.suppliers.users'=>array('alias'=>'supplier', 'select'=>'supplier.company_name, supplier.id'),
 		);
 		$criteria->together = true;
 
@@ -356,8 +356,8 @@ class ClientProjects extends CActiveRecord
 		                'desc'=>'users.company_name DESC',
 		            ),
 		            'suppliers_name'=>array(
-		                'asc'=>'suppliers.name',
-		                'desc'=>'suppliers.name DESC',
+		                'asc'=>'supplier.company_name',
+		                'desc'=>'supplier.company_name DESC',
 		            ),
 		            '*',
 		        ),
@@ -393,7 +393,7 @@ class ClientProjects extends CActiveRecord
             array_push($suppliers, $suppliers_project->suppliers);
         }
         foreach($suppliers as $supplier) {
-            $value .= CHtml::link(ucwords($supplier->name), array("/admin/users/view", "id"=>$supplier->users_id), array(
+            $value .= CHtml::link(ucwords($supplier->users->company_name), array("/admin/users/view", "id"=>$supplier->users->id), array(
                                   'class'=>'label label-primary',
                             )) . "  ";
         }
