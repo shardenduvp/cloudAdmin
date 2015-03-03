@@ -9,14 +9,16 @@
                   <?php foreach($model as $projSupp) { ?>
                   <div class="row">
 	                  <div class="col-xs-1 col-xs-offset-1 align">
-	                  	<div class="row">
-	                  	<h1></h1>
-	                  		<i class="fa fa-users fntsize  "></i>
-	                  		</div>
-	                  		<div class="row align">
-	                  		Introduction Sent
-	                  		</div>
-	                  	</div>
+	                  	<?php echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-users fntsize  "></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Introduction Sent
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>$projSupp->id)) ?>
 	                
 	                  <div class="col-xs-5 verticalLine"> 
 
