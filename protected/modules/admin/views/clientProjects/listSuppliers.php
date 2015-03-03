@@ -24,7 +24,14 @@
 	                  	<div class="row">
 		                  	<div class="col-xs-5">
 		                  		<i class="fa fa-map-marker "></i> 
-		                  		<?php echo $projSupp->suppliers->location; ?>
+		                  		<?php if($projSupp->suppliers->location)
+		                  		 {
+		                  		   echo $projSupp->suppliers->location; 
+		                  		 } else
+		                  		  { ?>
+		                  		   Not Provided
+		                  		  <?php } ?>
+		                  		
 		                  	</div>
 		                  	<div class="col-xs-5">
 			                  	<i class="fa fa-calendar"></i>
