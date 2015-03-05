@@ -13,18 +13,43 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
+
 $('.search-form form').submit(function(){
-	$('#email-logs-grid').yiiGridView('update', {
+	
+	var operator=$('.operatorID').val();
+	var val=$('.IDUser').val();
+	if (val!='') {
+		if(val.indexOf('<')!=-1 || val.indexOf('>')!=-1){
+		val=$('.IDUser').val().substr(1);
+		}
+		if(val.indexOf('<')!=-1 || val.indexOf('=')!=-1 ||val.indexOf('>')!=-1){
+			val=val.substr(1);
+		}
+		$('.IDUser').val(operator+val);
+	}
+	
+
+	var operatorDate=$('.operatorIDforDate').val();
+	var val1=$('.add_dateUSER').val();
+
+	if(val1.indexOf('<')!=-1 || val1.indexOf('>')!=-1){
+		val1=$('.add_dateUSER').val().substr(1);
+	}
+	if(val1.indexOf('<')!=-1 || val1.indexOf('=')!=-1 ||val1.indexOf('>')!=-1){
+		val1=val1.substr(1);
+	}
+	
+	$('.add_dateUSER').val(operatorDate+val1);
+
+
+	$('#datatables1').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
 });
 ");
 ?>
+
 <!-- PAGE HEADER-->
 <div class="row">
     <div class="col-sm-12">
@@ -86,9 +111,21 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'other_info',
 		'user_id',
 		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
+			array(
+							'class'=>'CButtonColumn',
+							'header'=>'Operations',
+							'buttons'=>array(
+                                        'update'=>array(
+                                                        'visible'=>'false',
+                                                ),
+                                        'view'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                                        'delete'=>array(
+                                                        'visible'=>'true',
+                                                ),
+                       						 )
+						)
 	),
 )); ?>
 		</div>
