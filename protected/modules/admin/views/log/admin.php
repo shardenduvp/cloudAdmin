@@ -13,12 +13,36 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
+
 $('.search-form form').submit(function(){
-	$('#log-grid').yiiGridView('update', {
+	
+	var operator=$('.operatorID').val();
+	var val=$('.IDUser').val();
+	if (val!='') {
+		if(val.indexOf('<')!=-1 || val.indexOf('>')!=-1){
+		val=$('.IDUser').val().substr(1);
+		}
+		if(val.indexOf('<')!=-1 || val.indexOf('=')!=-1 ||val.indexOf('>')!=-1){
+			val=val.substr(1);
+		}
+		$('.IDUser').val(operator+val);
+	}
+	
+
+	var operatorDate=$('.operatorIDforDate').val();
+	var val1=$('.add_dateUSER').val();
+
+	if(val1.indexOf('<')!=-1 || val1.indexOf('>')!=-1){
+		val1=$('.add_dateUSER').val().substr(1);
+	}
+	if(val1.indexOf('<')!=-1 || val1.indexOf('=')!=-1 ||val1.indexOf('>')!=-1){
+		val1=val1.substr(1);
+	}
+	
+	$('.add_dateUSER').val(operatorDate+val1);
+
+
+	$('#datatables1').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,39 +50,97 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Logs</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+         	<h1>Manage Logs</h1>
+       	</div>
+    </div>
+</div>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
+<div class="search-form">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
 )); ?>
+
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'log-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+<div class="row">
+	<div class="col-md-12 full-width">
+		<!-- BOX -->
+		<div class="box border custom-table">
+
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of all users</h4>
+			</div>
+									
+
+			<div class="box-body">
+
+<?php 
+	$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'datatables1',
+					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
+					'dataProvider'=>$model->search(),
+					'filter'=>$model,'template'=>'{items}{summary}{pager}',
+					'pagerCssClass'=>'box-body',
+                	'pager'=>array(
+                        'header'=>'',
+                        'firstPageLabel'=>'&laquo;',
+                        'lastPageLabel'=>'&raquo;',
+                        'prevPageLabel'=>'<',
+                        'nextPageLabel'=>'>',
+                        'hiddenPageCssClass'=>'disabled',
+                        'selectedPageCssClass'=>'active',
+                        'htmlOptions'=>array(
+                            'class'=>'pagination',
+                        )
+                    ),
 	'columns'=>array(
-		'id',
-		'proposal_id',
-		'project_status',
-		'is_checked',
-		'title',
-		'description',
+		array(
+			'name'=>'project_status',
+            'header'=>'Project status', 
+            'filter'=>CHtml::activeDropDownList($model, 'status',
+                   	array('2'=>"Introduction sent",'1'=>"Waiting approval"),
+                    array('empty'=>'Select Status',"")), 
+            'value'=>'($data->status==1)?"Waiting approval":"Introduction sent"',  
+			),
+		array(
+			'name'=>'title',
+			'value'=>'(empty($data->title))?"Not Provided":$data->title',
+			),
+		array(
+			'name'=>'description',
+			'value'=>'(empty($data->description))?"Not Provided":$data->description',
+			),
+		array(
+			'name'=>'proposal_id',
+			'value'=>'(empty($data->proposal_id))?"Not Provided":$data->proposal_id',
+			),
+		array(
+			'name'=>'is_active',
+			'value'=>'(empty($data->is_active))?"Not Provided":"Not Active"',
+			),
+		array(
+			'name'=>'status',
+            'header'=>'Status', 
+            'filter'=>CHtml::activeDropDownList($model, 'status',
+                   	array('1'=>"Verified",'0'=>'Not Verified'),
+                    array('empty'=>'Select Status',"")), 
+            'value'=>'($data->status==1)?"Verified":"Not Verified"',  
+			),		
 		/*
+		'is_checked',
 		'add_date',
 		'update_date',
-		'status',
 		'for_user',
 		'notification',
 		'is_read',
-		'is_active',
 		'login_id',
 		*/
 		array(
@@ -66,3 +148,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); ?>
+</div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>
