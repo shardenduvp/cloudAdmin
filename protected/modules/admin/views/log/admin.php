@@ -53,7 +53,7 @@ $('.search-form form').submit(function(){
 <div class="row">
     <div class="col-sm-12">
         <div class="page-header">
-         	<h1>Logs</h1>
+         	<h1>Manage Logs</h1>
        	</div>
     </div>
 </div>
@@ -67,12 +67,40 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
 )); ?>
+
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'log-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+<div class="row">
+	<div class="col-md-12 full-width">
+		<!-- BOX -->
+		<div class="box border custom-table">
+
+			<div class="box-title">
+				<h4><i class="fa fa-table"></i>List of all users</h4>
+			</div>
+									
+
+			<div class="box-body">
+
+<?php 
+	$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'datatables1',
+					'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
+					'dataProvider'=>$model->search(),
+					'filter'=>$model,'template'=>'{items}{summary}{pager}',
+					'pagerCssClass'=>'box-body',
+                	'pager'=>array(
+                        'header'=>'',
+                        'firstPageLabel'=>'&laquo;',
+                        'lastPageLabel'=>'&raquo;',
+                        'prevPageLabel'=>'<',
+                        'nextPageLabel'=>'>',
+                        'hiddenPageCssClass'=>'disabled',
+                        'selectedPageCssClass'=>'active',
+                        'htmlOptions'=>array(
+                            'class'=>'pagination',
+                        )
+                    ),
 	'columns'=>array(
 		array(
 			'name'=>'project_status',
@@ -120,3 +148,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); ?>
+</div>
+		</div>
+	<!-- /BOX -->
+	</div>
+</div>

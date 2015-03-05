@@ -11,7 +11,7 @@
 	'method'=>'get',
 	'enableAjaxValidation'=>false,
 )); ?>
-
+<div class="row">
 <div class="col-md-12">
 			<div class="box border inverse mb0">
 				<div class="box-title">
@@ -26,7 +26,6 @@
 				<?php echo $form->errorSummary($model); ?>
 
 				<div class="form-group">
-					
 					<div class="col-sm-4 tr-align">
 						<?php echo $form->labelEx($model,'id', array(
 							'class'=>'control-label'
@@ -47,7 +46,7 @@
 					<div class="col-sm-4 col-offset-sm-2">
 					<?php echo $form->textField($model,'id',array('size'=>45,'maxlength'=>45,'class'=>'form-control IDUser')); ?>
 					</div>
-					</div>
+				</div>
 
 					<div class="form-group">
 						<div class="col-sm-4 tr-align">
