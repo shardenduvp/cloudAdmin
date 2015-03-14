@@ -22,7 +22,7 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<div class="box  inverse">
+		<div class="box inverse">
 			<div class="box-body big">
 				<div class="row">
 					<div class="col-md-12">
@@ -73,9 +73,9 @@
 					</div>
 
 
-
-						<h4>Comapny Information</h4>
-
+					<p><p>
+					<h4>Comapny Information</h4>
+					</p>
 					<div class="row">
 						<div class="col-xs-4">
 							<div class="form-group">
@@ -146,7 +146,7 @@
 		</div>
 	</div>
 </div>
-
+</p>
 <div class="form-actions clearfix"> 
 
 <?php 
