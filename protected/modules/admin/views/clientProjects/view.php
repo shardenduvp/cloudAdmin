@@ -16,79 +16,32 @@ $this->menu=array(
 );
 ?>
 
-<!--Company name-->
-<div class="page-header">
-<b>  <h1><?php echo $model->name;?></h1></b>
-</div>
-
-<!--Details-->
-
-
-<div class="well well-lg">
-	<div class="row">
-		<div class="col-xs-3">
-			<img alt="User Pic" class="img-circle" style="max-width:100px;" src="
-			  <?php 
-			    if($model->clientProfiles->users->image==null)
-			    { echo Yii::app()->theme->baseUrl."/img/2.jpg"; }
-			    else
-			    { echo $model->clientProfiles->users->image; }
-			  ?>" 
-			>
-		</div>
-		<div class="col-xs-3">
-			<?php echo $model->clientProfiles->company_name; ?><br>
-			<?php echo $model->clientProfiles->company_link; ?><br>
-			<?php echo $model->clientProfiles->address1; ?><br>
-			<?php $teams = $model->clientProfiles->users->teams;
-				foreach ($teams as $team) 
-				{
-					echo $team->linkedin;
-				}
-			?>
-		</div>
-	</div>
-</div>
-
-<!--skills -->
-<b>Requirements:</b>
-<div class="well well-lg">
-<div class="row">
-<div class="col-xs-3">
-	<?php  $hasSkills = $model->clientProjectsHasSkills;
-	foreach ($hasSkills as $skill) { ?>
-	<button class="btn btn-primary" type="button">
-	<?php echo $skill->skills->name." ";
-	}
-	?></button>
-</div>
-<div class="col-xs-3">
- <span class="glyphicon glyphicon-pencil"></span>
-</div>
-</div>
-</div>
-
-<!--summary-->
-<b>Project Summary:</b>
-<div class="well well-lg"><?php echo $model->summary; ?></div>
-
-<!--Reference files-->
-<b>Reference Files:</b>
-<div class="well well-lg"><?/*php echo */ ?></div>
-
-<!--Team-->
-<b>Team:</b>
-<div class="well well-lg">
-<?php $teams = $model->clientProfiles->users->teams;
-	foreach ($teams as $team) 
-	{
-	echo $team->first_name;
-	echo $team->last_name;
-	echo $team->experiance;
-	echo $team->image;
-	}
+<?php 
+$form=$this->beginWidget('CActiveForm', array('id'=>'login-form', 'enableClientValidation'=>true,'clientOptions'=>array('validateOnSubmit'=>true,),'htmlOptions'=>array('id'=>'project-form','enctype' => 'multipart/form-data','onsubmit'=>'return validate();')));
 ?>
-</div>
+
+
+<section id="main" class="row">
+	<div class="page-header" style="border:none;"> <!-- For Top Margin --> </div>
+ 	<!-- Get Started Form Start -->
+    <div  id="project">
+    	<!-- Basic Form-->
+         <div class="row">
+       		 <div class="col-md-12">
+             <!-- panel body  BASIC FORM START -->
+				<div class="panel-body pb0" id="basicProject"> 
+						
+                       <!--Title -->
+                       	<div class="form-group pa10">
+							<label class="col-sm-4 control-label">Q. Please give your job a title.<span class="text-danger">*</span></label>
+                            <div class="col-sm-8" id="pss">
+                            <?php echo $form->textField($model,'name',array('required'=>'required','placeholder'=>"Ex: e-Commerce app for fashion brand",'class'=>'form-control required','data-parsley-minlength'=>"2",'data-parsley-pattern'=>"^[a-zA-Z ]+$",'data-parsley-id'=>'123')); ?>
+                            	<ul class="parsley-errors-list" id="parsley-id-123"></ul>
+                            </div>
+                        </div>
+                       
+
+
 
 
 <!--

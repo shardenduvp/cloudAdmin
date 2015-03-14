@@ -20,12 +20,9 @@
 )); ?>
 
 
-	<div class="row">
+<div class="row">
 	<div class="col-md-12">
-		<div class="box border inverse">
-			<div class="box-title">
-				<h4><i class="fa fa-users"></i>Client Profile Information</h4>
-			</div>
+		<div class="box  inverse">
 			<div class="box-body big">
 				<div class="row">
 					<div class="col-md-12">
@@ -34,38 +31,85 @@
 						
 						<div class=" hide-div alert alert-dismissible" role="alert"
 						id="formResultDivClientProfiles">
-  					
   						<span id="formResultClientProfiles"></span>
 						</div>
 
-						<div class="form-group">
-								<?php echo $form->labelEx($model,'id',array('class'=>'col-md-4 control-label')); ?>
+					<div class="row">
+						<div class="col-xs-4">
+	              			<img alt="User Pic" src="themes\admin\img\2.jpg" class="img-circle" height="100px" width="100px" ;> 
+						</div>
+
+						<div class="col-xs-4">
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'first_name',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
-								<?php echo $form->textField($model,'id',array('class'=>'form-control','disabled'=>'true')); ?>
-								<?php echo $form->error($model,'id'); ?>
+								<?php echo $form->textField($model,'first_name',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
+								<?php echo $form->error($model,'first_name'); ?>
 								</div>
 							</div>
+						</div>
+
+						<div class="col-xs-4">
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+									<?php echo $form->textField($model,'last_name',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
+									<?php echo $form->error($model,'last_name'); ?>
+								</div>
+							</div>
+						</div>
+
+					<div class="row">
+					 <div class="col-xs-4">
+						<div class="form-group">
+							<?php echo $form->labelEx($model,'email',array('class'=>'col-md-4 control-label')); ?>
+							<div class="col-md-8">
+								<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
+								<?php echo $form->error($model,'email'); ?>
+							</div>
+						</div>
+					  </div>
+					</div>	
+					</div>
+
+
 
 						<h4>Comapny Information</h4>
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'company_name',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'company_name',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
-								<?php echo $form->error($model,'company_name'); ?>
+
+					<div class="row">
+						<div class="col-xs-4">
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'company_name',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+									<?php echo $form->textField($model,'company_name',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
+									<?php echo $form->error($model,'company_name'); ?>
+								</div>
 							</div>
 						</div>
 
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'company_link',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'company_link',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'company_link'); ?>
+						<div class="col-xs-4">
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'company_link',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+									<?php echo $form->textField($model,'company_link',array('class'=>'form-control')); ?>
+									<?php echo $form->error($model,'company_link'); ?>
+								</div>
 							</div>
 						</div>
 
-						
-						
+						<div class="col-xs-4">	
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'foundation_year',array('class'=>'col-md-4 control-label')); ?>
+								<div class="col-md-8">
+									<?php echo $form->textField($model,'foundation_year',array('class'=>'form-control')); ?>
+									<?php echo $form->error($model,'foundation_year'); ?>
+								</div>
+							</div>	
+						</div>
+					</div>
 
+				<div class="row">
+					<div class="col-xs-4">
 						<div class="form-group">
 							<?php echo $form->labelEx($model,'team_size',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
@@ -73,7 +117,9 @@
 								<?php echo $form->error($model,'team_size'); ?>
 							</div>
 						</div>
+					</div>
 
+					<div class="col-xs-4">
 						<div class="form-group">
 							<?php echo $form->labelEx($model,'category',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
@@ -81,50 +127,20 @@
 								<?php echo $form->error($model,'category'); ?>
 							</div>
 						</div>
+					</div>
 
-						
-						
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'foundation_year',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'foundation_year',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'foundation_year'); ?>
-							</div>
-						</div>
-
-
+					<div class="col-xs-4">
 						<div class="form-group">
 							<?php echo $form->labelEx($model,'description',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
 								<?php echo $form->textArea($model,'description',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'description'); ?>
 							</div>
-						</div>
+						</div>	
+					</div>
+				</div>
 
-						
-						
-						<h4>Contact Information</h4>
-
-						
-
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'address1',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'address1',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'address1'); ?>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<?php echo $form->labelEx($model,'skype_id',array('class'=>'col-md-4 control-label')); ?>
-							<div class="col-md-8">
-								<?php echo $form->textField($model,'skype_id',array('class'=>'form-control')); ?>
-								<?php echo $form->error($model,'skype_id'); ?>
-							</div>
-						</div>
-
-						
-		</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -132,8 +148,8 @@
 </div>
 
 <div class="form-actions clearfix"> 
-<?php 
 
+<?php 
 echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('clientProfiles/update','id'=>$model->id)),
                  array(
                      'dataType'=>'json',
