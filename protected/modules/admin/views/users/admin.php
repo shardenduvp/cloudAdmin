@@ -143,7 +143,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 							'header'=>'Operations',
 							'buttons'=>array(
                                         'update'=>array(
-                                                        'visible'=>'true',
+                                                        'visible'=>'false',
                                                 ),
                                         'view'=>array(
                                                         'visible'=>'true',
