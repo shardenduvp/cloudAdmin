@@ -16,7 +16,7 @@
 )); ?>
 
 <div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12"> 
 			<div class="box border inverse mb0">
 				<div class="box-title">
 					<h4><i class="fa fa-search"></i>Update Email Logs</h4>
