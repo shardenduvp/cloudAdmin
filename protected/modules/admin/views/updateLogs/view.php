@@ -16,9 +16,47 @@ $this->menu=array(
 );
 ?>
 
-<h1>View UpdateLogs #<?php echo $model->id; ?></h1>
+<br><br>
+<div class="box inverse">
+        <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 " >
+   			<div class="panel panel-info">
+            	<div class="panel-heading ">
+              		<h3 class="panel-title">View UpdateLogs #<?php echo $model->id; ?></h3>
+              	</div>
+        <div class="panel-body">
+            <div class="row">
+<div class=" col-md-30 col-lg-30 "> 
+    <table class="table table-user-information">
+       	<tbody>
+       	<?php
+             $attributes=array(
+             	'id',
+				'username',
+				'action',
+				'controller',
+				'description',
+				'user_ip',
+				'datetime',
+				'user_id',
+			);
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+             foreach($attributes as $attr) {
+                	$value=$model->$attr;
+                	//if password display same number of stars instead
+        ?>    
+         		<tr>
+         			<td><?php echo ucfirst($attr); ?></td>
+         			<td><?php echo $value; ?></td>
+         		</tr>     
+         			<?php }?>    		
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!--
+<?/*php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
@@ -30,4 +68,5 @@ $this->menu=array(
 		'datetime',
 		'user_id',
 	),
-)); ?>
+)); */?>
+-->
