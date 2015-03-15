@@ -1073,3 +1073,23 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/cloudAdmin/index.php?r=admin/Suppliers/update
 ---
+2015/03/15 17:06:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "updateLogs".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(270): CController->missingAction('updateLogs')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('updateLogs')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/log/updat...')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/log/updateLogs&id=1
+---
+2015/03/15 17:07:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "updateLogs".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(270): CController->missingAction('updateLogs')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('updateLogs')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/log/updat...')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/log/updateLogs&id=1
+---
