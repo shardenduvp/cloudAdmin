@@ -114,7 +114,7 @@ $this->menu=array(
       </div>
     </div>
 
-
+<!--
  <?php// $this->widget('zii.widgets.CDetailView', array(
 // 	'data'=>$model,
 // 	'attributes'=>array(
@@ -174,3 +174,4 @@ $this->menu=array(
 // 		'offers',
 // 	),
 // )); ?>
+-->

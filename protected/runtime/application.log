@@ -793,3 +793,129 @@ Stack trace:
 #30 {main}
 REQUEST_URI=/cloudAdmin/index.php?r=admin/users/update&id=11
 ---
+2015/03/15 11:46:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/logs".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logs')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/logs
+---
+2015/03/15 11:48:09 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/log/view')
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/log/view
+---
+2015/03/15 12:00:49 [error] [exception.CException] exception 'CException' with message 'Property "Log.Project name" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('Project name')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\helpers\CHtml.php(2728): CActiveRecord->__get('Project name')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\helpers\CHtml.php(2451): CHtml::resolveValue(Object(Log), 'Project name')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\helpers\CHtml.php(1533): CHtml::activeInputField('text', Object(Log), 'Project name', Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\grid\CDataColumn.php(104): CHtml::activeTextField(Object(Log), 'Project name', Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridColumn.php(253): CDataColumn->getFilterCellContent()
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridColumn.php(119): CGridColumn->renderFilterCellContent()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(538): CGridColumn->renderFilterCell()
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(516): CGridView->renderFilter()
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\grid\CGridView.php(486): CGridView->renderTableHeader()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\CBaseListView.php(181): CGridView->renderItems()
+#11 [internal function]: CBaseListView->renderSection(Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback('/{(\w+)}/', Array, '{items}{summary...')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\zii\widgets\CBaseListView.php(149): CBaseListView->renderContent()
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(181): CBaseListView->run()
+#15 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\log\admin.php(146): CBaseController->widget('zii.widgets.gri...', Array)
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#18 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#19 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#20 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\LogController.php(135): CController->render('admin', Array)
+#21 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): LogController->actionAdmin()
+#22 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#23 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#25 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#29 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('admin')
+#31 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/log/admin')
+#32 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#33 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#34 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/log/admin
+---
+2015/03/15 12:01:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/errorlog/index".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/errorlog/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/errorlog/index
+---
+2015/03/15 12:01:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/emaillog/index".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/emaillog/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/emaillog/index
+---
+2015/03/15 12:12:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/log/view')
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/log/view
+---
+2015/03/15 12:14:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/clients/index".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clients/i...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clients/index
+---
+2015/03/15 12:15:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\SuppliersController.php:152
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\SuppliersController.php(47): SuppliersController->loadModel('11')
+#1 [internal function]: SuppliersController->actionView('11')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SuppliersController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SuppliersController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/Suppliers...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/Suppliers/view&id=11
+---
