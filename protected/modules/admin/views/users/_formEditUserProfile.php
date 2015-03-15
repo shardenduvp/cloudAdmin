@@ -41,8 +41,8 @@
 
 						<div class="col-xs-4">
 							<div class="form-group">
-								<?php echo $form->labelEx($model,'first_name',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
+								<b>First name</b>
 								<?php echo $form->textField($model,'first_name',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
 								<?php echo $form->error($model,'first_name'); ?>
 								</div>
@@ -51,36 +51,34 @@
 
 						<div class="col-xs-4">
 							<div class="form-group">
-								<?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
+								<b>Last name</b>
 									<?php echo $form->textField($model,'last_name',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
 									<?php echo $form->error($model,'last_name'); ?>
 								</div>
 							</div>
 						</div>
 
-					<div class="row">
 					 <div class="col-xs-4">
 						<div class="form-group">
-							<?php echo $form->labelEx($model,'email',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
+							<b>Email</b>
 								<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
 								<?php echo $form->error($model,'email'); ?>
 							</div>
 						</div>
 					  </div>
 					</div>	
-					</div>
 
 
 					<p><p>
-					<h4>Comapny Information</h4>
-					</p>
+					<h4>Company Information</h4>
+				</p>
 					<div class="row">
 						<div class="col-xs-4">
 							<div class="form-group">
-								<?php echo $form->labelEx($model,'company_name',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
+								<b>Company Name</b>
 									<?php echo $form->textField($model,'company_name',array('size'=>60,'maxlength'=>200,'class'=>'form-control')); ?>
 									<?php echo $form->error($model,'company_name'); ?>
 								</div>
@@ -89,8 +87,8 @@
 
 						<div class="col-xs-4">
 							<div class="form-group">
-								<?php echo $form->labelEx($model,'company_link',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
+								<b>Company link</b>
 									<?php echo $form->textField($model,'company_link',array('class'=>'form-control')); ?>
 									<?php echo $form->error($model,'company_link'); ?>
 								</div>
@@ -99,8 +97,8 @@
 
 						<div class="col-xs-4">	
 							<div class="form-group">
-								<?php echo $form->labelEx($model,'foundation_year',array('class'=>'col-md-4 control-label')); ?>
 								<div class="col-md-8">
+								<b>Foundation Year</b>
 									<?php echo $form->textField($model,'foundation_year',array('class'=>'form-control')); ?>
 									<?php echo $form->error($model,'foundation_year'); ?>
 								</div>
@@ -111,8 +109,8 @@
 				<div class="row">
 					<div class="col-xs-4">
 						<div class="form-group">
-							<?php echo $form->labelEx($model,'team_size',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
+							<b>Team Size</b>
 								<?php echo $form->textField($model,'team_size',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'team_size'); ?>
 							</div>
@@ -121,8 +119,8 @@
 
 					<div class="col-xs-4">
 						<div class="form-group">
-							<?php echo $form->labelEx($model,'category',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
+							<b>Category</b>
 								<?php echo $form->textField($model,'category',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'category'); ?>
 							</div>
@@ -131,8 +129,8 @@
 
 					<div class="col-xs-4">
 						<div class="form-group">
-							<?php echo $form->labelEx($model,'description',array('class'=>'col-md-4 control-label')); ?>
 							<div class="col-md-8">
+							<b>Description</b>
 								<?php echo $form->textArea($model,'description',array('class'=>'form-control')); ?>
 								<?php echo $form->error($model,'description'); ?>
 							</div>
@@ -146,7 +144,7 @@
 		</div>
 	</div>
 </div>
-</p>
+
 <div class="form-actions clearfix"> 
 
 <?php 
