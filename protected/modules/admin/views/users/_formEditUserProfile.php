@@ -72,7 +72,7 @@
 
 
 					<p><p>
-					<h4>Company Information</h4>
+					<h4> Company Information </h4>
 				</p>
 					<div class="row">
 						<div class="col-xs-4">
