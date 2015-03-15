@@ -109,7 +109,9 @@
 								<?php echo $form->error($model,'other_info'); ?>
 								</div>
 							</div>
+	
 
+	
 <div class="form-group">
 					<div class="col-sm-4 tr-align">
 							<?php echo $form->labelEx($model,'user_id', array('class'=>'control-label')); ?>
