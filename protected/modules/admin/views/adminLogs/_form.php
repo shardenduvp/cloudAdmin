@@ -28,7 +28,7 @@
 		<div class="col-sm-4 tr-align">
 		<?php echo $form->labelEx($model,'username'); ?>
 		</div>
-		<div class="col-sm-6 col-offset-sm-2">
+		<div class="col-sm-6 col-offset-sm-2 ">
 		<?php echo $form->textField($model,'username',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'username'); ?>
 		</div>

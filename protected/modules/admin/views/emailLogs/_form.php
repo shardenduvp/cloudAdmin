@@ -32,7 +32,7 @@
 			<?php echo $form->labelEx($model,'reciver'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-			<?php echo $form->textField($model,'reciver',array('size'=>60,'maxlength'=>100)); ?>
+			<?php echo $form->textField($model,'reciver',array('size'=>50,'maxlength'=>50)); ?>
 			<?php echo $form->error($model,'reciver'); ?>
 		</div>
 	</div>
@@ -42,14 +42,24 @@
 		<?php echo $form->labelEx($model,'templete'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'templete',array('size'=>60,'maxlength'=>150)); ?>
+		<?php echo $form->textField($model,'templete',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'templete'); ?>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<div class="col-sm-4 tr-align">
-		<?php echo $form->labelEx($model,'esubject'); ?>
+		<?php echo $form->labelEx($model,'other_info',array('size'=>50,'maxlength'=>50)); ?>
+		</div>
+		<div class="col-sm-6 col-offset-sm-2">
+		<?php echo $form->textArea($model,'other_info',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'other_info'); ?>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-4 tr-align">
+		<?php echo $form->labelEx($model,'esubject',array('size'=>50,'maxlength'=>50)); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
 		<?php echo $form->textArea($model,'esubject',array('rows'=>6, 'cols'=>50)); ?>
@@ -62,8 +72,8 @@
 		<?php echo $form->labelEx($model,'time'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'time'); ?>
-		<?php echo $form->error($model,'time'); ?>
+		<?php echo $form->textField($model,'time',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'time',array('rows'=>6, 'cols'=>50)); ?>
 		</div>
 	</div>
 
@@ -72,18 +82,8 @@
 		<?php echo $form->labelEx($model,'status'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<div class="col-sm-4 tr-align">
-		<?php echo $form->labelEx($model,'other_info'); ?>
-		</div>
-		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'other_info',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'other_info'); ?>
+		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'status',array('rows'=>6, 'cols'=>50)); ?>
 		</div>
 	</div>
 
@@ -92,8 +92,8 @@
 		<?php echo $form->labelEx($model,'user_id'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'user_id',array('rows'=>6, 'cols'=>50)); ?>
 		</div>
 	</div>
 
