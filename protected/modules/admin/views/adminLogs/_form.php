@@ -29,7 +29,7 @@
 		<?php echo $form->labelEx($model,'username'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2 ">
-		<?php echo $form->textField($model,'username',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'username',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'username'); ?>
 		</div>
 	</div>
@@ -39,7 +39,7 @@
 		<?php echo $form->labelEx($model,'ipaddress'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'ipaddress',array('size'=>50,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'ipaddress',array('size'=>50,'maxlength'=>45,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'ipaddress'); ?>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 		<?php echo $form->labelEx($model,'logtime'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'logtime',array('size'=>50,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'logtime',array('size'=>50,'maxlength'=>45,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'logtime'); ?>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 		<?php echo $form->labelEx($model,'controller'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'controller',array('size'=>50,'maxlength'=>250));?>
+		<?php echo $form->textField($model,'controller',array('size'=>50,'maxlength'=>250,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'controller'); ?>
 		</div>
 	</div>
@@ -69,7 +69,7 @@
 		<?php echo $form->labelEx($model,'action'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'action',array('size'=>50,'maxlength'=>250)); ?>
+		<?php echo $form->textField($model,'action',array('size'=>50,'maxlength'=>250,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'action'); ?>
 		</div>
 	</div>
@@ -79,7 +79,7 @@
 		<?php echo $form->labelEx($model,'details'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'details',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'details',array('rows'=>6, 'cols'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'details'); ?>
 		</div>
 	</div>
@@ -89,7 +89,7 @@
 		<?php echo $form->labelEx($model,'browser'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'browser',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'browser',array('rows'=>6,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'browser'); ?>
 		</div>
 	</div>
@@ -99,7 +99,7 @@
 		<?php echo $form->labelEx($model,'query_string'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'query_string',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'query_string',array('rows'=>6, 'cols'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'query_string'); ?>
 		</div>
 	</div>
@@ -109,7 +109,7 @@
 		<?php echo $form->labelEx($model,'refer_url'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'refer_url',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'refer_url',array('rows'=>6, 'cols'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'refer_url'); ?>
 		</div>
 	</div>
@@ -119,7 +119,7 @@
 		<?php echo $form->labelEx($model,'user_id'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>45,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'user_id'); ?>
 		</div>
 	</div>
@@ -129,13 +129,13 @@
 		<?php echo $form->labelEx($model,'request_url'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'request_url',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'request_url',array('rows'=>6, 'cols'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'request_url'); ?>
 		</div>
-	</div>
+	</div><br><br>
 
 	<div class="row">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-primary button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

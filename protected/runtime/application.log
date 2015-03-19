@@ -1372,3 +1372,208 @@ REQUEST_URI=/cloudAdmin/index.php?r=admin/errorlogs/update&id=1
 in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\errorLogs\_form.php (30)
 in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\errorLogs\update.php (21)
 in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ErrorLogsController.php (95)
+2015/03/19 08:26:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/emailogs/update".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/emailogs/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/emailogs/update&id=1
+---
+2015/03/19 08:26:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/emailog/update".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/emailog/u...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/emailog/update&id=1
+---
+2015/03/19 08:26:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updatelog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updatelogs/update&id=1
+---
+2015/03/19 08:27:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updateLog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updateLogs/update&id=1
+---
+2015/03/19 08:27:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updateLog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updateLogs/update&id=1
+---
+2015/03/19 08:28:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updatelog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updatelogs/update&id=1
+---
+2015/03/19 08:29:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('10')
+#1 [internal function]: UpdateLogsController->actionUpdate('10')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updatelog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updatelogs/update&id=10
+---
+2015/03/19 08:29:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updatelog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updatelogs/update&id=1
+---
+2015/03/19 08:31:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updateLog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updateLogs/update&id=1
+---
+2015/03/19 08:32:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updateLog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updateLogs/update&id=1
+---
+2015/03/19 08:32:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php:149
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UpdateLogsController.php(81): UpdateLogsController->loadModel('1')
+#1 [internal function]: UpdateLogsController->actionUpdate('1')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UpdateLogsController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UpdateLogsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/updateLog...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/updateLogs/update&id=1
+---

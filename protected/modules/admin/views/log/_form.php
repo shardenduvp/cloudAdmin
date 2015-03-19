@@ -29,7 +29,7 @@
 		<?php echo $form->labelEx($model,'proposal_id'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'proposal_id'); ?>
+		<?php echo $form->textField($model,'proposal_id',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'proposal_id'); ?>
 		</div>
 	</div>
@@ -39,7 +39,7 @@
 		<?php echo $form->labelEx($model,'project_status'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'project_status'); ?>
+		<?php echo $form->textField($model,'project_status',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'project_status'); ?>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 		<?php echo $form->labelEx($model,'is_checked'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'is_checked'); ?>
+		<?php echo $form->textField($model,'is_checked',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'is_checked'); ?>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 		<?php echo $form->labelEx($model,'title'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'title',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'title',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'title'); ?>
 		</div>
 	</div>
@@ -69,7 +69,7 @@
 		<?php echo $form->labelEx($model,'description'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>245)); ?>
+		<?php echo $form->textField($model,'description',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'description'); ?>
 		</div>
 	</div>
@@ -79,7 +79,7 @@
 		<?php echo $form->labelEx($model,'add_date'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'add_date'); ?>
+		<?php echo $form->textField($model,'add_date',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'add_date'); ?>
 		</div>
 	</div>
@@ -89,7 +89,7 @@
 		<?php echo $form->labelEx($model,'update_date'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'update_date'); ?>
+		<?php echo $form->textField($model,'update_date',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'update_date'); ?>
 		</div>
 	</div>
@@ -99,7 +99,7 @@
 		<?php echo $form->labelEx($model,'status'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'status'); ?>
+		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'status'); ?>
 		</div>
 	</div>
@@ -109,7 +109,7 @@
 		<?php echo $form->labelEx($model,'for_user'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'for_user'); ?>
+		<?php echo $form->textField($model,'for_user',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'for_user'); ?>
 		</div>
 	</div>
@@ -119,7 +119,7 @@
 		<?php echo $form->labelEx($model,'notification'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'notification'); ?>
+		<?php echo $form->textField($model,'notification',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'notification'); ?>
 		</div>
 	</div>
@@ -129,7 +129,7 @@
 		<?php echo $form->labelEx($model,'is_read'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'is_read'); ?>
+		<?php echo $form->textField($model,'is_read',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'is_read'); ?>
 		</div>
 	</div>
@@ -139,7 +139,7 @@
 		<?php echo $form->labelEx($model,'is_active'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'is_active'); ?>
+		<?php echo $form->textField($model,'is_active',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'is_active'); ?>
 		</div>
 	</div>
@@ -149,13 +149,13 @@
 		<?php echo $form->labelEx($model,'login_id'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'login_id'); ?>
+		<?php echo $form->textField($model,'login_id',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'login_id'); ?>
 		</div>
 	</div>
 
 	<div class="row">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'btn btn-primary button'));?>
 	</div>
 
 <?php $this->endWidget(); ?>
