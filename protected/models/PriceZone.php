@@ -13,6 +13,7 @@
  *
  * The followings are the available model relations:
  * @property PriceTier[] $priceTiers
+ * @property States[] $states
  */
 class PriceZone extends CActiveRecord
 {
@@ -33,7 +34,7 @@ class PriceZone extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('min_price, max_price', 'length', 'max'=>45),
+			array('min_price, max_price', 'length', 'max'=>20),
 			array('title', 'length', 'max'=>500),
 			array('description', 'safe'),
 			// The following rule is used by search().
@@ -50,7 +51,8 @@ class PriceZone extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'priceTiers' => array(self::HAS_MANY, 'PriceTier', 'price_zone_id'),
+			'priceTiers' => array(self::HAS_MANY, 'PriceTier', 'price_zone'),
+			'states' => array(self::HAS_MANY, 'States', 'price_zone_id'),
 		);
 	}
 

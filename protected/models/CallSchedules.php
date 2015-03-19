@@ -5,10 +5,10 @@
  *
  * The followings are the available columns in table 'call_schedules':
  * @property integer $id
+ * @property integer $client_projects_id
  * @property string $client_phone
  * @property string $call_time
  * @property string $add_date
- * @property integer $client_projects_id
  *
  * The followings are the available model relations:
  * @property ClientProjects $clientProjects
@@ -37,7 +37,7 @@ class CallSchedules extends CActiveRecord
 			array('call_time, add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, client_phone, call_time, add_date, client_projects_id', 'safe', 'on'=>'search'),
+			array('id, client_projects_id, client_phone, call_time, add_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,10 +60,10 @@ class CallSchedules extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'client_projects_id' => 'Client Projects',
 			'client_phone' => 'Client Phone',
 			'call_time' => 'Call Time',
 			'add_date' => 'Add Date',
-			'client_projects_id' => 'Client Projects',
 		);
 	}
 
@@ -86,10 +86,10 @@ class CallSchedules extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('client_projects_id',$this->client_projects_id);
 		$criteria->compare('client_phone',$this->client_phone,true);
 		$criteria->compare('call_time',$this->call_time,true);
 		$criteria->compare('add_date',$this->add_date,true);
-		$criteria->compare('client_projects_id',$this->client_projects_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

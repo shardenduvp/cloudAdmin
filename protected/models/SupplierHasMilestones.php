@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'supplier_has_milestones':
  * @property integer $id
+ * @property integer $supplier_project_proposal_id
  * @property string $module
  * @property string $start_date
  * @property string $end_date
@@ -13,17 +14,6 @@
  * @property integer $status
  * @property string $transaction
  * @property string $note
- * @property string $reminder_date
- * @property string $milestone_title
- * @property string $overview
- * @property string $due_date
- * @property integer $is_schedule_payment
- * @property integer $suppliers_id
- * @property integer $supplier_proposal_id
- *
- * The followings are the available model relations:
- * @property MilestonesHasOrderStatus[] $milestonesHasOrderStatuses
- * @property Suppliers $suppliers
  */
 class SupplierHasMilestones extends CActiveRecord
 {
@@ -43,14 +33,13 @@ class SupplierHasMilestones extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('suppliers_id', 'required'),
-			array('status, is_schedule_payment, suppliers_id, supplier_proposal_id', 'numerical', 'integerOnly'=>true),
+			array('supplier_project_proposal_id, module, start_date, end_date, amount, date, status, transaction, note', 'required'),
+			array('supplier_project_proposal_id, status', 'numerical', 'integerOnly'=>true),
 			array('amount', 'numerical'),
-			array('transaction, milestone_title', 'length', 'max'=>100),
-			array('module, start_date, end_date, date, note, reminder_date, overview, due_date', 'safe'),
+			array('transaction', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, module, start_date, end_date, amount, date, status, transaction, note, reminder_date, milestone_title, overview, due_date, is_schedule_payment, suppliers_id, supplier_proposal_id', 'safe', 'on'=>'search'),
+			array('id, supplier_project_proposal_id, module, start_date, end_date, amount, date, status, transaction, note', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,8 +51,6 @@ class SupplierHasMilestones extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'milestonesHasOrderStatuses' => array(self::HAS_MANY, 'MilestonesHasOrderStatus', 'supplier_milestones_id'),
-			'suppliers' => array(self::BELONGS_TO, 'Suppliers', 'suppliers_id'),
 		);
 	}
 
@@ -74,6 +61,7 @@ class SupplierHasMilestones extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'supplier_project_proposal_id' => 'Supplier Project Proposal',
 			'module' => 'Module',
 			'start_date' => 'Start Date',
 			'end_date' => 'End Date',
@@ -82,13 +70,6 @@ class SupplierHasMilestones extends CActiveRecord
 			'status' => 'Status',
 			'transaction' => 'Transaction',
 			'note' => 'Note',
-			'reminder_date' => 'Reminder Date',
-			'milestone_title' => 'Milestone Title',
-			'overview' => 'Overview',
-			'due_date' => 'Due Date',
-			'is_schedule_payment' => 'Is Schedule Payment',
-			'suppliers_id' => 'Suppliers',
-			'supplier_proposal_id' => 'Supplier Proposal',
 		);
 	}
 
@@ -111,6 +92,7 @@ class SupplierHasMilestones extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('supplier_project_proposal_id',$this->supplier_project_proposal_id);
 		$criteria->compare('module',$this->module,true);
 		$criteria->compare('start_date',$this->start_date,true);
 		$criteria->compare('end_date',$this->end_date,true);
@@ -119,13 +101,6 @@ class SupplierHasMilestones extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('transaction',$this->transaction,true);
 		$criteria->compare('note',$this->note,true);
-		$criteria->compare('reminder_date',$this->reminder_date,true);
-		$criteria->compare('milestone_title',$this->milestone_title,true);
-		$criteria->compare('overview',$this->overview,true);
-		$criteria->compare('due_date',$this->due_date,true);
-		$criteria->compare('is_schedule_payment',$this->is_schedule_payment);
-		$criteria->compare('suppliers_id',$this->suppliers_id);
-		$criteria->compare('supplier_proposal_id',$this->supplier_proposal_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -9,6 +9,10 @@
  * @property integer $skills_id
  * @property integer $status
  * @property string $add_date
+ *
+ * The followings are the available model relations:
+ * @property SuppliersHasPortfolio $portfolio
+ * @property Skills $skills
  */
 class SuppliersPortfolioHasSkills extends CActiveRecord
 {
@@ -28,8 +32,8 @@ class SuppliersPortfolioHasSkills extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('portfolio_id, skills_id, status, add_date', 'required'),
 			array('portfolio_id, skills_id, status', 'numerical', 'integerOnly'=>true),
-			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, portfolio_id, skills_id, status, add_date', 'safe', 'on'=>'search'),
@@ -44,6 +48,8 @@ class SuppliersPortfolioHasSkills extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'portfolio' => array(self::BELONGS_TO, 'SuppliersHasPortfolio', 'portfolio_id'),
+			'skills' => array(self::BELONGS_TO, 'Skills', 'skills_id'),
 		);
 	}
 

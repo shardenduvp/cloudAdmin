@@ -33,6 +33,11 @@ $('.search-form form').submit(function(){
     if(modify_date.length > 10) modify_date = modify_date.substring(modify_date.length - 10);
     var modify_date_op = $('#modify_date_op').val();
     $('#ClientProjects_modify_date').val(modify_date_op + modify_date);
+    // add date operator
+    var add_date = $('#ClientProjects_add_date').val()
+    if(add_date.length > 10) add_date = add_date.substring(add_date.length - 10);
+    var add_date_op = $('#add_date_op').val();
+    $('#ClientProjects_add_date').val(add_date_op + add_date);
     // ajax update
     $('#datatables1').yiiGridView('update', {
         data: $(this).serialize()
@@ -50,7 +55,7 @@ $('.search-form form').submit(function(){
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- AJAX Loader -->
-            <div class="ajax-loader loader-hidden"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loaders/12.gif"></div>
+            <div class="ajax-loader loader-hidden"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/adminPanel/img/loaders/12.gif"></div>
             
             <div id="approve-data-ajax"></div>
         </div>
@@ -133,12 +138,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'client_company_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link($data->clientProfiles->users->company_name, array("/admin/users/view", "id"=>$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link($data->clientProfiles->users->company_name, array("/admin/users/view", "id"=>$data->clientProfiles->users->id, "view"=>"client"))',
                     ),
                     array(
                         'name'=>'client_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/users/view", "id"=>$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/users/view", "id"=>$data->clientProfiles->users->id, "view"=>"client"))',
                     ),
                     array(
                         'name'=>'start_date',
@@ -156,6 +161,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'name'=>'suppliers_name',
                         'type'=>'html',
                         'value'=>'$data->getSuppliers($data)',
+                    ),
+                    array(
+                        'name'=>'add_date',
+                        'value'=>'(empty($data->add_date))?"Not Provided":$data->add_date',
                     ),
                     array(
                         'name'=>'modify_date',
@@ -193,21 +202,44 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                             'done'=>array(
                                 'label'=>'APPROVED',
                                 'url'=>'Yii::app()->createUrl("#")',
+                                // 'url'=>'Yii::app()->createUrl("/admin/default/getApproveView", array("id"=>$data->id))',
+                                // 'options'=>array(
+                                //     'data-toggle'=>'modal',
+                                //     'data-target'=>'#approve_modal',
+                                // ),
                                 'visible'=>'($data->status<=1)?false:true',
+                                'click'=>'function(e) {
+                                    return false;
+                                }',
+                                // 'click'=>'function(e) {
+                                //     $("#approve-data-ajax").empty();
+                                //     $(".ajax-loader").show();
+                                //     $.ajax({
+                                //         type:"POST",
+                                //         url:$(this).attr("href"),
+                                //         success:function(data) {
+                                //             $(".ajax-loader").hide();
+                                //             $("#approve_modal").html(data);
+                                //         },
+                                //         error:function() {
+                                //             $("#approve_modal").html("Error in connection.");
+                                //         }
+                                //     });
+                                // }',
                             ),
                         ),
                     ),
-                    array(
-                        'class'=>'CButtonColumn',
-                        'header'=>'Search',
-                        'template'=>'{search}',
-                        'buttons'=>array(
-                            'search'=>array(
-                                'label'=>'SEARCH SUPPLIERS',
-                                'url'=>'Yii::app()->createUrl("site/index")',
-                            ),
-                        ),
-                    ),
+                    // array(
+                    //     'class'=>'CButtonColumn',
+                    //     'header'=>'Search',
+                    //     'template'=>'{search}',
+                    //     'buttons'=>array(
+                    //         'search'=>array(
+                    //             'label'=>'SEARCH SUPPLIERS',
+                    //             'url'=>'Yii::app()->createUrl("admin/clientProjects/searchSuppliers",array("pid"=>$data->id))',
+                    //         ),
+                    //     ),
+                    // ),
                 ),
             )); ?>
             </div>

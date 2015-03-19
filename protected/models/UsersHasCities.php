@@ -8,7 +8,6 @@
  * @property integer $users_id
  * @property integer $cities_id
  * @property string $details
- * @property integer $is_main
  * @property string $add_date
  * @property integer $status
  *
@@ -35,12 +34,12 @@ class UsersHasCities extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('users_id, cities_id', 'required'),
-			array('users_id, cities_id, is_main, status', 'numerical', 'integerOnly'=>true),
+			array('users_id, cities_id, status', 'numerical', 'integerOnly'=>true),
 			array('details', 'length', 'max'=>100),
 			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, users_id, cities_id, details, is_main, add_date, status', 'safe', 'on'=>'search'),
+			array('id, users_id, cities_id, details, add_date, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,7 +66,6 @@ class UsersHasCities extends CActiveRecord
 			'users_id' => 'Users',
 			'cities_id' => 'Cities',
 			'details' => 'Details',
-			'is_main' => 'Is Main',
 			'add_date' => 'Add Date',
 			'status' => 'Status',
 		);
@@ -95,7 +93,6 @@ class UsersHasCities extends CActiveRecord
 		$criteria->compare('users_id',$this->users_id);
 		$criteria->compare('cities_id',$this->cities_id);
 		$criteria->compare('details',$this->details,true);
-		$criteria->compare('is_main',$this->is_main);
 		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
 

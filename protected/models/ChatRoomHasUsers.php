@@ -14,8 +14,8 @@
  *
  * The followings are the available model relations:
  * @property ChatMessages[] $chatMessages
- * @property ChatRoom $chatRoom
  * @property Users $users
+ * @property ChatRoom $chatRoom
  */
 class ChatRoomHasUsers extends CActiveRecord
 {
@@ -54,9 +54,9 @@ class ChatRoomHasUsers extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'chatMessages' => array(self::HAS_MANY, 'ChatMessages', 'chat_room_has_users_id'),
-			'chatRoom' => array(self::BELONGS_TO, 'ChatRoom', 'chat_room_id'),
+			'chatMessages' => array(self::HAS_MANY, 'ChatMessages', 'chat_message_has_user_id'),
 			'users' => array(self::BELONGS_TO, 'Users', 'users_id'),
+			'chatRoom' => array(self::BELONGS_TO, 'ChatRoom', 'chat_room_id'),
 		);
 	}
 

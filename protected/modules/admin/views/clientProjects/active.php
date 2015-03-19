@@ -14,6 +14,10 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+    $('.search-form').toggle();
+    return false;
+});
 $('.search-form form').submit(function(){
     $('#datatables1').yiiGridView('update', {
         data: $(this).serialize()
@@ -38,11 +42,13 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<div class="search-form">
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
     'model'=>$model,
 )); ?>
-</div><!-- search-form -->
+</div>
+<!-- search-form -->
 
 
 <div class="row">
@@ -59,7 +65,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'datatables1',
                 'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
-                'dataProvider'=>$model->projectSearch(),
+                'dataProvider'=>$model->activeProjectSearch(),
                 'filter'=>$model,
                 'template'=>'{items}{summary}{pager}',
                 'pagerCssClass'=>'box-body',
@@ -84,11 +90,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     array(
                         'name'=>'client_name',
                         'type'=>'html',
-                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->users->id))',
+                        'value'=>'CHtml::link(ucwords($data->clientProfiles->users->first_name.\' \'.$data->clientProfiles->users->last_name), array("/admin/users/view", "id"=>$data->clientProfiles->users->id))',
                     ),
                     array(
                         'name'=>'start_date',
-                        'value'=>'(empty($data->start_date))?"Not Provided":date("jS M Y", strtotime($data->start_date))',
+                        'value'=>'(empty($data->start_date))?"Not Provided":$data->start_date',
                     ),
                     array(
                         'name'=>'suppliers_name',
@@ -96,16 +102,16 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'value'=>'$data->getSuppliers($data)',
                     ),
                     array(
-                        'name'=>'modify_date',
-                        'value'=>'(empty($data->modify_date)) ? "Not Provided" : $data->modify_date',
+                        'name'=>'add_date',
+                        'value'=>'(empty($data->add_date))?"Not Provided":$data->add_date',
                     ),
                     array(
                         'name'=>'status',
                         'header'=>'Status', 
                         'filter'=>CHtml::activeDropDownList($model, 'status',
-                            array('1'=>"Awaiting Approval",'2'=>'Information Sent'),
+                            array('>3'=>'Active'),
                             array('empty'=>'Select Status',"")), 
-                        'value'=>'($data->status==1)?"Awaiting Approval":"Information Sent"',            
+                        'value'=>'($data->status==3)?"Active":"Not Active"',            
                     ),
                     array(
                         'class'=>'CButtonColumn',
@@ -113,6 +119,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                         'buttons'=>array(
                             'update'=>array(
                                 'visible'=>'true',
+                                 'url'=>'Yii::app()->createUrl("admin/clientProjects/updateProject",array("id"=>$data->id));'
                             ),
                             'view'=>array(
                                 'visible'=>'true',

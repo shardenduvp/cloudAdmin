@@ -13,6 +13,9 @@
  * @property string $type
  * @property integer $status
  * @property string $add_date
+ *
+ * The followings are the available model relations:
+ * @property SuppliersProjectsProposals $suppliersPropsal
  */
 class SupplierDocuments extends CActiveRecord
 {
@@ -32,6 +35,7 @@ class SupplierDocuments extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('suppliers_propsal_id', 'required'),
 			array('suppliers_propsal_id, status', 'numerical', 'integerOnly'=>true),
 			array('name, path', 'length', 'max'=>500),
 			array('extension, size, type', 'length', 'max'=>45),
@@ -50,6 +54,7 @@ class SupplierDocuments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'suppliersPropsal' => array(self::BELONGS_TO, 'SuppliersProjectsProposals', 'suppliers_propsal_id'),
 		);
 	}
 

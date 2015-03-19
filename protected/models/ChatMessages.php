@@ -6,20 +6,22 @@
  * The followings are the available columns in table 'chat_messages':
  * @property integer $id
  * @property integer $chat_template_id
- * @property integer $chat_room_has_users_id
+ * @property integer $chat_message_has_user_id
  * @property string $type
  * @property string $message
  * @property string $ip_address
  * @property integer $sender_type
  * @property integer $status
  * @property string $add_date
- * @property integer $client_projects_id
- * @property integer $suppliers_id
+ * @property integer $chat_room_id
+ * @property integer $proposal_id
  * @property integer $is_sent_from_supplier
  *
  * The followings are the available model relations:
- * @property ChatRoomHasUsers $chatRoomHasUsers
  * @property ChatTemplate $chatTemplate
+ * @property ChatRoom $chatRoom
+ * @property ChatRoomHasUsers $chatMessageHasUser
+ * @property ChatSeenBy[] $chatSeenBies
  */
 class ChatMessages extends CActiveRecord
 {
@@ -39,13 +41,13 @@ class ChatMessages extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('chat_template_id, chat_room_has_users_id', 'required'),
-			array('chat_template_id, chat_room_has_users_id, sender_type, status, client_projects_id, suppliers_id, is_sent_from_supplier', 'numerical', 'integerOnly'=>true),
+			array('chat_template_id, chat_message_has_user_id, chat_room_id', 'required'),
+			array('chat_template_id, chat_message_has_user_id, sender_type, status, chat_room_id, proposal_id, is_sent_from_supplier', 'numerical', 'integerOnly'=>true),
 			array('type, ip_address', 'length', 'max'=>45),
 			array('message, add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, chat_template_id, chat_room_has_users_id, type, message, ip_address, sender_type, status, add_date, client_projects_id, suppliers_id, is_sent_from_supplier', 'safe', 'on'=>'search'),
+			array('id, chat_template_id, chat_message_has_user_id, type, message, ip_address, sender_type, status, add_date, chat_room_id, proposal_id, is_sent_from_supplier', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,8 +59,10 @@ class ChatMessages extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'chatRoomHasUsers' => array(self::BELONGS_TO, 'ChatRoomHasUsers', 'chat_room_has_users_id'),
 			'chatTemplate' => array(self::BELONGS_TO, 'ChatTemplate', 'chat_template_id'),
+			'chatRoom' => array(self::BELONGS_TO, 'ChatRoom', 'chat_room_id'),
+			'chatMessageHasUser' => array(self::BELONGS_TO, 'ChatRoomHasUsers', 'chat_message_has_user_id'),
+			'chatSeenBies' => array(self::HAS_MANY, 'ChatSeenBy', 'chat_messages_id'),
 		);
 	}
 
@@ -70,15 +74,15 @@ class ChatMessages extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'chat_template_id' => 'Chat Template',
-			'chat_room_has_users_id' => 'Chat Room Has Users',
+			'chat_message_has_user_id' => 'Chat Message Has User',
 			'type' => 'Type',
 			'message' => 'Message',
 			'ip_address' => 'Ip Address',
 			'sender_type' => 'Sender Type',
 			'status' => 'Status',
 			'add_date' => 'Add Date',
-			'client_projects_id' => 'Client Projects',
-			'suppliers_id' => 'Suppliers',
+			'chat_room_id' => 'Chat Room',
+			'proposal_id' => 'Proposal',
 			'is_sent_from_supplier' => 'Is Sent From Supplier',
 		);
 	}
@@ -103,15 +107,15 @@ class ChatMessages extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('chat_template_id',$this->chat_template_id);
-		$criteria->compare('chat_room_has_users_id',$this->chat_room_has_users_id);
+		$criteria->compare('chat_message_has_user_id',$this->chat_message_has_user_id);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('message',$this->message,true);
 		$criteria->compare('ip_address',$this->ip_address,true);
 		$criteria->compare('sender_type',$this->sender_type);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('add_date',$this->add_date,true);
-		$criteria->compare('client_projects_id',$this->client_projects_id);
-		$criteria->compare('suppliers_id',$this->suppliers_id);
+		$criteria->compare('chat_room_id',$this->chat_room_id);
+		$criteria->compare('proposal_id',$this->proposal_id);
 		$criteria->compare('is_sent_from_supplier',$this->is_sent_from_supplier);
 
 		return new CActiveDataProvider($this, array(

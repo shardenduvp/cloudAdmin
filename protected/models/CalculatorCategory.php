@@ -6,8 +6,13 @@
  * The followings are the available columns in table 'calculator_category':
  * @property integer $id
  * @property string $name
+ * @property string $description
  * @property string $created
  * @property string $modified
+ * @property integer $is_deleted
+ *
+ * The followings are the available model relations:
+ * @property CalculatorQuestion[] $calculatorQuestions
  */
 class CalculatorCategory extends CActiveRecord
 {
@@ -27,11 +32,13 @@ class CalculatorCategory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('name, description', 'required'),
+			array('is_deleted', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
 			array('created, modified', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, created, modified', 'safe', 'on'=>'search'),
+			array('id, name, description, created, modified, is_deleted', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +50,7 @@ class CalculatorCategory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'calculatorQuestions' => array(self::HAS_MANY, 'CalculatorQuestion', 'category_id'),
 		);
 	}
 
@@ -54,8 +62,10 @@ class CalculatorCategory extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
+			'description' => 'Description',
 			'created' => 'Created',
 			'modified' => 'Modified',
+			'is_deleted' => 'Is Deleted',
 		);
 	}
 
@@ -79,8 +89,10 @@ class CalculatorCategory extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('description',$this->description,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
+		$criteria->compare('is_deleted',$this->is_deleted);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

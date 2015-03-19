@@ -11,6 +11,9 @@
  * @property string $image
  * @property string $created
  * @property string $modified
+ *
+ * The followings are the available model relations:
+ * @property SuppliersProjectsProposals $projectProposal
  */
 class SuppliersProjectTeam extends CActiveRecord
 {
@@ -30,9 +33,9 @@ class SuppliersProjectTeam extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('project_proposal_id, name, description, image, created, modified', 'required'),
 			array('project_proposal_id', 'numerical', 'integerOnly'=>true),
 			array('name, description, image', 'length', 'max'=>250),
-			array('created, modified', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, project_proposal_id, name, description, image, created, modified', 'safe', 'on'=>'search'),
@@ -47,6 +50,7 @@ class SuppliersProjectTeam extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'projectProposal' => array(self::BELONGS_TO, 'SuppliersProjectsProposals', 'project_proposal_id'),
 		);
 	}
 

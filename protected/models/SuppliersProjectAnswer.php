@@ -28,8 +28,9 @@ class SuppliersProjectAnswer extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('question_id, suppliers_id, created', 'required'),
 			array('question_id, suppliers_id', 'numerical', 'integerOnly'=>true),
-			array('answer, created', 'safe'),
+			array('answer', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, question_id, suppliers_id, answer, created', 'safe', 'on'=>'search'),

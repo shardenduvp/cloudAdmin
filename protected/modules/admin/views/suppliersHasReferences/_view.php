@@ -29,10 +29,6 @@
 	<?php echo CHtml::encode($data->year_engagement); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('communication_rating')); ?>:</b>
-	<?php echo CHtml::encode($data->communication_rating); ?>
-	<br />
-
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('skill_rating')); ?>:</b>
 	<?php echo CHtml::encode($data->skill_rating); ?>

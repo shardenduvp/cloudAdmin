@@ -11,6 +11,11 @@
  * @property string $price
  * @property string $created
  * @property string $modified
+ * @property integer $is_deleted
+ *
+ * The followings are the available model relations:
+ * @property CalculatorQuestion $question
+ * @property CalculatorResult[] $calculatorResults
  */
 class CalculatorOptions extends CActiveRecord
 {
@@ -30,12 +35,13 @@ class CalculatorOptions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('question_id', 'numerical', 'integerOnly'=>true),
+			array('question_id, options', 'required'),
+			array('question_id, is_deleted', 'numerical', 'integerOnly'=>true),
 			array('hour, price', 'length', 'max'=>100),
-			array('options, created, modified', 'safe'),
+			array('created, modified', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, question_id, options, hour, price, created, modified', 'safe', 'on'=>'search'),
+			array('id, question_id, options, hour, price, created, modified, is_deleted', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,6 +53,8 @@ class CalculatorOptions extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'question' => array(self::BELONGS_TO, 'CalculatorQuestion', 'question_id'),
+			'calculatorResults' => array(self::HAS_MANY, 'CalculatorResult', 'option_id'),
 		);
 	}
 
@@ -63,6 +71,7 @@ class CalculatorOptions extends CActiveRecord
 			'price' => 'Price',
 			'created' => 'Created',
 			'modified' => 'Modified',
+			'is_deleted' => 'Is Deleted',
 		);
 	}
 
@@ -91,6 +100,7 @@ class CalculatorOptions extends CActiveRecord
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
+		$criteria->compare('is_deleted',$this->is_deleted);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

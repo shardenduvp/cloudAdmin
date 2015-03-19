@@ -7,11 +7,8 @@
  * @property integer $id
  * @property string $name
  * @property string $description
- * @property string $position
  * @property integer $status
- *
- * The followings are the available model relations:
- * @property ClientProjects[] $clientProjects
+ * @property string $position
  */
 class CurrentStatus extends CActiveRecord
 {
@@ -31,12 +28,14 @@ class CurrentStatus extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('name', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('name, position', 'length', 'max'=>45),
-			array('description', 'length', 'max'=>245),
+			array('name', 'length', 'max'=>100),
+			array('position', 'length', 'max'=>30),
+			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, position, status', 'safe', 'on'=>'search'),
+			array('id, name, description, status, position', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,7 +47,6 @@ class CurrentStatus extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'clientProjects' => array(self::HAS_MANY, 'ClientProjects', 'current_status_id'),
 		);
 	}
 
@@ -60,9 +58,9 @@ class CurrentStatus extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'description' => 'Description',
-			'position' => 'Position',
+			'description' => 'Tooltip',
 			'status' => 'Status',
+			'position' => 'Position',
 		);
 	}
 
@@ -87,8 +85,8 @@ class CurrentStatus extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('position',$this->position,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('position',$this->position,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

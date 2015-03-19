@@ -5,16 +5,16 @@
  *
  * The followings are the available columns in table 'chat_room':
  * @property integer $id
- * @property integer $users_id
  * @property string $room_type
- * @property integer $proposal_id
  * @property string $room_name
  * @property string $add_date
  * @property integer $status
+ * @property string $remarks
  *
  * The followings are the available model relations:
- * @property Users $users
+ * @property ChatMessages[] $chatMessages
  * @property ChatRoomHasUsers[] $chatRoomHasUsers
+ * @property SuppliersProjects[] $suppliersProjects
  */
 class ChatRoom extends CActiveRecord
 {
@@ -34,13 +34,12 @@ class ChatRoom extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('users_id', 'required'),
-			array('users_id, proposal_id, status', 'numerical', 'integerOnly'=>true),
+			array('status', 'numerical', 'integerOnly'=>true),
 			array('room_type, room_name', 'length', 'max'=>45),
-			array('add_date', 'safe'),
+			array('add_date, remarks', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, users_id, room_type, proposal_id, room_name, add_date, status', 'safe', 'on'=>'search'),
+			array('id, room_type, room_name, add_date, status, remarks', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,8 +51,9 @@ class ChatRoom extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::BELONGS_TO, 'Users', 'users_id'),
+			'chatMessages' => array(self::HAS_MANY, 'ChatMessages', 'chat_room_id'),
 			'chatRoomHasUsers' => array(self::HAS_MANY, 'ChatRoomHasUsers', 'chat_room_id'),
+			'suppliersProjects' => array(self::HAS_MANY, 'SuppliersProjects', 'chat_room_id'),
 		);
 	}
 
@@ -64,12 +64,11 @@ class ChatRoom extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'users_id' => 'Users',
 			'room_type' => 'Room Type',
-			'proposal_id' => 'Proposal',
 			'room_name' => 'Room Name',
 			'add_date' => 'Add Date',
 			'status' => 'Status',
+			'remarks' => 'Remarks',
 		);
 	}
 
@@ -92,12 +91,11 @@ class ChatRoom extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('users_id',$this->users_id);
 		$criteria->compare('room_type',$this->room_type,true);
-		$criteria->compare('proposal_id',$this->proposal_id);
 		$criteria->compare('room_name',$this->room_name,true);
 		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('remarks',$this->remarks,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -7,8 +7,8 @@
  * @property integer $id
  * @property integer $suppliers_id
  * @property integer $skills_id
- * @property string $add_date
  * @property integer $status
+ * @property string $add_date
  *
  * The followings are the available model relations:
  * @property Skills $skills
@@ -37,7 +37,7 @@ class SuppliersHasSkills extends CActiveRecord
 			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, suppliers_id, skills_id, add_date, status', 'safe', 'on'=>'search'),
+			array('id, suppliers_id, skills_id, status, add_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,8 +63,8 @@ class SuppliersHasSkills extends CActiveRecord
 			'id' => 'ID',
 			'suppliers_id' => 'Suppliers',
 			'skills_id' => 'Skills',
-			'add_date' => 'Add Date',
 			'status' => 'Status',
+			'add_date' => 'Add Date',
 		);
 	}
 
@@ -83,17 +83,26 @@ class SuppliersHasSkills extends CActiveRecord
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
-
+        
+        $page_size = 50;
+        if(isset($_REQUEST['pagesize']))
+        {
+            $page_size = $_REQUEST['pagesize'];   
+        }
+        
+        
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('suppliers_id',$this->suppliers_id);
 		$criteria->compare('skills_id',$this->skills_id);
-		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('add_date',$this->add_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array( 'defaultOrder'=>'suppliers_id ASC', ),
+            'pagination' => array('pageSize' => $page_size),
 		));
 	}
 

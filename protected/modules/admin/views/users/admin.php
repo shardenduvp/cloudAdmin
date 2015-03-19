@@ -67,6 +67,20 @@ $('.search-form form').submit(function(){
     </div>
 </div>
 
+<?php if(Yii::app()->user->hasFlash('successFlash')) { ?>
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Success!</strong> <?php echo Yii::app()->user->getFlash('successFlash'); ?>
+</div>
+<?php } ?>
+
+<?php if(Yii::app()->user->hasFlash('failureFlash')) { ?>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Failed!</strong> <?php echo Yii::app()->user->getFlash('failureFlash'); ?>
+</div>
+<?php } ?>
+
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
@@ -126,7 +140,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             				'filter'=>CHtml::activeDropDownList($model, 'role_id',
                      		 array('1'=>'Admin','2'=>'Client','3'=>'Supplier'),
                       		array('empty'=>'Select Roles',"")), 
-            				'value'=>'ucfirst($data->role0->name)'
+            				'value'=>'ucfirst($data->roles->name)'
             			),
 						'company_name',
 						'add_date',
@@ -141,17 +155,23 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						array(
 							'class'=>'CButtonColumn',
 							'header'=>'Operations',
+                            'template'=>'{update}{view}{chat}',
 							'buttons'=>array(
-                                        'update'=>array(
-                                                        'visible'=>'true',
-                                                ),
-                                        'view'=>array(
-                                                        'visible'=>'true',
-                                                ),
-                                        'delete'=>array(
-                                                        'visible'=>'false',
-                                                ),
-                       						 )
+                                'update'=>array(
+                                    'visible'=>'true',
+                                ),
+                                'view'=>array(
+                                    'visible'=>'true',
+                                ),
+                                'delete'=>array(
+                                    'visible'=>'false',
+                                ),
+                                'chat'=>array(
+                                    'label'=>'Chat',
+                                    'imageUrl'=> Yii::app()->theme->baseUrl . "/adminPanel/img/chat-icon.png",
+                                    'url'=>'Yii::app()->createUrl("/admin/users/initChat", array("uid"=>$data->id))',
+                                ),
+                       		)
 						)
 				)
 			));  

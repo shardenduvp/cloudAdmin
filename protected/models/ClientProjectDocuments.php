@@ -13,6 +13,7 @@
  * @property string $add_date
  * @property integer $status
  * @property integer $client_projects_id
+ * @property integer $ref_type
  *
  * The followings are the available model relations:
  * @property ClientProjects $clientProjects
@@ -36,13 +37,13 @@ class ClientProjectDocuments extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client_projects_id', 'required'),
-			array('status, client_projects_id', 'numerical', 'integerOnly'=>true),
+			array('status, client_projects_id, ref_type', 'numerical', 'integerOnly'=>true),
 			array('name, extension, size, type', 'length', 'max'=>45),
 			array('path', 'length', 'max'=>245),
 			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, path, extension, size, type, add_date, status, client_projects_id', 'safe', 'on'=>'search'),
+			array('id, name, path, extension, size, type, add_date, status, client_projects_id, ref_type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +74,7 @@ class ClientProjectDocuments extends CActiveRecord
 			'add_date' => 'Add Date',
 			'status' => 'Status',
 			'client_projects_id' => 'Client Projects',
+			'ref_type' => 'Ref Type',
 		);
 	}
 
@@ -103,6 +105,7 @@ class ClientProjectDocuments extends CActiveRecord
 		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('client_projects_id',$this->client_projects_id);
+		$criteria->compare('ref_type',$this->ref_type);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -26,7 +26,13 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Suppliers Has References</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header">
+         	<h1>Manage References</h1>
+       	</div>
+    </div>
+</div>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -36,75 +42,97 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
-	'model'=>$model,
+    'model'=>$model,
 )); ?>
-</div><!-- search-form -->
+</div>
+
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 full-width">
 		<!-- BOX -->
-		<div class="box border blue">
+		<div class="box border custom-table">
 
 			<div class="box-title">
-				<h4><i class="fa fa-table"></i>List of all Suppliers Has References</h4>
+				<h4><i class="fa fa-table"></i>List of all References</h4>
 			</div>
 									
 
-			<div class="box-body">
-    <?php $this->widget('zii.widgets.grid.CGridView', array(
-	//'id'=>'suppliers-has-references-grid',
+			<div class="box-body" >
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'suppliers-grid',
 	'id'=>'datatables1',
 	'itemsCssClass'=>'datatable table table-striped table-bordered table-hover',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'template'=>'{items}{summary}{pager}',
+                	'pager'=>array(
+                    'header'=>'',
+                    'firstPageLabel'=>'&laquo;',
+                    'lastPageLabel'=>'&raquo;',
+                    'prevPageLabel'=>'<',
+                    'nextPageLabel'=>'>',
+                    'hiddenPageCssClass'=>'disabled',
+                    'selectedPageCssClass'=>'active',
+                    'htmlOptions'=>array(
+                        'class'=>'pagination',
+                    )
+                ),
 	'columns'=>array(
 		'id',
-		'project_name',
-		'project_description',
-		'company_name',
-		'client_email',
-		'year_engagement',
-		'communication_rating',
-		'skill_rating',
-		'timeline_rating',
-		'independence_rating',
-		'provide_do_well',
-		'provider_improve',
-		'tag_line',
-		'add_date',
-		'modified',
-		'suppliers_id',
-		'client_profiles_id',
-		'suppliers_has_portfolio_id',
-		'client_first_name',
-		'client_last_name',
-		'follow_venturepact',
-		'is_unattributed',
-		'email_hide',
-		'review_type',
 		array(
-            				'name'=>'status',
-            				'header'=>'Status', 
-            				'filter'=>CHtml::activeDropDownList($model, 'status',
-                     		 array('1'=>"Verified",'0'=>'Un-Verified'),
-                      		array('empty'=>'Select Status',"")), 
-            				'value'=>'($data->status==1)?"Verified":"Not Verified"',            
-        				),
-		
+            'name'=>'supplier',
+            'header'=>'Suppliers',
+            'type'=>'raw',
+            'value'=>'CHtml::link(ucwords($data->suppliers->users->first_name), array("/admin/suppliers/view", "id"=>$data->suppliers->id, "view"=>"suppliers"))',
+        ),
+        array(
+            'name'=>'company_name',
+            'header'=>'Company Name',
+            'value'=>'(!empty($data->company_name))?ucfirst($data->company_name):"Not Provided"',
+        ),
+		array(
+            'name'=>'client_profiles_id',
+			'header'=>'Client Id',
+			'type' =>'raw',
+            'value'=>'CHtml::link(ucwords($data->client_profiles_id), array("/admin/clientProfiles/view", "id"=>$data->client_profiles_id, "view"=>"client"))',
+        ),
+		array(
+            'name'=>'client_first_name',
+			'header'=>'Client First Name',
+            'value'=>'(!empty($data->client_first_name))?ucfirst($data->client_first_name):"Not Provided"',
+        ),
+        array(
+            'name' => 'client_email',
+            'type' => 'email',
+            'value'=>'(!empty($data->client_email))?ucfirst($data->client_email):"Not Provided"',
+        ),
+        array(
+            'name'=>'project_name',
+            'header'=>'Project Name',
+            'value' => '(!empty($data->project_name))?$data->project_name:"Not Provided"',
+        ),
+        array(
+            'name'=>'status',
+            'filter'=>CHtml::activeDropDownList($model, 'status',
+                            array('empty'=>'Select Status',"")),
+            'value' => '($data->status === "0") ? "Requested" : (($data->status === "1") ? "Not Verified" : (($data->status === "2") ? "Verified" : (($data->status === "3") ? "Delete" : (($data->status === "4") ? "Reported Issue" : "Not Provided"))))'
+        ),
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>'Operations',
-							'buttons'=>array(
-                                        'update'=>array(
-                                                        'visible'=>'true',
-                                                ),
-                                        'view'=>array(
-                                                        'visible'=>'true',
-                                                ),
-                                        'delete'=>array(
-                                                        'visible'=>'false',
-                                                ),
-                       						 )
+			'buttons'=>array(
+                'update'=>array(
+                    'visible'=>'true',
+                    'url'=>'Yii::app()->createUrl("/admin/suppliersHasReferences/update", array("id"=>$data->id, "update"=>"suppliersHasReferences"))'
+                ),
+                'view'=>array(
+                    'visible'=>'true',
+                ),
+                'delete'=>array(
+                    'visible'=>'false',
+                ),
+            ),
 		),
+		
 	),
 )); ?>
 </div>

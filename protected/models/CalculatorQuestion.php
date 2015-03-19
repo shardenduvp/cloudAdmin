@@ -8,8 +8,16 @@
  * @property integer $parent
  * @property integer $category_id
  * @property string $question
+ * @property string $description
+ * @property integer $multi
  * @property string $created
  * @property string $modified
+ * @property integer $is_deleted
+ *
+ * The followings are the available model relations:
+ * @property CalculatorOptions[] $calculatorOptions
+ * @property CalculatorCategory $category
+ * @property CalculatorResult[] $calculatorResults
  */
 class CalculatorQuestion extends CActiveRecord
 {
@@ -29,12 +37,13 @@ class CalculatorQuestion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('parent, category_id', 'numerical', 'integerOnly'=>true),
+			array('category_id, question, multi', 'required'),
+			array('parent, category_id, multi, is_deleted', 'numerical', 'integerOnly'=>true),
 			array('question', 'length', 'max'=>500),
-			array('created, modified', 'safe'),
+			array('description, created, modified', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, parent, category_id, question, created, modified', 'safe', 'on'=>'search'),
+			array('id, parent, category_id, question, description, multi, created, modified, is_deleted', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,6 +55,9 @@ class CalculatorQuestion extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'calculatorOptions' => array(self::HAS_MANY, 'CalculatorOptions', 'question_id'),
+			'category' => array(self::BELONGS_TO, 'CalculatorCategory', 'category_id'),
+			'calculatorResults' => array(self::HAS_MANY, 'CalculatorResult', 'question_id'),
 		);
 	}
 
@@ -59,8 +71,11 @@ class CalculatorQuestion extends CActiveRecord
 			'parent' => 'Parent',
 			'category_id' => 'Category',
 			'question' => 'Question',
+			'description' => 'Description',
+			'multi' => 'Multi',
 			'created' => 'Created',
 			'modified' => 'Modified',
+			'is_deleted' => 'Is Deleted',
 		);
 	}
 
@@ -86,8 +101,11 @@ class CalculatorQuestion extends CActiveRecord
 		$criteria->compare('parent',$this->parent);
 		$criteria->compare('category_id',$this->category_id);
 		$criteria->compare('question',$this->question,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('multi',$this->multi);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
+		$criteria->compare('is_deleted',$this->is_deleted);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -28,7 +28,7 @@ class SuppliersProjectsController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete', 'introduction'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -133,6 +133,18 @@ class SuppliersProjectsController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	/*
+	 * Manage Introductions to client
+	 */
+	public function actionIntroduction($pid = null)
+	{
+		if(!is_null($pid)) {
+			$this->render('introduction');
+		} else {
+			$this->redirect(array('/admin'));
+		}
 	}
 
 	/**

@@ -77,7 +77,8 @@ class Suppliers extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	public $skills;
+	public $keyword,$skills,$industry,$services,$rank, $user_company, $user_email, $user_name;
+
 	public function tableName()
 	{
 		return 'suppliers';
@@ -108,6 +109,7 @@ class Suppliers extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, first_name, last_name, cover, name, image, email, skype_id, website, phone_number, tagline, about_company, foundation_year, short_description, details, location, pricing_details, min_price, number_of_employee, total_available_employee, consultation_description, standard_pitch, standard_service_agreement, profile_status, add_date, modification_date, rough_estimate, linkedin, facebook, google, twitter, you_tube, per_hour_rate, project_size, web_references, development_location, sales_location, response_time, is_faq_completed, is_application_submit, status, users_id, logo, default_q3_ans, default_q2_ans, default_q1_ans, default_q4_ans, accept_new_project_date, is_profile_complete, price_tier_id, payoneer_payee, payoneer_token, link_status, offers, skills', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, name, skype_id, location,add_date, status, users_id, price_tier_id, user_email, user_company, user_name', 'safe', 'on'=>'adminSearch'),
 		);
 	}
 
@@ -163,7 +165,7 @@ class Suppliers extends CActiveRecord
 			'standard_pitch' => 'Standard Pitch',
 			'standard_service_agreement' => 'Standard Service Agreement',
 			'profile_status' => 'Profile Status',
-			'add_date' => 'Add Date',
+			'add_date' => 'Created On',
 			'modification_date' => 'Modification Date',
 			'rough_estimate' => 'Rough Estimate',
 			'linkedin' => 'Linkedin',
@@ -193,6 +195,9 @@ class Suppliers extends CActiveRecord
 			'payoneer_token' => 'Payoneer Token',
 			'link_status' => 'Link Status',
 			'offers' => 'Offers',
+			'user_company' => 'Company Name',
+			'user_email' => 'Email',
+			'user_name' => 'Supplier Name',
 		);
 	}
 
@@ -213,12 +218,7 @@ class Suppliers extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with=array("suppliersHasSkills.skills");
-		$criteria->together = true;
 
-		$this->modification_date=!empty($this->modification_date)? date('Y-m-d',strtotime($this->modification_date)):null;
-
-		$criteria->compare('skills.name', $this->skills);
 		$criteria->compare('id',$this->id);
 		$criteria->compare('first_name',$this->first_name,true);
 		$criteria->compare('last_name',$this->last_name,true);
@@ -276,18 +276,144 @@ class Suppliers extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'sort'=>array(
-		        'attributes'=>array(
-		            'skills'=>array(
-		                'asc'=>'skills.name',
-		                'desc'=>'skils.name DESC',
-		            ),
-		            '*',
-		        ),
-		    ),
 		));
 	}
 
+	public function adminSearch()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('t.id',$this->id);
+		$criteria->compare('t.first_name',$this->first_name,true);
+		$criteria->compare('t.last_name',$this->last_name,true);
+		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('t.skype_id',$this->skype_id,true);
+		$criteria->compare('t.location',$this->location,true);
+		$criteria->compare('t.add_date',$this->add_date,true);
+		$criteria->compare('t.status',$this->status);
+		$criteria->compare('t.users_id',$this->users_id);
+		$criteria->compare('t.price_tier_id',$this->price_tier_id);
+
+		$criteria->with = array(
+		                       'users',
+		                  );
+
+		$criteria->compare('users.company_name', $this->user_company, true);
+		$criteria->compare('users.username', $this->user_email, true);
+		$criteria->compare('CONCAT(users.first_name, \' \', users.last_name)', $this->user_name, true);
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+				'sort'=>array(
+			        'attributes'=>array(
+			            'user_company'=>array(
+			                'asc'=>'users.company_name',
+			                'desc'=>'users.company_name DESC',
+			            ),
+			            'user_email'=>array(
+			                'asc'=>'users.username',
+			                'desc'=>'users.username DESC',
+			            ),
+			            'user_name'=>array(
+			                'asc'=>'users.first_name',
+			                'desc'=>'users.first_name DESC',
+			            ),
+			            '*',
+			        ),
+			    ),
+		));
+	}
+
+
+	public function searchResult($data)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+		$this->keyword	=	$data['keyword'];
+		$option			=	isset($data['option'])?$data['option']:'';
+		$skills			=	isset($data['skills'])?$data['skills']:'';
+		$industry		=	isset($data['industry'])?$data['industry']:'';
+		$services		=	isset($data['services'])?$data['services']:'';
+		
+		$criteria		=	new CDbCriteria;
+		$criteria->with	= array(
+			'users',
+			'suppliersHasPortfolios'=>array(
+											'with'=>array(
+															'suppliersHasPortfolioHasSkills'=>array('with'=>'skills'),
+															'suppliersHasPortfolioHasServices'=>array('with'=>'services'),
+															'suppliersPortfolioHasIndustries'=>array('with'=>'industries')
+														)
+										)
+								);
+		if(!empty($this->keyword)){
+			if($option && !empty($this->keyword)){
+				$sliik			=	Skills::model()->findByAttributes(array('name'=>$this->keyword));
+				if(!empty($sliik)){
+					
+					$childSkills	=	Skills::model()->findAllByAttributes(array('parent_id'=>$sliik->parent_id));
+					foreach($childSkills as $childSkill){
+						$arraySkiils[]	=	$childSkill->id;
+					}
+					$arraySkiils[]	=	$sliik->parent_id;
+					
+					$this->skills	=	$arraySkiils;
+					$criteria->addInCondition('skills.id',$this->skills);
+					//$criteria->compare('skills.id',$this->skills,true,'OR');
+				}
+			}else{
+				$criteria->compare('suppliersHasPortfolios.project_name',$this->keyword,true,'OR');
+				$criteria->compare('suppliersHasPortfolios.description',$this->keyword,true,'OR');
+				$criteria->compare('skills.name',$this->keyword,true,'OR');
+				$criteria->compare('services.name',$this->keyword,true,'OR');
+				$criteria->compare('industries.name',$this->keyword,true,'OR');
+				$criteria->compare('users.company_name', $this->keyword, true,'OR');
+			}
+			
+		}
+		if($option && !empty($skills) && count($skills)<2){
+			foreach($skills as $skill){
+				$sliik			=	Skills::model()->findByAttributes(array('name'=>$skill));
+				if(!empty($sliik) && $sliik->parent_id != 0){
+					$this->skills	=	$sliik->parent_id;
+					$criteria->compare('skills.id',$this->skills,true,'OR');
+				}
+			}
+		}elseif($option && !empty($skills))
+			foreach($skills as $this->skills)
+				$criteria->compare('skills.name',$this->skills,true,'OR');
+		else if(!empty($skills))
+			foreach($skills as $this->skills)
+				$criteria->compare('skills.name',$this->skills,true,'AND');
+
+		
+		if($option){
+			if(!empty($industry))
+				foreach($industry as $this->industry)
+					$criteria->compare('industries.name',$this->industry,true,'OR');
+			if(!empty($services))
+				foreach($services as $this->services)
+					$criteria->compare('services.name',$this->services,true,'OR');
+		}
+		else{
+			if(!empty($industry))
+				foreach($industry as $this->industry)
+					$criteria->compare('industries.name',$this->industry,true,'AND');
+			if(!empty($services))
+				foreach($services as $this->services)
+					$criteria->compare('services.name',$this->services,true,'AND');
+		}
+		
+		
+		$criteria->addCondition("suppliersHasPortfolios.status=1");
+		$criteria->addCondition("t.profile_status >= 49");
+		//$criteria->together = true;
+		//$criteria->limit = 5;
+		$suppliers			=	Suppliers::model()->findAll($criteria);
+		return $suppliers;
+	}
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create SuppliersHasReferences</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

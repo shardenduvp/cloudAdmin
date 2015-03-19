@@ -7,8 +7,8 @@
  * @property integer $id
  * @property integer $suppliers_id
  * @property integer $services_id
- * @property string $add_date
  * @property integer $status
+ * @property string $add_date
  *
  * The followings are the available model relations:
  * @property Services $services
@@ -37,7 +37,7 @@ class SuppliersHasServices extends CActiveRecord
 			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, suppliers_id, services_id, add_date, status', 'safe', 'on'=>'search'),
+			array('id, suppliers_id, services_id, status, add_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,8 +63,8 @@ class SuppliersHasServices extends CActiveRecord
 			'id' => 'ID',
 			'suppliers_id' => 'Suppliers',
 			'services_id' => 'Services',
-			'add_date' => 'Add Date',
 			'status' => 'Status',
+			'add_date' => 'Add Date',
 		);
 	}
 
@@ -89,8 +89,8 @@ class SuppliersHasServices extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('suppliers_id',$this->suppliers_id);
 		$criteria->compare('services_id',$this->services_id);
-		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('add_date',$this->add_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

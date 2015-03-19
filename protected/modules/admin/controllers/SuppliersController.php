@@ -24,11 +24,12 @@ class SuppliersController extends Controller
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
+
 	public function accessRules()
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete','getSuppliers'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -43,9 +44,8 @@ class SuppliersController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$model=$this->loadModel($id);
+		$this->redirect(array('/admin/users/view','id'=>$model->users_id));
 	}
 
 	/**
@@ -63,7 +63,7 @@ class SuppliersController extends Controller
 		{
 			$model->attributes=$_POST['Suppliers'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin/users/view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -79,22 +79,61 @@ class SuppliersController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Suppliers']))
 		{
+			// begin transaction
+        	$transaction = Yii::app()->db->beginTransaction();
+        	// save supplier's data
 			$model->attributes=$_POST['Suppliers'];
-			if($model->save()){
-				if(Yii::app()->request->isAjaxRequest){
-					 	echo CJSON::encode(array('status'=>'success'));
-					 	Yii::app()->end();
-					 }
+			// save user's data related to supplier
+			$user = Users::model()->findByPk($model->users_id);
+			$user->attributes=$_POST['Users'];
+			// update user_offices
+			if(isset($_POST["location"]))
+			{
+				$locations = $_POST["location"];
+				foreach($_POST["location"] as $key=>$location)
+				{
+					if(!empty($location["cityid"])){
+						if(empty($location["id"]) )
+							$office = new UsersOffices;
+						else
+							$office = UsersOffices::model()->findByPk($location["id"]);
+						$office->user_id		=	$model->users->id;
+						$office->city_id		=	$location["cityid"];
+						$office->dep_id			=	empty($location["dep"])?1:$location["dep"];
+						// var_dump($office);
+						if(!$office->save()) {
+							$transaction->rollback();
+							echo CJSON::encode(array('status'=>'error'));
+							Yii::app()->end();
+						} else {
+							$location["id"]=$office->id;
+							$location["e_id"] = base64_encode($office->id);
+							$locations[$key] = $location;
+						}
+					}
+				}
 			}
-				 
-		}
 
+			if($model->save() && $user->save()){
+				$transaction->commit();
+				if(Yii::app()->request->isAjaxRequest){
+					if(isset($locations))
+						echo CJSON::encode(array('locations'=>$locations, 'status'=>'success'));
+					else
+						echo CJSON::encode(array('status'=>'success'));
+					Yii::app()->end();
+				}
+			} else {
+				$transaction->rollback();
+				echo CJSON::encode(array('status'=>'error'));
+				Yii::app()->end();
+			}	 
+		}
 		$this->redirect(array('users/update','id'=>$model->users_id));
 	}
 
@@ -128,7 +167,7 @@ class SuppliersController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Suppliers('search');
+		$model=new Suppliers('adminSearch');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Suppliers']))
 			$model->attributes=$_GET['Suppliers'];
@@ -175,5 +214,22 @@ class SuppliersController extends Controller
 		}
 		return $str;
 		
+	}
+
+	public function actionGetSuppliers($id=null){
+		
+		$skills=ClientProjectsHasSkills::model()->findAll(
+			array("select"=>"skills_id",
+				"condition"=>"client_projects_id={$id}"
+				)
+			);
+		$clientSkills=array();
+		foreach($skills as $skill){
+			$clientSkills[]=$skill['skills_id'];
+		}
+
+		//$suppliers=Suppliers::model()->suppliersSearch($clientSkills);
+
+		$this->render('getSuppliers');//,array('model'=>$suppliers));
 	}
 }

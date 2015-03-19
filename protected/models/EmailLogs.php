@@ -6,13 +6,13 @@
  * The followings are the available columns in table 'email_logs':
  * @property integer $id
  * @property string $reciver
+ * @property integer $user_id
  * @property string $templete
  * @property string $esubject
  * @property string $body
  * @property string $time
  * @property integer $status
  * @property string $other_info
- * @property integer $user_id
  */
 class EmailLogs extends CActiveRecord
 {
@@ -32,13 +32,14 @@ class EmailLogs extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('status, user_id', 'numerical', 'integerOnly'=>true),
-			array('reciver', 'length', 'max'=>100),
+			array('reciver, user_id, body, time', 'required'),
+			array('user_id, status', 'numerical', 'integerOnly'=>true),
+			array('reciver', 'length', 'max'=>80),
 			array('templete', 'length', 'max'=>150),
-			array('esubject, body, time, other_info', 'safe'),
+			array('esubject, other_info', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, reciver, templete, esubject, body, time, status, other_info, user_id', 'safe', 'on'=>'search'),
+			array('id, reciver, user_id, templete, esubject, body, time, status, other_info', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,13 +62,13 @@ class EmailLogs extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'reciver' => 'Reciver',
+			'user_id' => 'User',
 			'templete' => 'Templete',
 			'esubject' => 'Esubject',
 			'body' => 'Body',
 			'time' => 'Time',
 			'status' => 'Status',
 			'other_info' => 'Other Info',
-			'user_id' => 'User',
 		);
 	}
 
@@ -86,22 +87,33 @@ class EmailLogs extends CActiveRecord
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
-
+ 			 $page_size = 50;
+                if(isset($_REQUEST['pagesize']))
+                {
+                    $page_size = $_REQUEST['pagesize'];   
+                }
+                
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('reciver',$this->reciver,true);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('templete',$this->templete,true);
 		$criteria->compare('esubject',$this->esubject,true);
 		$criteria->compare('body',$this->body,true);
 		$criteria->compare('time',$this->time,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('other_info',$this->other_info,true);
-		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+					'criteria'=>$criteria,
+					'sort'=>array(
+						'defaultOrder'=>'id DESC',
+					),
+                    'pagination' => array(
+                        'pageSize' => $page_size,
+                    ),
+				));
 	}
 
 	/**

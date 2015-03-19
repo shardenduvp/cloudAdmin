@@ -8,12 +8,11 @@
  * @property string $name
  * @property string $description
  * @property string $tooltip
- * @property string $category
  * @property integer $status
+ * @property string $category
  *
  * The followings are the available model relations:
  * @property ClientProjectsHasServices[] $clientProjectsHasServices
- * @property SuppliersHasPortfolioHasServices[] $suppliersHasPortfolioHasServices
  * @property SuppliersHasServices[] $suppliersHasServices
  */
 class Services extends CActiveRecord
@@ -35,11 +34,13 @@ class Services extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('name, category', 'length', 'max'=>45),
-			array('description, tooltip', 'length', 'max'=>255),
+			array('name', 'length', 'max'=>45),
+			array('description', 'length', 'max'=>245),
+			array('tooltip', 'length', 'max'=>500),
+			array('category', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, tooltip, category, status', 'safe', 'on'=>'search'),
+			array('id, name, description, tooltip, status, category', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +53,6 @@ class Services extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'clientProjectsHasServices' => array(self::HAS_MANY, 'ClientProjectsHasServices', 'services_id'),
-			'suppliersHasPortfolioHasServices' => array(self::HAS_MANY, 'SuppliersHasPortfolioHasServices', 'services_id'),
 			'suppliersHasServices' => array(self::HAS_MANY, 'SuppliersHasServices', 'services_id'),
 		);
 	}
@@ -65,10 +65,10 @@ class Services extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'description' => 'Description',
-			'tooltip' => 'Tooltip',
-			'category' => 'Category',
+			'description' => 'Tooltip',
+			'tooltip' => 'Class Icon',
 			'status' => 'Status',
+			'category' => 'Category',
 		);
 	}
 
@@ -94,8 +94,8 @@ class Services extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('tooltip',$this->tooltip,true);
-		$criteria->compare('category',$this->category,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('category',$this->category,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

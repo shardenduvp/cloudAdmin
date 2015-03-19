@@ -11,6 +11,10 @@
  * @property string $save_hour
  * @property string $zonescol
  * @property integer $status
+ *
+ * The followings are the available model relations:
+ * @property ClientProjectsHasZones[] $clientProjectsHasZones
+ * @property ZonesHasDeveloperPrice[] $zonesHasDeveloperPrices
  */
 class Zones extends CActiveRecord
 {
@@ -48,6 +52,8 @@ class Zones extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'clientProjectsHasZones' => array(self::HAS_MANY, 'ClientProjectsHasZones', 'zones_id'),
+			'zonesHasDeveloperPrices' => array(self::HAS_MANY, 'ZonesHasDeveloperPrice', 'zones_id'),
 		);
 	}
 

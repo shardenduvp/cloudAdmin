@@ -28,7 +28,7 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete', 'initChat', 'chat'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -71,6 +71,7 @@ class UsersController extends Controller
 			{
 				$model->attributes=$_POST['Users'];
 				$model->password		=	base64_encode($model->password);
+				$model->status 			=	1;
 				// $model1->password		=	base64_encode($model1->password);
 				// $model2->password		=	base64_encode($model2->password);
 				if($model->save()) {
@@ -105,23 +106,23 @@ class UsersController extends Controller
 		{
 			$model->attributes=$_POST['Users'];
 			$model->password=base64_encode($model->password);
+			if(!isset($model->time_zone) || empty($model->time_zone))
+				$model->time_zone = "";
 			if($model->save()){
-				
-				if(Yii::app()->request->isAjaxRequest){
-				 	echo CJSON::encode(array('status'=>'success'));
-				 	Yii::app()->end();
-					//$this->redirect(array('view','id'=>$model->id));
-				 }
-				 
+				 echo CJSON::encode(array(
+                                  'status'=>'success'
+                             ));
+				 Yii::app()->end();
 			}
 		}
 
 			
-			$this->render('update',array(
+		$this->render('update',array(
 			'model'=>$model,
 			'modelClientProfiles'=>$modelClientProfiles,
 			'modelSuppliers'=>$modelSuppliers
-			));
+			)
+		);
 		
 		
 	}
@@ -170,8 +171,104 @@ class UsersController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
 
+	/**
+	 * Initiate admin chat with user
+	 */
+	public function actionInitChat($uid = null) {
+		if($uid == null) {
+			Yii::app()->user->setFlash('failureFlash', 'The user id is not provided.');
+			$this->redirect(array('/admin/users/admin'));
+		}
 
+		// not allow admin to establish chat with admin
+		if($uid == 1) {
+			Yii::app()->user->setFlash('failureFlash', 'This is the admin user.');
+			$this->redirect(array('/admin/users/admin'));
+		}
+
+		// do initiation process
+		$chatUser = ChatRoomHasUsers::model()->findAllByAttributes(array('users_id'=>$uid));
+		$room_id = null;
+		foreach ($chatUser as $user) {
+			if($user->chatRoom->room_type == 0) {
+				$usersInRoom = ChatRoomHasUsers::model()->findAllByAttributes(array('chat_room_id'=>$user->chatRoom->id));
+				// if the only users in room are admin and current user
+				if(count($usersInRoom) == 2 && ($usersInRoom[0]->users_id == 1 || $usersInRoom[1]->users_id == 1)) {
+					$room_id = $user->chatRoom->id; break;
+				}
+			}
+		}
+
+		// if room not found create a chat room
+		if($room_id == null) {
+			$transaction = Yii::app()->db->beginTransaction();
+			$user = Users::model()->findByPk($uid);
+			if(empty($user)) {
+				Yii::app()->user->setFlash('failureFlash', 'The user with user_id : '.$uid . " does not exists.");
+				$this->redirect(array('/admin/users/admin'));
+			}
+
+			// create a chat room
+			$room = new ChatRoom();
+			$room->room_type = 0;
+			$room->room_name =  ucfirst($user->first_name) . " - Admin Chat";
+			$room->add_date = date("Y-m-d H:i:s");
+			$room->status = 1;
+
+			// if chat room creation failed, rollback and show error
+			if(!$room->save()) {
+				$transaction->rollback();
+				Yii::app()->user->setFlash('failureFlash', 'The user with user_id : '.$uid . " does not exists.");
+				$this->redirect(array('/admin/users/admin'));
+			}
+
+			// if chat room created, add user to the room
+			$userGroup = array(1, $uid);
+			foreach ($userGroup as $u) {
+				$chatHasUsers = new ChatRoomHasUsers();
+				$chatHasUsers->chat_room_id = $room->id;
+				$chatHasUsers->users_id = $u;
+				$chatHasUsers->added_by = "Admin";
+				$chatHasUsers->add_date = date("Y-m-d H:i:s");
+				$chatHasUsers->status = 1;
+
+				if(!$chatHasUsers->save()) {
+					$transaction->rollback();
+					Yii::app()->user->setFlash('failureFlash', "The user with user_id : ".$uid . " does not exists.");
+					$this->redirect(array('/admin/users/admin'));
+				}
+			}
+			$transaction->commit();
+			$room_id = $room->id;
+		}
+
+		if($room_id != null) {
+			$this->redirect(array('/admin/users/chat', 'room_id'=>base64_encode($room_id), 'uid'=>base64_encode($uid)));
+		} else {
+			Yii::app()->user->setFlash('failureFlash', 'Failed to find/create a group for this user.');
+			$this->redirect(array('/admin/users/admin'));
+		}
+	}
+
+	/**
+	 * Manage chat for the user with admin
+	 */
+	public function actionChat($room_id = null, $uid = null) {
+		if($room_id == null || $uid == null) {
+			Yii::app()->user->setFlash('failureFlash', 'The chat group id/user id is not generated.');
+			$this->redirect(array('/admin/users/admin'));
+		}
+		$room_id = base64_decode($room_id);
+		$uid = base64_decode($uid);
+		$room = ChatRoom::model()->findByPk($room_id);
+		$user = ChatRoomHasUsers::model()->findByAttributes(array('users_id'=>$uid, 'chat_room_id'=>$room_id));
+		
+		$user = $user->users;
+		
+		// render the chat layout
+		$this->render('chat', array('user'=>$user, 'room'=>$room));
 	}
 
 	/**
@@ -203,30 +300,8 @@ class UsersController extends Controller
 	}
 
 	protected function assignLinks($data,$row){
-		$url="";
-		$id="";
-		if($data->role_id==1){
-			$url='admin/users/view';
-			$id=$data->id;
-		}
-		else if($data->role_id==2){
-			$result=ClientProfiles::model()->findByAttributes(array('users_id'=>$data->id));
-			if(!empty($result)){
-				$url='admin/clientProfiles/view';
-				$id=$result['id'];
-			}
-		}
-		else{
-			$result=Suppliers::model()->findByAttributes(array('users_id'=>$data->id));
-			if(!empty($result)){
-				$url='admin/suppliers/view';
-				$id=$result['id'];
-			}
-		}
-		if($url!="")
-			return CHtml::link($data->username,Yii::app()->createUrl($url,array('id'=>$id)));
-		else
-			return CHtml::link($data->username,'#');
+		$url="/admin/users/view";
+		return CHtml::link($data->username,Yii::app()->createUrl($url,array('id'=>$data->id)));
 	}
 
 }

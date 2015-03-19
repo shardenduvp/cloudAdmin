@@ -16,11 +16,7 @@
  *
  * The followings are the available model relations:
  * @property Countries $countries
- * @property ClientProfilesHasCities[] $clientProfilesHasCities
- * @property LinkedinConnections[] $linkedinConnections
- * @property SuppliersHasCities[] $suppliersHasCities
  * @property UsersHasCities[] $usersHasCities
- * @property UsersOffices[] $usersOffices
  */
 class Cities extends CActiveRecord
 {
@@ -60,11 +56,7 @@ class Cities extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'countries' => array(self::BELONGS_TO, 'Countries', 'countries_id'),
-			'clientProfilesHasCities' => array(self::HAS_MANY, 'ClientProfilesHasCities', 'cities_id'),
-			'linkedinConnections' => array(self::HAS_MANY, 'LinkedinConnections', 'cities_id'),
-			'suppliersHasCities' => array(self::HAS_MANY, 'SuppliersHasCities', 'cities_id'),
 			'usersHasCities' => array(self::HAS_MANY, 'UsersHasCities', 'cities_id'),
-			'usersOffices' => array(self::HAS_MANY, 'UsersOffices', 'city_id'),
 		);
 	}
 

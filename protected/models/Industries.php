@@ -7,13 +7,14 @@
  * @property integer $id
  * @property string $name
  * @property string $description
- * @property string $position
  * @property integer $status
+ * @property string $position
  *
  * The followings are the available model relations:
  * @property ClientProjectsHasIndustries[] $clientProjectsHasIndustries
  * @property SuppliersHasIndustries[] $suppliersHasIndustries
- * @property SuppliersPortfolioHasIndustries[] $suppliersPortfolioHasIndustries
+ * @property SuppliersHasPortfolio[] $suppliersHasPortfolios
+ * @property SuppliersHasReferences[] $suppliersHasReferences
  */
 class Industries extends CActiveRecord
 {
@@ -34,11 +35,12 @@ class Industries extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('name, position', 'length', 'max'=>45),
+			array('name', 'length', 'max'=>45),
 			array('description', 'length', 'max'=>245),
+			array('position', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, position, status', 'safe', 'on'=>'search'),
+			array('id, name, description, status, position', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +54,8 @@ class Industries extends CActiveRecord
 		return array(
 			'clientProjectsHasIndustries' => array(self::HAS_MANY, 'ClientProjectsHasIndustries', 'industries_id'),
 			'suppliersHasIndustries' => array(self::HAS_MANY, 'SuppliersHasIndustries', 'industries_id'),
-			'suppliersPortfolioHasIndustries' => array(self::HAS_MANY, 'SuppliersPortfolioHasIndustries', 'industries_id'),
+			'suppliersHasPortfolios' => array(self::HAS_MANY, 'SuppliersHasPortfolio', 'industry_id'),
+			'suppliersHasReferences' => array(self::HAS_MANY, 'SuppliersHasReferences', 'industry_id'),
 		);
 	}
 
@@ -64,9 +67,9 @@ class Industries extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'description' => 'Description',
-			'position' => 'Position',
+			'description' => 'Tooltip',
 			'status' => 'Status',
+			'position' => 'Position',
 		);
 	}
 
@@ -91,8 +94,8 @@ class Industries extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('position',$this->position,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('position',$this->position,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

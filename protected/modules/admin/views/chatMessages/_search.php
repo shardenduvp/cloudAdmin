@@ -22,8 +22,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'chat_room_has_users_id'); ?>
-		<?php echo $form->textField($model,'chat_room_has_users_id'); ?>
+		<?php echo $form->label($model,'chat_message_has_user_id'); ?>
+		<?php echo $form->textField($model,'chat_message_has_user_id'); ?>
 	</div>
 
 	<div class="row">
@@ -57,13 +57,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'client_projects_id'); ?>
-		<?php echo $form->textField($model,'client_projects_id'); ?>
+		<?php echo $form->label($model,'chat_room_id'); ?>
+		<?php echo $form->textField($model,'chat_room_id'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'suppliers_id'); ?>
-		<?php echo $form->textField($model,'suppliers_id'); ?>
+		<?php echo $form->label($model,'proposal_id'); ?>
+		<?php echo $form->textField($model,'proposal_id'); ?>
 	</div>
 
 	<div class="row">

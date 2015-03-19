@@ -5,13 +5,13 @@
  *
  * The followings are the available columns in table 'update_logs':
  * @property integer $id
+ * @property integer $user_id
  * @property string $username
  * @property string $action
  * @property string $controller
  * @property string $description
  * @property string $user_ip
- * @property string $datetime
- * @property integer $user_id
+ * @property string $date_time
  */
 class UpdateLogs extends CActiveRecord
 {
@@ -31,14 +31,14 @@ class UpdateLogs extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('user_id, username, action, controller, description, user_ip', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>100),
 			array('action, user_ip', 'length', 'max'=>30),
-			array('controller', 'length', 'max'=>45),
-			array('description, datetime', 'safe'),
+			array('controller', 'length', 'max'=>40),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, action, controller, description, user_ip, datetime, user_id', 'safe', 'on'=>'search'),
+			array('id, user_id, username, action, controller, description, user_ip, date_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,13 +60,13 @@ class UpdateLogs extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'user_id' => 'User',
 			'username' => 'Username',
 			'action' => 'Action',
 			'controller' => 'Controller',
 			'description' => 'Description',
 			'user_ip' => 'User Ip',
-			'datetime' => 'Datetime',
-			'user_id' => 'User',
+			'date_time' => 'Date Time',
 		);
 	}
 
@@ -89,13 +89,13 @@ class UpdateLogs extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('action',$this->action,true);
 		$criteria->compare('controller',$this->controller,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('user_ip',$this->user_ip,true);
-		$criteria->compare('datetime',$this->datetime,true);
-		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('date_time',$this->date_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

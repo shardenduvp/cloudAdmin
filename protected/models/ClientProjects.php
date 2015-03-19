@@ -54,9 +54,7 @@
 class ClientProjects extends CActiveRecord
 {
 
-	public $client_name;
-	public $client_company_name;
-	public $suppliers_name;
+	public $client_name,$client_company_name, $suppliers_name;
 
 	/**
 	 * @return string the associated database table name
@@ -84,7 +82,9 @@ class ClientProjects extends CActiveRecord
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state', 'safe', 'on'=>'search'),
 			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, client_name, client_company_name, suppliers_name', 'safe', 'on'=>'leadSearch'),
+			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, client_name, client_company_name, suppliers_name', 'safe', 'on'=>'intermediarySearch'),
 			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, client_name, client_company_name, suppliers_name', 'safe', 'on'=>'projectSearch'),
+			array('id, name, description, tag_line, business_problem, about_company, team_size, summary, unique_features, min_budget, max_budget, custom_budget_range, start_date, project_start_preference, preferences, regions, tier, absolute_necessary_language, good_know_language, which_one_is_inportant, questions_for_supplier, requirement_change_scale, add_date, modify_date, is_call_scheduled, other_status, current_status, status, client_profiles_id, current_status_id, other_current_status, state, client_name, client_company_name, suppliers_name', 'safe', 'on'=>'activeProjectSearch'),
 		);
 	}
 
@@ -129,7 +129,7 @@ class ClientProjects extends CActiveRecord
 			'min_budget' => 'Min Budget',
 			'max_budget' => 'Max Budget',
 			'custom_budget_range' => 'Custom Budget Range',
-			'start_date' => 'Submitted On',
+			'start_date' => 'Start Date',
 			'project_start_preference' => 'Project Start Preference',
 			'preferences' => 'Preferences',
 			'regions' => 'Regions',
@@ -139,7 +139,7 @@ class ClientProjects extends CActiveRecord
 			'which_one_is_important' => 'Which One Is Important',
 			'questions_for_supplier' => 'Questions For Supplier',
 			'requirement_change_scale' => 'Requirement Change Scale',
-			'add_date' => 'Add Date',
+			'add_date' => 'Submitted On',
 			'modify_date' => 'Modify Date',
 			'is_call_scheduled' => 'Is Call Scheduled',
 			'other_status' => 'Other Status',
@@ -211,7 +211,7 @@ class ClientProjects extends CActiveRecord
 
 
 	/**
-	 * DataProvider for Clients Project
+	 * DataProvider for New Leads in Clients Project
 	 * Models Used:
 	 * - ClientProjects (this)
 	 * - ClientProfiles
@@ -289,7 +289,85 @@ class ClientProjects extends CActiveRecord
 	}
 
 	/**
-	 * DataProvider for New Leads
+	 * DataProvider for Intermediary Leads in Clients Project
+	 * Models Used:
+	 * - ClientProjects (this)
+	 * - ClientProfiles
+	 * - Users
+	 * - SuppliersProjects
+	 * - Suppliers
+	 * 
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
+	 */
+	public function intermediarySearch()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+		$criteria->addCondition('t.status = 2');
+
+		$criteria->compare('t.id',$this->id);
+		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('t.description',$this->description,true);
+		$criteria->compare('t.unique_features',$this->unique_features,true);
+		$criteria->compare('t.min_budget',$this->min_budget,true);
+		$criteria->compare('t.max_budget',$this->max_budget,true);
+		$criteria->compare('t.custom_budget_range',$this->custom_budget_range,true);
+		$criteria->compare('t.start_date',$this->start_date,true);
+		$criteria->compare('t.project_start_preference',$this->project_start_preference,true);
+		$criteria->compare('t.preferences',$this->preferences,true);
+		$criteria->compare('t.regions',$this->regions,true);
+		$criteria->compare('t.tier',$this->tier,true);
+		$criteria->compare('t.absolute_necessary_language',$this->absolute_necessary_language,true);
+		$criteria->compare('t.good_know_language',$this->good_know_language,true);
+		$criteria->compare('t.which_one_is_inportant',$this->which_one_is_inportant,true);
+		$criteria->compare('t.questions_for_supplier',$this->questions_for_supplier,true);
+		$criteria->compare('t.requirement_change_scale',$this->requirement_change_scale,true);
+		$criteria->compare('t.add_date',$this->add_date,true);
+		$criteria->compare('t.modify_date',$this->modify_date,true);
+		$criteria->compare('t.is_call_scheduled',$this->is_call_scheduled,true);
+		$criteria->compare('t.other_status',$this->other_status,true);
+		$criteria->compare('t.current_status',$this->current_status,true);
+		$criteria->compare('t.status',$this->status);
+		$criteria->compare('t.current_status_id',$this->current_status_id);
+		$criteria->compare('t.other_current_status',$this->other_current_status,true);
+		$criteria->compare('t.state',$this->state);
+
+		$criteria->compare('users.company_name', $this->client_company_name, true);
+		$criteria->compare('CONCAT(users.first_name, \' \', users.last_name)', $this->client_name, true);
+
+		$criteria->compare('supplier.company_name', $this->suppliers_name, true);
+		$criteria->with = array(
+		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
+		    'suppliersProjects.suppliers.users'=>array('alias'=>'supplier', 'select'=>'supplier.company_name, supplier.id'),
+		);
+		$criteria->together = true;
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+		        'attributes'=>array(
+		            'client_name'=>array(
+		                'asc'=>'users.first_name',
+		                'desc'=>'users.first_name DESC',
+		            ),
+		            'client_company_name'=>array(
+		                'asc'=>'users.company_name',
+		                'desc'=>'users.company_name DESC',
+		            ),
+		            'suppliers_name'=>array(
+		                'asc'=>'supplier.company_name',
+		                'desc'=>'supplier.company_name DESC',
+		            ),
+		            '*',
+		        ),
+		    ),
+		));
+	}
+
+	/**
+	 * DataProvider for all Projects with some custom fields
 	 * Models Used:
 	 * - ClientProjects (this)
 	 * - ClientProfiles
@@ -365,6 +443,218 @@ class ClientProjects extends CActiveRecord
 		));
 	}
 
+
+	public function activeProjectSearch()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+		$criteria->addCondition('t.status = 3');
+
+		$criteria->compare('t.id',$this->id);
+		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('t.description',$this->description,true);
+		$criteria->compare('t.unique_features',$this->unique_features,true);
+		$criteria->compare('t.min_budget',$this->min_budget,true);
+		$criteria->compare('t.max_budget',$this->max_budget,true);
+		$criteria->compare('t.custom_budget_range',$this->custom_budget_range,true);
+		$criteria->compare('t.start_date',$this->start_date,true);
+		$criteria->compare('t.project_start_preference',$this->project_start_preference,true);
+		$criteria->compare('t.preferences',$this->preferences,true);
+		$criteria->compare('t.regions',$this->regions,true);
+		$criteria->compare('t.tier',$this->tier,true);
+		$criteria->compare('t.absolute_necessary_language',$this->absolute_necessary_language,true);
+		$criteria->compare('t.good_know_language',$this->good_know_language,true);
+		$criteria->compare('t.which_one_is_inportant',$this->which_one_is_inportant,true);
+		$criteria->compare('t.questions_for_supplier',$this->questions_for_supplier,true);
+		$criteria->compare('t.requirement_change_scale',$this->requirement_change_scale,true);
+		$criteria->compare('t.add_date',$this->add_date,true);
+		$criteria->compare('t.modify_date',$this->modify_date,true);
+		$criteria->compare('t.is_call_scheduled',$this->is_call_scheduled,true);
+		$criteria->compare('t.other_status',$this->other_status,true);
+		$criteria->compare('t.current_status',$this->current_status,true);
+		$criteria->compare('t.status',$this->status);
+		$criteria->compare('t.current_status_id',$this->current_status_id);
+		$criteria->compare('t.other_current_status',$this->other_current_status,true);
+		$criteria->compare('t.state',$this->state);
+
+		$criteria->compare('users.company_name', $this->client_company_name, true);
+		$criteria->compare('CONCAT(users.first_name, \' \', users.last_name)', $this->client_name, true);
+
+		$criteria->compare('supplier.company_name', $this->suppliers_name, true);
+		$criteria->with = array(
+		    'clientProfiles.users'=>array('select'=>'users.company_name, users.first_name, users.last_name'),
+		    'suppliersProjects.suppliers.users'=>array('alias'=>'supplier', 'select'=>'supplier.company_name, supplier.id'),
+		);
+		$criteria->together = true;
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+		        'attributes'=>array(
+		            'client_name'=>array(
+		                'asc'=>'users.first_name',
+		                'desc'=>'users.first_name DESC',
+		            ),
+		            'client_company_name'=>array(
+		                'asc'=>'users.company_name',
+		                'desc'=>'users.company_name DESC',
+		            ),
+		            'suppliers_name'=>array(
+		                'asc'=>'supplier.company_name',
+		                'desc'=>'supplier.company_name DESC',
+		            ),
+		            '*',
+		        ),
+		    ),
+		));
+	}
+
+	/**
+	 * Return suppliers best matched for this project
+	 * @param integer $pid contains project id
+	 * @return object $suppliers containing all suppliers matching criteria
+	 */
+	public function searchSuppliers($pid)
+	{
+		$project = ClientProjects::model()->findByPk($pid);
+		
+		// get client projects related information
+		$toProjectSkills 					= $project->clientProjectsHasSkills;
+		$projectHas['skills'] 				= array();
+		foreach ($toProjectSkills as $toSkills) {
+			$projectHas['skills'][] 		= $toSkills->skills->id;
+		}
+
+		$toProjectServices 					= $project->clientProjectsHasServices;
+		$projectHas['services'] 			= array();
+		foreach ($toProjectServices as $toServices) {
+			$projectHas['services'][] 		= $toServices->services->id;
+		}
+
+		$toProjectIndustries 				= $project->clientProjectsHasIndustries;
+		$projectHas['industries'] 			= array();
+		foreach ($toProjectIndustries as $toIndustries) {
+			$projectHas['industries'][] 	= $toIndustries->industries->id;
+		}
+
+		// already selected suppliers
+		$toSuppliers 						= $project->suppliersProjects;
+		$projectHas['suppliers'] 			= array();
+		if(!empty($toSuppliers)) {
+			foreach ($toSuppliers as $toSupplier) {
+				$projectHas['suppliers'][] 	= $toSupplier->suppliers->id;
+			}
+		}
+
+		// define criteria for searching suppliers
+		$criteria 							= new CDbCriteria();
+		$criteria->with 					= array(
+			                            		'suppliersHasPortfolios' => array(
+			                            		                            	'with' => array(
+			                            		                            	            'suppliersHasPortfolioHasSkills' 	=> array('with'=>'skills'),
+			                            		                            	            'suppliersHasPortfolioHasServices' 	=> array('with'=>'services'),
+			                            		                            	            'suppliersPortfolioHasIndustries' 	=> array('with'=>'industries')
+			                            		                            	          )
+			                            		                            )
+			                            	  );
+
+		// get skills and child skills if any exists
+		if(!empty($projectHas['skills'])) {
+			$childSkills 							= array();
+			foreach ($projectHas['skills'] as $id) {
+				$skill 								= Skills::model()->findAllByAttributes(array('parent_id' => $id));
+				if(!empty($skill)) $childSkills[] 	= $skill;
+			}
+			if(!empty($childSkills)) {
+				foreach ($childSkills as $childSkill) {
+					$projectHas['skills'][] 		= $childSkill[0]->id;
+				} 
+			}
+			$criteria->addInCondition('skills.id', $projectHas['skills']);
+		}
+
+		$criteria->addInCondition('services.id', $projectHas['services'], 'OR');
+		$criteria->addInCondition('industries.id', $projectHas['industries'], 'OR');
+
+		// excluded suppliers that already exists
+		$criteria->addNotInCondition('t.id', $projectHas['suppliers'], 'AND');
+		// $criteria->addCondition("suppliersHasPortfolios.status=1");
+		// $criteria->addCondition("t.profile_status >= 70");
+
+		// get suppliers with above defined criteria
+		$suppliers = Suppliers::model()->findAll($criteria);
+
+		// return $suppliers;
+		return $this->rankSuppliers($suppliers, $projectHas);
+	}
+
+	/**
+	 * The method finds the number of fields matched and ranks the suppliers with most matches
+	 * @param Suppliers $suppliers list of suppliers - unranked and unsorted
+	 * @param array $projectHas containg the criteria of ranking
+	 * @return Suppliers $suppliers list of ranked and sorted suppliers
+	 */
+	public function rankSuppliers($suppliers, $projectHas)
+	{
+		foreach ($suppliers as $supplier) {
+			$rank = 0;
+
+			// match the criteria with supplier's data
+			$portfolios = $supplier->suppliersHasPortfolios;
+			foreach ($portfolios as $portfolio) {
+				$portfolio_rank = 0;
+				// skills match
+				$portfolioSkills = $portfolio->suppliersHasPortfolioHasSkills;
+				$i = 0;
+				foreach ($portfolioSkills as $portfolioSkill) {
+					foreach ($projectHas['skills'] as $skill) {
+						if($portfolioSkill->skills->id === $skill) {
+							$rank++; $portfolio_rank++;
+						}
+					}
+				}
+
+				// services match
+				$portfolioServices = $portfolio->suppliersHasPortfolioHasServices;
+				$i = 0;
+				foreach ($portfolioServices as $portfolioService) {
+					foreach ($projectHas['services'] as $service) {
+						if($portfolioService->services->id === $service) {
+							$rank++; $portfolio_rank++;
+						}
+					}
+				}
+
+				// services match
+				$portfolioIndustries = $portfolio->suppliersPortfolioHasIndustries;
+				$i = 0;
+				foreach ($portfolioIndustries as $portfolioIndustry) {
+					foreach ($projectHas['industries'] as $industry) {
+						if($portfolioIndustry->industries->id === $industry) {
+							$rank++; $portfolio_rank++;
+						}
+					}
+				}
+				$portfolio->rank = $portfolio_rank;
+				if($portfolio_rank >= 1) $portfolio->matched = true;
+			}
+
+			usort($portfolios, function($a, $b)
+			{
+			    return $a->rank < $b->rank;
+			});
+
+			$supplier->rank = $rank;
+		}
+
+		usort($suppliers, function($a, $b)
+		{
+			return $a->rank < $b->rank;
+		});
+
+		return $suppliers;
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.

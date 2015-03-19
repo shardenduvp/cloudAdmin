@@ -26,9 +26,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'chat_room_has_users_id'); ?>
-		<?php echo $form->textField($model,'chat_room_has_users_id'); ?>
-		<?php echo $form->error($model,'chat_room_has_users_id'); ?>
+		<?php echo $form->labelEx($model,'chat_message_has_user_id'); ?>
+		<?php echo $form->textField($model,'chat_message_has_user_id'); ?>
+		<?php echo $form->error($model,'chat_message_has_user_id'); ?>
 	</div>
 
 	<div class="row">
@@ -68,15 +68,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'client_projects_id'); ?>
-		<?php echo $form->textField($model,'client_projects_id'); ?>
-		<?php echo $form->error($model,'client_projects_id'); ?>
+		<?php echo $form->labelEx($model,'chat_room_id'); ?>
+		<?php echo $form->textField($model,'chat_room_id'); ?>
+		<?php echo $form->error($model,'chat_room_id'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'suppliers_id'); ?>
-		<?php echo $form->textField($model,'suppliers_id'); ?>
-		<?php echo $form->error($model,'suppliers_id'); ?>
+		<?php echo $form->labelEx($model,'proposal_id'); ?>
+		<?php echo $form->textField($model,'proposal_id'); ?>
+		<?php echo $form->error($model,'proposal_id'); ?>
 	</div>
 
 	<div class="row">

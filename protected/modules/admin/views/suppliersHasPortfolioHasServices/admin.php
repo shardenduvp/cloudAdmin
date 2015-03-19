@@ -59,8 +59,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'filter'=>$model,
 						'columns'=>array(
 							'id',
-							'suppliers_has_portfolio_id',
+							//'suppliers_has_portfolio_id',
+array(
+'name'=>'suppliers_has_portfolio_id',
+'type'=>'html',
+'value'=>'$data->suppliersHasPortfolio->suppliers->users->company_name',
+),
 							'services_id',
+							
 							'add_date',
 							array(
             				'name'=>'status',

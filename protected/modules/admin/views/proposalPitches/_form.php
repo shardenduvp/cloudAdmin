@@ -8,10 +8,6 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'proposal-pitches-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -20,51 +16,51 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'trial_period'); ?>
-		<?php echo $form->textField($model,'trial_period',array('size'=>60,'maxlength'=>145)); ?>
-		<?php echo $form->error($model,'trial_period'); ?>
+		<?php echo $form->labelEx($model,'billing_type'); ?>
+		<?php echo $form->textField($model,'billing_type'); ?>
+		<?php echo $form->error($model,'billing_type'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'estimated_cost'); ?>
-		<?php echo $form->textField($model,'estimated_cost',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'estimated_cost'); ?>
+		<?php echo $form->labelEx($model,'tm_billing_schedule_type'); ?>
+		<?php echo $form->textField($model,'tm_billing_schedule_type'); ?>
+		<?php echo $form->error($model,'tm_billing_schedule_type'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'estimated_time'); ?>
-		<?php echo $form->textField($model,'estimated_time',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'estimated_time'); ?>
+		<?php echo $form->labelEx($model,'tm_amount'); ?>
+		<?php echo $form->textField($model,'tm_amount',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'tm_amount'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'min_price'); ?>
-		<?php echo $form->textField($model,'min_price',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'min_price'); ?>
+		<?php echo $form->labelEx($model,'fp_total_price'); ?>
+		<?php echo $form->textField($model,'fp_total_price',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'fp_total_price'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'max_price'); ?>
-		<?php echo $form->textField($model,'max_price',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'max_price'); ?>
+		<?php echo $form->labelEx($model,'fp_total_price_interval'); ?>
+		<?php echo $form->textField($model,'fp_total_price_interval'); ?>
+		<?php echo $form->error($model,'fp_total_price_interval'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'time_material'); ?>
-		<?php echo $form->textField($model,'time_material',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'time_material'); ?>
+		<?php echo $form->labelEx($model,'duration'); ?>
+		<?php echo $form->textField($model,'duration',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'duration'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'billing_schedule'); ?>
-		<?php echo $form->textField($model,'billing_schedule',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'billing_schedule'); ?>
+		<?php echo $form->labelEx($model,'start_date'); ?>
+		<?php echo $form->textField($model,'start_date'); ?>
+		<?php echo $form->error($model,'start_date'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
+		<?php echo $form->labelEx($model,'trial'); ?>
+		<?php echo $form->textField($model,'trial',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'trial'); ?>
 	</div>
 
 	<div class="row">
@@ -74,15 +70,39 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'status'); ?>
+		<?php echo $form->textField($model,'status'); ?>
+		<?php echo $form->error($model,'status'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'remarks'); ?>
 		<?php echo $form->textArea($model,'remarks',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'remarks'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'added_by'); ?>
-		<?php echo $form->textField($model,'added_by',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'added_by'); ?>
+		<?php echo $form->labelEx($model,'client_note'); ?>
+		<?php echo $form->textArea($model,'client_note',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'client_note'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'client_comment'); ?>
+		<?php echo $form->textArea($model,'client_comment',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'client_comment'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'notes'); ?>
+		<?php echo $form->textArea($model,'notes',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'notes'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'admin_note'); ?>
+		<?php echo $form->textArea($model,'admin_note',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'admin_note'); ?>
 	</div>
 
 	<div class="row">

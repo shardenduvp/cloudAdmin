@@ -19,30 +19,19 @@
 )); ?>
 
 <div class="row">
-		<div class="col-md-12">
+		<div class="col-md-8">
 		<div class="box border inverse">
 			<div class="box-title">
 				<h4><i class="fa fa-bars"></i>Create Users</h4>
 			</div>
 			<div class="box-body big">
 				<div class="row">
-					<div class="col-md-12">
-						<p class="note">Fields with <span class="required">*</span> are required.</p>
+					<div class="col-md-10">
 						<?php echo $form->errorSummary($model); ?>
 						<div id="formResult"></div>
-						<h4>Basic Information</h4>
-
 
 					<?php echo $form->errorSummary($model); ?>
 
-					<div class="form-group">
-					    <?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-8">
-						<?php echo $form->textField($model,'last_name',array('class'=>'form-control')); ?>
-						<?php echo $form->error($model,'last_name'); ?>
-						</div>
-					</div>	
-					
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'first_name',array('class'=>'col-md-4 control-label')); ?>
 						<div class="col-md-8">
@@ -52,29 +41,28 @@
 					</div>
 
 					<div class="form-group">
+					    <?php echo $form->labelEx($model,'last_name',array('class'=>'col-md-4 control-label')); ?>
+						<div class="col-md-8">
+						<?php echo $form->textField($model,'last_name',array('class'=>'form-control')); ?>
+						<?php echo $form->error($model,'last_name'); ?>
+						</div>
+					</div>
+
+					<div class="form-group">
 						<?php echo $form->labelEx($model,'image',array('class'=>'col-md-4 control-label')); ?>
 						<div class="col-md-8">
-						<?php echo $form->textField($model,'image',array('class'=>'form-control')); ?>
+							<div class="input-group">
+								<?php echo $form->textField($model,'image',array('class'=>'form-control','readonly'=>'true','id'=>'image')); ?>
+                            	<span class="input-group-btn ">
+                                    <div class="btn btn-primary">
+                                        <a href="javascript:void(0)" style="color:#FFF;text-decoration:none;" id="openBrow">Browse </a>
+                                    </div>
+                                </span>
+                        	</div>
+						</div>
 						<?php echo $form->error($model,'image'); ?>
-						</div>
 					</div>
 
-					<div class="form-group">
-						<?php echo $form->labelEx($model,'company_name',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-8">
-						<?php echo $form->textField($model,'company_name',array('class'=>'form-control')); ?>
-						<?php echo $form->error($model,'company_name'); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo $form->labelEx($model,'display_name',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-8">
-						<?php echo $form->textField($model,'display_name',array('class'=>'form-control')); ?>
-						<?php echo $form->error($model,'display_name'); ?>
-						</div>
-					</div>
-					<h4>Account Information</h4>
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'username',array('class'=>'col-md-4 control-label')); ?>
 						<div class="col-md-8">
@@ -91,72 +79,21 @@
 						</div>
 					</div>
 
-					<h4>Contact Information</h4>
-					<div class="form-group">
-						<?php echo $form->labelEx($model,'phone_number',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-8">
-						<?php echo $form->textField($model,'phone_number',array('class'=>'form-control')); ?>
-						<?php echo $form->error($model,'phone_number'); ?>
-						</div>
-					</div>
-
-					
-					<div class="form-group">
-						<?php echo $form->labelEx($model,'add_date',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-8">
-						<?php // echo $form->textField($model,'add_date');
-						 $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-						    'model' => $model,
-						    'attribute' => 'add_date',
-						    'htmlOptions' => array('class'=>'form-control',
-						        'size' => '10',         // textField size
-						        'maxlength' => '10',    // textField maxlength
-						    ),
-						));
-						 ?>
-
-						<?php echo $form->error($model,'add_date'); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo $form->labelEx($model,'last_login',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-8">
-						<?php //echo $form->textField($model,'last_login'); 
-							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
-						    'model' => $model,
-						    'attribute' => 'last_login',
-						    'htmlOptions' => array('class'=>'form-control',
-						        'size' => '10',         // textField size
-						        'maxlength' => '10',    // textField maxlength
-						    ),
-						));
-						?>
-						<?php echo $form->error($model,'last_login'); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo $form->labelEx($model,'status',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-8">
-							<?php echo $form->radioButton($model,'status',array('value'=>0)); ?>
-							<?php echo CHtml::label('Not Verified', ''); ?><br>
-							<?php echo $form->radioButton($model,'status',array('value'=>1)); ?>
-							<?php echo CHtml::label('Verified', ''); ?>
-							<?php echo $form->error($model,'status'); ?>
-						</div>
-					</div>
-
-
 					<div class="form-group">
 					<?php echo $form->labelEx($model,'role_id',array('class'=>'col-md-4 control-label')); ?>
-						<div class="col-md-2">
+						<div class="col-md-4">
 						<?php //echo $form->textField($model,'role_id'); 
 							echo CHtml::activeDropDownList($model, 'role_id',
                      		 array('1'=>'Admin','2'=>'Client','3'=>'Supplier'),
                       		array('empty'=>'Select Roles',"",'class'=>'form-control'));
 						?>
 						<?php echo $form->error($model,'role_id'); ?>
+						</div>
+					</div>
+
+					<div class="form-group pull-right">
+						<div class="col-md-12">
+							<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'btn btn-inverse pull-right')); ?>
 						</div>
 					</div>
 					</div>
@@ -166,12 +103,30 @@
 		</div>
 	</div>
 					
-					<div class="form-actions clearfix">
-						<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'btn btn-inverse pull-right')); ?>
-					</div>
+			
 	
 
 <?php $this->endWidget(); ?>
 					
 </div><!-- form -->
 
+<script>
+$('#openBrow').click(function(){
+	filepicker.setKey("AlqJxqOBnROGcRhBT1jPFz");
+	filepicker.pickMultiple({mimetypes: ['image/*'],},
+	function(InkBlob){
+		for(i in InkBlob){
+			var docs = $('#docs').val();
+			docs = docs+InkBlob[i].mimetype+"|"+InkBlob[i].filename+"|"+InkBlob[i].size+"|"+InkBlob[i].url+",";
+    		$('#docs').val(docs);
+			var data =InkBlob[i].url;
+			$('#image').val(data);
+		}
+		console.log($('#docs').val());
+	},
+	function(FPError){
+		console.log(FPError.toString());
+  	}
+	);
+});
+</script>

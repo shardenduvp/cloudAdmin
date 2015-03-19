@@ -5,10 +5,10 @@
  *
  * The followings are the available columns in table 'client_project_progress':
  * @property integer $id
- * @property string $name
- * @property string $details
- * @property integer $status
  * @property integer $client_projects_id
+ * @property string $name
+ * @property string $detials
+ * @property integer $status
  *
  * The followings are the available model relations:
  * @property ClientProjects $clientProjects
@@ -32,12 +32,12 @@ class ClientProjectProgress extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client_projects_id', 'required'),
-			array('status, client_projects_id', 'numerical', 'integerOnly'=>true),
+			array('client_projects_id, status', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
-			array('details', 'safe'),
+			array('detials', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, details, status, client_projects_id', 'safe', 'on'=>'search'),
+			array('id, client_projects_id, name, detials, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,10 +60,10 @@ class ClientProjectProgress extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'details' => 'Details',
-			'status' => 'Status',
 			'client_projects_id' => 'Client Projects',
+			'name' => 'Name',
+			'detials' => 'Detials',
+			'status' => 'Status',
 		);
 	}
 
@@ -86,10 +86,10 @@ class ClientProjectProgress extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('details',$this->details,true);
-		$criteria->compare('status',$this->status);
 		$criteria->compare('client_projects_id',$this->client_projects_id);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('detials',$this->detials,true);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

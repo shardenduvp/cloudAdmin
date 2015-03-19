@@ -13,6 +13,10 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+    $('.search-form').toggle();
+    return false;
+});
 $('.search-form form').submit(function(){
 	$('#datatables1').yiiGridView('update', {
 		data: $(this).serialize()
@@ -36,11 +40,13 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<div class="search-form">
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
-	'model'=>$model,
+    'model'=>$model,
 )); ?>
-</div><!-- search-form -->
+</div>
+<!-- search-form -->
 
 
 <div class="row">
@@ -86,7 +92,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					array(
 					    'name'=>'client_name',
 					    'type'=>'html',
-						'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/clientProfiles/view", "id"=>$data->clientProfiles->id))',
+						'value'=>'CHtml::link($data->clientProfiles->users->first_name, array("/admin/users/view", "id"=>$data->clientProfiles->users->id))',
 					),
 					array(
 					    'name'=>'min_budget',
@@ -97,16 +103,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'value'=>'(empty($data->max_budget))?"Not Provided":$data->max_budget',
 					),
 					array(
-					    'name'=>'custom_budget_range',
-						'value'=>'(empty($data->custom_budget_range))?"Not Provided":$data->custom_budget_range',
-					),
-					array(
 					    'name'=>'start_date',
 						'value'=>'(empty($data->start_date))?"Not Provided":$data->start_date',
 					),
 					array(
 					    'name'=>'project_start_preference',
-						'value'=>'(empty($data->project_start_preference))?"Not Provided":$data->project_start_preference',
+                        'filter'=>CHtml::activeDropDownList($model, 'project_start_preference',
+                            array('1'=>"Immediately",'2'=>'Next 30 Days', '3'=>'No Hurry'),
+                            array('empty'=>'Select Status',"")), 
+                        'value'=>'($data->project_start_preference==1)?"Immediately":(($data->project_start_preference==2)?"Next 30 Days" :(($data->project_start_preference==3)? "No Hurry" : "Not Provided"))',
 					),
 					array(
 					    'name'=>'regions',
@@ -114,23 +119,20 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 					),
 					array(
 					    'name'=>'tier',
+					    'type'=>'raw',
 						'value'=>array($this, 'getTier'),
 					),
-					array(
-					    'name'=>'add_date',
-						'value'=>'(empty($data->add_date)) ? "Not Provided" : $data->add_date',
-					),
-					array(
-					    'name'=>'modify_date',
-						'value'=>'(empty($data->modify_date)) ? "Not Provided" : $data->modify_date',
-					),
+                    array(
+                        'name'=>'add_date',
+                        'value'=>'(empty($data->add_date))?"Not Provided":$data->add_date',
+                    ),
 					array(
             			'name'=>'status',
             			'header'=>'Status', 
             			'filter'=>CHtml::activeDropDownList($model, 'status',
-                     		array('1'=>"Verified",'0'=>'Not Verified'),
+                     		array('0'=>'Disabled','1'=>'Waiting Approval','2'=>'Introduction Sent', '3'=>'Active'),
                       		array('empty'=>'Select Status',"")), 
-            			'value'=>'($data->status==1)?"Verified":"Not Verified"',            
+            			'value'=>'($data->status==0)?"Disabled":(($data->status==1)?"Waiting Approval": (($data->status==2)?"Introduction Sent":"Active"))',            
         			),
 					array(
 						'class'=>'CButtonColumn',
@@ -138,6 +140,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 						'buttons'=>array(
                             'update'=>array(
                                 'visible'=>'true',
+                                'url'=>'Yii::app()->createUrl("admin/clientProjects/updateProject",array("id"=>$data->id));'
                             ),
                             'view'=>array(
                                 'visible'=>'true',

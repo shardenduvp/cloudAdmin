@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'error_logs':
  * @property integer $id
  * @property string $user_type
+ * @property integer $user_id
  * @property string $user_name
  * @property integer $error_code
  * @property string $message
@@ -18,7 +19,6 @@
  * @property string $reference_url
  * @property string $ipaddress
  * @property string $browser
- * @property integer $user_id
  */
 class ErrorLogs extends CActiveRecord
 {
@@ -38,13 +38,13 @@ class ErrorLogs extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('error_code, line_number, user_id', 'numerical', 'integerOnly'=>true),
-			array('user_type', 'length', 'max'=>15),
-			array('error_type, ipaddress', 'length', 'max'=>45),
-			array('user_name, message, request_url, query_string, file_name, time, reference_url, browser', 'safe'),
+			array('user_type, user_id, user_name, error_code, message, request_url, query_string, file_name, line_number, error_type, time, reference_url, ipaddress, browser', 'required'),
+			array('user_id, error_code, line_number', 'numerical', 'integerOnly'=>true),
+			array('user_type', 'length', 'max'=>10),
+			array('error_type, ipaddress', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_type, user_name, error_code, message, request_url, query_string, file_name, line_number, error_type, time, reference_url, ipaddress, browser, user_id', 'safe', 'on'=>'search'),
+			array('id, user_type, user_id, user_name, error_code, message, request_url, query_string, file_name, line_number, error_type, time, reference_url, ipaddress, browser', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +67,7 @@ class ErrorLogs extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_type' => 'User Type',
+			'user_id' => 'User',
 			'user_name' => 'User Name',
 			'error_code' => 'Error Code',
 			'message' => 'Message',
@@ -79,7 +80,6 @@ class ErrorLogs extends CActiveRecord
 			'reference_url' => 'Reference Url',
 			'ipaddress' => 'Ipaddress',
 			'browser' => 'Browser',
-			'user_id' => 'User',
 		);
 	}
 
@@ -98,11 +98,17 @@ class ErrorLogs extends CActiveRecord
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
+			$page_size = 50;
+		if(isset($_REQUEST['pagesize']))
+		{
+			$page_size = $_REQUEST['pagesize'];   
+		}
 
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_type',$this->user_type,true);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('user_name',$this->user_name,true);
 		$criteria->compare('error_code',$this->error_code);
 		$criteria->compare('message',$this->message,true);
@@ -115,10 +121,14 @@ class ErrorLogs extends CActiveRecord
 		$criteria->compare('reference_url',$this->reference_url,true);
 		$criteria->compare('ipaddress',$this->ipaddress,true);
 		$criteria->compare('browser',$this->browser,true);
-		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+						'defaultOrder'=>'id DESC'),
+			'pagination' => array(
+                        'pageSize' => $page_size,
+                    ),
 		));
 	}
 

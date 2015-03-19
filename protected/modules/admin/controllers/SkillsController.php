@@ -58,14 +58,37 @@ class SkillsController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['Skills']))
 		{
-			$model->attributes=$_POST['Skills'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$skill=trim($_POST['Skills']['name']);
+			if( $modelPresent=Skills::model()->findByAttributes(array( 'name'=> $skill ),array('order'=>'name ASC')) ){
+				$modelPresent->name=$_POST['Skills'];
+				$modelPresent->add_date=date("Y-m-d H:i:s",strtotime('Now'));
+				$modelPresent->skillcol=0;
+				$modelPresent->parent_id=$_POST['Skills']['parent_id'];
+				if($modelPresent->save()){
+					echo CJSON::encode(array(
+	                                  'status'=>'success'
+	                             ));
+					 Yii::app()->end();
+				}
+			}else{
+				$model->attributes=$_POST['Skills'];
+				$model->add_date=date("Y-m-d H:i:s",strtotime('Now'));
+				$model->skillcol=0;
+				$model->parent_id=$_POST['Skills']['parent_id'];
+				if($model->save()){
+					echo CJSON::encode(array(
+	                                  'status'=>'success'
+	                             ));
+					 Yii::app()->end();
+				}
+					//$this->redirect(array('view','id'=>$model->id));
+			}
+			
 		}
-
+			
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -125,7 +148,7 @@ class SkillsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Skills('search');
+		$model=new Skills('parentSearch');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Skills']))
 			$model->attributes=$_GET['Skills'];

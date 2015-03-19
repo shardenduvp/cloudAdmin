@@ -110,14 +110,11 @@ class ChatMessagesController extends Controller
 	}
 
 	/**
-	 * Lists all models.
+	 * The main chat module for the admin panel
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('ChatMessages');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$this->render('index');
 	}
 
 	/**

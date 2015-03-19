@@ -28,7 +28,7 @@ class SuppliersFaqAnswersController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete','createUpdateFaq'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -81,13 +81,18 @@ class SuppliersFaqAnswersController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		$this->performAjaxValidation($model);
 		if(isset($_POST['SuppliersFaqAnswers']))
 		{
-			$model->attributes=$_POST['SuppliersFaqAnswers'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->answer=$_POST['SuppliersFaqAnswers']['answer'];
+			$model->publish=$_POST['SuppliersFaqAnswers']['publish'];
+				if($model->update()){
+				 echo CJSON::encode(array(
+                                  'status'=>'success'
+                             ));
+				 Yii::app()->end();
+				//$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(
@@ -154,6 +159,20 @@ class SuppliersFaqAnswersController extends Controller
 	 * Performs the AJAX validation.
 	 * @param SuppliersFaqAnswers $model the model to be validated
 	 */
+
+	public function actionCreateUpdateFaq(){
+		$suppliers=Suppliers::model()->with('users')->findAll(array('select'=>'t.id,users.first_name'));
+		if(isset($_POST['id'])){
+			$supplier=Suppliers::model()->findByPk($_POST['id']);
+			$faqs=SuppliersFaqAnswers::model()->findAll("suppliers_id={$supplier->id}");
+			$this->render('createUpdateFaq',array('model'=>$faqs,'supplier'=>$suppliers));
+		}
+		else{
+			$this->render('createUpdateFaq',array('model'=>null,'supplier'=>$suppliers));
+		}
+		
+
+	}
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='suppliers-faq-answers-form')

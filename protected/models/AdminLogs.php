@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'admin_logs':
  * @property integer $id
+ * @property integer $user_id
  * @property string $username
  * @property string $ipaddress
  * @property string $logtime
@@ -13,10 +14,9 @@
  * @property string $details
  * @property string $action_param
  * @property string $browser
+ * @property string $request_url
  * @property string $query_string
  * @property string $refer_url
- * @property integer $user_id
- * @property string $request_url
  */
 class AdminLogs extends CActiveRecord
 {
@@ -36,16 +36,15 @@ class AdminLogs extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('user_id, username, ipaddress, action_param, browser, request_url, query_string, refer_url', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('username', 'length', 'max'=>50),
-			array('ipaddress', 'length', 'max'=>45),
-			array('controller', 'length', 'max'=>245),
-			array('action', 'length', 'max'=>145),
+			array('username, ipaddress', 'length', 'max'=>50),
+			array('controller, action', 'length', 'max'=>255),
 			array('action_param', 'length', 'max'=>60),
-			array('logtime, details, browser, query_string, refer_url, request_url', 'safe'),
+			array('logtime, details', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, ipaddress, logtime, controller, action, details, action_param, browser, query_string, refer_url, user_id, request_url', 'safe', 'on'=>'search'),
+			array('id, user_id, username, ipaddress, logtime, controller, action, details, action_param, browser, request_url, query_string, refer_url', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +66,7 @@ class AdminLogs extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'user_id' => 'User',
 			'username' => 'Username',
 			'ipaddress' => 'Ipaddress',
 			'logtime' => 'Logtime',
@@ -75,10 +75,9 @@ class AdminLogs extends CActiveRecord
 			'details' => 'Details',
 			'action_param' => 'Action Param',
 			'browser' => 'Browser',
+			'request_url' => 'Request Url',
 			'query_string' => 'Query String',
 			'refer_url' => 'Refer Url',
-			'user_id' => 'User',
-			'request_url' => 'Request Url',
 		);
 	}
 
@@ -97,10 +96,16 @@ class AdminLogs extends CActiveRecord
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
+		$page_size = 50;
+		if(isset($_REQUEST['pagesize']))
+		{
+			$page_size = $_REQUEST['pagesize'];   
+		}
 
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('ipaddress',$this->ipaddress,true);
 		$criteria->compare('logtime',$this->logtime,true);
@@ -109,13 +114,17 @@ class AdminLogs extends CActiveRecord
 		$criteria->compare('details',$this->details,true);
 		$criteria->compare('action_param',$this->action_param,true);
 		$criteria->compare('browser',$this->browser,true);
+		$criteria->compare('request_url',$this->request_url,true);
 		$criteria->compare('query_string',$this->query_string,true);
 		$criteria->compare('refer_url',$this->refer_url,true);
-		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('request_url',$this->request_url,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+						'defaultOrder'=>'id DESC'),
+			'pagination' => array(
+                        'pageSize' => $page_size,
+                    ),
 		));
 	}
 

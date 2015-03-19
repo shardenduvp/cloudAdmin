@@ -64,41 +64,7 @@
 					<?php echo $form->textField($model,'suppliers_name',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
 					</div>
 				</div>
-				<!--
-				<div class="form-group">
-					<div class="col-sm-4 tr-align">
-						<?php /*echo $form->label($model,'team_size', array(
-							'class'=>'control-label'   
-						));*/ ?>
-					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-						<?php //echo $form->textField($model,'team_size',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
-					</div>
-				</div>
-  
-				<div class="form-group">
-					<div class="col-sm-4 tr-align">
-						<?php /*echo $form->label($model,'min_budget', array(
-							'class'=>'control-label'   
-						));*/ ?>
-					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-						<?php //echo $form->textField($model,'min_budget',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-4 tr-align">
-						<?php /*echo $form->label($model,'max_budget', array(
-							'class'=>'control-label'   
-						));*/ ?>
-					</div>
-						
-					<div class="col-sm-6 col-offset-sm-2">
-						<?php //echo $form->textField($model,'max_budget',array('size'=>52,'maxlength'=>100,'class'=>'form-control')); ?>
-					</div>
-				</div>
-				-->
+				
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
 						<?php echo $form->label($model,'start_date', array(
@@ -141,30 +107,50 @@
 						<?php echo $form->error($model,'start_date'); ?>
 					</div>			
 				</div>
-				<!--
+
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
-						<?php /*echo $form->label($model,'add_date', array(
+						<?php echo $form->label($model,'add_date', array(
 							'class'=>'control-label'   
-						));*/ ?>
+						)); ?>
 					</div>
-					<div class="col-sm-6 col-offset-sm-2">
-						<?php/*
+					<div class="col-sm-2">
+						<?php 
+							echo CHtml::dropDownList("Operators['add_date']","",array(
+							    	'>'=>'>',
+							    	'<'=>'<',
+							    	'='=>'=',
+							    	'<='=>'<=',
+							    	'>='=>'>=',
+							    	'<>'=>'<>',
+							    ),
+								array('empty'=>'Operators', 'class'=>'form-control', 'id'=>'add_date_op')
+							);
+						?>
+					</div>
+					<div class="col-sm-4 col-offset-sm-2">
+						<?php
 							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 								'model' => $model,
 								'attribute' => 'add_date',
 								'htmlOptions' => array(
 									'size' => '52',         // textField size
 									'maxlength' => '100', 
-									'class'=>'form-control'   // textField maxlength
+									'class'=>'form-control',   // textField maxlength
 								),
-							));*/
+								'options' => array(
+									'dateFormat'=>'yy-mm-dd',
+									'changeMonth'=>true,
+        							'changeYear'=>true,
+								),
+							));
 						?>
 
-						<?php //echo $form->error($model,'add_date'); ?>
-					</div>			
+						<?php echo $form->error($model,'add_date'); ?>
+										
+					</div>
 				</div>
-				-->
+			
 				<div class="form-group">
 					<div class="col-sm-4 tr-align">
 						<?php echo $form->label($model,'modify_date', array(

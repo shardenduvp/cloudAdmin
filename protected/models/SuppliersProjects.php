@@ -81,6 +81,7 @@ class SuppliersProjects extends CActiveRecord
 			'proposalPitches' => array(self::HAS_MANY, 'ProposalPitches', 'suppliers_projects_id'),
 			'clientProjects' => array(self::BELONGS_TO, 'ClientProjects', 'client_projects_id'),
 			'suppliers' => array(self::BELONGS_TO, 'Suppliers', 'suppliers_id'),
+			'chatRoom' => array(self::BELONGS_TO, 'ChatRoom', 'chat_room_id'),
 		);
 	}
 

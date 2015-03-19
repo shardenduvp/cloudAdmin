@@ -43,9 +43,8 @@ class ClientProfilesController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$model=$this->loadModel($id);
+		$this->redirect(array('/admin/users/view','id'=>$model->users_id));
 	}
 
 	/**
@@ -86,14 +85,12 @@ class ClientProfilesController extends Controller
 		if(isset($_POST['ClientProfiles']))
 		{
 			$model->attributes=$_POST['ClientProfiles'];
-			
 			if($model->save()){
-				if(Yii::app()->request->isAjaxRequest){
-				 	echo CJSON::encode(array('status'=>'success'));
-				 	Yii::app()->end();
-				 }
+				echo CJSON::encode(array(
+                                  'status'=>'success'
+                             ));
+				 Yii::app()->end();
 			}
-			
 		}
 
 		$this->redirect(array('users/update','id'=>$model->users_id));
@@ -115,13 +112,7 @@ class ClientProfilesController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-	
-	protected function clientMilestones($data, $row){
-		$sum=0;
-		foreach($data->clientMilestones as $mil)
-			$sum += $mil->payment;
-		return $sum;
-	}
+
 	/**
 	 * Lists all models.
 	 */
@@ -138,7 +129,7 @@ class ClientProfilesController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new ClientProfiles('search');
+		$model=new ClientProfiles('profileSearch');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['ClientProfiles']))
 			$model->attributes=$_GET['ClientProfiles'];

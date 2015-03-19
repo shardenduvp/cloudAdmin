@@ -11,8 +11,8 @@
  * @property integer $status
  *
  * The followings are the available model relations:
- * @property Industries $industries
  * @property SuppliersHasPortfolio $suppliersHasPortfolio
+ * @property Industries $industries
  */
 class SuppliersPortfolioHasIndustries extends CActiveRecord
 {
@@ -49,8 +49,8 @@ class SuppliersPortfolioHasIndustries extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'industries' => array(self::BELONGS_TO, 'Industries', 'industries_id'),
 			'suppliersHasPortfolio' => array(self::BELONGS_TO, 'SuppliersHasPortfolio', 'suppliers_has_portfolio_id'),
+			'industries' => array(self::BELONGS_TO, 'Industries', 'industries_id'),
 		);
 	}
 

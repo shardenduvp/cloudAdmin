@@ -12,8 +12,8 @@
  * @property integer $status
  *
  * The followings are the available model relations:
- * @property Cities $cities
  * @property Suppliers $suppliers
+ * @property Cities $cities
  */
 class SuppliersHasCities extends CActiveRecord
 {
@@ -50,8 +50,8 @@ class SuppliersHasCities extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cities' => array(self::BELONGS_TO, 'Cities', 'cities_id'),
 			'suppliers' => array(self::BELONGS_TO, 'Suppliers', 'suppliers_id'),
+			'cities' => array(self::BELONGS_TO, 'Cities', 'cities_id'),
 		);
 	}
 

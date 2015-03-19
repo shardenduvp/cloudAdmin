@@ -35,7 +35,6 @@
  * @property string $platform
  * @property string $company_name
  * @property integer $is_discreet
- * @property string $discreet_desc
  * @property integer $location
  * @property string $image
  *
@@ -50,6 +49,8 @@
  */
 class SuppliersHasPortfolio extends CActiveRecord
 {
+
+	public $matched, $rank;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -70,14 +71,14 @@ class SuppliersHasPortfolio extends CActiveRecord
 			array('suppliers_id, industry_id, service_id, status, portfolio_type, is_free_trial, is_discreet, location', 'numerical', 'integerOnly'=>true),
 			array('project_name, language_used, one_line_pitch, who_can, markets, platform', 'length', 'max'=>250),
 			array('project_link, company_name', 'length', 'max'=>50),
-			array('client_name, estimate_price, estimate_timeline, project_size, discreet_desc, image', 'length', 'max'=>100),
+			array('client_name, estimate_price, estimate_timeline, project_size, image', 'length', 'max'=>100),
 			array('year_done', 'length', 'max'=>45),
 			array('cover', 'length', 'max'=>500),
 			array('portfolio_status, no_of_customers, launched_in, no_of_users, deployment, per_hour_rate', 'length', 'max'=>20),
 			array('description, start_date, add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, suppliers_id, project_name, project_link, description, industry_id, service_id, client_name, year_done, estimate_price, start_date, estimate_timeline, language_used, cover, add_date, status, portfolio_type, one_line_pitch, who_can, markets, portfolio_status, no_of_customers, launched_in, no_of_users, deployment, is_free_trial, project_size, per_hour_rate, platform, company_name, is_discreet, discreet_desc, location, image', 'safe', 'on'=>'search'),
+			array('id, suppliers_id, project_name, project_link, description, industry_id, service_id, client_name, year_done, estimate_price, start_date, estimate_timeline, language_used, cover, add_date, status, portfolio_type, one_line_pitch, who_can, markets, portfolio_status, no_of_customers, launched_in, no_of_users, deployment, is_free_trial, project_size, per_hour_rate, platform, company_name, is_discreet, location, image', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -136,7 +137,6 @@ class SuppliersHasPortfolio extends CActiveRecord
 			'platform' => 'Platform',
 			'company_name' => 'Company Name',
 			'is_discreet' => 'Is Discreet',
-			'discreet_desc' => 'Discreet Desc',
 			'location' => 'Location',
 			'image' => 'Image',
 		);
@@ -191,7 +191,6 @@ class SuppliersHasPortfolio extends CActiveRecord
 		$criteria->compare('platform',$this->platform,true);
 		$criteria->compare('company_name',$this->company_name,true);
 		$criteria->compare('is_discreet',$this->is_discreet);
-		$criteria->compare('discreet_desc',$this->discreet_desc,true);
 		$criteria->compare('location',$this->location);
 		$criteria->compare('image',$this->image,true);
 

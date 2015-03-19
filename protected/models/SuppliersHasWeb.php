@@ -27,7 +27,7 @@ class SuppliersHasWeb extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('suppliers_id, social_site, link', 'required'),
+			array('suppliers_id', 'required'),
 			array('suppliers_id', 'numerical', 'integerOnly'=>true),
 			array('social_site', 'length', 'max'=>50),
 			array('link', 'length', 'max'=>200),

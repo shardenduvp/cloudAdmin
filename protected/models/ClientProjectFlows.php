@@ -5,10 +5,10 @@
  *
  * The followings are the available columns in table 'client_project_flows':
  * @property integer $id
+ * @property integer $client_projects_id
  * @property string $step
  * @property string $description
  * @property integer $status
- * @property integer $client_projects_id
  *
  * The followings are the available model relations:
  * @property ClientProjects $clientProjects
@@ -32,12 +32,12 @@ class ClientProjectFlows extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client_projects_id', 'required'),
-			array('status, client_projects_id', 'numerical', 'integerOnly'=>true),
+			array('client_projects_id, status', 'numerical', 'integerOnly'=>true),
 			array('step', 'length', 'max'=>45),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, step, description, status, client_projects_id', 'safe', 'on'=>'search'),
+			array('id, client_projects_id, step, description, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,10 +60,10 @@ class ClientProjectFlows extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'client_projects_id' => 'Client Projects',
 			'step' => 'Step',
 			'description' => 'Description',
 			'status' => 'Status',
-			'client_projects_id' => 'Client Projects',
 		);
 	}
 
@@ -86,10 +86,10 @@ class ClientProjectFlows extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('client_projects_id',$this->client_projects_id);
 		$criteria->compare('step',$this->step,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('client_projects_id',$this->client_projects_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

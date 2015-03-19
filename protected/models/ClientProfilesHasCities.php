@@ -12,8 +12,8 @@
  * @property integer $status
  *
  * The followings are the available model relations:
- * @property Cities $cities
  * @property ClientProfiles $clientProfiles
+ * @property Cities $cities
  */
 class ClientProfilesHasCities extends CActiveRecord
 {
@@ -50,8 +50,8 @@ class ClientProfilesHasCities extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cities' => array(self::BELONGS_TO, 'Cities', 'cities_id'),
 			'clientProfiles' => array(self::BELONGS_TO, 'ClientProfiles', 'client_profiles_id'),
+			'cities' => array(self::BELONGS_TO, 'Cities', 'cities_id'),
 		);
 	}
 

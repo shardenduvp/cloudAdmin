@@ -1,7 +1,7 @@
 <div class="modal-dialog">
         <div class="modal-content">
             <!-- AJAX Loader -->
-            <div class="ajax-loader loader-hidden"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loaders/12.gif"></div>
+            <div class="ajax-loader loader-hidden"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/adminPanel/img/loaders/12.gif"></div>
             
             <div id="approve-data-ajax">
 
@@ -216,17 +216,28 @@
                           <div class="col-md-8">
                             <div class="row">
                               <div class="col-md-4">
-                              <img width="80px" height="80px" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/user.png" class="img-responsive img-circle" alt="Responsive image">
+                              <img width="80px" height="80px" src="<?php echo Yii::app()->theme->baseUrl; ?>/adminPanel/img/user.png" class="img-responsive img-circle" alt="Responsive image">
                               </div>
                               <div class="col-md-8 suppDataBox">
-                                <p><strong><?php echo (!empty($supplier->name))? ucwords($supplier->name): "Not Provided."; ?></strong></p>
+                                <p><strong><?php echo (!empty($supplier->users->company_name))? ucwords($supplier->users->company_name): "Not Provided."; ?></strong></p>
                                 <p>
                                   <?php
-                                    $supp_skills = $supplier->suppliersHasSkills;
+                                    $supp_folios = $supplier->suppliersHasPortfolios;
+                                    $folios_skills = array();
+                                    foreach($supp_folios as $folio) {
+                                      $folios_skills[] = $folio->suppliersHasPortfolioHasSkills;
+                                    }
+                                    $supp_skills = array();
+                                    foreach ($folios_skills as $folio_skills) {
+                                      foreach ($folio_skills as $skill) {
+                                        if(!in_array($skill->skills->name, $supp_skills))
+                                          $supp_skills[] = $skill->skills->name;
+                                      }
+                                    }
                                     if(!empty($supp_skills)) {
                                       foreach ($supp_skills as $supp_skill) {
                                         ?>
-                                        <span class="label label-primary fn12"><?php echo $supp_skill->skills->name; ?></span>&nbsp;
+                                        <span class="label label-primary fn12 mtb2"><?php echo $supp_skill; ?></span>&nbsp;
                                         <?php
                                       }
                                     } else {
@@ -234,7 +245,26 @@
                                     }
                                   ?>
                                 </p>
-                                <p><?php echo (!empty($supplier->location))? ucwords($supplier->location): "Not Provided."; ?></p>
+                                <p>
+                                  <?php
+                                    $regions = $supplier->suppliersHasCities;
+                                    $value = "";
+                                    foreach ($regions as $region) {
+                                      if($region->is_main == 1) {
+                                        $value = $region->cities->name . ", ";
+                                        $countries = $region->cities->countries;
+                                        if(count($countries) == 1)
+                                          $value .= $countries->name;
+                                        else {
+                                          foreach($countries as $country) {
+                                            $value .= $country->name; break;
+                                          }
+                                        }
+                                      }
+                                    }
+                                    echo (!empty($value))? ucwords($value): "Not Provided.";
+                                  ?>
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -243,11 +273,11 @@
                             <!-- Slide THREE -->
                             <div class="slideThree">
                             <?php
-                              echo CHtml::checkbox("Suppliers[selected][$supplier->id]", true, array(
+                            echo CHtml::checkbox("Suppliers[selected][$supplier->id]", ($project->status == 1) ? true : false, array(
                                             'value'=>'1',
                                             'id'=>"supplier".$supplier->id,
                                           ));
-                              echo CHtml::label("", "supplier".$supplier->id);
+                            echo CHtml::label("", "supplier".$supplier->id);
                             ?>
                             </div>
                           </div>

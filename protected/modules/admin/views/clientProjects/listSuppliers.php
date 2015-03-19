@@ -9,18 +9,97 @@
                   <?php foreach($model as $projSupp) { ?>
                   <div class="row">
 	                  <div class="col-xs-1 col-xs-offset-1 align">
-	                  	<div class="row">
-	                  	<h1></h1>
-	                  		<i class="fa fa-users fntsize  "></i>
-	                  		</div>
-	                  		<div class="row align">
-	                  		Introduction Sent
-	                  		</div>
-	                  	</div>
-	                
+	                  	<?php  if($projSupp->status==1) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-users fntsize  "></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Request for Introduction
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
+	                	<?php  if($projSupp->status==2) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-envelope-o fntsize"></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		New Message
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
+	                  	<?php  if($projSupp->status==3) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-check fntsize"></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Pitch Submitted
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
+	                  	<?php  if($projSupp->status==4) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-search fntsize"></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Pitch Viewed
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
+	                  	<?php  if($projSupp->status==5) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-users fntsize  "></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Offer Made
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
+	                  	<?php  if($projSupp->status==6) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-users fntsize  "></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Offer Accepted
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
+	                  	<?php  if($projSupp->status==7) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-users fntsize  "></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Offer Declined
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
+	                  	<?php  if($projSupp->status==8) {
+	                  		echo CHtml::link('
+	                  	    <div class="row">
+		                  	<h1></h1>
+		                  		<i class="fa fa-users fntsize  "></i>
+		                  		</div>
+		                  		<div class="row align">
+		                  		Declined
+		                  		</div>
+		                  	</div>
+	                  	', array("/admin/suppliersProjects/introduction", "pid"=>base64_encode($projSupp->id))); } ?>
 	                  <div class="col-xs-5 verticalLine"> 
 
-	                  	<h3><b><?php echo $projSupp->suppliers->name; ?></b></h3>
+	                  	<h3><b><?php echo CHtml::link($projSupp->suppliers->users->company_name, array("/admin/users/view", "id"=>$projSupp->suppliers->users->id, "view"=>"supplier")); ?></b></h3>
 	                  	<div class="row">
 		                  	<div class="col-xs-5">
 		                  		<i class="fa fa-map-marker "></i> 

@@ -7,9 +7,8 @@
  * @property integer $id
  * @property integer $suppliers_id
  * @property integer $faq_id
+ * @property string $answers
  * @property integer $status
- * @property string $add_date
- * @property string $answer
  * @property integer $publish
  *
  * The followings are the available model relations:
@@ -36,10 +35,10 @@ class SuppliersFaqAnswers extends CActiveRecord
 		return array(
 			array('suppliers_id, faq_id', 'required'),
 			array('suppliers_id, faq_id, status, publish', 'numerical', 'integerOnly'=>true),
-			array('add_date, answer', 'safe'),
+			array('answers', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, suppliers_id, faq_id, status, add_date, answer, publish', 'safe', 'on'=>'search'),
+			array('id, suppliers_id, faq_id, answers, status, publish', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,9 +64,8 @@ class SuppliersFaqAnswers extends CActiveRecord
 			'id' => 'ID',
 			'suppliers_id' => 'Suppliers',
 			'faq_id' => 'Faq',
+			'answers' => 'Answers',
 			'status' => 'Status',
-			'add_date' => 'Add Date',
-			'answer' => 'Answer',
 			'publish' => 'Publish',
 		);
 	}
@@ -93,15 +91,62 @@ class SuppliersFaqAnswers extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('suppliers_id',$this->suppliers_id);
 		$criteria->compare('faq_id',$this->faq_id);
+		$criteria->compare('answers',$this->answers,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('add_date',$this->add_date,true);
-		$criteria->compare('answer',$this->answer,true);
 		$criteria->compare('publish',$this->publish);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+    
+    //Search for admin filter
+    public function customSearch()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        $page_size = 50;
+        if(isset($_REQUEST['pagesize']))
+        {
+            $page_size = $_REQUEST['pagesize'];   
+        }
+        
+		$criteria=new CDbCriteria;
+        
+    	if(isset($this->suppliers_id) && ($this->suppliers_id != ""))
+		{
+			$result 		=		Suppliers::model()->findAll('name LIKE "%'.$this->suppliers_id.'%"');
+			$supplierSearch		=		array();
+			foreach($result as $supRes)
+				$supplierSearch[]=$supRes->id;
+	 
+		 	if(count($supplierSearch)>0)
+					$criteria->compare('suppliers_id',$supplierSearch,true);
+			else
+				$criteria->compare('suppliers_id',$this->suppliers_id);
+	
+		}
+		else
+		{
+				$criteria->compare('suppliers_id',$this->suppliers_id);
+		}
+        
+      
+        
+        
+        
+		$criteria->compare('id',$this->id);
+		//$criteria->compare('suppliers_id',$this->suppliers_id);
+		$criteria->compare('faq_id',$this->faq_id);
+		$criteria->compare('answers',$this->answers,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('publish',$this->publish);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+            'pagination' => array('pageSize' => $page_size),
+		));
+	}
+    
 
 	/**
 	 * Returns the static model of the specified AR class.

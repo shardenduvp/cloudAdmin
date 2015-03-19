@@ -6,10 +6,10 @@
  * The followings are the available columns in table 'client_projects_questions':
  * @property integer $id
  * @property string $question
- * @property string $description
- * @property string $title
  * @property string $add_date
  * @property integer $status
+ * @property string $description
+ * @property string $title
  * @property integer $client_projects_id
  *
  * The followings are the available model relations:
@@ -35,10 +35,10 @@ class ClientProjectsQuestions extends CActiveRecord
 		return array(
 			array('client_projects_id', 'required'),
 			array('status, client_projects_id', 'numerical', 'integerOnly'=>true),
-			array('question, description, title, add_date', 'safe'),
+			array('question, add_date, description, title', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, question, description, title, add_date, status, client_projects_id', 'safe', 'on'=>'search'),
+			array('id, question, add_date, status, description, title, client_projects_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,10 +62,10 @@ class ClientProjectsQuestions extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'question' => 'Question',
-			'description' => 'Description',
-			'title' => 'Title',
 			'add_date' => 'Add Date',
 			'status' => 'Status',
+			'description' => 'Description',
+			'title' => 'Title',
 			'client_projects_id' => 'Client Projects',
 		);
 	}
@@ -90,10 +90,10 @@ class ClientProjectsQuestions extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('question',$this->question,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('title',$this->title,true);
 		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('title',$this->title,true);
 		$criteria->compare('client_projects_id',$this->client_projects_id);
 
 		return new CActiveDataProvider($this, array(

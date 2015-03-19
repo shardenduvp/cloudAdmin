@@ -5,13 +5,13 @@
  *
  * The followings are the available columns in table 'project_references':
  * @property integer $id
+ * @property integer $client_projects_id
+ * @property string $reference_number
  * @property string $name
  * @property string $link
  * @property string $details
- * @property string $add_date
  * @property integer $status
- * @property integer $client_projects_id
- * @property string $reference_number
+ * @property string $add_date
  *
  * The followings are the available model relations:
  * @property ClientProjects $clientProjects
@@ -35,13 +35,13 @@ class ProjectReferences extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client_projects_id', 'required'),
-			array('status, client_projects_id', 'numerical', 'integerOnly'=>true),
-			array('name, link, reference_number', 'length', 'max'=>45),
+			array('client_projects_id, status', 'numerical', 'integerOnly'=>true),
+			array('reference_number, name, link', 'length', 'max'=>45),
 			array('details', 'length', 'max'=>545),
 			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, link, details, add_date, status, client_projects_id, reference_number', 'safe', 'on'=>'search'),
+			array('id, client_projects_id, reference_number, name, link, details, status, add_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,13 +64,13 @@ class ProjectReferences extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'client_projects_id' => 'Client Projects',
+			'reference_number' => 'Reference Number',
 			'name' => 'Name',
 			'link' => 'Link',
 			'details' => 'Details',
-			'add_date' => 'Add Date',
 			'status' => 'Status',
-			'client_projects_id' => 'Client Projects',
-			'reference_number' => 'Reference Number',
+			'add_date' => 'Add Date',
 		);
 	}
 
@@ -93,13 +93,13 @@ class ProjectReferences extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('client_projects_id',$this->client_projects_id);
+		$criteria->compare('reference_number',$this->reference_number,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('link',$this->link,true);
 		$criteria->compare('details',$this->details,true);
-		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('client_projects_id',$this->client_projects_id);
-		$criteria->compare('reference_number',$this->reference_number,true);
+		$criteria->compare('add_date',$this->add_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

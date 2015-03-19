@@ -12,8 +12,8 @@
  * @property integer $status
  *
  * The followings are the available model relations:
- * @property ReviewCategory $reviewCategory
  * @property SuppliersHasReferences $suppliersHasReferences
+ * @property ReviewCategory $reviewCategory
  */
 class SuppliersHasCategoryRating extends CActiveRecord
 {
@@ -51,8 +51,8 @@ class SuppliersHasCategoryRating extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'reviewCategory' => array(self::BELONGS_TO, 'ReviewCategory', 'review_category_id'),
 			'suppliersHasReferences' => array(self::BELONGS_TO, 'SuppliersHasReferences', 'suppliers_has_references_id'),
+			'reviewCategory' => array(self::BELONGS_TO, 'ReviewCategory', 'review_category_id'),
 		);
 	}
 

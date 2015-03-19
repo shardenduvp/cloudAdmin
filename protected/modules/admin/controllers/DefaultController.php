@@ -29,7 +29,7 @@ class DefaultController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform actions
-                'actions'=>array('index','view','create','update','admin','delete', 'getApproveView', 'approveProject'),
+                'actions'=>array('index','view','create','update','admin','delete', 'getApproveView', 'approveProject', 'intermediary', 'messages'),
                 'users'=>array('@'),
             ),
             array('deny',  // deny all users
@@ -51,6 +51,19 @@ class DefaultController extends Controller
         ));
   	}
 
+    public function actionIntermediary()
+    {
+        $model=new ClientProjects('intermediarySearch');
+        $model->unsetAttributes();
+
+        if(isset($_GET['ClientProjects']))
+            $model->attributes=$_GET['ClientProjects'];
+
+        $this->render('intermediary', array(
+            'model'=>$model,
+        ));
+    }
+
     public function actionGetApproveView($id) {
         if(Yii::app()->request->isAjaxRequest && is_numeric($id)) {
             $project = ClientProjects::model()->findByAttributes(array('id'=>$id));
@@ -61,39 +74,76 @@ class DefaultController extends Controller
 
 
     public function actionApproveProject($id=null) {
-        if(!is_null($id) && isset($_POST['Suppliers'])){
+        $suppliers = Yii::app()->request->getPost('Suppliers');
+        if(is_null($id)) {
+            Yii::app()->user->setFlash('failureFlash', 'Invalid Url Requested.');
+            $this->redirect(array('/admin/default/intermediary'));
+        }
 
-            $supplier_model = SuppliersProjects::model();
-            // begin transaction
-            $transaction=$supplier_model->dbConnection->beginTransaction();
+        // begin transaction
+        $transaction = Yii::app()->db->beginTransaction();
 
-            // get post data
-            $suppliers = $_POST['Suppliers'];
-
-            foreach($suppliers as $selected) {
-                foreach ($selected as $key => $value) {
-                    // $key has supplier_id and $value has checked
-                    $supplier_project = $supplier_model->findByAttributes(array('suppliers_id'=>$key,'client_projects_id' => $id));
-                    $supplier_project->status=2;
-                    if(!$supplier_project->update()) {
-                        $transaction->rollback();
-                        Yii::app()->user->setFlash('failureFlash', 'Project Approval Failed.');
-                        $this->redirect(array('/admin/'));
-                    }
+        // get supplierProject for this client project
+        $supProjects = SuppliersProjects::model()->findAllByAttributes(array('client_projects_id' => $id));
+        
+        // if all the suppliers are disselected - remove status from all
+        if(!isset($suppliers) || empty($suppliers)) {
+            foreach ($supProjects as $project) {
+                $project->status = 0;
+                if(!$project->update()) {
+                    $transaction->rollback();
+                    Yii::app()->user->setFlash('failureFlash', 'Project Approval Failed.');
+                    $this->redirect(array('/admin/default/intermediary'));
                 }
             }
+
+            // set clients status to waiting approval
+            $project = ClientProjects::model()->findByPk($id);
+            $project->status = 1;
+            if($project->update()) {
+                $transaction->commit();
+                Yii::app()->user->setFlash('successFlash', 'Suppliers Removed Successfully.');
+                $this->redirect(array('/admin/default/intermediary'));
+            } else {
+                $transaction->rollback();
+                Yii::app()->user->setFlash('failureFlash', 'Suppliers Selection Failed.');
+                $this->redirect(array('/admin/default/intermediary'));
+            }
+
+        }
+
+        // if some suppliers are selected
+        if(isset($suppliers) && !empty($suppliers)){
+            $selected = array();
+            foreach($suppliers as $supplier) {
+                foreach ($supplier as $key => $value) {
+                    $selected[] = $key;
+                }
+            }
+
+            // update project status to 1
+            foreach ($supProjects as $project) {
+                if(in_array($project->suppliers_id, $selected)) $project->status = 1;
+                else $project->status = 0;
+                if(!$project->update()) {
+                    $transaction->rollback();
+                    Yii::app()->user->setFlash('failureFlash', 'Project Approval Failed.');
+                    $this->redirect(array('/admin/default/intermediary'));
+                }
+            }
+
             $project = ClientProjects::model()->findByPk($id);
             $project->status = 2;
             if($project->update()) {
                 $transaction->commit();
                 Yii::app()->user->setFlash('successFlash', 'Project Approved Successfully.');
-                $this->redirect(array('/admin/'));
+                $this->redirect(array('/admin/default/intermediary'));
             } else {
                 $transaction->rollback();
                 Yii::app()->user->setFlash('failureFlash', 'Project Approval Failed.');
-                $this->redirect(array('/admin/'));
+                $this->redirect(array('/admin/default/intermediary'));
             }
         }
-        $this->redirect(array('/admin/'));
+        $this->redirect(array('/admin/default/intermediary'));
     }
 }

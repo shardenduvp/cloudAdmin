@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'suppliers_has_awards':
  * @property integer $id
- * @property integer $suppliers_id
  * @property string $title
  * @property string $description
  * @property string $image
@@ -28,12 +27,11 @@ class SuppliersHasAwards extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('suppliers_id, title, description', 'required'),
-			array('suppliers_id', 'numerical', 'integerOnly'=>true),
+			array('title, description', 'required'),
 			array('title, image', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, suppliers_id, title, description, image', 'safe', 'on'=>'search'),
+			array('id, title, description, image', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +53,6 @@ class SuppliersHasAwards extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'suppliers_id' => 'Suppliers',
 			'title' => 'Title',
 			'description' => 'Description',
 			'image' => 'Image',
@@ -81,7 +78,6 @@ class SuppliersHasAwards extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('suppliers_id',$this->suppliers_id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('image',$this->image,true);

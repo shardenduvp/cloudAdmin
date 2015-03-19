@@ -7,8 +7,8 @@
  * @property integer $id
  * @property string $type
  * @property string $question
- * @property string $add_date
  * @property integer $status
+ * @property string $add_date
  *
  * The followings are the available model relations:
  * @property SuppliersFaqAnswers[] $suppliersFaqAnswers
@@ -31,12 +31,13 @@ class Faq extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('type', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('type', 'length', 'max'=>100),
+			array('type', 'length', 'max'=>245),
 			array('question, add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, type, question, add_date, status', 'safe', 'on'=>'search'),
+			array('id, type, question, status, add_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,8 +62,8 @@ class Faq extends CActiveRecord
 			'id' => 'ID',
 			'type' => 'Type',
 			'question' => 'Question',
-			'add_date' => 'Add Date',
 			'status' => 'Status',
+			'add_date' => 'Add Date',
 		);
 	}
 
@@ -87,8 +88,8 @@ class Faq extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('question',$this->question,true);
-		$criteria->compare('add_date',$this->add_date,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('add_date',$this->add_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

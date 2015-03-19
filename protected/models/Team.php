@@ -50,6 +50,7 @@ class Team extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			//array('first_name, email, users_id', 'required'),
 			array('add_by, users_id', 'required'),
 			array('add_by, users_id, status', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, email, position', 'length', 'max'=>45),
@@ -88,7 +89,7 @@ class Team extends CActiveRecord
 			'id' => 'ID',
 			'add_by' => 'Add By',
 			'users_id' => 'Users',
-			'first_name' => 'First Name',
+			'first_name' => 'Name',
 			'last_name' => 'Last Name',
 			'about' => 'About',
 			'expertise_skills' => 'Expertise Skills',

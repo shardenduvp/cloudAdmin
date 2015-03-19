@@ -17,43 +17,43 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'trial_period'); ?>
-		<?php echo $form->textField($model,'trial_period',array('size'=>60,'maxlength'=>145)); ?>
+		<?php echo $form->label($model,'billing_type'); ?>
+		<?php echo $form->textField($model,'billing_type'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'estimated_cost'); ?>
-		<?php echo $form->textField($model,'estimated_cost',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'tm_billing_schedule_type'); ?>
+		<?php echo $form->textField($model,'tm_billing_schedule_type'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'estimated_time'); ?>
-		<?php echo $form->textField($model,'estimated_time',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'tm_amount'); ?>
+		<?php echo $form->textField($model,'tm_amount',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'min_price'); ?>
-		<?php echo $form->textField($model,'min_price',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'fp_total_price'); ?>
+		<?php echo $form->textField($model,'fp_total_price',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'max_price'); ?>
-		<?php echo $form->textField($model,'max_price',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'fp_total_price_interval'); ?>
+		<?php echo $form->textField($model,'fp_total_price_interval'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'time_material'); ?>
-		<?php echo $form->textField($model,'time_material',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'duration'); ?>
+		<?php echo $form->textField($model,'duration',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'billing_schedule'); ?>
-		<?php echo $form->textField($model,'billing_schedule',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'start_date'); ?>
+		<?php echo $form->textField($model,'start_date'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
+		<?php echo $form->label($model,'trial'); ?>
+		<?php echo $form->textField($model,'trial',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
@@ -62,13 +62,33 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'status'); ?>
+		<?php echo $form->textField($model,'status'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'remarks'); ?>
 		<?php echo $form->textArea($model,'remarks',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'added_by'); ?>
-		<?php echo $form->textField($model,'added_by',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'client_note'); ?>
+		<?php echo $form->textArea($model,'client_note',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'client_comment'); ?>
+		<?php echo $form->textArea($model,'client_comment',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'notes'); ?>
+		<?php echo $form->textArea($model,'notes',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'admin_note'); ?>
+		<?php echo $form->textArea($model,'admin_note',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">

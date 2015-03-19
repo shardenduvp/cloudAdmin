@@ -8,10 +8,6 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'suppliers-has-references-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -50,9 +46,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'communication_rating'); ?>
-		<?php echo $form->textField($model,'communication_rating'); ?>
-		<?php echo $form->error($model,'communication_rating'); ?>
+		<?php echo $form->labelEx($model,'is_published'); ?>
+		<?php echo $form->textField($model,'is_published'); ?>
+		<?php echo $form->error($model,'is_published'); ?>
 	</div>
 
 	<div class="row">

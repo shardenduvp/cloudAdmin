@@ -13,8 +13,8 @@
 	<?php echo CHtml::encode($data->chat_template_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('chat_room_has_users_id')); ?>:</b>
-	<?php echo CHtml::encode($data->chat_room_has_users_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('chat_message_has_user_id')); ?>:</b>
+	<?php echo CHtml::encode($data->chat_message_has_user_id); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
@@ -42,12 +42,12 @@
 	<?php echo CHtml::encode($data->add_date); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('client_projects_id')); ?>:</b>
-	<?php echo CHtml::encode($data->client_projects_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('chat_room_id')); ?>:</b>
+	<?php echo CHtml::encode($data->chat_room_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('suppliers_id')); ?>:</b>
-	<?php echo CHtml::encode($data->suppliers_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('proposal_id')); ?>:</b>
+	<?php echo CHtml::encode($data->proposal_id); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('is_sent_from_supplier')); ?>:</b>

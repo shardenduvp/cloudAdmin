@@ -64,7 +64,7 @@ class UserIdentity extends CUserIdentity
 				$this->setState('supplierProfileId', $s_profile->id);
 				$this->setState('supplierProfileStatus', $s_profile->status);
 			}
-			$role			=	(isset($role))?$role:$record->role0->name;
+			$role			=	(isset($role))?$role:$record->roles->name;
 			$this->status	=	$record->status;
 			$this->setState('role', $role);
 			$this->setState('profileStatus',$record->status);			

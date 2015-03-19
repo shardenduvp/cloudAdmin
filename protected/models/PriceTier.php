@@ -14,7 +14,6 @@
  * @property string $d_description
  * @property integer $price_zone
  * @property integer $status
- * @property integer $price_zone_id
  *
  * The followings are the available model relations:
  * @property PriceZone $priceZone
@@ -37,13 +36,14 @@ class PriceTier extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('price_zone_id', 'required'),
-			array('price_zone, status, price_zone_id', 'numerical', 'integerOnly'=>true),
-			array('title, min_price, max_price, d_min_price, d_max_price', 'length', 'max'=>45),
-			array('description, d_description', 'safe'),
+			array('d_min_price, d_max_price, d_description, price_zone', 'required'),
+			array('price_zone, status', 'numerical', 'integerOnly'=>true),
+			array('title', 'length', 'max'=>500),
+			array('min_price, max_price, d_min_price, d_max_price', 'length', 'max'=>50),
+			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, description, min_price, max_price, d_min_price, d_max_price, d_description, price_zone, status, price_zone_id', 'safe', 'on'=>'search'),
+			array('id, title, description, min_price, max_price, d_min_price, d_max_price, d_description, price_zone, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +55,8 @@ class PriceTier extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'priceZone' => array(self::BELONGS_TO, 'PriceZone', 'price_zone_id'),
+			'priceZone' => array(self::BELONGS_TO, 'PriceZone', 'price_zone'),
+			'suppliers' => array(self::HAS_MANY, 'Suppliers', 'price_tier_id'),
 		);
 	}
 
@@ -70,12 +71,11 @@ class PriceTier extends CActiveRecord
 			'description' => 'Description',
 			'min_price' => 'Min Price',
 			'max_price' => 'Max Price',
-			'd_min_price' => 'D Min Price',
-			'd_max_price' => 'D Max Price',
-			'd_description' => 'D Description',
+			'd_min_price' => 'Developer Min Price',
+			'd_max_price' => 'Developer Max Price',
+			'd_description' => 'Developer Description',
 			'price_zone' => 'Price Zone',
 			'status' => 'Status',
-			'price_zone_id' => 'Price Zone',
 		);
 	}
 
@@ -107,7 +107,6 @@ class PriceTier extends CActiveRecord
 		$criteria->compare('d_description',$this->d_description,true);
 		$criteria->compare('price_zone',$this->price_zone);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('price_zone_id',$this->price_zone_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

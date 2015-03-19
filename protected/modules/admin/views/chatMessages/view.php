@@ -23,15 +23,15 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'chat_template_id',
-		'chat_room_has_users_id',
+		'chat_message_has_user_id',
 		'type',
 		'message',
 		'ip_address',
 		'sender_type',
 		'status',
 		'add_date',
-		'client_projects_id',
-		'suppliers_id',
+		'chat_room_id',
+		'proposal_id',
 		'is_sent_from_supplier',
 	),
 )); ?>

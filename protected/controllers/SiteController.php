@@ -134,12 +134,12 @@ class SiteController extends Controller
 					$this->redirect(array('/admin/users/admin'));
 				}
 				elseif(Yii::app()->user->role=='client'){
-					$this->redirect(array('/client/index'));
+					$this->redirect(array('/admin/index'));
 				}
 				elseif(Yii::app()->user->role=='supplier'){
-					$this->redirect(array('/supplier/index'));
+					$this->redirect(array('/admin/index'));
 				}else{
-					$this->redirect(array('/site/login'));
+					$this->redirect(array('/admin/login'));
 				}
 			}else{
 			 

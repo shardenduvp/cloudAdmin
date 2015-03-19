@@ -11,7 +11,9 @@
  * @property integer $status
  * @property string $created
  * @property string $modified
- * @property string $phone_number
+ *
+ * The followings are the available model relations:
+ * @property CalculatorResult[] $calculatorResults
  */
 class CalculatorUsers extends CActiveRecord
 {
@@ -33,11 +35,12 @@ class CalculatorUsers extends CActiveRecord
 		return array(
 			array('status', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>200),
-			array('total_price, total_hour, phone_number', 'length', 'max'=>100),
+			array('total_price, total_hour', 'length', 'max'=>100),
 			array('created, modified', 'safe'),
+            array('phone_number', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, total_price, total_hour, status, created, modified, phone_number', 'safe', 'on'=>'search'),
+			array('id, username, total_price, total_hour, status, created, modified', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +52,7 @@ class CalculatorUsers extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'calculatorResults' => array(self::HAS_MANY, 'CalculatorResult', 'users_id'),
 		);
 	}
 
@@ -65,7 +69,7 @@ class CalculatorUsers extends CActiveRecord
 			'status' => 'Status',
 			'created' => 'Created',
 			'modified' => 'Modified',
-			'phone_number' => 'Phone Number',
+            'phone_number' => 'Phone No',
 		);
 	}
 
@@ -94,8 +98,7 @@ class CalculatorUsers extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
-		$criteria->compare('phone_number',$this->phone_number,true);
-
+        $criteria->compare('phone_number',$this->phone_number,true);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

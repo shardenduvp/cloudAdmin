@@ -5,14 +5,14 @@
  *
  * The followings are the available columns in table 'notifications':
  * @property integer $id
- * @property integer $status
- * @property string $message
  * @property string $add_date
+ * @property integer $status
  * @property integer $is_read
- * @property integer $users_id
  * @property integer $log_id
+ * @property integer $users_id
  *
  * The followings are the available model relations:
+ * @property Log $log
  * @property Users $users
  */
 class Notifications extends CActiveRecord
@@ -33,13 +33,12 @@ class Notifications extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('users_id', 'required'),
-			array('status, is_read, users_id, log_id', 'numerical', 'integerOnly'=>true),
-			array('message', 'length', 'max'=>245),
+			array('log_id, users_id', 'required'),
+			array('status, is_read, log_id, users_id', 'numerical', 'integerOnly'=>true),
 			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, status, message, add_date, is_read, users_id, log_id', 'safe', 'on'=>'search'),
+			array('id, add_date, status, is_read, log_id, users_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,6 +50,7 @@ class Notifications extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'log' => array(self::BELONGS_TO, 'Log', 'log_id'),
 			'users' => array(self::BELONGS_TO, 'Users', 'users_id'),
 		);
 	}
@@ -62,12 +62,11 @@ class Notifications extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'status' => 'Status',
-			'message' => 'Message',
 			'add_date' => 'Add Date',
+			'status' => 'Status',
 			'is_read' => 'Is Read',
-			'users_id' => 'Users',
 			'log_id' => 'Log',
+			'users_id' => 'Users',
 		);
 	}
 
@@ -90,12 +89,11 @@ class Notifications extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('message',$this->message,true);
 		$criteria->compare('add_date',$this->add_date,true);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('is_read',$this->is_read);
-		$criteria->compare('users_id',$this->users_id);
 		$criteria->compare('log_id',$this->log_id);
+		$criteria->compare('users_id',$this->users_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

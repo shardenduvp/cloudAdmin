@@ -170,7 +170,7 @@ echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('clientProfiles/
 						 $("#updateBtnClient").button("reset");
 
                     }'
-                     ),array('id'=>'updateBtnClient','class'=>'btn btn-primary pull-right','data-loading-text'=>'Updating ...','autocomplete'=>'off')); 
+                     ),array('id'=>'updateBtnClient','class'=>'btn btn-danger pull-right','data-loading-text'=>'Updating ...','autocomplete'=>'off')); 
 ?>
 
 </div>

@@ -1,145 +1,145 @@
-<?php
-/* @var $this SuppliersHasReferencesController */
-/* @var $model SuppliersHasReferences */
-/* @var $form CActiveForm */
-?>
-
-<div class="wide form">
+<div class="form-horizontal">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
+	'enableAjaxValidation'=>false,
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
+		<div class="col-md-12">
+			<div class="box border-custom inverse mb0">
 
-	<div class="row">
-		<?php echo $form->label($model,'project_name'); ?>
-		<?php echo $form->textField($model,'project_name',array('size'=>60,'maxlength'=>100)); ?>
-	</div>
+				<div class="box-title"><h3>Advance Search</h3></div>
+				
+				
+				<div class="box-body big">
+				<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'project_description'); ?>
-		<?php echo $form->textArea($model,'project_description',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+						<?php echo $form->labelEx($model,'id', array(
+							'class'=>'control-label'
+						)); ?>
+					</div>
+					<div class="col-sm-2 col-offset-sm-2">
+					<?php //echo $form->textField($model,'role_id'); 
+							echo CHtml::activeDropDownList($model, 'id', array(
+								    '<'=>'<','>'=>'>','<>'=>'<>','<='=>'<=','>='=>'>='
+								), array(
+									'empty'=>'Operator',
+									"",
+									'class'=>'form-control operatorID'
+								)
+							);
+						?>
+					</div>
+					<div class="col-sm-4 col-offset-sm-2">
+					<?php echo $form->textField($model,'id',array('size'=>45,'maxlength'=>45,'class'=>'form-control IDUser')); ?>
+					</div>
+				</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'company_name'); ?>
-		<?php echo $form->textField($model,'company_name',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+						<?php echo $form->labelEx($model,'project_name', array('class'=>'control-label')); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
+						<?php echo $form->textField($model,'project_name',array('size'=>45,'maxlength'=>45,'class'=>'form-control')); ?>
+					</div>
+				</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'client_email'); ?>
-		<?php echo $form->textField($model,'client_email',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+						<?php echo $form->labelEx($model,'company_name', array('class'=>'control-label')); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
+						<?php echo $form->textField($model,'company_name',array('size'=>45,'maxlength'=>45,'class'=>'form-control')); ?>
+					</div>
+				</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'year_engagement'); ?>
-		<?php echo $form->textField($model,'year_engagement',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+							<?php echo $form->labelEx($model,'client_email', array('class'=>'control-label')); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
+					<?php echo $form->textField($model,'client_email',array('size'=>45,'maxlength'=>45,'class'=>'form-control')); ?>
+					</div>
+				</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'communication_rating'); ?>
-		<?php echo $form->textField($model,'communication_rating'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'skill_rating'); ?>
-		<?php echo $form->textField($model,'skill_rating'); ?>
-	</div>
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+						<?php echo $form->label($model,'add_date', array(
+							'class'=>'control-label'   
+						)); ?>
+					</div>
+					<div class="col-sm-2 col-offset-sm-2">
+					<?php 
+							echo CHtml::DropDownList('','', array(
+								    '<'=>'<','>'=>'>','<>'=>'<>','<='=>'<=','>='=>'>='
+								), array(
+									'empty'=>'Operator',
+									"",
+									'class'=>'form-control operatorIDforDate'
+								)
+							);
+						?>
+					</div>
+					<div class="col-sm-4 col-offset-sm-2">
+						<?php
+							$form->widget('zii.widgets.jui.CJuiDatePicker', array(
+								'model' => $model,
+								'attribute' => 'add_date',
+								'options'=>array(
+									'dateFormat'=>'yy-mm-dd',
+									'showAnim' => 'fold'
+								),
+								'htmlOptions' => array(
+									'size' => '10',         // textField size
+									'maxlength' => '10', 
+									'class'=>'form-control add_dateUSER'   // textField maxlength
+								),
+							));
+						?>
 
-	<div class="row">
-		<?php echo $form->label($model,'timeline_rating'); ?>
-		<?php echo $form->textField($model,'timeline_rating'); ?>
-	</div>
+						<?php echo $form->error($model,'add_date'); ?>
+					</div>			
+				</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'independence_rating'); ?>
-		<?php echo $form->textField($model,'independence_rating'); ?>
-	</div>
+				<div class="form-group">
+					<div class="col-sm-4 tr-align">
+							<?php echo $form->label($model,'status', array(
+							'class'=>'control-label'   
+						)); ?>
+					</div>
+					<div class="col-sm-6 col-offset-sm-2">
+					    <?php //echo $form->textField($model,'role_id'); 
+							echo CHtml::activeDropDownList($model, 'status', array(
+								    '0'=>'Requested','1'=>'Not Verified',
+								    '2'=>'Verified', '3' => 'Delete',
+								    '4' => 'Reported Issue'
+								), array(
+									'empty'=>'Select Status',
+									"",
+									'class'=>'form-control'
+								)
+							);
+						?>
+					</div>
+				</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'provide_do_well'); ?>
-		<?php echo $form->textArea($model,'provide_do_well',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'provider_improve'); ?>
-		<?php echo $form->textArea($model,'provider_improve',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
+			
+	        <div class="row">
+	            	<div class="col-sm-4 tr-align"></div>
+	            	<div class="col-sm-6 col-offset-sm-2">
+						<?php echo CHtml::submitButton('Search',array('class'=>'btn btn-primary')); ?>
+					</div>
+				</div>
+              <?php $this->endWidget(); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'tag_line'); ?>
-		<?php echo $form->textArea($model,'tag_line',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'add_date'); ?>
-		<?php echo $form->textField($model,'add_date'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'modified'); ?>
-		<?php echo $form->textField($model,'modified'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'suppliers_id'); ?>
-		<?php echo $form->textField($model,'suppliers_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'client_profiles_id'); ?>
-		<?php echo $form->textField($model,'client_profiles_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'suppliers_has_portfolio_id'); ?>
-		<?php echo $form->textField($model,'suppliers_has_portfolio_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'client_first_name'); ?>
-		<?php echo $form->textField($model,'client_first_name',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'client_last_name'); ?>
-		<?php echo $form->textField($model,'client_last_name',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'follow_venturepact'); ?>
-		<?php echo $form->textField($model,'follow_venturepact'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'is_unattributed'); ?>
-		<?php echo $form->textField($model,'is_unattributed'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'email_hide'); ?>
-		<?php echo $form->textField($model,'email_hide'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'review_type'); ?>
-		<?php echo $form->textField($model,'review_type'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- search-form -->
+        </div>
+     </div>
+   </div>
+</div>   
+</div>

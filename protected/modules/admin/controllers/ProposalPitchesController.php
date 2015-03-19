@@ -28,7 +28,7 @@ class ProposalPitchesController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete','active','listSuppliers','searchSuppliers','addSupplier','updateProject','calculate'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -134,6 +134,7 @@ class ProposalPitchesController extends Controller
 			'model'=>$model,
 		));
 	}
+
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

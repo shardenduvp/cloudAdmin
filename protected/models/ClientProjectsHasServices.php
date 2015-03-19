@@ -7,8 +7,8 @@
  * @property integer $id
  * @property integer $client_projects_id
  * @property integer $services_id
- * @property integer $status
  * @property string $add_date
+ * @property integer $status
  *
  * The followings are the available model relations:
  * @property ClientProjects $clientProjects
@@ -37,7 +37,7 @@ class ClientProjectsHasServices extends CActiveRecord
 			array('add_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, client_projects_id, services_id, status, add_date', 'safe', 'on'=>'search'),
+			array('id, client_projects_id, services_id, add_date, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,8 +63,8 @@ class ClientProjectsHasServices extends CActiveRecord
 			'id' => 'ID',
 			'client_projects_id' => 'Client Projects',
 			'services_id' => 'Services',
-			'status' => 'Status',
 			'add_date' => 'Add Date',
+			'status' => 'Status',
 		);
 	}
 
@@ -89,8 +89,8 @@ class ClientProjectsHasServices extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('client_projects_id',$this->client_projects_id);
 		$criteria->compare('services_id',$this->services_id);
-		$criteria->compare('status',$this->status);
 		$criteria->compare('add_date',$this->add_date,true);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

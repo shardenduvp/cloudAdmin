@@ -59,6 +59,8 @@ class Countries extends CActiveRecord
 		return array(
 			'cities' => array(self::HAS_MANY, 'Cities', 'countries_id'),
 			'regions' => array(self::BELONGS_TO, 'Regions', 'regions_id'),
+			'priceZone' => array(self::BELONGS_TO, 'PriceZone', 'price_zone_id'),
+			
 		);
 	}
 

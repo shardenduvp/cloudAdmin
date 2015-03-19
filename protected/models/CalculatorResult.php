@@ -10,6 +10,11 @@
  * @property integer $option_id
  * @property string $created
  * @property string $modified
+ *
+ * The followings are the available model relations:
+ * @property CalculatorOptions $option
+ * @property CalculatorQuestion $question
+ * @property CalculatorUsers $users
  */
 class CalculatorResult extends CActiveRecord
 {
@@ -29,6 +34,7 @@ class CalculatorResult extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('users_id, question_id, option_id', 'required'),
 			array('users_id, question_id, option_id', 'numerical', 'integerOnly'=>true),
 			array('created, modified', 'safe'),
 			// The following rule is used by search().
@@ -45,6 +51,9 @@ class CalculatorResult extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'option' => array(self::BELONGS_TO, 'CalculatorOptions', 'option_id'),
+			'question' => array(self::BELONGS_TO, 'CalculatorQuestion', 'question_id'),
+			'users' => array(self::BELONGS_TO, 'CalculatorUsers', 'users_id'),
 		);
 	}
 
