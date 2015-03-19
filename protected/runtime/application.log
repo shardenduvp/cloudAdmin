@@ -1093,3 +1093,244 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/cloudAdmin/index.php?r=admin/log/updateLogs&id=1
 ---
+2015/03/15 17:20:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/logs".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logs')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/logs&id=1
+---
+2015/03/16 13:38:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/logs/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logs/admi...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/logs/admin
+---
+2015/03/16 15:34:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/Supplier".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/Supplier')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/Supplier
+---
+2015/03/16 15:36:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/supplier".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/supplier')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/supplier
+---
+2015/03/16 15:36:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/supplier/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/supplier/...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/supplier/admin
+---
+2015/03/16 15:36:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/resetpassword".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/resetpass...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/resetpassword
+---
+2015/03/16 15:37:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/ResetPassword".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/ResetPass...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/ResetPassword
+---
+2015/03/17 11:18:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php:162
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php(47): ClientProfilesController->loadModel('1631')
+#1 [internal function]: ClientProfilesController->actionView('1631')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProfilesController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProfilesController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/view&id=1631
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/clientProjects/active
+---
+2015/03/17 11:18:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php:162
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php(47): ClientProfilesController->loadModel('1631')
+#1 [internal function]: ClientProfilesController->actionView('1631')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProfilesController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProfilesController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/view&id=1631
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/clientProjects/active
+---
+2015/03/17 11:18:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php:162
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php(47): ClientProfilesController->loadModel('1631')
+#1 [internal function]: ClientProfilesController->actionView('1631')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProfilesController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProfilesController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/view&id=1631
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/clientProjects/active
+---
+2015/03/17 11:18:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php:162
+Stack trace:
+#0 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProfilesController.php(47): ClientProfilesController->loadModel('10')
+#1 [internal function]: ClientProfilesController->actionView('10')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProfilesController), Array)
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProfilesController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProfiles/view&id=10
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/clientProjects/active
+---
+2015/03/17 11:18:42 [error] [exception.CException] exception 'CException' with message 'ClientProjectsController contains improperly nested widget tags in its view "C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\clientProjects\view.php". A CActiveForm widget does not have an endWidget() call.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#2 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProjectsController.php(48): CController->render('view', Array)
+#3 [internal function]: ClientProjectsController->actionView('5')
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProjectsController), Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProjectsController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProjects/view&id=5
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/clientProjects/active
+---
+2015/03/17 11:18:49 [error] [exception.CException] exception 'CException' with message 'ClientProjectsController contains improperly nested widget tags in its view "C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\clientProjects\view.php". A CActiveForm widget does not have an endWidget() call.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#2 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ClientProjectsController.php(48): CController->render('view', Array)
+#3 [internal function]: ClientProjectsController->actionView('2')
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(ClientProjectsController), Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(ClientProjectsController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/clientPro...')
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/clientProjects/view&id=2
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/clientProjects/active
+---
+2015/03/17 11:20:26 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'display_name_UNIQUE'. The SQL statement executed was: INSERT INTO `users` (`last_name`, `first_name`, `image`, `company_name`, `display_name`, `username`, `password`, `phone_number`, `add_date`, `last_login`, `status`, `role_id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11).
+in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UsersController.php (76)
+in C:\xampp\htdocs\cloudAdmin\index.php (13)
+2015/03/17 11:20:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'display_name_UNIQUE'. The SQL statement executed was: INSERT INTO `users` (`last_name`, `first_name`, `image`, `company_name`, `display_name`, `username`, `password`, `phone_number`, `add_date`, `last_login`, `status`, `role_id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UsersController.php(76): CActiveRecord->save()
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): UsersController->actionCreate()
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/users/cre...')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/create
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/users/create
+---
+2015/03/17 11:39:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/user/admin".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/user/admi...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/user/admin
+---
+2015/03/19 05:24:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/logs/update".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logs/upda...')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/logs/update&id=9
+---
+2015/03/19 05:24:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/logs".' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/logs')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/logs
+---

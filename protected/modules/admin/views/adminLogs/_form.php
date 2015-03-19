@@ -14,6 +14,7 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
+
 <div class="row">
 		<div class="col-md-12">
 			<div class="box border inverse mb0">
@@ -38,7 +39,7 @@
 		<?php echo $form->labelEx($model,'ipaddress'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'ipaddress',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'ipaddress',array('size'=>50,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ipaddress'); ?>
 		</div>
 	</div>
@@ -48,7 +49,7 @@
 		<?php echo $form->labelEx($model,'logtime'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'logtime'); ?>
+		<?php echo $form->textField($model,'logtime',array('size'=>50,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'logtime'); ?>
 		</div>
 	</div>
@@ -58,7 +59,7 @@
 		<?php echo $form->labelEx($model,'controller'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'controller',array('size'=>60,'maxlength'=>245)); ?>
+		<?php echo $form->textField($model,'controller',array('size'=>50,'maxlength'=>250));?>
 		<?php echo $form->error($model,'controller'); ?>
 		</div>
 	</div>
@@ -68,7 +69,7 @@
 		<?php echo $form->labelEx($model,'action'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'action',array('size'=>60,'maxlength'=>145)); ?>
+		<?php echo $form->textField($model,'action',array('size'=>50,'maxlength'=>250)); ?>
 		<?php echo $form->error($model,'action'); ?>
 		</div>
 	</div>
@@ -80,16 +81,6 @@
 		<div class="col-sm-6 col-offset-sm-2">
 		<?php echo $form->textArea($model,'details',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'details'); ?>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<div class="col-sm-4 tr-align">
-		<?php echo $form->labelEx($model,'action_param'); ?>
-		</div>
-		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'action_param',array('size'=>60,'maxlength'=>60)); ?>
-		<?php echo $form->error($model,'action_param'); ?>
 		</div>
 	</div>
 
@@ -128,7 +119,7 @@
 		<?php echo $form->labelEx($model,'user_id'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_id'); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'user_id'); ?>
 		</div>
 	</div>
