@@ -16,9 +16,53 @@ $this->menu=array(
 );
 ?>
 
-<h1>View AdminLogs #<?php echo $model->id; ?></h1>
+<br><br>
+<div class="box inverse">
+        <div class="col-md-15 col-lg-15, word-wrap-10" >
+   			<div class="panel panel-info">
+            	<div class="panel-heading ">
+              		<h3 class="panel-title">View AdminLogs #<?php echo $model->id; ?></h3>
+              	</div>
+        <div class="panel-body">
+            <div class="row">
+        <div class="col-xs-3 ">
+    <table class="table table-user-information">
+       	<tbody>
+       	<?php
+             $attributes=array(
+             	'id',
+				'username',
+				'ipaddress',
+				'logtime',
+				'controller',
+				'action',
+				'details',
+				'action_param',
+				'browser',
+				'query_string',
+				'refer_url',
+				'user_id',
+				'request_url',
+			);
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+             foreach($attributes as $attr) {
+                	$value=$model->$attr;
+                	//if password display same number of stars instead
+        ?>    
+         		<tr>
+         			<td><?php echo ucfirst($attr); ?></td>
+         			<td><?php echo $value; ?></td>
+         		</tr>     
+         			<?php }?>    		
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!--
+
+<?php /* $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
@@ -35,4 +79,5 @@ $this->menu=array(
 		'user_id',
 		'request_url',
 	),
-)); ?>
+)); */?>
+-->

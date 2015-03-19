@@ -16,9 +16,55 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Log #<?php echo $model->id; ?></h1>
+<br><br>
+<div class="box inverse">
+        <div class="col-md-5 col-lg-5 col-md-offset-3 col-lg-offset-3 " >
+   			<div class="panel panel-info">
+            	<div class="panel-heading ">
+              		<h3 class="panel-title">View Log #<?php echo $model->id; ?></h3>
+              	</div>
+        <div class="panel-body">
+            <div class="row">
+<div class=" col-md-50 col-lg-50 "> 
+    <table class="table table-user-information">
+       	<tbody>
+       	<?php
+             $attributes=array(
+             	'id',
+				'proposal_id',
+				'project_status',
+				'is_checked',
+				'title',
+				'description',
+				'add_date',
+				'update_date',
+				'status',
+				'for_user',
+				'notification',
+				'is_read',
+				'is_active',
+				'login_id',
+				);
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+  				foreach($attributes as $attr) {
+                	$value=$model->$attr;
+                	//if password display same number of stars instead
+        ?>    
+         		<tr>
+         			<td><?php echo ucfirst($attr); ?></td>
+         			<td><?php echo $value; ?></td>
+         		</tr>     
+         			<?php }?>    		
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+              
+
+<!--
+
+<?php /*$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
@@ -36,4 +82,6 @@ $this->menu=array(
 		'is_active',
 		'login_id',
 	),
-)); ?>
+)); */?>
+
+-->
