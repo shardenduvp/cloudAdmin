@@ -30,7 +30,7 @@
 		<?php echo $form->labelEx($model,'user_type'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_type',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'user_type',array('size'=>50,'maxlength'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'user_type'); ?>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 		<?php echo $form->labelEx($model,'user_name'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'user_name',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'user_name',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'user_name'); ?>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
 		<?php echo $form->labelEx($model,'error_code'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'error_code',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'error_code',array('size'=>50,'maxlength'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'error_code'); ?>
 		</div>
 	</div>
@@ -60,7 +60,7 @@
 		<?php echo $form->labelEx($model,'message'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'message',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'message',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'message'); ?>
 		</div>
 	</div>
@@ -70,7 +70,7 @@
 		<?php echo $form->labelEx($model,'request_url'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'request_url',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'request_url',array('rows'=>6, 'cols'=>50 , 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'request_url'); ?>
 		</div>
 	</div>
@@ -80,7 +80,7 @@
 		<?php echo $form->labelEx($model,'query_string'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'query_string',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'query_string',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'query_string'); ?>
 		</div>
 	</div>
@@ -90,7 +90,7 @@
 		<?php echo $form->labelEx($model,'file_name'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'file_name',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'file_name',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'file_name'); ?>
 		</div>
 	</div>
@@ -100,7 +100,7 @@
 		<?php echo $form->labelEx($model,'line_number'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'line_number',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'line_number',array('size'=>50,'maxlength'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'line_number'); ?>
 		</div>
 	</div>
@@ -110,7 +110,7 @@
 		<?php echo $form->labelEx($model,'error_type'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'error_type',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'error_type',array('size'=>50,'maxlength'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'error_type'); ?>
 		</div>
 	</div>
@@ -120,7 +120,7 @@
 		<?php echo $form->labelEx($model,'time'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'time',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'time',array('size'=>50,'maxlength'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'time'); ?>
 		</div>
 	</div>
@@ -130,7 +130,7 @@
 		<?php echo $form->labelEx($model,'reference_url'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'reference_url',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'reference_url',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'reference_url'); ?>
 		</div>
 	</div>
@@ -140,7 +140,7 @@
 		<?php echo $form->labelEx($model,'ipaddress',array('size'=>50,'maxlength'=>50)); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'ipaddress',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'ipaddress',array('size'=>50,'maxlength'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'ipaddress'); ?>
 		</div>
 	</div>
@@ -150,7 +150,7 @@
 		<?php echo $form->labelEx($model,'browser'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'browser',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'browser',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'browser'); ?>
 		</div>
 	</div>
@@ -160,13 +160,13 @@
 		<?php echo $form->labelEx($model,'user_id',array('size'=>50,'maxlength'=>50)); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'user_id'); ?>
 		</div>
 	</div>
 
 	<div class="row">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-primary button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

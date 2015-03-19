@@ -1342,3 +1342,33 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/cloudAdmin/index.php?r=admin/adminogs/update&id=1
 ---
+2015/03/19 06:14:16 [error] [php] Illegal string offset 'required' (C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\helpers\CHtml.php:1513)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require()
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(95): ErrorLogsController->renderInternal()
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): ErrorLogsController->renderFile()
+#3 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\errorLogs\update.php(21): ErrorLogsController->renderPartial()
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(126): require()
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CBaseController.php(95): ErrorLogsController->renderInternal()
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(869): ErrorLogsController->renderFile()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(782): ErrorLogsController->renderPartial()
+#8 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ErrorLogsController.php(95): ErrorLogsController->render()
+#9 unknown(0): ErrorLogsController->actionUpdate()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams()
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): ErrorLogsController->runAction()
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): ErrorLogsController->filterAccessControl()
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#18 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): ErrorLogsController->runActionWithFilters()
+#20 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): ErrorLogsController->run()
+#21 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#22 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\cloudAdmin\index.php(13): CWebApplication->run()
+REQUEST_URI=/cloudAdmin/index.php?r=admin/errorlogs/update&id=1
+in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\errorLogs\_form.php (30)
+in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\views\errorLogs\update.php (21)
+in C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\ErrorLogsController.php (95)

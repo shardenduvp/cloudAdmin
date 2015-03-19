@@ -32,7 +32,7 @@
 			<?php echo $form->labelEx($model,'reciver'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-			<?php echo $form->textField($model,'reciver',array('size'=>50,'maxlength'=>50)); ?>
+			<?php echo $form->textField($model,'reciver',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 			<?php echo $form->error($model,'reciver'); ?>
 		</div>
 	</div>
@@ -42,7 +42,7 @@
 		<?php echo $form->labelEx($model,'templete'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'templete',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'templete',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'templete'); ?>
 		</div>
 	</div>
@@ -52,7 +52,7 @@
 		<?php echo $form->labelEx($model,'other_info',array('size'=>50,'maxlength'=>50)); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'other_info',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'other_info',array('rows'=>6, 'cols'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'other_info'); ?>
 		</div>
 	</div>
@@ -62,7 +62,7 @@
 		<?php echo $form->labelEx($model,'esubject',array('size'=>50,'maxlength'=>50)); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textArea($model,'esubject',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'esubject',array('rows'=>6, 'cols'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'esubject'); ?>
 		</div>
 	</div>
@@ -72,7 +72,7 @@
 		<?php echo $form->labelEx($model,'time'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'time',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'time',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'time',array('rows'=>6, 'cols'=>50)); ?>
 		</div>
 	</div>
@@ -82,7 +82,7 @@
 		<?php echo $form->labelEx($model,'status'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'status',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'status',array('rows'=>6, 'cols'=>50)); ?>
 		</div>
 	</div>
@@ -92,7 +92,7 @@
 		<?php echo $form->labelEx($model,'user_id'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>50,'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'user_id',array('rows'=>6, 'cols'=>50)); ?>
 		</div>
 	</div>
@@ -100,7 +100,7 @@
 	<div class="row">
 	  <div class="col-sm-4 tr-align"></div>
 	    <div class="col-sm-6 col-offset-sm-2 search-button">
-	      <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	      <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-primary button')); ?>
 		</div>
 	</div>
 
