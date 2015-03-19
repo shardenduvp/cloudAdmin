@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this ErrorLogsController */
 /* @var $model ErrorLogs */
@@ -19,7 +20,7 @@
 		<div class="col-md-12">
 			<div class="box border inverse mb0">
 				<div class="box-title">
-					<h4><i class="fa fa-search"></i>Update Email Logs</h4>
+					<h4><i class="fa fa-search"></i>Update Error Logs</h4>
 				</div>
 			<div class="box-body big" >
 			<?php echo $form->errorSummary($model); ?>
@@ -29,7 +30,7 @@
 		<?php echo $form->labelEx($model,'user_type'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_type',array('size'=>15,'maxlength'=>15)); ?>
+		<?php echo $form->textField($model,'user_type',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'user_type'); ?>
 		</div>
 	</div>
@@ -49,7 +50,7 @@
 		<?php echo $form->labelEx($model,'error_code'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'error_code'); ?>
+		<?php echo $form->textField($model,'error_code',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'error_code'); ?>
 		</div>
 	</div>
@@ -99,7 +100,7 @@
 		<?php echo $form->labelEx($model,'line_number'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'line_number'); ?>
+		<?php echo $form->textField($model,'line_number',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'line_number'); ?>
 		</div>
 	</div>
@@ -109,7 +110,7 @@
 		<?php echo $form->labelEx($model,'error_type'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'error_type',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'error_type',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'error_type'); ?>
 		</div>
 	</div>
@@ -119,7 +120,7 @@
 		<?php echo $form->labelEx($model,'time'); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'time'); ?>
+		<?php echo $form->textField($model,'time',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'time'); ?>
 		</div>
 	</div>
@@ -136,10 +137,10 @@
 
 	<div class="form-group">
 		<div class="col-sm-4 tr-align">
-		<?php echo $form->labelEx($model,'ipaddress'); ?>
+		<?php echo $form->labelEx($model,'ipaddress',array('size'=>50,'maxlength'=>50)); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'ipaddress',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'ipaddress',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'ipaddress'); ?>
 		</div>
 	</div>
@@ -156,10 +157,10 @@
 
 	<div class="form-group">
 		<div class="col-sm-4 tr-align">
-		<?php echo $form->labelEx($model,'user_id'); ?>
+		<?php echo $form->labelEx($model,'user_id',array('size'=>50,'maxlength'=>50)); ?>
 		</div>
 		<div class="col-sm-6 col-offset-sm-2">
-		<?php echo $form->textField($model,'user_id'); ?>
+		<?php echo $form->textField($model,'user_id',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'user_id'); ?>
 		</div>
 	</div>
