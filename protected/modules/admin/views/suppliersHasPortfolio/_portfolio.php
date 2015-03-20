@@ -157,69 +157,8 @@
                 <!--<div class="col-md-2 pull-left"><?php //echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Create Portfolio</button>', array('/admin/suppliersHasPortfolio/create','id'=>$model->id));?></div>-->
                 <div class="col-md-2"><?php echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Portfolio References</button>', array('/admin/suppliersHasReferences/admin','id'=>$model->id));?></div>
             </div>
-
-            <div class="box border inverse ">
-                <div class="box-title">
-                    <h4>Supplier References</h4>
-                </div>
-                    <?php
-                    $references='';
-                    if(!empty($model->suppliersHasReferences)) {
-                     foreach ($model->suppliersHasReferences as $suppliersReferences) { ?>
-
-                    <div class="box border inverse ">
-                        <div class="alert alert-info">                 
-                             <div class="row fieldRow">
-                                  <h4><label for="project">Reference for </label>
-                                  <?php echo $suppliersReferences->project_name ; ?>
-                                  <?php echo CHtml::submitButton('Delete',array('class'=>'btn btn-primary buttonh pull-right')); ?>
-                                  <?php echo CHtml::submitButton('Update',array('class'=>'btn btn-primary buttonh pull-right')); ?> 
-                            </div></h4>
-                         </div>
-                    
-                        <div class="row fieldRow">
-                            <div class="col-md-4">
-                            <label for="pro"> Project Description </label>
-                            </div>
-                            <div class="col-md-4">
-                            <?php echo $suppliersReferences->project_description; ?>
-                            </div>
-                        </div>
-
-                        <div class="row fieldRow">
-                            <div class="col-md-4">
-                            <label for="proj">Company Name</label>
-                            </div>
-                            <div class="col-md-4">
-                            <?php echo $suppliersReferences->company_name; ?>
-                            </div>
-                        </div> 
-                  
-            </div>
-                            
-                        <?php
-                            }
-                        }
-                        else
-                        {
-                            $references = 'Not Provided';
-
-                        }
-                    ?>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-    </div>
-    <div class="col-md-2 pull-left"><?php echo CHtml::link('<button type="button" class="btn btn-inverse  text-center model_text" >Create References</button>');?>
-</div>
-
-
-
-
-
-
-
 
  <?php $this->endWidget(); ?>
