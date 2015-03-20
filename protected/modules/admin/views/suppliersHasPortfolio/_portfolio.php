@@ -1,6 +1,5 @@
 <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"> 
-
 <?php if(Yii::app()->user->hasFlash('record')){?>
 <div class="alert alert-success" id="repsoneRest2">
     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
@@ -58,7 +57,6 @@
                  <label for="name1">Project Size</label>
                  <?php echo $form->textField($model,'project_size',array('value'=>$model->project_size,'disabled'=>'true','title'=>"Project Size",'class'=>'form-control text-input defaultText','tabindex'=>'6'));?>
             </div>
-
             <div class="form-group col-md-4">
                 <label for="name1">Per Hour Rate ( $ )</label>
                 <?php echo $form->textField($model,'per_hour_rate',array('valuer'=>$model->per_hour_rate,'disabled'=>'true','title'=>"Per Hour Rate",'data-parsley-type'=>"number",'class'=>'form-control text-input defaultText minlength','aria-describedby'=>'basic-addon1','length'=>"2",'tabindex'=>'7'));?>
@@ -108,9 +106,7 @@
                     }
                     else
                         $skills = 'Not Provided';
-
                 ?>
-
                 <?php echo $form->textField($model,'language_used',array('value'=>$skills,'disabled'=>'true','title'=>"Project Size",'class'=>'form-control text-input defaultText','tabindex'=>'9'));?>
                 
             </div>
@@ -126,7 +122,6 @@
                     }
                     else
                         $services = 'Not Provided';
-
                 ?>
                 <?php echo $form->textField($model,'platform',array('value'=>$services,'disabled'=>'true','title'=>"Project Size",'class'=>'form-control text-input defaultText','tabindex'=>'9'));?>    
             </div>
@@ -142,13 +137,12 @@
                     }
                     else
                         $industries = 'Not Provided';
-
                         echo $form->textField($model,'markets',array('value'=>$industries,
                                                                         'disabled'=>'true',
                                                                         'title'=>"Project Size",
                                                                         'class'=>'form-control text-input defaultText',
                                                                         'tabindex'=>'9')
-                                                                        );?>
+                                                                    );?>
                 
   
             </div>
@@ -156,9 +150,58 @@
                 <div class="col-md-2 pull-left"><?php echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Edit Portfolio</button>', array('/admin/suppliersHasPortfolio/update','id'=>$model->id));?></div>
                 <!--<div class="col-md-2 pull-left"><?php //echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Create Portfolio</button>', array('/admin/suppliersHasPortfolio/create','id'=>$model->id));?></div>-->
                 <div class="col-md-2"><?php echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Portfolio References</button>', array('/admin/suppliersHasReferences/admin','id'=>$model->id));?></div>
+            <div class="box border inverse ">
+                <div class="box-title">
+                    <h4>Supplier References</h4>
+                </div>
+                    <?php
+                    $references='';
+                    if(!empty($model->suppliersHasReferences)) {
+                     foreach ($model->suppliersHasReferences as $suppliersReferences) { ?>
+                    <div class="box border inverse ">
+                        <div class="alert alert-info">                 
+                             <div class="row fieldRow">
+                                  <h4><label for="project">Reference for </label>
+                                  <?php echo $suppliersReferences->project_name ; ?>
+                                  <?php echo CHtml::submitButton('Delete',array('class'=>'btn btn-primary buttonh pull-right')); ?>
+                                  <?php echo CHtml::submitButton('Update',array('class'=>'btn btn-primary buttonh pull-right')); ?> 
+                                 <?php echo CHtml::submitButton('Create',array('class'=>'btn btn-primary buttonh pull-right')); ?> 
+                            
+                             </div></h4>
+                         </div>
+                    
+                        <div class="row fieldRow">
+                            <div class="col-md-4">
+                            <label for="pro"> Project Description </label>
+                            </div>
+                            <div class="col-md-4">
+                            <?php echo $suppliersReferences->project_description; ?>
+                            </div>
+                        </div>
+                        <div class="row fieldRow">
+                            <div class="col-md-4">
+                            <label for="proj">Company Name</label>
+                            </div>
+                            <div class="col-md-4">
+                            <?php echo $suppliersReferences->company_name; ?>
+                            </div>
+                        </div> 
+                  
+            </div>
+                            
+                        <?php
+                            }
+                        }
+                        else
+                        {
+                            $references = 'Not Provided';
+                        }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
- <?php $this->endWidget(); ?>
+    </div>
+   </div>
+<?php $this->endWidget(); ?>

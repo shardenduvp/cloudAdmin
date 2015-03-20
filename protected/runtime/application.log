@@ -599,3 +599,153 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/cloudAdmin/index.php?r=admin/emailogs/update&id=1
 ---
+2015/03/19 14:02:46 [error] [exception.CException] exception 'CException' with message 'Property "Users.time_zone" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('time_zone')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CStringValidator.php(79): CActiveRecord->__get('time_zone')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Users), 'time_zone')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CModel.php(159): CValidator->validate(Object(Users), NULL)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\cloudAdmin\protected\controllers\SiteController.php(131): CActiveRecord->save()
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('login')
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=site/login
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=site/login
+---
+2015/03/19 14:20:40 [error] [exception.CException] exception 'CException' with message 'Property "Users.time_zone" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('time_zone')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CStringValidator.php(79): CActiveRecord->__get('time_zone')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Users), 'time_zone')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CModel.php(159): CValidator->validate(Object(Users), NULL)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\SuppliersController.php(122): CActiveRecord->save()
+#6 [internal function]: SuppliersController->actionUpdate('6')
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SuppliersController), Array)
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SuppliersController), Object(ReflectionMethod), Array)
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#18 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/suppliers...')
+#19 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/suppliers/update&id=6
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/users/update&id=10&update=supplier
+---
+2015/03/19 14:23:08 [error] [exception.CException] exception 'CException' with message 'Property "Users.time_zone" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(161): CComponent->__set('time_zone', '')
+#1 C:\xampp\htdocs\cloudAdmin\protected\modules\admin\controllers\UsersController.php(110): CActiveRecord->__set('time_zone', '')
+#2 [internal function]: UsersController->actionUpdate('1631')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UsersController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('update')
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/users/upd...')
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=admin/users/update&id=1631
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=admin/users/update&id=1631
+---
+2015/03/19 16:32:01 [error] [exception.CException] exception 'CException' with message 'Property "Users.time_zone" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('time_zone')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CStringValidator.php(79): CActiveRecord->__get('time_zone')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Users), 'time_zone')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CModel.php(159): CValidator->validate(Object(Users), NULL)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\cloudAdmin\protected\controllers\SiteController.php(131): CActiveRecord->save()
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('login')
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=site/login
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=site/login
+---
+2015/03/20 04:45:52 [error] [exception.CException] exception 'CException' with message 'Property "Users.time_zone" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('time_zone')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CStringValidator.php(79): CActiveRecord->__get('time_zone')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Users), 'time_zone')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CModel.php(159): CValidator->validate(Object(Users), NULL)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\cloudAdmin\protected\controllers\SiteController.php(131): CActiveRecord->save()
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('login')
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=site/login
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=site/login
+---
+2015/03/20 10:42:46 [error] [exception.CException] exception 'CException' with message 'Property "Users.time_zone" is not defined.' in C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(145): CComponent->__get('time_zone')
+#1 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CStringValidator.php(79): CActiveRecord->__get('time_zone')
+#2 C:\xampp\htdocs\Yii\Yii1.1\test\framework\validators\CValidator.php(201): CStringValidator->validateAttribute(Object(Users), 'time_zone')
+#3 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CModel.php(159): CValidator->validate(Object(Users), NULL)
+#4 C:\xampp\htdocs\Yii\Yii1.1\test\framework\db\ar\CActiveRecord.php(808): CModel->validate(NULL)
+#5 C:\xampp\htdocs\cloudAdmin\protected\controllers\SiteController.php(131): CActiveRecord->save()
+#6 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(282): CController->run('login')
+#16 C:\xampp\htdocs\Yii\Yii1.1\test\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#17 C:\xampp\htdocs\Yii\Yii1.1\test\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\cloudAdmin\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/cloudAdmin/index.php?r=site/login
+HTTP_REFERER=http://localhost:1234/cloudAdmin/index.php?r=site/login
+---
