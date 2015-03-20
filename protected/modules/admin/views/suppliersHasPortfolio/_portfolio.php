@@ -163,29 +163,92 @@
                              <div class="row fieldRow">
                                   <h4><label for="project">Reference for </label>
                                   <?php echo $suppliersReferences->project_name ; ?>
-                                  <?php echo CHtml::submitButton('Delete',array('class'=>'btn btn-primary buttonh pull-right')); ?>
-                                  <?php echo CHtml::submitButton('Update',array('class'=>'btn btn-primary buttonh pull-right')); ?> 
-                                 <?php echo CHtml::submitButton('Create',array('class'=>'btn btn-primary buttonh pull-right')); ?> 
-                            
-                             </div></h4>
-                         </div>
-                    
-                        <div class="row fieldRow">
-                            <div class="col-md-4">
-                            <label for="pro"> Project Description </label>
-                            </div>
-                            <div class="col-md-4">
-                            <?php echo $suppliersReferences->project_description; ?>
+
+<!-- Create, Update and Delete buttons -->
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                  Delete
+                </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                              </div>
+                              <div class="modal-body">
+                                ...
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
-                        <div class="row fieldRow">
-                            <div class="col-md-4">
-                            <label for="proj">Company Name</label>
+                    </div>
+                </div>
+                <!--btn 1 -->
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                  Edit
+                </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                              </div>
+                              <div class="modal-body">
+                                ...
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
-                            <div class="col-md-4">
-                            <?php echo $suppliersReferences->company_name; ?>
+                        </div>
+                    </div>
+                </div>
+                <!--btn 2 -->
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                  View
+                </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                              </div>
+                              <div class="modal-body">
+                                ...
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
-                        </div> 
+                        </div>
+                    </div>
+                </div>
+                <!--btn 1 -->
+
+
+
+
+
+
+                                  </div></h4>
+                         </div>
+                    
                   
             </div>
                             
@@ -199,9 +262,23 @@
                     ?>
                 </div>
             </div>
+
         </div>
+
     </div>
+
 </div>
+
     </div>
+
+
    </div>
+
+
+
+ <?php echo CHtml::submitButton('View',array('class'=>'btn btn-primary buttonh pull-right','data-toggle'=>'modal','data-target'=>'#create_reference')); ?>
+ <?php echo CHtml::submitButton('Update',array('class'=>'btn btn-primary buttonh pull-right')); ?> 
+ <?php echo CHtml::submitButton('Create',array('class'=>'btn btn-primary buttonh pull-right')); ?>  
+                            
+
 <?php $this->endWidget(); ?>
