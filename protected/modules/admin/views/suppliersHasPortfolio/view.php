@@ -38,6 +38,7 @@ function fetchAnswers(element){
     //alert(element.attr('data-id'));
     $(".loader-small").fadeIn('slow');
     $("#answersBody1").html("");
+    $("#formResultDiv").addClass("hide-div");
     $("#answersBody").html("");
     $.ajax({
         type:"POST",
@@ -50,7 +51,6 @@ function fetchAnswers(element){
         }
     });
 }
-
 
 </script>
 

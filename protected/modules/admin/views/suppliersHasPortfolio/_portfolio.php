@@ -169,7 +169,7 @@
                             <?php echo '  '.$suppliersReferences->project_name ; ?>
                                  <div class="tools">
 
-                                    <a href="#box-config" data-toggle="modal" data-target="#myModal" class="view" data-id="<?php echo $suppliersReferences->id;?>" onclick="fetchAnswers($(this))">
+                                    <a href="#box-config" data-toggle="modal" data-target="#myModal" class="view" data-id="<?php echo $suppliersReferences->id;?>"  onclick="fetchAnswers($(this))">
 
                                     <i class="fa fa-eye"></i>
                                     </a>
@@ -231,14 +231,64 @@
                                     Update
                                   <img class="loader-small" style="display:none;" src="<?php echo Yii::app()->theme->baseUrl;?>/adminPanel/img/loader_small.gif">
                                  </h4>
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <?php echo $form->errorSummary($model); ?>
+                                            <div class="hide-div alert alert-dismissible" role="alert" id="formResultDiv">
+                                            <span id="formResult"></span>
+                                            </div>
+                                    </div>
+                                </div>
                               </div>
+                              <?php 
+                                $form=$this->beginWidget('CActiveForm',array('htmlOptions'=>array('id'=>'questionsForm','enctype' => 'multipart/form-data')));
+                              ?>
                               <div class="modal-body" id="answersBody1">
                                 
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <?php 
+                        echo CHtml::ajaxSubmitButton('Update',CHtml::normalizeUrl(array('suppliersReferencesQuestions/updateAnswers')),
+                        array(
+                          'dataType'=>'json',
+                          'type'=>'post',
+                          'beforeSend'=>'function(){
+                            $("#updateBtnUser").button("loading");
+                            $(".loader-small").fadeIn("slow");
+                          }',
+                          'success'=>'function(data) { 
+                            if(data.status == "success" ){
+                              $("#formResultDiv").removeClass("hide-div");
+                              $("#formResultDiv").removeClass("alert-warning");
+                              $("#formResultDiv").addClass("alert-success");
+                              $("#formResult").html("Updated Successfully .");
+                                        $("#updateBtnUser").button("reset");
+                                        $(".loader-small").fadeOut("slow");
+                                    } else{
+                              $("#formResultDiv").removeClass("hide-div");
+                              $("#formResultDiv").removeClass("alert-success");
+                              $("#formResultDiv").addClass("alert-warning");
+                                        $("#formResult").html("Something Went Wrong .");
+                                        $("#updateBtnUser").button("reset");
+                                         $(".loader-small").fadeOut("slow");
+                                    }       
+                          }',
+                          'error'=>'function(){
+                            $("#formResultDiv").removeClass("hide-div");
+                            $("#formResultDiv").removeClass("alert-success");
+                            $("#formResultDiv").addClass("alert-warning");
+                                    $("#formResult").html("Something Went Wrong .");
+                                    $("#updateBtnUser").button("reset");
+                                     $(".loader-small").fadeOut("slow");
+                                }'
+                        ),
+                            array('id'=>'updateBtnUser','class'=>'btn btn-primary',
+                                    'data-loading-text'=>'Updating ...','autocomplete'=>'off',
+                            )
+                    ); 
+                    $this->endWidget();?>
+                    </div>
                         </div>
                     </div>
                 </div>

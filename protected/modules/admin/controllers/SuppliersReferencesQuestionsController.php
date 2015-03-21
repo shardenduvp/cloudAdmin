@@ -28,7 +28,7 @@ class SuppliersReferencesQuestionsController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete','fetchAnswers'),
+				'actions'=>array('index','view','create','update','admin','delete','fetchAnswers','updateAnswers'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -140,6 +140,34 @@ class SuppliersReferencesQuestionsController extends Controller
 		if($_POST['id']){
 			$model=SuppliersReferencesQuestions::model()->findAllByAttributes(array('suppliers_has_references_id'=>$_POST['id']));
 			$this->renderPartial('_questionAnswersView',array('model'=>$model));
+		}
+	}
+	public function	actionUpdateAnswers(){
+		if($_POST['answer']){
+			$successful=true;
+			foreach ($_POST['answer'] as $answer) {
+				$model=$this->loadModel($answer['id']);
+
+				$model->review_questions_id=$answer['questionId'];
+				$model->suppliers_has_references_id=$answer['referencesId'];
+				$model->answers=$answer['answer'];
+				$model->status=1;
+				$model->suppliers_has_references_id=$answer['referencesId'];
+      			if($model->save()){
+						
+				}
+				else{
+						$successful=false;
+				}
+			}
+			if($successful==true){
+				echo CJSON::encode(array(
+	                                  'status'=>'success'
+	                             ));
+				Yii::app()->end();		
+			}
+			
+
 		}
 	}
 
