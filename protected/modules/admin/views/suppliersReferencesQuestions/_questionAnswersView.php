@@ -18,22 +18,17 @@
 	</div>
 
 	<div class="col-md-2 rating-testimonial">
-	
 		<?php 
-		if($refcount!=0)
-		{
-			echo "<b>".$avgRating=$sum/$refcount."</b>"; 
+			if($refcount!=0)
+			{
+				echo "<b>".$avgRating=$sum/$refcount."</b>"; 
 		?>
 			<br><strong>Rating</strong>
-		
-		<?php } else  { ?>
-
+		<?php 
+			} else  { 
+		?>
 			<strong>Rating</strong>
-
 		<?php echo "0";  
 		}?>
-		
-
 	</div>
-
 </div> 
