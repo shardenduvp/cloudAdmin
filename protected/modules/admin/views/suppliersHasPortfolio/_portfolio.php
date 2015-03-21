@@ -173,12 +173,13 @@
 
                                     <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="#box-config" data-toggle="modal"  data-target="#myModal1" class="edit">
+                                    <a href="#box-config" data-toggle="modal"  data-target="#myModal1" class="edit" data-id="<?php echo $suppliersReferences->id;?>" onclick="fetchAnswers($(this))">
                                     <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:;" class="remove">
                                     <i class="fa fa-times"></i>
                                      </a>
+
                                  </div>
                          </div>
                     </div>
@@ -226,10 +227,13 @@
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Update
+                                  <img class="loader-small" style="display:none;" src="<?php echo Yii::app()->theme->baseUrl;?>/adminPanel/img/loader_small.gif">
+                                 </h4>
                               </div>
-                              <div class="modal-body">
-                                ...
+                              <div class="modal-body" id="answersBody1">
+                                
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

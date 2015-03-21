@@ -37,6 +37,7 @@ $this->menu=array(
 function fetchAnswers(element){
     //alert(element.attr('data-id'));
     $(".loader-small").fadeIn('slow');
+    $("#answersBody1").html("");
     $("#answersBody").html("");
     $.ajax({
         type:"POST",
@@ -44,6 +45,7 @@ function fetchAnswers(element){
         data:"id="+element.attr('data-id'),
         success:function(response){
             $(".loader-small").fadeOut('slow');
+            $("#answersBody1").html(response);
             $("#answersBody").html(response);
         }
     });
