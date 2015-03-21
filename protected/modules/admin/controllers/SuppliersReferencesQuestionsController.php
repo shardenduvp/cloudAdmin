@@ -28,7 +28,7 @@ class SuppliersReferencesQuestionsController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform actions
-				'actions'=>array('index','view','create','update','admin','delete'),
+				'actions'=>array('index','view','create','update','admin','delete','fetchAnswers'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -133,6 +133,14 @@ class SuppliersReferencesQuestionsController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionFetchAnswers()
+	{
+		if($_POST['id']){
+			$model=SuppliersReferencesQuestions::model()->findAllByAttributes(array('suppliers_has_references_id'=>$_POST['id']));
+			$this->renderPartial('_questionAnswersView',array('model'=>$model));
+		}
 	}
 
 	/**

@@ -32,5 +32,22 @@ $this->menu=array(
     </div>
 </div>
 
+<script type="text/javascript">
+    
+function fetchAnswers(element){
+    //alert(element.attr('data-id'));
+    $.ajax({
+        type:"POST",
+        url:"<?php echo Yii::app()->createUrl('admin/suppliersReferencesQuestions/fetchAnswers');?>",
+        data:"id="+element.attr('data-id'),
+        success:function(response){
+
+            $("#answersBody").html(response);
+        }
+    });
+}
+
+
+</script>
 
 
