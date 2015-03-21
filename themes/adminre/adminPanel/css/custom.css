@@ -550,3 +550,7 @@
     box-sizing:border-box;
     -moz-box-sizing:border-box;
 }
+
+.textfont{
+font-size: 16px;
+}
