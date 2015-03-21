@@ -556,14 +556,16 @@ font-size: 16px;
 }
 
 .rating-testimonial{
-    font-size: 20px;
+    top: 100px;
+    text-align: center;
+    font-size: 28px;
     background:rgba(242, 107, 85, 1);
     margin:0 auto; 
-    height: 96px; 
-    padding-top:22px;  
+    height: 120px; 
+    padding-top:12px;  
     text-align: center; 
-    width: 96px; 
-    border-radius:70px; 
-    border:1px solid #E25A44;
-    color: white;
+    width: 120px; 
+    border-radius:90px; 
+    border:5px solid #E25A44;
+    color: black;
 }
