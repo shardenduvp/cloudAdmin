@@ -1,3 +1,8 @@
+<style>
+.modal-dialog {
+  width: 900px;
+}
+</style>
 <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"> 
 <?php if(Yii::app()->user->hasFlash('record')){?>
@@ -167,60 +172,30 @@
 <!-- Create, Update and Delete buttons -->
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                <div class="col-md-0 pull-right"><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
                   Delete
-                </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                              </div>
-                              <div class="modal-body">
-                                ...
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--btn 1 -->
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                </button></div>
+                  <div class="col-md-1 pull-right"><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
                   Edit
-                </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                              </div>
-                              <div class="modal-body">
-                                ...
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--btn 2 -->
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                </button></div>
+                <div class="col-md-1 pull-right"><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
                   View
-                </button>
-
+                </button></div>
+ <script type="text/javascript">
+                 $("#Delete").load(function(){
+                   $('#myModal').modal('show');
+                   });
+                 </script>  
+                 <script type="text/javascript">
+                 $("#Edit").load(function(){
+                   $('#myModal').modal('show');
+                   });
+                 </script>
+                 <script type="text/javascript">
+                 $("#View").load(function(){
+                   $('#myModal').modal('show');
+                   });
+                 </script>                   
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
@@ -230,7 +205,7 @@
                                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                               </div>
                               <div class="modal-body">
-                                ...
+                               
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -239,8 +214,8 @@
                         </div>
                     </div>
                 </div>
-                <!--btn 1 -->
 
+                
 
 
 
@@ -283,9 +258,5 @@
    </div>
 
 
-
- <?php echo CHtml::submitButton('View',array('class'=>'btn btn-primary buttonh pull-right','data-toggle'=>'modal','data-target'=>'#create_reference')); ?>
- <?php echo CHtml::submitButton('Update',array('class'=>'btn btn-primary buttonh pull-right')); ?> 
- <?php echo CHtml::submitButton('Create',array('class'=>'btn btn-primary buttonh pull-right')); ?>  
                             
 <?php $this->endWidget(); ?>
