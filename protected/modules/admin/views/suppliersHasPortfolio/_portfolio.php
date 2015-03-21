@@ -205,7 +205,88 @@
                                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                               </div>
                               <div class="modal-body">
-                               
+                               <div class="box border orange">
+                                            <div class="box-title">
+                                                <h4><i class="fa fa-bars"></i>Basic form elements</h4>
+                                                <div class="tools hidden-xs">
+                                                    <a href="#box-config" data-toggle="modal" class="config">
+                                                        <i class="fa fa-cog"></i>
+                                                    </a>
+                                                    <a href="javascript:;" class="reload">
+                                                        <i class="fa fa-refresh"></i>
+                                                    </a>
+                                                    <a href="javascript:;" class="collapse">
+                                                        <i class="fa fa-chevron-up"></i>
+                                                    </a>
+                                                    <a href="javascript:;" class="remove">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="box-body big">
+                                                <h3 class="form-title">Basic Example</h3>
+                                                <form role="form">
+                                                  <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="exampleInputPassword1">Password</label>
+                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                                  </div>
+                                                  <div class="checkbox">
+                                                    <label>
+                                                      <input type="checkbox"> Check me out
+                                                    </label>
+                                                  </div>
+                                                  <button type="submit" class="btn btn-success">Submit</button>
+                                                </form>
+                                                <div class="separator"></div>
+                                                <h3 class="form-title">Inline form</h3>
+                                                <form class="form-inline" role="form">
+                                                  <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                                  </div>
+                                                  <button type="submit" class="btn btn-inverse">Sign in</button>
+                                                </form>
+                                                <div class="separator"></div>
+                                                <h3 class="form-title">Horizontal form</h3>
+                                                <form class="form-horizontal" role="form">
+                                                  <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                      <div class="checkbox">
+                                                        <label>
+                                                          <input type="checkbox"> Remember me
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                      <button type="submit" class="btn btn-pink">Sign in</button>
+                                                    </div>
+                                                  </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
