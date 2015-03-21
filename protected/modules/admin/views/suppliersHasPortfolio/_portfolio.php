@@ -176,9 +176,6 @@
                                     <a href="#box-config" data-toggle="modal"  data-target="#myModal1" class="edit" data-id="<?php echo $suppliersReferences->id;?>" onclick="fetchAnswers($(this))">
                                     <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="javascript:;" class="remove">
-                                    <i class="fa fa-times"></i>
-                                     </a>
 
                                  </div>
                          </div>
@@ -213,7 +210,7 @@
                                 
                               </div>
                                <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                </div>
                             </div>
                           </div>

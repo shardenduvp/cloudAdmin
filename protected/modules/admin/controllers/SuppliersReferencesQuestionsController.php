@@ -137,9 +137,11 @@ class SuppliersReferencesQuestionsController extends Controller
 
 	public function actionFetchAnswers()
 	{
-		if($_POST['id']){
+		if($_POST['id'])
+		{
 			$model=SuppliersReferencesQuestions::model()->findAllByAttributes(array('suppliers_has_references_id'=>$_POST['id']));
-			$this->renderPartial('_questionAnswersView',array('model'=>$model));
+			$modelRating=SuppliersHasReferences::model()->findByPk(array('id'=>$_POST['id']));
+			$this->renderPartial('_questionAnswersView',array('model'=>$model,'modelRating'=>$modelRating));
 		}
 	}
 
