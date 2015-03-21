@@ -22,7 +22,6 @@
 				{
 					$sum+=$rating->rating;
 				}
-			}
 			?>
 </div>
 
