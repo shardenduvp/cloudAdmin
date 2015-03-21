@@ -36,12 +36,14 @@ $this->menu=array(
     
 function fetchAnswers(element){
     //alert(element.attr('data-id'));
+    $(".loader-small").fadeIn('slow');
+    $("#answersBody").html("");
     $.ajax({
         type:"POST",
         url:"<?php echo Yii::app()->createUrl('admin/suppliersReferencesQuestions/fetchAnswers');?>",
         data:"id="+element.attr('data-id'),
         success:function(response){
-
+            $(".loader-small").fadeOut('slow');
             $("#answersBody").html(response);
         }
     });

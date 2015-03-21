@@ -158,8 +158,6 @@
                       <strong></strong><h3>Portfolio References</h3></strong>
 
                     <div class="box-title">
-                      <h4>Portfolio References</h4>
-
                      </div>
                     <?php
                     $references='';
@@ -205,7 +203,10 @@
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">View</h4>
+                                <h4 class="modal-title" id="myModalLabel">
+                                  View
+                                  <img class="loader-small" style="display:none;" src="<?php echo Yii::app()->theme->baseUrl;?>/adminPanel/img/loader_small.gif">
+                               </h4>
                               </div>
                               <div class="modal-body" id="answersBody">
                                 
