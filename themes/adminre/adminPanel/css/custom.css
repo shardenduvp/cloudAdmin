@@ -554,3 +554,16 @@
 .textfont{
 font-size: 16px;
 }
+
+.rating-testimonial{
+    font-size: 20px;
+    background:rgba(242, 107, 85, 1);
+    margin:0 auto; 
+    height: 96px; 
+    padding-top:22px;  
+    text-align: center; 
+    width: 96px; 
+    border-radius:70px; 
+    border:1px solid #E25A44;
+    color: white;
+}

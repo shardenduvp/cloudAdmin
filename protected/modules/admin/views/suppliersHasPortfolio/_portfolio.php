@@ -176,9 +176,6 @@
                                     <a href="#box-config" data-toggle="modal"  data-target="#myModal1" class="edit" data-id="<?php echo $suppliersReferences->id;?>" onclick="fetchAnswers($(this))">
                                     <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="javascript:;" class="remove">
-                                    <i class="fa fa-times"></i>
-                                     </a>
 
                                  </div>
                          </div>
@@ -200,7 +197,7 @@
 
                         <!-- View Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
+                          <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -212,12 +209,12 @@
                               <div class="modal-body" id="answersBody">
                                 
                               </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                               <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                               </div>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
                 <!--btn 1 -->
 
 
