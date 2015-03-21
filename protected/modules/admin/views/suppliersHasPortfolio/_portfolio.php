@@ -1,8 +1,3 @@
-<style>
-.modal-dialog {
-  width: 900px;
-}
-</style>
 <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"> 
 <?php if(Yii::app()->user->hasFlash('record')){?>
@@ -154,48 +149,49 @@
             <div class="col-md-12">
                 <div class="col-md-2 pull-left"><?php echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Edit Portfolio</button>', array('/admin/suppliersHasPortfolio/update','id'=>$model->id));?></div>
                 <!--<div class="col-md-2 pull-left"><?php //echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Create Portfolio</button>', array('/admin/suppliersHasPortfolio/create','id'=>$model->id));?></div>-->
-                <div class="col-md-2"><?php echo CHtml::link('<button type="button" class="btn btn-primary  text-center model_text" >Portfolio References</button>', array('/admin/suppliersHasReferences/admin','id'=>$model->id));?></div>
-
-        
+                <br>
+                <br>
+                <br>
+             <div class="box border inverse">
+                    <div class="box-title">
+                      <h4>Portfolio References</h4>
+                     </div>
                     <?php
                     $references='';
                     if(!empty($model->suppliersHasReferences)) {
                      foreach ($model->suppliersHasReferences as $suppliersReferences) { ?>
+                     <div class="box border grey">
+                        <div class="box-title">
+                            <h4>Reference for </h4>
+                            <?php echo '  '.$suppliersReferences->project_name ; ?>
+                                 <div class="tools">
+                                    <a href="#box-config" data-toggle="modal" data-target="#myModal" class="view">
+                                    <i class="fa fa-eye"></i>
+                                    </a>
+                                    <a href="#box-config" data-toggle="modal"  data-target="#myModal1" class="edit">
+                                    <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="javascript:;" class="remove">
+                                    <i class="fa fa-times"></i>
+                                     </a>
+                                 </div>
+                         </div>
+                    </div>
+                      
+                        <?php
+                            }
+                        }
+                        else
+                        {
+                            $references = 'Not Provided';
+                        }
+                    ?>
 
-                    <div class="box border inverse ">
-                        <div class="alert alert-info">                 
-                             <div class="row fieldRow">
-                                  <h4><label for="project">Reference for </label>
-                                  <?php echo $suppliersReferences->project_name ; ?>
+             </div>  
+    </div>
+    </div>
 
 
-<!-- Create, Update and Delete buttons -->
-
-                <!-- Button trigger modal -->
-                <div class="col-md-0 pull-right"><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
-                  Delete
-                </button></div>
-                  <div class="col-md-1 pull-right"><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
-                  Edit
-                </button></div>
-                <div class="col-md-1 pull-right"><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
-                  View
-                </button></div>
- <script type="text/javascript">
-                 $("#Delete").load(function(){
-                   $('#myModal').modal('show');
-                   });
-                 </script>  
-                 <script type="text/javascript">
-                 $("#Edit").load(function(){
-                   $('#myModal').modal('show');
-                   });
-                 </script>
-                 <script type="text/javascript">
-                 $("#View").load(function(){
-                   $('#myModal').modal('show');
-                   });
-                 </script>                   
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
@@ -205,88 +201,7 @@
                                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                               </div>
                               <div class="modal-body">
-                               <div class="box border orange">
-                                            <div class="box-title">
-                                                <h4><i class="fa fa-bars"></i>Basic form elements</h4>
-                                                <div class="tools hidden-xs">
-                                                    <a href="#box-config" data-toggle="modal" class="config">
-                                                        <i class="fa fa-cog"></i>
-                                                    </a>
-                                                    <a href="javascript:;" class="reload">
-                                                        <i class="fa fa-refresh"></i>
-                                                    </a>
-                                                    <a href="javascript:;" class="collapse">
-                                                        <i class="fa fa-chevron-up"></i>
-                                                    </a>
-                                                    <a href="javascript:;" class="remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="box-body big">
-                                                <h3 class="form-title">Basic Example</h3>
-                                                <form role="form">
-                                                  <div class="form-group">
-                                                    <label for="exampleInputEmail1">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                                  </div>
-                                                  <div class="form-group">
-                                                    <label for="exampleInputPassword1">Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                                  </div>
-                                                  <div class="checkbox">
-                                                    <label>
-                                                      <input type="checkbox"> Check me out
-                                                    </label>
-                                                  </div>
-                                                  <button type="submit" class="btn btn-success">Submit</button>
-                                                </form>
-                                                <div class="separator"></div>
-                                                <h3 class="form-title">Inline form</h3>
-                                                <form class="form-inline" role="form">
-                                                  <div class="form-group">
-                                                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-                                                  </div>
-                                                  <div class="form-group">
-                                                    <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                                                  </div>
-                                                  <button type="submit" class="btn btn-inverse">Sign in</button>
-                                                </form>
-                                                <div class="separator"></div>
-                                                <h3 class="form-title">Horizontal form</h3>
-                                                <form class="form-horizontal" role="form">
-                                                  <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                                    <div class="col-sm-10">
-                                                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                                    </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                                                    <div class="col-sm-10">
-                                                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                                    </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
-                                                      <div class="checkbox">
-                                                        <label>
-                                                          <input type="checkbox"> Remember me
-                                                        </label>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
-                                                      <button type="submit" class="btn btn-pink">Sign in</button>
-                                                    </div>
-                                                  </div>
-                                                </form>
-
-                                            </div>
-                                        </div>
+                                ...
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -295,49 +210,28 @@
                         </div>
                     </div>
                 </div>
-
-                
-
+                <!--btn 1 -->
 
 
-
-
-                                  </div></h4>
-                         </div>
-
-                                 
-                             </div></h4>
-                         </div>
-                    
-                      
-                  
-            </div>
-                            
-                        <?php
-                            }
-                        }
-                        else
-                        {
-                            $references = 'Not Provided';
-                        }
-                    ?>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                              </div>
+                              <div class="modal-body">
+                                ...
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-    </div>
    </div>
 
 
-    </div>
-
-
-   </div>
-
-
-                            
 <?php $this->endWidget(); ?>
