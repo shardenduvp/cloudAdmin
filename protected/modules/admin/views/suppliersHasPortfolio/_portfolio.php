@@ -152,9 +152,15 @@
                 <br>
                 <br>
                 <br>
+<<<<<<< HEAD
              
                     <div class="box-title">
                       <strong></strong><h3>Portfolio References</h3></strong>
+=======
+             <div class="box border inverse">
+                    <div class="box-title">
+                      <h4>Portfolio References</h4>
+>>>>>>> 96f57f66c79c4e9efda9bb346df2757871eaa5e3
                      </div>
                     <?php
                     $references='';
@@ -165,7 +171,11 @@
                             <h4>Reference for </h4>
                             <?php echo '  '.$suppliersReferences->project_name ; ?>
                                  <div class="tools">
+<<<<<<< HEAD
                                     <a href="#box-config" data-toggle="modal" data-target="#myModal" class="view" data-id="<?php echo $suppliersReferences->id;?>" onclick="fetchAnswers($(this))">
+=======
+                                    <a href="#box-config" data-toggle="modal" data-target="#myModal" class="view">
+>>>>>>> 96f57f66c79c4e9efda9bb346df2757871eaa5e3
                                     <i class="fa fa-eye"></i>
                                     </a>
                                     <a href="#box-config" data-toggle="modal"  data-target="#myModal1" class="edit">
